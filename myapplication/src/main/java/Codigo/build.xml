@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="build">
+	<path id="build.classpath">
+		<pathelement location="classes"/>
+	</path>
+	<target name="init">
+		<mkdir dir="classes"/>
+	</target>
+	<target name="clean">
+		<delete dir="classes"/>
+	</target>
+	<target depends="init" name="build">
+		<javac srcdir="." destdir="classes" source="1.5" target="1.5" fork="yes">
+			<classpath refid="build.classpath"/>
+			<include name="Lista_Historial.java"/>
+			<include name="Lista_Videos_Relacionados.java"/>
+			<include name="Lista_Videos_Suscriptores.java"/>
+			<include name="Iniciar_Sesion.java"/>
+			<include name="Recordar_Pass.java"/>
+			<include name="Correo.java"/>
+			<include name="Nuevo_Pass.java"/>
+			<include name="Lista_Videos_Buscados.java"/>
+			<include name="TipoBusqueda.java"/>
+			<include name="Lista_Usuarios_Buscados.java"/>
+			<include name="Lista_Usuarios_Registrados.java"/>
+			<include name="Buscador_Usuario.java"/>
+			<include name="Buscador.java"/>
+			<include name="Buscador_Video.java"/>
+			<include name="Crear_Lista_Reproduccion.java"/>
+			<include name="Lista_Listas_De_Reproduccion.java"/>
+			<include name="Lista_Videos_Reproduccion_Propia.java"/>
+			<include name="Lista_Videos_De_Reproduccion.java"/>
+			<include name="Subir_Video.java"/>
+			<include name="Modificar_Video.java"/>
+			<include name="Visualizacion_Video_Propio_AR.java"/>
+			<include name="Lista_Comentarios_Propios_AR.java"/>
+			<include name="Comentario2.java"/>
+			<include name="Comentario_Video_Ajeno_R.java"/>
+			<include name="Comentario_Video_Ajeno_A.java"/>
+			<include name="Lista_Comentario_Video_Ajeno_A.java"/>
+			<include name="Visualizacion_Video_Ajeno_A.java"/>
+			<include name="Visualizacion_Video_Ajeno_R.java"/>
+			<include name="Lista_Comentarios_Video_Ajeno_R.java"/>
+			<include name="Lista_Comentarios.java"/>
+			<include name="Visualizacion_Video_Ajeno.java"/>
+			<include name="Visualizacion_Video_Comun_Registrado.java"/>
+			<include name="Anadir_a_ListaReproduccion.java"/>
+			<include name="Listas_De_Reproduccion.java"/>
+			<include name="Lista_De_Reproduccion2.java"/>
+			<include name="Lista_Lista_De_Reproducción_Propia.java"/>
+			<include name="Lista_Videos_Propios.java"/>
+			<include name="Lista_Suscriptores_Propios.java"/>
+			<include name="Lista_Suscripciones_Propias.java"/>
+			<include name="Perfil_Propio_R.java"/>
+			<include name="Modificar_Datos_Usuario.java"/>
+			<include name="Registrarse.java"/>
+			<include name="Ingreso_Aplicacion.java"/>
+			<include name="Cabecera_Comun.java"/>
+			<include name="Cabecera_NR.java"/>
+			<include name="Lista_Video_Mas_Megusta.java"/>
+			<include name="Lista_Ultimos_Videos.java"/>
+			<include name="Usuario_No_Registrado.java"/>
+			<include name="Pag_Inicio_NR.java"/>
+			<include name="Administrador2.java"/>
+			<include name="Usuario_Registrado.java"/>
+			<include name="Pag_Inicio_R.java"/>
+			<include name="Cabecera_R.java"/>
+			<include name="Crear_Categoria.java"/>
+			<include name="Perfil_Propio_A.java"/>
+			<include name="Lista_Suscriptores.java"/>
+			<include name="Perfil_Ajeno_A.java"/>
+			<include name="Perfil_Ajeno_R.java"/>
+			<include name="Usuario2.java"/>
+			<include name="TipoUsuario.java"/>
+			<include name="Lista_Videos_Subidos.java"/>
+			<include name="Video2.java"/>
+			<include name="Perfil_Ajeno.java"/>
+			<include name="Lista_Suscripciones.java"/>
+		</javac>
+	</target>
+</project>
