@@ -6,12 +6,17 @@
   <meta name="vaadin-version" content="8.0.5">
  </head>
  <body>
-  <vaadin-vertical-layout size-full maxlength="10">
-   <vaadin7-horizontal-layout spacing width="1367px" height="109px" margin>
+  <vaadin-vertical-layout maxlength="10" value="Titulo" _id="verticalLayout">
+   <vaadin7-horizontal-layout spacing width="1367px" height="250px" margin>
     <vaadin-horizontal-layout width="657px" height="72px">
-     <vaadin-native-button plain-text _id="inicio" :bottom>
-       Inicio 
-     </vaadin-native-button>
+     <vaadin-vertical-layout width="360px" height="250px">
+      <vaadin-native-button plain-text _id="inicio">
+        Inicio 
+      </vaadin-native-button>
+      <vaadin-label plain-text :bottom :center>
+        Videos con mas me gusta 
+      </vaadin-label>
+     </vaadin-vertical-layout>
      <vaadin-vertical-layout width-auto height="190px">
       <vaadin-text-field width="521px"></vaadin-text-field>
       <vaadin7-horizontal-layout>
@@ -39,6 +44,26 @@
      </vaadin-button>
     </vaadin7-horizontal-layout>
    </vaadin7-horizontal-layout>
+   <vaadin-horizontal-layout width="1403px" height="295px">
+    <vaadin-vertical-layout spacing="false" width="470px" margin="false">
+     <vaadin-label plain-text :center>
+       Título 
+     </vaadin-label>
+     <vaadin-vertical-layout spacing="false" size-auto margin="false" :center>
+      <vaadin-video :center></vaadin-video>
+      <vaadin-link caption="Usuario" :center></vaadin-link>
+      <vaadin-label plain-text :center>
+        Categoria 
+      </vaadin-label>
+      <vaadin-label plain-text :center>
+        Etiqueta 
+      </vaadin-label>
+      <vaadin-label plain-text :center>
+        Fecha de Subida 
+      </vaadin-label>
+     </vaadin-vertical-layout>
+    </vaadin-vertical-layout>
+   </vaadin-horizontal-layout>
   </vaadin-vertical-layout>
  </body>
 </html>
