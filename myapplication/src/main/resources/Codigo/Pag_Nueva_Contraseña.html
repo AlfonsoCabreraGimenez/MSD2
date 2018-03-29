@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-vertical-layout size-full>
+   <vaadin-horizontal-layout width="1440px" margin :center>
+    <vaadin-label plain-text :middle :center>
+      Nueva contraseña 
+    </vaadin-label>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width="1440px" margin :center>
+    <vaadin-vertical-layout size-auto margin="false" :center>
+     <vaadin-horizontal-layout>
+      <vaadin-label plain-text>
+        Introduce la nueva contraseña 
+      </vaadin-label>
+      <vaadin-label width="294px" height="73px" plain-text>
+        La contraseña no puede exceder los 8 caracteres. Debe de ser alfanumérica con una mayúscula 
+      </vaadin-label>
+     </vaadin-horizontal-layout>
+     <vaadin-password-field></vaadin-password-field>
+     <vaadin-label plain-text>
+       Repite la nueva contraseña 
+     </vaadin-label>
+     <vaadin-password-field></vaadin-password-field>
+    </vaadin-vertical-layout>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width="1403px" height="305px" margin>
+    <vaadin-button plain-text :bottom>
+      Volver 
+    </vaadin-button>
+    <vaadin-button plain-text :bottom :right>
+      Enviar 
+    </vaadin-button>
+   </vaadin-horizontal-layout>
+  </vaadin-vertical-layout>
+ </body>
+</html>
