@@ -9,7 +9,7 @@
   <vaadin-vertical-layout size-auto>
    <vaadin-horizontal-layout width="1440px">
     <vaadin-button plain-text>
-      Button 
+      Inicio 
     </vaadin-button>
    </vaadin-horizontal-layout>
    <vaadin-vertical-layout width="1404px">
@@ -58,8 +58,18 @@
     </vaadin-horizontal-layout>
     <vaadin-text-field value="Email..."></vaadin-text-field>
     <vaadin-horizontal-layout>
-     <vaadin-password-field _id="contraseña"></vaadin-password-field>
-     <vaadin-password-field _id="repetirContraseña"></vaadin-password-field>
+     <vaadin-vertical-layout size-auto margin="false">
+      <vaadin-label plain-text>
+        Introduce una contraseña 
+      </vaadin-label>
+      <vaadin-password-field _id="contraseña"></vaadin-password-field>
+     </vaadin-vertical-layout>
+     <vaadin-vertical-layout size-auto margin="false">
+      <vaadin-label plain-text>
+        Reescriba la contraesña 
+      </vaadin-label>
+      <vaadin-password-field _id="repetirContraseña"></vaadin-password-field>
+     </vaadin-vertical-layout>
     </vaadin-horizontal-layout>
     <vaadin-horizontal-layout width="711px" margin>
      <vaadin-button plain-text :middle :center>
