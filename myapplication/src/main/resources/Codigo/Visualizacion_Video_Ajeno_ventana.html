@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-vertical-layout>
+   <vaadin-horizontal-layout width-full>
+    <vaadin-horizontal-layout>
+     <vaadin-horizontal-layout>
+      <vaadin-button style-name="friendly" width="120px" height="50px" plain-text>
+        Inicio 
+      </vaadin-button>
+     </vaadin-horizontal-layout>
+     <vaadin-vertical-layout width="900px" margin="false" :right></vaadin-vertical-layout>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout :right>
+     <vaadin-button style-name="danger" width="250px" height="50px" plain-text :right>
+       Iniciar Sesión | Registrarse 
+     </vaadin-button>
+    </vaadin-horizontal-layout>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout>
+    <vaadin-vertical-layout size-auto>
+     <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="300px" height="300px"></vaadin-image>
+     <vaadin-link caption="Apodo" :center></vaadin-link>
+     <vaadin-label plain-text>
+       Nº Visualizaciones 
+     </vaadin-label>
+     <vaadin-label plain-text>
+       Nº Me gusta 
+     </vaadin-label>
+     <vaadin-label plain-text>
+       Fecha de subida 
+     </vaadin-label>
+    </vaadin-vertical-layout>
+    <vaadin-vertical-layout spacing="false" size-auto>
+     <vaadin-horizontal-layout width="1000px">
+      <vaadin-label plain-text>
+        Título 
+      </vaadin-label>
+      <vaadin-label plain-text :right>
+        Categoría - Etiqueta 
+      </vaadin-label>
+     </vaadin-horizontal-layout>
+     <vaadin-vertical-layout size-auto margin="false">
+      <vaadin-video width="1000px" height="450px"></vaadin-video>
+      <vaadin-text-area style-name="borderless" width="1000px" readonly>
+        Descripción del video... 
+      </vaadin-text-area>
+     </vaadin-vertical-layout>
+    </vaadin-vertical-layout>
+   </vaadin-horizontal-layout>
+  </vaadin-vertical-layout>
+ </body>
+</html>
