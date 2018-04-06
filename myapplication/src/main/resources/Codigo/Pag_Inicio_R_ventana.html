@@ -6,17 +6,17 @@
   <meta name="vaadin-version" content="8.0.5">
  </head>
  <body>
-  <vaadin-vertical-layout size-auto maxlength="10" value="Titulo">
-   <vaadin7-horizontal-layout spacing width="1367px" height="250px" margin>
-    <vaadin-horizontal-layout width="657px" height="72px">
-     <vaadin-vertical-layout width="360px" height="250px">
-      <vaadin-native-button plain-text _id="inicio">
+  <vaadin-vertical-layout maxlength="10" value="Titulo">
+   <vaadin-horizontal-layout width-full>
+    <vaadin-horizontal-layout>
+     <vaadin-horizontal-layout>
+      <vaadin-button style-name="friendly" width="120px" height="50px" plain-text>
         Inicio 
-      </vaadin-native-button>
-     </vaadin-vertical-layout>
-     <vaadin-vertical-layout width-auto height="190px">
-      <vaadin-text-field width="521px" _id="_"></vaadin-text-field>
-      <vaadin7-horizontal-layout>
+      </vaadin-button>
+     </vaadin-horizontal-layout>
+     <vaadin-vertical-layout size-auto margin="false" :right>
+      <vaadin-text-field width="900px" height="50px" :right></vaadin-text-field>
+      <vaadin-horizontal-layout width="900px">
        <vaadin-radio-button-group data-item-type="java.lang.String">
         <option item="Opcion1">Título</option>
        </vaadin-radio-button-group>
@@ -32,21 +32,21 @@
        <vaadin-radio-button-group data-item-type="java.lang.String">
         <option item="Option1">Usuarios</option>
        </vaadin-radio-button-group>
-      </vaadin7-horizontal-layout>
+      </vaadin-horizontal-layout>
      </vaadin-vertical-layout>
     </vaadin-horizontal-layout>
-    <vaadin7-horizontal-layout spacing margin :right>
-     <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="50px" height="50px" _id="avatar"></vaadin-image>
-     <vaadin-button icon="fonticon://Vaadin-Icons/e6f6" plain-text _id="subirVideo" :middle :right></vaadin-button>
-     <vaadin-button plain-text _id="cerrarSesion" :middle :right>
+    <vaadin-horizontal-layout :right>
+     <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="50px" height="50px" :right></vaadin-image>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e6f6" width="100px" height="50px" plain-text :right></vaadin-button>
+     <vaadin-button style-name="danger" width="150px" height="50px" plain-text :right>
        Cerrar Sesión 
      </vaadin-button>
-    </vaadin7-horizontal-layout>
-   </vaadin7-horizontal-layout>
-   <vaadin-label plain-text>
+    </vaadin-horizontal-layout>
+   </vaadin-horizontal-layout>
+   <vaadin-label style-name="light" plain-text>
      Videos con mas me gusta 
    </vaadin-label>
-   <vaadin-panel width="1500px">
+   <vaadin-panel>
     <vaadin-horizontal-layout>
      <vaadin-vertical-layout size-auto>
       <vaadin-label plain-text :center>
@@ -233,7 +233,7 @@
    <vaadin-label plain-text>
      Últimos videos subidos 
    </vaadin-label>
-   <vaadin-panel width="1500px">
+   <vaadin-panel>
     <vaadin-horizontal-layout>
      <vaadin-vertical-layout size-auto>
       <vaadin-label plain-text :center>
@@ -420,7 +420,7 @@
    <vaadin-label plain-text>
      Videos relacionados 
    </vaadin-label>
-   <vaadin-panel width="1500px">
+   <vaadin-panel>
     <vaadin-horizontal-layout>
      <vaadin-vertical-layout size-auto>
       <vaadin-label plain-text :center>
@@ -607,7 +607,7 @@
    <vaadin-label plain-text>
      Videos de otros usuarios 
    </vaadin-label>
-   <vaadin-panel width="1500px">
+   <vaadin-panel>
     <vaadin-horizontal-layout>
      <vaadin-vertical-layout size-auto>
       <vaadin-label plain-text :center>
@@ -794,7 +794,7 @@
    <vaadin-label plain-text>
      Videos vistos recientemente 
    </vaadin-label>
-   <vaadin-panel width="1500px">
+   <vaadin-panel>
     <vaadin-horizontal-layout>
      <vaadin-vertical-layout size-auto>
       <vaadin-label plain-text :center>
