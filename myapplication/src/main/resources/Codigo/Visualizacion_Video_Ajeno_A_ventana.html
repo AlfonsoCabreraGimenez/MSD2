@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-vertical-layout>
+   <vaadin-horizontal-layout width-full>
+    <vaadin-horizontal-layout>
+     <vaadin-horizontal-layout>
+      <vaadin-button description="Ir a inicio" style-name="friendly" width="120px" height="50px" plain-text>
+        Inicio 
+      </vaadin-button>
+     </vaadin-horizontal-layout>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout :right>
+     <vaadin-image description="Ir a mi perfil" source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="50px" height="50px" :right></vaadin-image>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e6f6" description="Subir video" width="100px" height="50px" plain-text :right></vaadin-button>
+     <vaadin-button description="Cerrar sesión" style-name="danger" width="150px" height="50px" plain-text :right>
+       Cerrar Sesión 
+     </vaadin-button>
+    </vaadin-horizontal-layout>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout spacing="false">
+    <vaadin-vertical-layout size-auto>
+     <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="300px" height="300px"></vaadin-image>
+     <vaadin-link caption="Apodo" :center></vaadin-link>
+     <vaadin-label plain-text>
+       Nº Visualizaciones 
+     </vaadin-label>
+     <vaadin-label plain-text>
+       Nº Me gusta 
+     </vaadin-label>
+     <vaadin-label plain-text>
+       Fecha de subida 
+     </vaadin-label>
+    </vaadin-vertical-layout>
+    <vaadin-vertical-layout spacing="false" size-auto>
+     <vaadin-horizontal-layout width="1000px">
+      <vaadin-label plain-text>
+        Título 
+      </vaadin-label>
+      <vaadin-label plain-text :right>
+        Categoría - Etiqueta 
+      </vaadin-label>
+     </vaadin-horizontal-layout>
+     <vaadin-vertical-layout size-auto margin="false">
+      <vaadin-video width="1000px" height="450px"></vaadin-video>
+      <vaadin-text-area style-name="borderless" width-full readonly>
+        Descripción del video... 
+      </vaadin-text-area>
+      <vaadin-text-area width-full>
+        Escribir comentario... 
+      </vaadin-text-area>
+      <vaadin-button plain-text :right>
+        Comentar 
+      </vaadin-button>
+      <vaadin-label plain-text>
+        Comentarios 
+      </vaadin-label>
+      <vaadin-vertical-layout size-auto margin="false">
+       <vaadin-horizontal-layout>
+        <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="40px" height="40px"></vaadin-image>
+        <vaadin-link caption="Apodo" :middle :center></vaadin-link>
+       </vaadin-horizontal-layout>
+       <vaadin-horizontal-layout>
+        <vaadin-text-area width="1000px" readonly></vaadin-text-area>
+        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" width="50px" height="30px" plain-text :bottom :right></vaadin-button>
+       </vaadin-horizontal-layout>
+      </vaadin-vertical-layout>
+      <vaadin-vertical-layout size-auto margin="false">
+       <vaadin-horizontal-layout>
+        <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="40px" height="40px"></vaadin-image>
+        <vaadin-link caption="Apodo" :middle :center></vaadin-link>
+       </vaadin-horizontal-layout>
+       <vaadin-horizontal-layout>
+        <vaadin-text-area width="1000px" readonly></vaadin-text-area>
+        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" width="50px" height="30px" plain-text :bottom :right></vaadin-button>
+       </vaadin-horizontal-layout>
+      </vaadin-vertical-layout>
+      <vaadin-vertical-layout size-auto margin="false">
+       <vaadin-horizontal-layout>
+        <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="40px" height="40px"></vaadin-image>
+        <vaadin-link caption="Apodo" :middle :center></vaadin-link>
+       </vaadin-horizontal-layout>
+       <vaadin-horizontal-layout>
+        <vaadin-text-area width="1000px" readonly></vaadin-text-area>
+        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" width="50px" height="30px" plain-text :bottom :right></vaadin-button>
+       </vaadin-horizontal-layout>
+      </vaadin-vertical-layout>
+      <vaadin-vertical-layout size-auto margin="false">
+       <vaadin-horizontal-layout>
+        <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="40px" height="40px"></vaadin-image>
+        <vaadin-link caption="Apodo" :middle :center></vaadin-link>
+       </vaadin-horizontal-layout>
+       <vaadin-horizontal-layout>
+        <vaadin-text-area width="1000px" readonly></vaadin-text-area>
+        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" width="50px" height="30px" plain-text :bottom :right></vaadin-button>
+       </vaadin-horizontal-layout>
+      </vaadin-vertical-layout>
+     </vaadin-vertical-layout>
+    </vaadin-vertical-layout>
+    <vaadin-vertical-layout width-auto height="400px">
+     <vaadin-button icon="fonticon://Vaadin-Icons/e6db" width="70px" height="50px" plain-text></vaadin-button>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e929" width="70px" height="50px" plain-text></vaadin-button>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e703" width="70px" height="50px" plain-text></vaadin-button>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" width="70px" height="50px" plain-text></vaadin-button>
+    </vaadin-vertical-layout>
+   </vaadin-horizontal-layout>
+  </vaadin-vertical-layout>
+ </body>
+</html>
