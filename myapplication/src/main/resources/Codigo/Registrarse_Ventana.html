@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-vertical-layout>
+   <vaadin-horizontal-layout width="1440px">
+    <vaadin-button style-name="friendly" plain-text>
+      Inicio 
+    </vaadin-button>
+   </vaadin-horizontal-layout>
+   <vaadin-vertical-layout width="1404px">
+    <vaadin-horizontal-layout>
+     <vaadin-label plain-text>
+       Datos Personales* 
+     </vaadin-label>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout margin>
+     <vaadin-text-field value="Nombre..."></vaadin-text-field>
+     <vaadin-text-field value="Primer apellido..."></vaadin-text-field>
+     <vaadin-text-field value="Segundo apellido..."></vaadin-text-field>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout>
+     <vaadin-label plain-text>
+       Fecha de nacimiento 
+     </vaadin-label>
+     <vaadin-inline-date-field readonly value="2016-02-28"></vaadin-inline-date-field>
+     <vaadin-horizontal-layout width="686px" height="248px">
+      <vaadin-vertical-layout size-auto :right>
+       <vaadin-text-field value="Usuario o email..."></vaadin-text-field>
+       <vaadin-label plain-text>
+         Introduce su contraseña 
+       </vaadin-label>
+       <vaadin-password-field></vaadin-password-field>
+       <vaadin-link caption="Pulse aquí para recordar contraseña"></vaadin-link>
+       <vaadin-button plain-text :center>
+         Iniciar Sesión 
+       </vaadin-button>
+      </vaadin-vertical-layout>
+     </vaadin-horizontal-layout>
+    </vaadin-horizontal-layout>
+   </vaadin-vertical-layout>
+   <vaadin-label plain-text>
+     Datos de usuario 
+   </vaadin-label>
+   <vaadin-vertical-layout width="450px">
+    <vaadin-horizontal-layout width="690px">
+     <vaadin-text-field value="Apodo..."></vaadin-text-field>
+     <vaadin-vertical-layout size-auto margin="false" :middle :right>
+      <vaadin-label plain-text :center>
+        Avatar 
+      </vaadin-label>
+      <vaadin-image width="104px" height="79px"></vaadin-image>
+     </vaadin-vertical-layout>
+    </vaadin-horizontal-layout>
+    <vaadin-text-field value="Email..."></vaadin-text-field>
+    <vaadin-horizontal-layout>
+     <vaadin-vertical-layout size-auto margin="false">
+      <vaadin-label plain-text>
+        Introduce una contraseña 
+      </vaadin-label>
+      <vaadin-password-field _id="contraseña"></vaadin-password-field>
+     </vaadin-vertical-layout>
+     <vaadin-vertical-layout size-auto margin="false">
+      <vaadin-label plain-text>
+        Reescriba la contraesña 
+      </vaadin-label>
+      <vaadin-password-field _id="repetirContraseña"></vaadin-password-field>
+     </vaadin-vertical-layout>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout width="711px" margin>
+     <vaadin-button plain-text :middle :center>
+       Registrar 
+     </vaadin-button>
+    </vaadin-horizontal-layout>
+   </vaadin-vertical-layout>
+  </vaadin-vertical-layout>
+ </body>
+</html>
