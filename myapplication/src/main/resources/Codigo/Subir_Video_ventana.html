@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-vertical-layout width="50%" height-full>
+   <vaadin-vertical-layout margin="false">
+    <vaadin-label plain-text :center>
+      Subir video 
+    </vaadin-label>
+    <vaadin-horizontal-layout width-full>
+     <vaadin-vertical-layout margin="false">
+      <vaadin-horizontal-layout width-full>
+       <vaadin-text-field caption="Url"></vaadin-text-field>
+       <vaadin-upload button-caption=". . ." description="Examinar" :bottom :right></vaadin-upload>
+      </vaadin-horizontal-layout>
+      <vaadin-text-field caption="Título" width-full></vaadin-text-field>
+      <vaadin-combo-box caption="Categoría" data-item-type="java.lang.String">
+       <option item="Option1">Option 1</option>
+       <option item="Option2">Option 2</option>
+       <option item="Option3">Option 3</option>
+      </vaadin-combo-box>
+      <vaadin-text-field caption="Etiqueta"></vaadin-text-field>
+     </vaadin-vertical-layout>
+     <vaadin-vertical-layout margin="false">
+      <vaadin-label plain-text :center>
+        Miniatura 
+      </vaadin-label>
+      <vaadin-horizontal-layout :center>
+       <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="125px" height="125px"></vaadin-image>
+       <vaadin-upload button-caption=". . ." description="Examinar" :bottom :right></vaadin-upload>
+      </vaadin-horizontal-layout>
+     </vaadin-vertical-layout>
+    </vaadin-horizontal-layout>
+    <vaadin-text-area caption-as-html caption="Descripción" width-full></vaadin-text-area>
+    <vaadin-horizontal-layout></vaadin-horizontal-layout>
+    <vaadin-horizontal-layout width-full>
+     <vaadin-button description="Cancelar" style-name="danger" plain-text>
+       Cancelar 
+     </vaadin-button>
+     <vaadin-button description="Confirmar" style-name="friendly" plain-text :right>
+       Confirmar 
+     </vaadin-button>
+    </vaadin-horizontal-layout>
+   </vaadin-vertical-layout>
+  </vaadin-vertical-layout>
+ </body>
+</html>
