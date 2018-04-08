@@ -6,15 +6,29 @@
   <meta name="vaadin-version" content="8.0.5">
  </head>
  <body>
-  <vaadin-vertical-layout spacing="false" width="40%" height="40%">
-   <vaadin-horizontal-layout width-full>
+  <vaadin-vertical-layout width="40%" height="40%" margin="false">
+   <vaadin-horizontal-layout width-full margin>
     <vaadin-vertical-layout size-auto margin="false" :center>
-     <vaadin-label plain-text :center>
-       Crear Categoria 
-     </vaadin-label>
      <vaadin-text-field caption="Nueva Categoria..." :center></vaadin-text-field>
-     <vaadin-text-field></vaadin-text-field>
     </vaadin-vertical-layout>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width-full margin>
+    <vaadin-label plain-text>
+      Edad Recomendada 
+    </vaadin-label>
+    <vaadin-combo-box data-item-type="java.lang.String">
+     <option item="Option1">6</option>
+     <option item="Option2">14</option>
+     <option item="Option3">18</option>
+    </vaadin-combo-box>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width-full margin :bottom :center>
+    <vaadin-button description="Cancelar" style-name="danger" plain-text>
+      Cancelar 
+    </vaadin-button>
+    <vaadin-button description="Confirmar" style-name="friendly" plain-text :bottom :right>
+      Confirmar 
+    </vaadin-button>
    </vaadin-horizontal-layout>
   </vaadin-vertical-layout>
  </body>
