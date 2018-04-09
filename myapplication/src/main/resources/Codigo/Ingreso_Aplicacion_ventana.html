@@ -17,55 +17,49 @@
       <vaadin-label plain-text>
         Datos personales* 
       </vaadin-label>
+      <vaadin-horizontal-layout></vaadin-horizontal-layout>
       <vaadin-horizontal-layout>
        <vaadin-text-field caption="Nombre"></vaadin-text-field>
        <vaadin-text-field caption="Primer apellido"></vaadin-text-field>
        <vaadin-text-field caption="Segundo apellido"></vaadin-text-field>
       </vaadin-horizontal-layout>
       <vaadin-horizontal-layout></vaadin-horizontal-layout>
-      <vaadin-horizontal-layout>
-       <vaadin-label plain-text>
-         Fecha de nacimiento 
-       </vaadin-label>
-       <vaadin7-date-field></vaadin7-date-field>
-      </vaadin-horizontal-layout>
+      <vaadin7-date-field caption="Fecha de nacimiento"></vaadin7-date-field>
      </vaadin-vertical-layout>
     </vaadin-horizontal-layout>
     <vaadin-horizontal-layout size-full>
-     <vaadin-vertical-layout width-auto height-full>
+     <vaadin-vertical-layout size-full>
       <vaadin-label plain-text>
         Datos de usuario 
       </vaadin-label>
       <vaadin-text-field caption="Apodo"></vaadin-text-field>
       <vaadin-text-field caption="Email"></vaadin-text-field>
       <vaadin-horizontal-layout>
-       <vaadin-password-field></vaadin-password-field>
-       <vaadin-password-field></vaadin-password-field>
+       <vaadin-password-field caption="Contraseña"></vaadin-password-field>
+       <vaadin-password-field caption="Recordar contraseña"></vaadin-password-field>
       </vaadin-horizontal-layout>
-      <vaadin-button style-name="primary" plain-text :bottom :right>
+      <vaadin-button description="Registrarse" style-name="primary" plain-text :right>
         Registrarse 
       </vaadin-button>
      </vaadin-vertical-layout>
-     <vaadin-vertical-layout width="80%" height-full :center>
+     <vaadin-vertical-layout size-full :center>
       <vaadin-vertical-layout size-auto :center>
        <vaadin-label plain-text :center>
          Avatar 
        </vaadin-label>
        <vaadin-horizontal-layout :center>
-        <vaadin-image width="100px" height="100px"></vaadin-image>
-        <vaadin-upload button-caption="..." :bottom :right></vaadin-upload>
+        <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="100px" height="100px"></vaadin-image>
+        <vaadin-upload button-caption="..." description="Examinar" :bottom :right></vaadin-upload>
        </vaadin-horizontal-layout>
       </vaadin-vertical-layout>
      </vaadin-vertical-layout>
     </vaadin-horizontal-layout>
    </vaadin-vertical-layout>
-   <vaadin-vertical-layout size-full>
-    <vaadin-vertical-layout size-auto :bottom :center>
-     <vaadin-text-field caption="Usuario o email"></vaadin-text-field>
-     <vaadin-password-field></vaadin-password-field>
-     <vaadin-link caption="Pulse aquí para recordar contraseña"></vaadin-link>
-    </vaadin-vertical-layout>
-    <vaadin-button style-name="danger" plain-text :center>
+   <vaadin-vertical-layout size-auto :middle :center>
+    <vaadin-text-field caption="Usuario o email" :center></vaadin-text-field>
+    <vaadin-password-field caption="Contraseña" :center></vaadin-password-field>
+    <vaadin-link caption="Pulse aquí para recordar contraseña" :middle></vaadin-link>
+    <vaadin-button description="Iniciar sesión" style-name="danger" plain-text :center>
       Iniciar Sesion 
     </vaadin-button>
    </vaadin-vertical-layout>
