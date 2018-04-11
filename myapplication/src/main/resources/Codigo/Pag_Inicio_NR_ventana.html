@@ -7,28 +7,32 @@
  </head>
  <body>
   <vaadin-vertical-layout maxlength="10" value="Titulo">
-   <vaadin7-horizontal-layout spacing width="1367px" height="250px" margin>
-    <vaadin-horizontal-layout width-full height="202px">
-     <vaadin-button plain-text>
-       Inicio 
-     </vaadin-button>
-     <vaadin-vertical-layout spacing="false" width-auto height="190px">
-      <vaadin-text-field width="521px" _id="_"></vaadin-text-field>
-      <vaadin7-horizontal-layout :center>
-       <vaadin-radio-button-group style-name="horizontal" data-item-type="java.lang.String" :expand>
-        <option item="Opcion1">Título</option>
-        <option item="Opcion2">Categoria</option>
-        <option item="Opcion3">Etiqueta</option>
-        <option item="Opcion4">Descripción</option>
-        <option item="Opcion5">Usuario</option>
+   <vaadin-horizontal-layout width-full>
+    <vaadin-horizontal-layout>
+     <vaadin-horizontal-layout>
+      <vaadin-button description="Ir a inicio" style-name="friendly" width="120px" height="50px" plain-text>
+        Inicio 
+      </vaadin-button>
+     </vaadin-horizontal-layout>
+     <vaadin-vertical-layout size-auto margin="false" :right>
+      <vaadin-text-field width="900px" height="50px" :right></vaadin-text-field>
+      <vaadin-horizontal-layout width="900px">
+       <vaadin-radio-button-group style-name="horizontal" data-item-type="java.lang.String">
+        <option item="Titulo">Título</option>
+        <option item="Categoria">Categoría</option>
+        <option item="Etiqueta">Etiqueta</option>
+        <option item="Descripcion">Descripción</option>
+        <option item="Usuarios">Usuarios</option>
        </vaadin-radio-button-group>
-      </vaadin7-horizontal-layout>
+      </vaadin-horizontal-layout>
      </vaadin-vertical-layout>
-     <vaadin-button plain-text :right>
-       IniciarSesion/Registrarse 
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout :right>
+     <vaadin-button description="Iniciar sesión o Registrarse" style-name="danger" width="250px" height="50px" plain-text :right>
+       Iniciar Sesión | Registrarse 
      </vaadin-button>
     </vaadin-horizontal-layout>
-   </vaadin7-horizontal-layout>
+   </vaadin-horizontal-layout>
    <vaadin-label plain-text>
      Videos con mas me gusta 
    </vaadin-label>
