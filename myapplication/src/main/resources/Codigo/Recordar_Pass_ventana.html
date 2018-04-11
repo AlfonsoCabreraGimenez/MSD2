@@ -6,16 +6,16 @@
   <meta name="vaadin-version" content="8.0.5">
  </head>
  <body>
-  <vaadin-vertical-layout size-full>
+  <vaadin-vertical-layout width="30%">
    <vaadin-label plain-text :center>
      Recordar Contraseña 
    </vaadin-label>
-   <vaadin-text-field width="448px" value="Introduzca tu email..." :center></vaadin-text-field>
-   <vaadin-horizontal-layout width="1368px" height="271px" margin>
-    <vaadin-button plain-text :bottom>
+   <vaadin-text-field caption="Email" width="448px" :center></vaadin-text-field>
+   <vaadin-horizontal-layout width-full margin>
+    <vaadin-button description="Volver" style-name="danger" plain-text>
       Volver 
     </vaadin-button>
-    <vaadin-button plain-text :bottom :right>
+    <vaadin-button description="Enviar" style-name="friendly" plain-text :right>
       Enviar 
     </vaadin-button>
    </vaadin-horizontal-layout>
