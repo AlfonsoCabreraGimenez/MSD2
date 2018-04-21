@@ -1,7 +1,7 @@
-package Codigo;
 public class Pag_Inicio_R extends Pag_Inicio_NR {
-	/*public Cabecera_R _unnamed_Cabecera_R_;
-	public Lista_Historial _unnamed_Lista_Historial_;
-	public Lista_Videos_Relacionados _unnamed_Lista_Videos_Relacionados_;
-	public Lista_Videos_Suscriptores _unnamed_Lista_Videos_Suscriptores_;*/
+	private Label _lista_Historial;
+	private Label _lista_Videos_Relacionados;
+	private Label _lista_Videos_Suscriptores;
+	public Cabecera_R _unnamed_Cabecera_R_;
+	public Video2 _unnamed_Video2_;
 }

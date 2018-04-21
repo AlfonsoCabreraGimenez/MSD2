@@ -1,6 +1,5 @@
-package Codigo;
 public class Perfil_Ajeno {
-	/*private Label _suscriptoresL;
+	private Label _suscriptoresL;
 	private Label _visitasL;
 	private Label _apodoL;
 	private Imagen _avatarI;
@@ -12,11 +11,7 @@ public class Perfil_Ajeno {
 	public Video2 _unnamed_Video2_;
 	public Usuario2 _unnamed_Usuario2_;
 	public Registrarse _unnamed_Registrarse_;
-	public Lista_Videos_Subidos _unnamed_Lista_Videos_Subidos_;
-	public Lista_Listas_De_Reproduccion _unnamed_Lista_Listas_De_Reproduccion_;
-	public Lista_Suscripciones _unnamed_Lista_Suscripciones_;
-	public Lista_Suscriptores _unnamed_Lista_Suscriptores_;
-*/
+
 	public void accederRegistrarse(Object aRegistrarse) {
 		throw new UnsupportedOperationException();
 	}

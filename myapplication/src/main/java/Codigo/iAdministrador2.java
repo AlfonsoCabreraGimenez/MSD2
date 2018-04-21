@@ -1,0 +1,2 @@
+public interface iAdministrador2 {
+}

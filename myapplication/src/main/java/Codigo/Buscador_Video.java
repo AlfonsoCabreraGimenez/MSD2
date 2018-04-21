@@ -1,8 +1,6 @@
-package Codigo;
-public class Buscador_Video extends Buscador {
-	//public Lista_Videos_Buscados _unnamed_Lista_Videos_Buscados_;
+import java.util.Vector;
 
-	public void buscarVideo(TipoBusqueda aTipoBusqueda) {
-		throw new UnsupportedOperationException();
-	}
+public class Buscador_Video extends Buscador {
+	private Label _resultadosBusL;
+	public Vector<Video2> _unnamed_Video2_ = new Vector<Video2>();
 }

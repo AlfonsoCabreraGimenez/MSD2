@@ -1,6 +1,5 @@
-package Codigo;
 public class Video2 {
-	/*private Label _tituloL;
+	private Label _tituloL;
 	private Boton _tituloB;
 	private Label _usuarioPropL;
 	private Boton _usuarioPropB;
@@ -10,15 +9,10 @@ public class Video2 {
 	private Imagen _minuaturaI;
 	private Boton _miniaturaB;
 	private TipoUsuario _usuario;
-	public Lista_Historial _unnamed_Lista_Historial_;
-	public Lista_Videos_Relacionados _unnamed_Lista_Videos_Relacionados_;
-	public Lista_Videos_Suscriptores _unnamed_Lista_Videos_Suscriptores_;
-	public Lista_Video_Mas_Megusta _unnamed_Lista_Video_Mas_Megusta_;
-	public Lista_Ultimos_Videos _unnamed_Lista_Ultimos_Videos_;
-	public Lista_Videos_Buscados _unnamed_Lista_Videos_Buscados_;
-	public Lista_Videos_Subidos _unnamed_Lista_Videos_Subidos_;
 	public Lista_Videos_De_Reproduccion _unnamed_Lista_Videos_De_Reproduccion_;
-	public Lista_Videos_Propios _unnamed_Lista_Videos_Propios_;
+	public Pag_Inicio_NR _unnamed_Pag_Inicio_NR_;
+	public Pag_Inicio_R _unnamed_Pag_Inicio_R_;
+	public Buscador_Video _unnamed_Buscador_Video_;
 	public Perfil_Ajeno _unnamed_Perfil_Ajeno_;
 	public Perfil_Ajeno_R _unnamed_Perfil_Ajeno_R_;
 	public Perfil_Propio_R _unnamed_Perfil_Propio_R_;
@@ -28,7 +22,7 @@ public class Video2 {
 	public Visualizacion_Video_Propio_AR _unnamed_Visualizacion_Video_Propio_AR_;
 	public Visualizacion_Video_Ajeno_A _unnamed_Visualizacion_Video_Ajeno_A_;
 	public Visualizacion_Video_Ajeno_R _unnamed_Visualizacion_Video_Ajeno_R_;
-*/
+
 	public void identificarUsuario(TipoUsuario aUsuario) {
 		throw new UnsupportedOperationException();
 	}

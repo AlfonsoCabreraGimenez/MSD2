@@ -1,10 +1,6 @@
-package Codigo;
+import java.util.Vector;
 
 public class Buscador_Usuario extends Buscador {
-	/*private String _usuario;
-	public Lista_Usuarios_Buscados _unnamed_Lista_Usuarios_Buscados_;
-*/
-	public void buscarUsuario(String aString) {
-		throw new UnsupportedOperationException();
-	}
+	private Label _resultadoBusL;
+	public Vector<Usuario2> _unnamed_Usuario2_ = new Vector<Usuario2>();
 }
