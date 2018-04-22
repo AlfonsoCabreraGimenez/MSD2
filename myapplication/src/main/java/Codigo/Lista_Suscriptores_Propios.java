@@ -1,3 +1,5 @@
+package Codigo;
+
 import java.util.Vector;
 
 public class Lista_Suscriptores_Propios extends Perfil_Propio_R {

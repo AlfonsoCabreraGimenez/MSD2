@@ -1,5 +1,7 @@
+package Codigo;
+
 public class Perfil_Propio_R {
-	private Label _nombreL;
+	/*private Label _nombreL;
 	private Label _emailL;
 	private Label _apellidoL;
 	private Label _fechaNacimientoL;
@@ -12,7 +14,7 @@ public class Perfil_Propio_R {
 	public Cabecera_R _unnamed_Cabecera_R_;
 	public Crear_Lista_Reproduccion _unnamed_Crear_Lista_Reproduccion_;
 	public Modificar_Datos_Usuario _unnamed_Modificar_Datos_Usuario_;
-	public Conf_Eliminar_Video _unnamed_Conf_Eliminar_Video_;
+	public Conf_Eliminar_Video _unnamed_Conf_Eliminar_Video_;*/
 
 	public void accederModificarDatos(Object aModificar_Datos_Usuario) {
 		throw new UnsupportedOperationException();

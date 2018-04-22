@@ -1,5 +1,7 @@
+package Codigo;
+
 public class Usuario2 {
-	private Imagen _avatarI;
+	/*private Imagen _avatarI;
 	private Boton _avatarB;
 	private Boton _apodoB;
 	private Label _numSuscriptoresL;
@@ -13,7 +15,7 @@ public class Usuario2 {
 	public Perfil_Ajeno_R _unnamed_Perfil_Ajeno_R_;
 	public Perfil_Ajeno_A _unnamed_Perfil_Ajeno_A_;
 	public Perfil_Ajeno _unnamed_Perfil_Ajeno_;
-	public Perfil_Propio_R _unnamed_Perfil_Propio_R_;
+	public Perfil_Propio_R _unnamed_Perfil_Propio_R_;*/
 
 	public void identificarUsuario(TipoUsuario aUsuario) {
 		throw new UnsupportedOperationException();

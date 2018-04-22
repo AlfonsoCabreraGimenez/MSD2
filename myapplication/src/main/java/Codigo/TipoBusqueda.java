@@ -1,3 +1,5 @@
+package Codigo;
+
 public enum TipoBusqueda {
 	titulo, 
 	etiqueta, 

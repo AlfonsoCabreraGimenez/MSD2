@@ -1,3 +1,5 @@
+package Codigo;
+
 import java.util.Vector;
 
 public class Lista_Suscriptores extends Perfil_Ajeno {
