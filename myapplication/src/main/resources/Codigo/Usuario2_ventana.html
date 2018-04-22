@@ -6,10 +6,15 @@
   <meta name="vaadin-version" content="8.0.5">
  </head>
  <body>
-  <vaadin-vertical-layout size-auto>
-   <vaadin-horizontal-layout width-full>
-    <vaadin-image width="100px" height="67px"></vaadin-image>
-    <vaadin-link caption="Usuario" :middle :center></vaadin-link>
+  <vaadin-vertical-layout style-name="well" size-auto margin="false">
+   <vaadin-horizontal-layout>
+    <vaadin-image source="github.com/AlfonsoCabreraGimenez/MSD2/blob/master/myapplication/descarga.jpg" width="225px" height="225px"></vaadin-image>
+    <vaadin-vertical-layout size-auto :bottom>
+     <vaadin-link caption="Usuario" :bottom></vaadin-link>
+     <vaadin-label plain-text :bottom>
+       Nº de suscriptores 
+     </vaadin-label>
+    </vaadin-vertical-layout>
    </vaadin-horizontal-layout>
   </vaadin-vertical-layout>
  </body>
