@@ -9,24 +9,24 @@
   <vaadin-vertical-layout width="40%" height="40%" margin="false">
    <vaadin-horizontal-layout width-full margin>
     <vaadin-vertical-layout size-auto margin="false" :center>
-     <vaadin-text-field caption="Nueva Categoria..." :center></vaadin-text-field>
+     <vaadin-text-field caption="Nueva Categoria..." _id="tCategoria" :center></vaadin-text-field>
     </vaadin-vertical-layout>
    </vaadin-horizontal-layout>
    <vaadin-horizontal-layout width-full margin>
-    <vaadin-label plain-text>
+    <vaadin-label plain-text :center>
       Edad Recomendada 
     </vaadin-label>
-    <vaadin-combo-box data-item-type="java.lang.String">
+    <vaadin-combo-box data-item-type="java.lang.String" _id="comboEdad">
      <option item="Option1">6</option>
      <option item="Option2">14</option>
      <option item="Option3">18</option>
     </vaadin-combo-box>
    </vaadin-horizontal-layout>
    <vaadin-horizontal-layout width-full margin :bottom :center>
-    <vaadin-button description="Cancelar" style-name="danger" plain-text>
+    <vaadin-button description="Cancelar" style-name="danger" plain-text _id="cancelar" :center>
       Cancelar 
     </vaadin-button>
-    <vaadin-button description="Confirmar" style-name="friendly" plain-text :bottom :right>
+    <vaadin-button description="Confirmar" style-name="friendly" plain-text _id="confirmar" :center>
       Confirmar 
     </vaadin-button>
    </vaadin-horizontal-layout>

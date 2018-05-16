@@ -10,27 +10,30 @@
    <vaadin-label plain-text :center>
      Crear lista de reproducción 
    </vaadin-label>
-   <vaadin-text-field caption="Título" width="60%" :center></vaadin-text-field>
-   <vaadin-text-field caption="Buscar" width="80%" :center></vaadin-text-field>
+   <vaadin-text-field caption="Título" width="60%" _id="tTitulo" :center></vaadin-text-field>
+   <vaadin-horizontal-layout :center>
+    <vaadin-text-field caption="Buscar" width="80%" _id="tBuscar"></vaadin-text-field>
+    <vaadin-button icon="fonticon://Vaadin-Icons/e805" description="Buscar" plain-text _id="bBuscar" :bottom :right></vaadin-button>
+   </vaadin-horizontal-layout>
    <vaadin-label plain-text>
      Seleccione el/los video/s que desea añadir a la lista de reproducción: 
    </vaadin-label>
-   <vaadin-panel height="350px">
-    <vaadin-vertical-layout>
-     <vaadin-horizontal-layout width-full>
-      <vaadin-vertical-layout size-auto margin="false">
-       <vaadin-vertical-layout size-auto margin="false" :center>
-        <vaadin-check-box></vaadin-check-box>
+   <vaadin-panel height="350px" _id="panel">
+    <vaadin-vertical-layout _id="v1">
+     <vaadin-horizontal-layout width-full _id="h1">
+      <vaadin-vertical-layout size-auto margin="false" _id="v2">
+       <vaadin-vertical-layout size-auto margin="false" _id="v3" :center>
+        <vaadin-check-box _id="check"></vaadin-check-box>
        </vaadin-vertical-layout>
       </vaadin-vertical-layout>
      </vaadin-horizontal-layout>
     </vaadin-vertical-layout>
    </vaadin-panel>
    <vaadin-horizontal-layout width-full>
-    <vaadin-button description="Cancelar" style-name="danger" plain-text>
+    <vaadin-button description="Cancelar" style-name="danger" plain-text _id="cancelar">
       Cancelar 
     </vaadin-button>
-    <vaadin-button description="Confirmar" style-name="friendly" plain-text :right>
+    <vaadin-button description="Confirmar" style-name="friendly" plain-text _id="confirmar" :right>
       Confirmar 
     </vaadin-button>
    </vaadin-horizontal-layout>

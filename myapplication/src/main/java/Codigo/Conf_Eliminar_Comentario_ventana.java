@@ -19,6 +19,7 @@ import com.vaadin.ui.declarative.Design;
 @SuppressWarnings("serial")
 public class Conf_Eliminar_Comentario_ventana extends VerticalLayout {
 	protected Button cancelar;
+	protected Button aceptar;
 
 	public Conf_Eliminar_Comentario_ventana() {
 		Design.read(this);
