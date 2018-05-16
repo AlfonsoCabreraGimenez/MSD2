@@ -7,109 +7,59 @@
  </head>
  <body>
   <vaadin-vertical-layout>
-   <vaadin-horizontal-layout width-full>
-    <vaadin-horizontal-layout>
-     <vaadin-horizontal-layout>
-      <vaadin-button description="Ir a inicio" style-name="friendly" width="120px" height="50px" plain-text>
-        Inicio 
-      </vaadin-button>
-     </vaadin-horizontal-layout>
-    </vaadin-horizontal-layout>
-    <vaadin-horizontal-layout :right>
-     <vaadin-image description="Ir a mi perfil" source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="50px" height="50px" :right></vaadin-image>
-     <vaadin-button icon="fonticon://Vaadin-Icons/e6f6" description="Subir video" width="100px" height="50px" plain-text :right></vaadin-button>
-     <vaadin-button description="Cerrar sesión" style-name="danger" width="150px" height="50px" plain-text :right>
-       Cerrar Sesión 
-     </vaadin-button>
+   <vaadin-horizontal-layout width-full _id="hCabecera">
+    <vaadin-horizontal-layout _id="hCabecera2">
+     <vaadin-horizontal-layout _id="hCabeIni"></vaadin-horizontal-layout>
     </vaadin-horizontal-layout>
    </vaadin-horizontal-layout>
-   <vaadin-horizontal-layout spacing="false">
-    <vaadin-vertical-layout size-auto>
-     <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="300px" height="300px"></vaadin-image>
-     <vaadin-link caption="Apodo" :center></vaadin-link>
-     <vaadin-label plain-text>
+   <vaadin-horizontal-layout spacing="false" _id="hUserVideo">
+    <vaadin-vertical-layout size-auto _id="datosUser">
+     <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="300px" height="300px" _id="fotoUser"></vaadin-image>
+     <vaadin-link caption="Apodo" _id="apodo" :center></vaadin-link>
+     <vaadin-label plain-text _id="nVisualizaciones">
        Nº Visualizaciones 
      </vaadin-label>
-     <vaadin-label plain-text>
+     <vaadin-label plain-text _id="nGusta">
        Nº Me gusta 
      </vaadin-label>
-     <vaadin-label plain-text>
+     <vaadin-label plain-text _id="fechaSubida">
        Fecha de subida 
      </vaadin-label>
     </vaadin-vertical-layout>
-    <vaadin-vertical-layout spacing="false" size-auto>
-     <vaadin-horizontal-layout width="1000px">
-      <vaadin-label plain-text>
+    <vaadin-vertical-layout spacing="false" size-auto _id="vVideoCompleto">
+     <vaadin-horizontal-layout width="1000px" _id="hLabelVideo">
+      <vaadin-label plain-text _id="tituloVideo">
         Título 
       </vaadin-label>
-      <vaadin-label plain-text :right>
+      <vaadin-label plain-text _id="categoriaEtiqueta" :right>
         Categoría - Etiqueta 
       </vaadin-label>
      </vaadin-horizontal-layout>
-     <vaadin-vertical-layout width="1000px" margin="false">
-      <vaadin-video width="1000px" height="450px"></vaadin-video>
-      <vaadin-text-area style-name="borderless" width="1000px" readonly>
+     <vaadin-vertical-layout width="1000px" margin="false" _id="vvideo">
+      <vaadin-video width="1000px" height="450px" _id="video"></vaadin-video>
+      <vaadin-text-area style-name="borderless" width="1000px" readonly _id="descripcion">
         Descripción del video... 
       </vaadin-text-area>
-      <vaadin-text-area width="1000px">
+      <vaadin-text-area width="1000px" _id="escribirComentario">
         Escribir comentario... 
       </vaadin-text-area>
-      <vaadin-button plain-text :right>
+      <vaadin-button plain-text _id="comentar" :right>
         Comentar 
       </vaadin-button>
-      <vaadin-horizontal-layout>
-       <vaadin-button icon="fonticon://Vaadin-Icons/e7f2" description="Activar o desactivar comentarios" plain-text :right></vaadin-button>
-       <vaadin-label plain-text :middle :center>
+      <vaadin-horizontal-layout _id="htituloComentario">
+       <vaadin-button icon="fonticon://Vaadin-Icons/e7f2" description="Activar o desactivar comentarios" plain-text _id="bloquearComentario" :right></vaadin-button>
+       <vaadin-label plain-text _id="labelComentario" :middle :center>
          Comentarios 
        </vaadin-label>
       </vaadin-horizontal-layout>
-      <vaadin-vertical-layout size-auto margin="false">
-       <vaadin-horizontal-layout>
-        <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="40px" height="40px"></vaadin-image>
-        <vaadin-link caption="Apodo" :middle :center></vaadin-link>
-       </vaadin-horizontal-layout>
-       <vaadin-horizontal-layout>
-        <vaadin-text-area width="1000px" readonly></vaadin-text-area>
-        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" width="50px" height="30px" plain-text :bottom :right></vaadin-button>
-       </vaadin-horizontal-layout>
-      </vaadin-vertical-layout>
-      <vaadin-vertical-layout size-auto margin="false">
-       <vaadin-horizontal-layout>
-        <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="40px" height="40px"></vaadin-image>
-        <vaadin-link caption="Apodo" :middle :center></vaadin-link>
-       </vaadin-horizontal-layout>
-       <vaadin-horizontal-layout>
-        <vaadin-text-area width="1000px" readonly></vaadin-text-area>
-        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" width="50px" height="30px" plain-text :bottom :right></vaadin-button>
-       </vaadin-horizontal-layout>
-      </vaadin-vertical-layout>
-      <vaadin-vertical-layout size-auto margin="false">
-       <vaadin-horizontal-layout>
-        <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="40px" height="40px"></vaadin-image>
-        <vaadin-link caption="Apodo" :middle :center></vaadin-link>
-       </vaadin-horizontal-layout>
-       <vaadin-horizontal-layout>
-        <vaadin-text-area width="1000px" readonly></vaadin-text-area>
-        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" width="50px" height="30px" plain-text :bottom :right></vaadin-button>
-       </vaadin-horizontal-layout>
-      </vaadin-vertical-layout>
-      <vaadin-vertical-layout size-auto margin="false">
-       <vaadin-horizontal-layout>
-        <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="40px" height="40px"></vaadin-image>
-        <vaadin-link caption="Apodo" :middle :center></vaadin-link>
-       </vaadin-horizontal-layout>
-       <vaadin-horizontal-layout>
-        <vaadin-text-area width="1000px" readonly></vaadin-text-area>
-        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" width="50px" height="30px" plain-text :bottom :right></vaadin-button>
-       </vaadin-horizontal-layout>
-      </vaadin-vertical-layout>
+      <vaadin-vertical-layout size-auto margin="false" _id="vComentario"></vaadin-vertical-layout>
      </vaadin-vertical-layout>
     </vaadin-vertical-layout>
-    <vaadin-vertical-layout width-auto height="400px">
-     <vaadin-button icon="fonticon://Vaadin-Icons/e771" description="Modificar video" width="70px" height="50px" plain-text></vaadin-button>
-     <vaadin-button icon="fonticon://Vaadin-Icons/e929" description="Añadir a lista de reproducción" width="70px" height="50px" plain-text></vaadin-button>
-     <vaadin-button icon="fonticon://Vaadin-Icons/e703" description="Descargar video" width="70px" height="50px" plain-text></vaadin-button>
-     <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" description="Eliminar video" width="70px" height="50px" plain-text></vaadin-button>
+    <vaadin-vertical-layout width-auto height="400px" _id="propVideo">
+     <vaadin-button icon="fonticon://Vaadin-Icons/e771" description="Modificar video" width="70px" height="50px" plain-text _id="modificarVideo"></vaadin-button>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e929" description="Añadir a lista de reproducción" width="70px" height="50px" plain-text _id="agregarListaRepro"></vaadin-button>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e703" description="Descargar video" width="70px" height="50px" plain-text _id="descargarVideo"></vaadin-button>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" description="Eliminar video" width="70px" height="50px" plain-text _id="borrarVideo"></vaadin-button>
     </vaadin-vertical-layout>
    </vaadin-horizontal-layout>
   </vaadin-vertical-layout>
