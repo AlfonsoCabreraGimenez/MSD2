@@ -7,258 +7,50 @@
  </head>
  <body>
   <vaadin-vertical-layout>
-   <vaadin-horizontal-layout width-full>
-    <vaadin-horizontal-layout>
-     <vaadin-horizontal-layout>
-      <vaadin-button description="Ir a inicio" style-name="friendly" width="120px" height="50px" plain-text>
-        Inicio 
-      </vaadin-button>
-     </vaadin-horizontal-layout>
-     <vaadin-vertical-layout size-auto margin="false" :right></vaadin-vertical-layout>
-    </vaadin-horizontal-layout>
-    <vaadin-horizontal-layout :right>
-     <vaadin-image description="Ir a mi perfil" source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="50px" height="50px" :right></vaadin-image>
-     <vaadin-button icon="fonticon://Vaadin-Icons/e6f6" description="Subir video" width="100px" height="50px" plain-text :right></vaadin-button>
-     <vaadin-button description="Cerrar sesión" style-name="danger" width="150px" height="50px" plain-text :right>
-       Cerrar Sesión 
-     </vaadin-button>
-    </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width-full _id="hCabeceraGeneral">
+    <vaadin-horizontal-layout _id="hCabeceraComunInicio"></vaadin-horizontal-layout>
    </vaadin-horizontal-layout>
-   <vaadin-horizontal-layout spacing="false">
-    <vaadin-vertical-layout size-auto>
-     <vaadin-horizontal-layout width-full>
-      <vaadin-label plain-text>
+   <vaadin-horizontal-layout spacing="false" _id="vDatosUserVideo">
+    <vaadin-vertical-layout size-auto _id="vDatosUser">
+     <vaadin-horizontal-layout width-full _id="hDatosSusVisit">
+      <vaadin-label plain-text _id="nSuscriptores">
         Nº Suscriptores 
       </vaadin-label>
-      <vaadin-label plain-text :right>
+      <vaadin-label plain-text _id="nVisitas" :right>
         Nº Visitas 
       </vaadin-label>
      </vaadin-horizontal-layout>
-     <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="225px" height="225px" :center></vaadin-image>
-     <vaadin-link caption="Apodo" :bottom :center></vaadin-link>
+     <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="225px" height="225px" _id="imagen" :center></vaadin-image>
+     <vaadin-link caption="Apodo" _id="apodo" :bottom :center></vaadin-link>
      <vaadin-horizontal-layout></vaadin-horizontal-layout>
-     <vaadin-horizontal-layout width-full :bottom :right>
-      <vaadin-button description="Eliminar a este usuario" style-name="danger" plain-text :bottom :right>
+     <vaadin-horizontal-layout width-full _id="hSuscribirse">
+      <vaadin-button description="Eliminar a este usuario" style-name="danger" plain-text _id="darDeBaja">
         Dar de baja 
       </vaadin-button>
-      <vaadin-button description="Suscribirse al usuario" style-name="primary" plain-text>
+      <vaadin-button description="Suscribirse al usuario" style-name="primary" plain-text _id="suscribirse" :bottom :right>
         Suscribirse 
       </vaadin-button>
      </vaadin-horizontal-layout>
     </vaadin-vertical-layout>
-    <vaadin-vertical-layout spacing="false" size-auto>
-     <vaadin-horizontal-layout width-full>
-      <vaadin-label style-name="colored" plain-text>
+    <vaadin-vertical-layout spacing="false" size-auto _id="vDatosPerfil">
+     <vaadin-horizontal-layout width-full _id="hApartados">
+      <vaadin-label style-name="colored" plain-text _id="videos">
         Videos 
       </vaadin-label>
-      <vaadin-label style-name="colored" plain-text>
+      <vaadin-label style-name="colored" plain-text _id="listaReproduccion">
         Listas de reproducción 
       </vaadin-label>
-      <vaadin-label style-name="colored" plain-text>
+      <vaadin-label style-name="colored" plain-text _id="suscripciones">
         Suscripciones 
       </vaadin-label>
-      <vaadin-label style-name="colored" plain-text>
+      <vaadin-label style-name="colored" plain-text _id="suscriptores">
         Suscriptores 
       </vaadin-label>
      </vaadin-horizontal-layout>
-     <vaadin-vertical-layout size-auto margin="false">
-      <vaadin-panel height="600px">
-       <vaadin-vertical-layout size-auto>
-        <vaadin-horizontal-layout margin :center>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-          <vaadin-label plain-text :center>
-            Título 
-          </vaadin-label>
-          <vaadin-vertical-layout spacing="false" size-auto margin="false">
-           <vaadin-horizontal-layout :center>
-            <vaadin-video></vaadin-video>
-            <vaadin-vertical-layout size-auto margin="false" :bottom></vaadin-vertical-layout>
-           </vaadin-horizontal-layout>
-           <vaadin-link caption="Usuario" :center></vaadin-link>
-           <vaadin-label plain-text :center>
-             Categoria 
-           </vaadin-label>
-           <vaadin-label plain-text :center>
-             Etiqueta 
-           </vaadin-label>
-           <vaadin-label plain-text :center>
-             Fecha de Subida 
-           </vaadin-label>
-          </vaadin-vertical-layout>
-         </vaadin-vertical-layout>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-          <vaadin-label plain-text :center>
-            Título 
-          </vaadin-label>
-          <vaadin-vertical-layout spacing="false" size-auto margin="false">
-           <vaadin-horizontal-layout :center>
-            <vaadin-video></vaadin-video>
-            <vaadin-vertical-layout size-auto margin="false" :bottom></vaadin-vertical-layout>
-           </vaadin-horizontal-layout>
-           <vaadin-link caption="Usuario" :center></vaadin-link>
-           <vaadin-label plain-text :center>
-             Categoria 
-           </vaadin-label>
-           <vaadin-label plain-text :center>
-             Etiqueta 
-           </vaadin-label>
-           <vaadin-label plain-text :center>
-             Fecha de Subida 
-           </vaadin-label>
-          </vaadin-vertical-layout>
-         </vaadin-vertical-layout>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-          <vaadin-label plain-text :center>
-            Título 
-          </vaadin-label>
-          <vaadin-vertical-layout spacing="false" size-auto margin="false">
-           <vaadin-horizontal-layout :center>
-            <vaadin-video></vaadin-video>
-            <vaadin-vertical-layout size-auto margin="false" :bottom></vaadin-vertical-layout>
-           </vaadin-horizontal-layout>
-           <vaadin-link caption="Usuario" :center></vaadin-link>
-           <vaadin-label plain-text :center>
-             Categoria 
-           </vaadin-label>
-           <vaadin-label plain-text :center>
-             Etiqueta 
-           </vaadin-label>
-           <vaadin-label plain-text :center>
-             Fecha de Subida 
-           </vaadin-label>
-          </vaadin-vertical-layout>
-         </vaadin-vertical-layout>
-        </vaadin-horizontal-layout>
-        <vaadin-horizontal-layout margin>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-          <vaadin-label plain-text :center>
-            Título 
-          </vaadin-label>
-          <vaadin-vertical-layout spacing="false" size-auto margin="false">
-           <vaadin-horizontal-layout :center>
-            <vaadin-video></vaadin-video>
-            <vaadin-vertical-layout size-auto margin="false" :bottom></vaadin-vertical-layout>
-           </vaadin-horizontal-layout>
-           <vaadin-link caption="Usuario" :center></vaadin-link>
-           <vaadin-label plain-text :center>
-             Categoria 
-           </vaadin-label>
-           <vaadin-label plain-text :center>
-             Etiqueta 
-           </vaadin-label>
-           <vaadin-label plain-text :center>
-             Fecha de Subida 
-           </vaadin-label>
-          </vaadin-vertical-layout>
-         </vaadin-vertical-layout>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-          <vaadin-label plain-text :center>
-            Título 
-          </vaadin-label>
-          <vaadin-vertical-layout spacing="false" size-auto margin="false">
-           <vaadin-horizontal-layout :center>
-            <vaadin-video></vaadin-video>
-            <vaadin-vertical-layout size-auto margin="false" :bottom></vaadin-vertical-layout>
-           </vaadin-horizontal-layout>
-           <vaadin-link caption="Usuario" :center></vaadin-link>
-           <vaadin-label plain-text :center>
-             Categoria 
-           </vaadin-label>
-           <vaadin-label plain-text :center>
-             Etiqueta 
-           </vaadin-label>
-           <vaadin-label plain-text :center>
-             Fecha de Subida 
-           </vaadin-label>
-          </vaadin-vertical-layout>
-         </vaadin-vertical-layout>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-          <vaadin-label plain-text :center>
-            Título 
-          </vaadin-label>
-          <vaadin-vertical-layout spacing="false" size-auto margin="false">
-           <vaadin-horizontal-layout :center>
-            <vaadin-video></vaadin-video>
-            <vaadin-vertical-layout size-auto margin="false" :bottom></vaadin-vertical-layout>
-           </vaadin-horizontal-layout>
-           <vaadin-link caption="Usuario" :center></vaadin-link>
-           <vaadin-label plain-text :center>
-             Categoria 
-           </vaadin-label>
-           <vaadin-label plain-text :center>
-             Etiqueta 
-           </vaadin-label>
-           <vaadin-label plain-text :center>
-             Fecha de Subida 
-           </vaadin-label>
-          </vaadin-vertical-layout>
-         </vaadin-vertical-layout>
-        </vaadin-horizontal-layout>
-        <vaadin-horizontal-layout margin>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-          <vaadin-label plain-text :center>
-            Título 
-          </vaadin-label>
-          <vaadin-vertical-layout spacing="false" size-auto margin="false">
-           <vaadin-horizontal-layout :center>
-            <vaadin-video></vaadin-video>
-            <vaadin-vertical-layout size-auto margin="false" :bottom></vaadin-vertical-layout>
-           </vaadin-horizontal-layout>
-           <vaadin-link caption="Usuario" :center></vaadin-link>
-           <vaadin-label plain-text :center>
-             Categoria 
-           </vaadin-label>
-           <vaadin-label plain-text :center>
-             Etiqueta 
-           </vaadin-label>
-           <vaadin-label plain-text :center>
-             Fecha de Subida 
-           </vaadin-label>
-          </vaadin-vertical-layout>
-         </vaadin-vertical-layout>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-          <vaadin-label plain-text :center>
-            Título 
-          </vaadin-label>
-          <vaadin-vertical-layout spacing="false" size-auto margin="false">
-           <vaadin-horizontal-layout :center>
-            <vaadin-video></vaadin-video>
-            <vaadin-vertical-layout size-auto margin="false" :bottom></vaadin-vertical-layout>
-           </vaadin-horizontal-layout>
-           <vaadin-link caption="Usuario" :center></vaadin-link>
-           <vaadin-label plain-text :center>
-             Categoria 
-           </vaadin-label>
-           <vaadin-label plain-text :center>
-             Etiqueta 
-           </vaadin-label>
-           <vaadin-label plain-text :center>
-             Fecha de Subida 
-           </vaadin-label>
-          </vaadin-vertical-layout>
-         </vaadin-vertical-layout>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-          <vaadin-label plain-text :center>
-            Título 
-          </vaadin-label>
-          <vaadin-vertical-layout spacing="false" size-auto margin="false">
-           <vaadin-horizontal-layout :center>
-            <vaadin-video></vaadin-video>
-            <vaadin-vertical-layout size-auto margin="false" :bottom></vaadin-vertical-layout>
-           </vaadin-horizontal-layout>
-           <vaadin-link caption="Usuario" :center></vaadin-link>
-           <vaadin-label plain-text :center>
-             Categoria 
-           </vaadin-label>
-           <vaadin-label plain-text :center>
-             Etiqueta 
-           </vaadin-label>
-           <vaadin-label plain-text :center>
-             Fecha de Subida 
-           </vaadin-label>
-          </vaadin-vertical-layout>
-         </vaadin-vertical-layout>
-        </vaadin-horizontal-layout>
+     <vaadin-vertical-layout size-auto margin="false" _id="vPanel">
+      <vaadin-panel height="600px" _id="panel">
+       <vaadin-vertical-layout size-auto _id="vPanel1">
+        <vaadin-horizontal-layout margin _id="hPanel" :center></vaadin-horizontal-layout>
        </vaadin-vertical-layout>
       </vaadin-panel>
      </vaadin-vertical-layout>

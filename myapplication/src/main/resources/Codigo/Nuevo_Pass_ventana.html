@@ -7,16 +7,16 @@
  </head>
  <body>
   <vaadin-vertical-layout width="30%">
-   <vaadin-label plain-text :center>
+   <vaadin-label plain-text _id="nuevaContrasena" :center>
      Nueva contraseña 
    </vaadin-label>
-   <vaadin-password-field caption="Contraseña"></vaadin-password-field>
-   <vaadin-password-field caption="Repita contraseña"></vaadin-password-field>
-   <vaadin-horizontal-layout width-full margin>
-    <vaadin-button description="Cancelar" style-name="danger" plain-text>
+   <vaadin-password-field caption="Contraseña" _id="contrasena"></vaadin-password-field>
+   <vaadin-password-field caption="Repita contraseña" _id="repetirContrasena"></vaadin-password-field>
+   <vaadin-horizontal-layout width-full margin _id="hAccion">
+    <vaadin-button description="Cancelar" style-name="danger" plain-text _id="cancelar">
       Cancelar 
     </vaadin-button>
-    <vaadin-button description="Confirmar" style-name="friendly" plain-text :right>
+    <vaadin-button description="Confirmar" style-name="friendly" plain-text _id="confirmar" :right>
       Confirmar 
     </vaadin-button>
    </vaadin-horizontal-layout>

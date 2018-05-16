@@ -7,63 +7,38 @@
  </head>
  <body>
   <vaadin-vertical-layout maxlength="10" value="Titulo">
-   <vaadin-horizontal-layout width-full>
-    <vaadin-horizontal-layout>
-     <vaadin-horizontal-layout>
-      <vaadin-button description="Ir a inicio" style-name="friendly" width="120px" height="50px" plain-text>
-        Inicio 
-      </vaadin-button>
-     </vaadin-horizontal-layout>
-     <vaadin-vertical-layout size-auto margin="false" :right>
-      <vaadin-text-field width="900px" height="50px" :right></vaadin-text-field>
-      <vaadin-horizontal-layout width="900px">
-       <vaadin-radio-button-group style-name="horizontal" data-item-type="java.lang.String">
-        <option item="Titulo">Título</option>
-        <option item="Categoria">Categoría</option>
-        <option item="Etiqueta">Etiqueta</option>
-        <option item="Descripcion">Descripción</option>
-        <option item="Usuarios">Usuarios</option>
-       </vaadin-radio-button-group>
-      </vaadin-horizontal-layout>
-     </vaadin-vertical-layout>
-    </vaadin-horizontal-layout>
-    <vaadin-horizontal-layout :right>
-     <vaadin-image description="Ir a mi perfil" source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="50px" height="50px" :right></vaadin-image>
-     <vaadin-button icon="fonticon://Vaadin-Icons/e6f6" description="Subir video" width="100px" height="50px" plain-text :right></vaadin-button>
-     <vaadin-button description="Cerrar sesión" style-name="danger" width="150px" height="50px" plain-text :right>
-       Cerrar Sesión 
-     </vaadin-button>
-    </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width-full _id="hCabeceraGeneral">
+    <vaadin-horizontal-layout _id="hCabeceraIncioBus"></vaadin-horizontal-layout>
    </vaadin-horizontal-layout>
-   <vaadin-label style-name="light" plain-text>
+   <vaadin-label style-name="light" plain-text _id="videosConMasMeGusta">
      Videos con mas me gusta 
    </vaadin-label>
-   <vaadin-panel>
-    <vaadin-horizontal-layout></vaadin-horizontal-layout>
+   <vaadin-panel _id="panelvideosMG">
+    <vaadin-horizontal-layout _id="hPanelVideosMG"></vaadin-horizontal-layout>
    </vaadin-panel>
-   <vaadin-label plain-text>
+   <vaadin-label plain-text _id="ultimosVideosSubidos">
      Últimos videos subidos 
    </vaadin-label>
-   <vaadin-panel>
-    <vaadin-horizontal-layout></vaadin-horizontal-layout>
+   <vaadin-panel _id="panelUltimosVideosSubidos">
+    <vaadin-horizontal-layout _id="hPanelUltimosVideosSubidos"></vaadin-horizontal-layout>
    </vaadin-panel>
-   <vaadin-label plain-text>
+   <vaadin-label plain-text _id="videosRelacionados">
      Videos relacionados 
    </vaadin-label>
-   <vaadin-panel>
-    <vaadin-horizontal-layout></vaadin-horizontal-layout>
+   <vaadin-panel _id="panelVR">
+    <vaadin-horizontal-layout _id="hPanelVR"></vaadin-horizontal-layout>
    </vaadin-panel>
-   <vaadin-label plain-text>
+   <vaadin-label plain-text _id="videosOtrosUser">
      Videos de otros usuarios 
    </vaadin-label>
-   <vaadin-panel>
-    <vaadin-horizontal-layout></vaadin-horizontal-layout>
+   <vaadin-panel _id="panelVideosOtrosUser">
+    <vaadin-horizontal-layout _id="hPanelVideosOtrosUser"></vaadin-horizontal-layout>
    </vaadin-panel>
-   <vaadin-label plain-text>
+   <vaadin-label plain-text _id="videosVreciente">
      Videos vistos recientemente 
    </vaadin-label>
-   <vaadin-panel>
-    <vaadin-horizontal-layout></vaadin-horizontal-layout>
+   <vaadin-panel _id="panelVideosVreciente">
+    <vaadin-horizontal-layout _id="hPanelVideosVreciente"></vaadin-horizontal-layout>
    </vaadin-panel>
   </vaadin-vertical-layout>
  </body>

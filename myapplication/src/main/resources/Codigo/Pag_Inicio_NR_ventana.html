@@ -7,43 +7,20 @@
  </head>
  <body>
   <vaadin-vertical-layout maxlength="10" value="Titulo">
-   <vaadin-horizontal-layout width-full>
-    <vaadin-horizontal-layout>
-     <vaadin-horizontal-layout>
-      <vaadin-button description="Ir a inicio" style-name="friendly" width="120px" height="50px" plain-text>
-        Inicio 
-      </vaadin-button>
-     </vaadin-horizontal-layout>
-     <vaadin-vertical-layout size-auto margin="false" :right>
-      <vaadin-text-field width="900px" height="50px" :right></vaadin-text-field>
-      <vaadin-horizontal-layout width="900px">
-       <vaadin-radio-button-group style-name="horizontal" data-item-type="java.lang.String">
-        <option item="Titulo">Título</option>
-        <option item="Categoria">Categoría</option>
-        <option item="Etiqueta">Etiqueta</option>
-        <option item="Descripcion">Descripción</option>
-        <option item="Usuarios">Usuarios</option>
-       </vaadin-radio-button-group>
-      </vaadin-horizontal-layout>
-     </vaadin-vertical-layout>
-    </vaadin-horizontal-layout>
-    <vaadin-horizontal-layout :right>
-     <vaadin-button description="Iniciar sesión o Registrarse" style-name="danger" width="250px" height="50px" plain-text :right>
-       Iniciar Sesión | Registrarse 
-     </vaadin-button>
-    </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width-full _id="hCabeceraGeneral">
+    <vaadin-horizontal-layout _id="hCabeceraInicioBus"></vaadin-horizontal-layout>
    </vaadin-horizontal-layout>
-   <vaadin-label plain-text>
+   <vaadin-label plain-text _id="videosMasMeGusta">
      Videos con mas me gusta 
    </vaadin-label>
-   <vaadin-panel>
-    <vaadin-horizontal-layout height="359px"></vaadin-horizontal-layout>
+   <vaadin-panel _id="panelVideosMasMeGusta">
+    <vaadin-horizontal-layout height="359px" _id="hPanelVideosMasMeGusta"></vaadin-horizontal-layout>
    </vaadin-panel>
-   <vaadin-label plain-text>
+   <vaadin-label plain-text _id="ultimosVideosSubidos">
      Últimos videos subidos 
    </vaadin-label>
-   <vaadin-panel>
-    <vaadin-horizontal-layout height="359px"></vaadin-horizontal-layout>
+   <vaadin-panel _id="panelUltimosVideosSubidos">
+    <vaadin-horizontal-layout height="359px" _id="hPanelUltimosVideosSubidos"></vaadin-horizontal-layout>
    </vaadin-panel>
   </vaadin-vertical-layout>
  </body>
