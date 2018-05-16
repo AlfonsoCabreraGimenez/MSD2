@@ -7,43 +7,43 @@
  </head>
  <body>
   <vaadin-vertical-layout margin="false">
-   <vaadin-vertical-layout margin="false">
-    <vaadin-horizontal-layout></vaadin-horizontal-layout>
-    <vaadin-vertical-layout margin="false">
-     <vaadin-label plain-text>
+   <vaadin-vertical-layout margin="false" _id="vRegistrarse">
+    <vaadin-horizontal-layout _id="hVacio"></vaadin-horizontal-layout>
+    <vaadin-vertical-layout margin="false" _id="vPersonales">
+     <vaadin-label plain-text _id="lPersonales">
        Datos personales* 
      </vaadin-label>
-     <vaadin-horizontal-layout>
-      <vaadin-text-field caption="Nombre"></vaadin-text-field>
-      <vaadin-text-field caption="Primer apellido"></vaadin-text-field>
-      <vaadin-text-field caption="Segundo apellido"></vaadin-text-field>
+     <vaadin-horizontal-layout _id="hPersonales">
+      <vaadin-text-field caption="Nombre" _id="tNombre"></vaadin-text-field>
+      <vaadin-text-field caption="Primer apellido" _id="tApellido1"></vaadin-text-field>
+      <vaadin-text-field caption="Segundo apellido" _id="tApellido2"></vaadin-text-field>
      </vaadin-horizontal-layout>
-     <vaadin7-date-field caption="Fecha de nacimiento"></vaadin7-date-field>
+     <vaadin7-date-field caption="Fecha de nacimiento" _id="fecha"></vaadin7-date-field>
     </vaadin-vertical-layout>
-    <vaadin-horizontal-layout width-full>
-     <vaadin-vertical-layout size-auto margin="false">
-      <vaadin-label plain-text>
+    <vaadin-horizontal-layout width-full _id="hUsuario">
+     <vaadin-vertical-layout size-auto margin="false" _id="vUsuario">
+      <vaadin-label plain-text _id="lUsuario">
         Datos de usuario 
       </vaadin-label>
-      <vaadin-text-field caption="Apodo"></vaadin-text-field>
-      <vaadin-text-field caption="Email"></vaadin-text-field>
-      <vaadin-horizontal-layout>
-       <vaadin-password-field caption="Contraseña"></vaadin-password-field>
-       <vaadin-password-field caption="Recordar contraseña"></vaadin-password-field>
+      <vaadin-text-field caption="Apodo" _id="tApodo"></vaadin-text-field>
+      <vaadin-text-field caption="Email" _id="tEmail"></vaadin-text-field>
+      <vaadin-horizontal-layout _id="hPass">
+       <vaadin-password-field caption="Contraseña" _id="tPass"></vaadin-password-field>
+       <vaadin-password-field caption="Recordar contraseña" _id="tRepPass"></vaadin-password-field>
       </vaadin-horizontal-layout>
      </vaadin-vertical-layout>
-     <vaadin-vertical-layout margin="false" :bottom :right>
-      <vaadin-label plain-text :center>
+     <vaadin-vertical-layout margin="false" _id="vAvatar" :bottom :right>
+      <vaadin-label plain-text _id="lAvatar" :center>
         Avatar 
       </vaadin-label>
-      <vaadin-horizontal-layout width-full>
-       <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="100px" height="100px" :right></vaadin-image>
-       <vaadin-upload button-caption="..." :bottom></vaadin-upload>
+      <vaadin-horizontal-layout width-full _id="hAvatar">
+       <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="100px" height="100px" _id="imagen" :right></vaadin-image>
+       <vaadin-upload button-caption="..." _id="botonSubir" :bottom></vaadin-upload>
       </vaadin-horizontal-layout>
      </vaadin-vertical-layout>
     </vaadin-horizontal-layout>
-    <vaadin-horizontal-layout></vaadin-horizontal-layout>
-    <vaadin-button style-name="primary" plain-text :bottom :center>
+    <vaadin-horizontal-layout _id="hVacio1"></vaadin-horizontal-layout>
+    <vaadin-button style-name="primary" plain-text _id="botonRegistrarse" :bottom :center>
       Registrarse 
     </vaadin-button>
    </vaadin-vertical-layout>

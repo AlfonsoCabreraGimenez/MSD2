@@ -7,13 +7,19 @@
  </head>
  <body>
   <vaadin-vertical-layout size-auto margin="false">
-   <vaadin-vertical-layout size-auto margin="false">
-    <vaadin-label plain-text :center>
-      Título lista 
+   <vaadin-vertical-layout spacing="false" size-auto margin="false" _id="vListaRep">
+    <vaadin-label plain-text _id="nombreLista" :center>
+      Nombre de Lista 
     </vaadin-label>
-    <vaadin-image source="github.com/AlfonsoCabreraGimenez/MSD2/blob/master/myapplication/descarga.jpg" width="150px" height="150px" :center></vaadin-image>
+    <vaadin-vertical-layout spacing="false" size-auto margin="false" _id="vListaRep2">
+     <vaadin-horizontal-layout _id="hImagen" :center>
+      <vaadin-image source="https://raw.githubusercontent.com/AlfonsoCabreraGimenez/MSD2/master/myapplication/descarga.jpg" width="150px" height="150px" _id="imagen"></vaadin-image>
+      <vaadin-vertical-layout size-auto margin="false" _id="vBorrar" :bottom>
+       <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" description="Eliminar lista de reproducción" style-name="icon-only" width="25px" height="20px" plain-text _id="botonBorrar"></vaadin-button>
+      </vaadin-vertical-layout>
+     </vaadin-horizontal-layout>
+    </vaadin-vertical-layout>
    </vaadin-vertical-layout>
-   <vaadin-vertical-layout size-auto margin="false" :center></vaadin-vertical-layout>
   </vaadin-vertical-layout>
  </body>
 </html>

@@ -7,197 +7,61 @@
  </head>
  <body>
   <vaadin-vertical-layout>
-   <vaadin-horizontal-layout width-full>
-    <vaadin-horizontal-layout>
-     <vaadin-horizontal-layout>
-      <vaadin-button description="Ir a inicio" style-name="friendly" width="120px" height="50px" plain-text>
-        Inicio 
-      </vaadin-button>
-     </vaadin-horizontal-layout>
-    </vaadin-horizontal-layout>
-    <vaadin-horizontal-layout :right>
-     <vaadin-image description="Ir a mi perfil" source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="50px" height="50px" :right></vaadin-image>
-     <vaadin-button icon="fonticon://Vaadin-Icons/e6f6" description="Subir video" width="100px" height="50px" plain-text :right></vaadin-button>
-     <vaadin-button icon="fonticon://Vaadin-Icons/e92e" description="Crear lista de reproducción" width="100px" height="50px" plain-text></vaadin-button>
-     <vaadin-button icon="fonticon://Vaadin-Icons/e801" description="Crear categoría" width="150px" height="50px" plain-text>
-       Categoría 
-     </vaadin-button>
-     <vaadin-button description="Cerrar sesión" style-name="danger" width="150px" height="50px" plain-text :right>
-       Cerrar Sesión 
-     </vaadin-button>
+  <vaadin-horizontal-layout width-full _id="hCabeceraGeneral">
+    <vaadin-horizontal-layout _id="hCabeceraInicio"></vaadin-horizontal-layout>
+    <vaadin-horizontal-layout _id="hCabeceraRegistrado" :right>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e92e" description="Crear lista de reproducción" width="100px" height="50px" plain-text _id="crearListaReproduccion"></vaadin-button>
     </vaadin-horizontal-layout>
    </vaadin-horizontal-layout>
-   <vaadin-horizontal-layout spacing="false">
-    <vaadin-vertical-layout style-name="well" size-auto>
-     <vaadin-horizontal-layout width-full>
-      <vaadin-label plain-text>
+   <vaadin-horizontal-layout spacing="false" _id="hDatosUserPerfil">
+    <vaadin-vertical-layout style-name="well" size-auto _id="vDatosUsuario">
+     <vaadin-horizontal-layout width-full _id="hDatosSusVisit">
+      <vaadin-label plain-text _id="nSuscriptores">
         Nº Suscriptores 
       </vaadin-label>
-      <vaadin-label plain-text :right>
+      <vaadin-label plain-text _id="nVisitas" :right>
         Nº Visitas 
       </vaadin-label>
      </vaadin-horizontal-layout>
-     <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="300px" height="300px"></vaadin-image>
-     <vaadin-link caption="Apodo" :center></vaadin-link>
-     <vaadin-label plain-text :center>
+     <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="300px" height="300px" _id="imagen"></vaadin-image>
+     <vaadin-link caption="Apodo" _id="apodo" :center></vaadin-link>
+     <vaadin-label plain-text _id="nombre" :center>
        Nombre 
      </vaadin-label>
-     <vaadin-label plain-text :center>
+     <vaadin-label plain-text _id="apellidos" :center>
        Apellidos 
      </vaadin-label>
-     <vaadin-label plain-text :center>
+     <vaadin-label plain-text _id="email" :center>
        Email 
      </vaadin-label>
-     <vaadin-label plain-text :center>
+     <vaadin-label plain-text _id="fNacimiento" :center>
        Fecha de nacimiento 
      </vaadin-label>
-     <vaadin-horizontal-layout width-full height="94.5px" :bottom :right>
-      <vaadin-button description="Modificar datos personales" style-name="primary" plain-text :bottom :right>
+     <vaadin-horizontal-layout width-full height="94.5px" _id="hModificarDatos" :bottom :right>
+      <vaadin-button description="Modificar datos personales" style-name="primary" plain-text _id="modificarDatos" :bottom :right>
         Modificar datos 
       </vaadin-button>
      </vaadin-horizontal-layout>
     </vaadin-vertical-layout>
-    <vaadin-vertical-layout style-name="well" spacing="false" width="75%">
-     <vaadin-horizontal-layout width="75%">
-      <vaadin-label style-name="colored" plain-text>
+    <vaadin-vertical-layout spacing="false" size-auto _id="vDatosPerfil">
+     <vaadin-horizontal-layout width-full _id="hApartados">
+      <vaadin-label style-name="colored" plain-text _id="videos">
         Videos 
       </vaadin-label>
-      <vaadin-label style-name="colored" plain-text>
+      <vaadin-label style-name="colored" plain-text _id="listaReproduccion">
         Listas de reproducción 
       </vaadin-label>
-      <vaadin-label style-name="colored" plain-text>
+      <vaadin-label style-name="colored" plain-text _id="suscripciones">
         Suscripciones 
       </vaadin-label>
-      <vaadin-label style-name="colored" plain-text>
+      <vaadin-label style-name="colored" plain-text _id="suscriptores">
         Suscriptores 
       </vaadin-label>
      </vaadin-horizontal-layout>
-     <vaadin-vertical-layout width="75%" margin="false">
-      <vaadin-panel width="75%" height="600px">
-       <vaadin-vertical-layout width="75%">
-        <vaadin-horizontal-layout width="75%" margin :center>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-          <vaadin-label plain-text _id="nombreLista" :center>
-            Nombre de Lista 
-          </vaadin-label>
-          <vaadin-vertical-layout spacing="false" size-auto margin="false">
-           <vaadin-horizontal-layout :center>
-            <vaadin-video></vaadin-video>
-            <vaadin-vertical-layout size-auto margin="false" :bottom>
-             <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" description="Eliminar video" style-name="icon-only" width="25px" height="20px" plain-text></vaadin-button>
-            </vaadin-vertical-layout>
-           </vaadin-horizontal-layout>
-          </vaadin-vertical-layout>
-         </vaadin-vertical-layout>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-          <vaadin-label plain-text _id="nombreLista1" :center>
-            Nombre de Lista 
-          </vaadin-label>
-          <vaadin-vertical-layout spacing="false" size-auto margin="false">
-           <vaadin-horizontal-layout :center>
-            <vaadin-video></vaadin-video>
-            <vaadin-vertical-layout size-auto margin="false" :bottom>
-             <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" description="Eliminar video" style-name="icon-only" width="25px" height="20px" plain-text></vaadin-button>
-            </vaadin-vertical-layout>
-           </vaadin-horizontal-layout>
-          </vaadin-vertical-layout>
-         </vaadin-vertical-layout>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-          <vaadin-label plain-text _id="nombreLista2" :center>
-            Nombre de Lista 
-          </vaadin-label>
-          <vaadin-vertical-layout spacing="false" size-auto margin="false">
-           <vaadin-horizontal-layout :center>
-            <vaadin-video></vaadin-video>
-            <vaadin-vertical-layout size-auto margin="false" :bottom>
-             <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" description="Eliminar video" style-name="icon-only" width="25px" height="20px" plain-text></vaadin-button>
-            </vaadin-vertical-layout>
-           </vaadin-horizontal-layout>
-          </vaadin-vertical-layout>
-         </vaadin-vertical-layout>
-        </vaadin-horizontal-layout>
-        <vaadin-horizontal-layout width="75%" margin>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-          <vaadin-label plain-text _id="nombreLista3" :center>
-            Nombre de Lista 
-          </vaadin-label>
-          <vaadin-vertical-layout spacing="false" size-auto margin="false">
-           <vaadin-horizontal-layout :center>
-            <vaadin-video></vaadin-video>
-            <vaadin-vertical-layout size-auto margin="false" :bottom>
-             <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" description="Eliminar video" style-name="icon-only" width="25px" height="20px" plain-text></vaadin-button>
-            </vaadin-vertical-layout>
-           </vaadin-horizontal-layout>
-          </vaadin-vertical-layout>
-         </vaadin-vertical-layout>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-          <vaadin-label plain-text _id="nombreLista11" :center>
-            Nombre de Lista 
-          </vaadin-label>
-          <vaadin-vertical-layout spacing="false" size-auto margin="false">
-           <vaadin-horizontal-layout :center>
-            <vaadin-video></vaadin-video>
-            <vaadin-vertical-layout size-auto margin="false" :bottom>
-             <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" description="Eliminar video" style-name="icon-only" width="25px" height="20px" plain-text></vaadin-button>
-            </vaadin-vertical-layout>
-           </vaadin-horizontal-layout>
-          </vaadin-vertical-layout>
-         </vaadin-vertical-layout>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-          <vaadin-label plain-text _id="nombreLista21" :center>
-            Nombre de Lista 
-          </vaadin-label>
-          <vaadin-vertical-layout spacing="false" size-auto margin="false">
-           <vaadin-horizontal-layout :center>
-            <vaadin-video></vaadin-video>
-            <vaadin-vertical-layout size-auto margin="false" :bottom>
-             <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" description="Eliminar video" style-name="icon-only" width="25px" height="20px" plain-text></vaadin-button>
-            </vaadin-vertical-layout>
-           </vaadin-horizontal-layout>
-          </vaadin-vertical-layout>
-         </vaadin-vertical-layout>
-        </vaadin-horizontal-layout>
-        <vaadin-horizontal-layout width="75%" margin>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-          <vaadin-label plain-text _id="nombreLista4" :center>
-            Nombre de Lista 
-          </vaadin-label>
-          <vaadin-vertical-layout spacing="false" size-auto margin="false">
-           <vaadin-horizontal-layout :center>
-            <vaadin-video></vaadin-video>
-            <vaadin-vertical-layout size-auto margin="false" :bottom>
-             <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" description="Eliminar video" style-name="icon-only" width="25px" height="20px" plain-text></vaadin-button>
-            </vaadin-vertical-layout>
-           </vaadin-horizontal-layout>
-          </vaadin-vertical-layout>
-         </vaadin-vertical-layout>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-          <vaadin-label plain-text _id="nombreLista12" :center>
-            Nombre de Lista 
-          </vaadin-label>
-          <vaadin-vertical-layout spacing="false" size-auto margin="false">
-           <vaadin-horizontal-layout :center>
-            <vaadin-video></vaadin-video>
-            <vaadin-vertical-layout size-auto margin="false" :bottom>
-             <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" description="Eliminar video" style-name="icon-only" width="25px" height="20px" plain-text></vaadin-button>
-            </vaadin-vertical-layout>
-           </vaadin-horizontal-layout>
-          </vaadin-vertical-layout>
-         </vaadin-vertical-layout>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-          <vaadin-label plain-text _id="nombreLista22" :center>
-            Nombre de Lista 
-          </vaadin-label>
-          <vaadin-vertical-layout spacing="false" size-auto margin="false">
-           <vaadin-horizontal-layout :center>
-            <vaadin-video></vaadin-video>
-            <vaadin-vertical-layout size-auto margin="false" :bottom>
-             <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" description="Eliminar video" style-name="icon-only" width="25px" height="20px" plain-text></vaadin-button>
-            </vaadin-vertical-layout>
-           </vaadin-horizontal-layout>
-          </vaadin-vertical-layout>
-         </vaadin-vertical-layout>
-        </vaadin-horizontal-layout>
+     <vaadin-vertical-layout size-auto margin="false" _id="vPanel">
+      <vaadin-panel height="600px" _id="panel">
+       <vaadin-vertical-layout size-auto _id="vPanel1">
+        <vaadin-horizontal-layout margin _id="hPanel" :center></vaadin-horizontal-layout>
        </vaadin-vertical-layout>
       </vaadin-panel>
      </vaadin-vertical-layout>
