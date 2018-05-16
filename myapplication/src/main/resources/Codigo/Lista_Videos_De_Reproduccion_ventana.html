@@ -7,14 +7,11 @@
  </head>
  <body>
   <vaadin-vertical-layout>
-     <vaadin-horizontal-layout width-full _id="hCabeceraGeneral">
-    <vaadin-horizontal-layout _id="hCabeceraInicio"></vaadin-horizontal-layout>
-    <vaadin-horizontal-layout _id="hCabeceraRegistrado" :right>
-     <vaadin-button icon="fonticon://Vaadin-Icons/e92e" description="Crear lista de reproducción" width="100px" height="50px" plain-text _id="crearListaReproduccion"></vaadin-button>
-    </vaadin-horizontal-layout>
+  <vaadin-horizontal-layout width-full _id="hCabeceraGeneral">
+    <vaadin-horizontal-layout _id="hCabeceraComun"></vaadin-horizontal-layout>
    </vaadin-horizontal-layout>
-   <vaadin-horizontal-layout spacing="false" _id="hDatosUserPerfil">
-    <vaadin-vertical-layout style-name="well" size-auto _id="vDatosUsuario">
+   <vaadin-horizontal-layout spacing="false" _id="vDatosUserVideo">
+    <vaadin-vertical-layout size-auto _id="vDatosUser">
      <vaadin-horizontal-layout width-full _id="hDatosSusVisit">
       <vaadin-label plain-text _id="nSuscriptores">
         Nº Suscriptores 
@@ -23,23 +20,12 @@
         Nº Visitas 
       </vaadin-label>
      </vaadin-horizontal-layout>
-     <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="300px" height="300px" _id="imagen"></vaadin-image>
-     <vaadin-link caption="Apodo" _id="apodo" :center></vaadin-link>
-     <vaadin-label plain-text _id="nombre" :center>
-       Nombre 
-     </vaadin-label>
-     <vaadin-label plain-text _id="apellidos" :center>
-       Apellidos 
-     </vaadin-label>
-     <vaadin-label plain-text _id="email" :center>
-       Email 
-     </vaadin-label>
-     <vaadin-label plain-text _id="fNacimiento" :center>
-       Fecha de nacimiento 
-     </vaadin-label>
-     <vaadin-horizontal-layout width-full height="94.5px" _id="hModificarDatos" :bottom :right>
-      <vaadin-button description="Modificar datos personales" style-name="primary" plain-text _id="modificarDatos" :bottom :right>
-        Modificar datos 
+     <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="225px" height="225px" _id="imagen" :center></vaadin-image>
+     <vaadin-link caption="Apodo" _id="apodo" :bottom :center></vaadin-link>
+     <vaadin-horizontal-layout></vaadin-horizontal-layout>
+     <vaadin-horizontal-layout width-full _id="hSuscribirse" :bottom :right>
+      <vaadin-button description="Suscribirse al usuario" style-name="primary" plain-text _id="suscribirse" :bottom :right>
+        Suscribirse 
       </vaadin-button>
      </vaadin-horizontal-layout>
     </vaadin-vertical-layout>
