@@ -16,8 +16,8 @@
    <vaadin-panel height="500px">
     <vaadin-vertical-layout>
      <vaadin-horizontal-layout width-full>
-      <vaadin-vertical-layout size-auto margin="false" :center>
-       <vaadin-vertical-layout size-auto margin="false" :center>
+      <vaadin-vertical-layout size-auto margin="false" _id="verticalVideo" :center>
+       <vaadin-vertical-layout size-auto margin="false" _id="verticalCheck" :center>
         <vaadin-check-box></vaadin-check-box>
        </vaadin-vertical-layout>
       </vaadin-vertical-layout>
@@ -25,10 +25,10 @@
     </vaadin-vertical-layout>
    </vaadin-panel>
    <vaadin-horizontal-layout width-full>
-    <vaadin-button description="Cancelar" style-name="danger" plain-text>
+    <vaadin-button description="Cancelar" style-name="danger" plain-text _id="cancelar">
       Cancelar 
     </vaadin-button>
-    <vaadin-button description="Confirmar" style-name="friendly" plain-text :right>
+    <vaadin-button description="Confirmar" style-name="friendly" plain-text _id="confirmar" :right>
       Confirmar 
     </vaadin-button>
    </vaadin-horizontal-layout>
