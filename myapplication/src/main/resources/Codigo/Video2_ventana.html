@@ -6,25 +6,25 @@
   <meta name="vaadin-version" content="8.0.5">
  </head>
  <body>
-   <vaadin-vertical-layout spacing="false" size-auto margin="false">
-    <vaadin-label plain-text :center>
-      Título 
+  <vaadin-vertical-layout spacing="false" size-auto margin="false">
+   <vaadin-label plain-text _id="titulo" :center>
+     Título 
+   </vaadin-label>
+   <vaadin-vertical-layout spacing="false" size-auto margin="false" _id="vVideoGeneral">
+    <vaadin-horizontal-layout _id="hVideo" :center>
+     <vaadin-video _id="video"></vaadin-video>
+    </vaadin-horizontal-layout>
+    <vaadin-link caption="Usuario" _id="usuario" :center></vaadin-link>
+    <vaadin-label plain-text _id="categoria" :center>
+      Categoria 
     </vaadin-label>
-    <vaadin-vertical-layout spacing="false" size-auto margin="false">
-     <vaadin-horizontal-layout :center>
-      <vaadin-video></vaadin-video>
-     </vaadin-horizontal-layout>
-     <vaadin-link caption="Usuario" :center></vaadin-link>
-     <vaadin-label plain-text :center>
-       Categoria 
-     </vaadin-label>
-     <vaadin-label plain-text :center>
-       Etiqueta 
-     </vaadin-label>
-     <vaadin-label plain-text :center>
-       Fecha de Subida 
-     </vaadin-label>
-    </vaadin-vertical-layout>
+    <vaadin-label plain-text _id="etiqueta" :center>
+      Etiqueta 
+    </vaadin-label>
+    <vaadin-label plain-text _id="fechasubida" :center>
+      Fecha de Subida 
+    </vaadin-label>
    </vaadin-vertical-layout>
+  </vaadin-vertical-layout>
  </body>
 </html>

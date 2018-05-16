@@ -7,11 +7,11 @@
  </head>
  <body>
   <vaadin-vertical-layout style-name="well" size-auto margin="false">
-   <vaadin-horizontal-layout>
-    <vaadin-image source="github.com/AlfonsoCabreraGimenez/MSD2/blob/master/myapplication/descarga.jpg" width="225px" height="225px"></vaadin-image>
-    <vaadin-vertical-layout size-auto :bottom>
-     <vaadin-link caption="Usuario" :bottom></vaadin-link>
-     <vaadin-label plain-text :bottom>
+   <vaadin-horizontal-layout _id="hdatosUser">
+    <vaadin-image source="github.com/AlfonsoCabreraGimenez/MSD2/blob/master/myapplication/descarga.jpg" width="225px" height="225px" _id="imagen"></vaadin-image>
+    <vaadin-vertical-layout size-auto _id="propUser" :bottom>
+     <vaadin-link caption="Usuario" _id="usuario" :bottom></vaadin-link>
+     <vaadin-label plain-text _id="nSuscriptores" :bottom>
        Nº de suscriptores 
      </vaadin-label>
     </vaadin-vertical-layout>
