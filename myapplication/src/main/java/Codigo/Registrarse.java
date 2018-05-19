@@ -1,6 +1,10 @@
 package Codigo;
 
-public class Registrarse {
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.Notification;
+
+public class Registrarse extends Registrarse_ventana{
 	/*private Label _datosPL;
 	private TextField _nombreTF;
 	private TextField _apellido1;
@@ -20,4 +24,10 @@ public class Registrarse {
 	public Ingreso_Aplicacion _unnamed_Ingreso_Aplicacion_;
 	public Perfil_Ajeno _unnamed_Perfil_Ajeno_;
 	public Nuevo_Pass _unnamed_Nuevo_Pass_;*/
+	public Registrarse() {
+		botonRegistrarse.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+			}
+		});
+	}
 }
