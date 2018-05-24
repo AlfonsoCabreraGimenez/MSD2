@@ -1,10 +1,9 @@
 package diagramaclasesbd;
 
-import java.util.List;
 import java.util.Vector;
 import diagramaclasesbd.Video;
-import Codigo.TipoBusqueda;
-import Codigo.Video2;
+import diagramaclasesiu.TipoBusqueda;
+import diagramaclasesiu.Video2;
 
 public class BD_Videos {
 	public BD_Principal _bd_prin_videos;
@@ -50,7 +49,7 @@ public class BD_Videos {
 		throw new UnsupportedOperationException();
 	}
 
-	public void modificarDatosVideo(String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aMiniatura) {
+	public void modificarDatosVideo(String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, Image aMiniatura) {
 		throw new UnsupportedOperationException();
 	}
 
@@ -75,6 +74,10 @@ public class BD_Videos {
 	}
 
 	public void decargarVideo(int aID) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void eliminarVideoListaReproduccion(int aID) {
 		throw new UnsupportedOperationException();
 	}
 }

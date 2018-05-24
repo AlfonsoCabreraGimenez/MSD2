@@ -49,7 +49,7 @@ public class Registrarse_ventana extends VerticalLayout {
 	protected Upload botonSubir;
 	protected HorizontalLayout hVacio1;
 	protected Button botonRegistrarse;
-	protected Label magia;
+	protected Label texto;
 
 	public Registrarse_ventana() {
 		Design.read(this);

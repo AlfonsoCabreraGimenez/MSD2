@@ -1,6 +1,5 @@
 package diagramaclasesbd;
 
-import java.util.List;
 import java.util.Vector;
 import diagramaclasesbd.Comentario;
 
@@ -13,6 +12,10 @@ public class BD_Comentarios {
 	}
 
 	public List cargarListaComentarios(int aID) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void escribirComentario(String aCadena, int aID) {
 		throw new UnsupportedOperationException();
 	}
 }

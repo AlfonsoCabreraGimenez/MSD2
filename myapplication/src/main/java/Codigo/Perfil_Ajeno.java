@@ -1,7 +1,7 @@
-package Codigo;
+package diagramaclasesiu;
 
 public class Perfil_Ajeno {
-	/*private Label _suscriptoresL;
+	private Label _suscriptoresL;
 	private Label _visitasL;
 	private Label _apodoL;
 	private Imagen _avatarI;
@@ -12,9 +12,9 @@ public class Perfil_Ajeno {
 	private Boton _suscribirseB;
 	public Video2 _unnamed_Video2_;
 	public Usuario2 _unnamed_Usuario2_;
-	public Registrarse _unnamed_Registrarse_;*/
+	public Registrarse _unnamed_Registrarse_;
 
-	public void accederRegistrarse(Object aRegistrarse) {
+	public void cargarPerfilAjenoNR() {
 		throw new UnsupportedOperationException();
 	}
 }

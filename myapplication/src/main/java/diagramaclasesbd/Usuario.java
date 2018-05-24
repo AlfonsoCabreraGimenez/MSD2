@@ -14,8 +14,6 @@
 package diagramaclasesbd;
 
 import java.io.Serializable;
-import java.util.Date;
-
 import javax.persistence.*;
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
@@ -104,7 +102,7 @@ public class Usuario implements Serializable {
 	private String apellido2;
 	
 	@Column(name="FechaN", nullable=true)	
-	private Date fechaN;
+	private date fechaN;
 	
 	@Column(name="Apodo", nullable=true, length=255)	
 	private String apodo;
@@ -195,11 +193,11 @@ public class Usuario implements Serializable {
 		return apellido2;
 	}
 	
-	public void setFechaN(Date value) {
+	public void setFechaN(date value) {
 		this.fechaN = value;
 	}
 	
-	public Date getFechaN() {
+	public date getFechaN() {
 		return fechaN;
 	}
 	

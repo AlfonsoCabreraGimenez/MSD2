@@ -1,4 +1,4 @@
-package Codigo;
+package diagramaclasesiu;
 
 public interface Correo {
 }

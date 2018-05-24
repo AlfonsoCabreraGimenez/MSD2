@@ -1,11 +1,9 @@
 package diagramaclasesbd;
 
-import java.util.Date;
-import java.util.List;
 import java.util.Vector;
 import diagramaclasesbd.Registrado;
-import Codigo.TipoBusqueda;
-import Codigo.Usuario2;
+import diagramaclasesiu.TipoBusqueda;
+import diagramaclasesiu.Usuario2;
 
 public class BD_Registrados {
 	public BD_Principal _bd_prin_regis;
@@ -27,7 +25,7 @@ public class BD_Registrados {
 		throw new UnsupportedOperationException();
 	}
 
-	public String cargarAvatar(int aID) {
+	public void cargarAvatar(int aID) {
 		throw new UnsupportedOperationException();
 	}
 
@@ -51,7 +49,7 @@ public class BD_Registrados {
 		throw new UnsupportedOperationException();
 	}
 
-	public void modificarDatos(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aEmail, String aPass, String aNuevaPass, String aRepPass, String aAvatar) {
+	public void modificarDatos(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aEmail, String aPass, String aNuevaPass, String aRepPass, Image aAvatar) {
 		throw new UnsupportedOperationException();
 	}
 
