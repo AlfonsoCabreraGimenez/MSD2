@@ -27,12 +27,8 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-    	//Pag_Inicio_NR pnr = new Pag_Inicio_NR();
-    	Ingreso_Aplicacion ia = new Ingreso_Aplicacion();
-        setContent(ia);
-    }
-    public void abrir(VerticalLayout ventana) {
-    	setContent(ventana);
+    	Pag_Inicio_NR pnr = new Pag_Inicio_NR();
+        setContent(pnr);
     }
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)

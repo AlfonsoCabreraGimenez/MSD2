@@ -1,4 +1,7 @@
-package diagramaclasesiu;
+package Codigo;
+
+import java.util.Date;
+import java.util.List;
 
 public interface iUsuario_No_Registrado {
 

@@ -3,12 +3,12 @@ package diagramaclasesbd;
 import java.util.Date;
 import java.util.List;
 
-import diagramaclasesiu.TipoBusqueda;
-import diagramaclasesiu.Usuario2;
-import diagramaclasesiu.Video2;
-import diagramaclasesiu.iUsuario_Registrado;
-import diagramaclasesiu.iAdministrador2;
-import diagramaclasesiu.iUsuario_No_Registrado;
+import Codigo.TipoBusqueda;
+import Codigo.Usuario2;
+import Codigo.Video2;
+import Codigo.iUsuario_Registrado;
+import Codigo.iAdministrador2;
+import Codigo.iUsuario_No_Registrado;
 
 public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsuario_No_Registrado {
 	public BD_Categorias _bd_categ;
@@ -90,11 +90,11 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		throw new UnsupportedOperationException();
 	}
 
-	public void modificarDatos(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aEmail, String aPass, String aNuevaPass, String aRepPass, Image aAvatar) {
+	public void modificarDatos(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aEmail, String aPass, String aNuevaPass, String aRepPass, String aAvatar) {
 		throw new UnsupportedOperationException();
 	}
 
-	public void modificarDatosVideo(String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, Image aMiniatura) {
+	public void modificarDatosVideo(String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aMiniatura) {
 		throw new UnsupportedOperationException();
 	}
 

@@ -1,7 +1,7 @@
-package diagramaclasesiu;
+package Codigo;
 
 public class Video2 {
-	private Label _tituloL;
+	/*private Label _tituloL;
 	private Boton _tituloB;
 	private Label _usuarioPropL;
 	private Boton _usuarioPropB;
@@ -9,7 +9,7 @@ public class Video2 {
 	private Label _etiquetaL;
 	private Label _fechaSuL;
 	private Imagen _minuaturaI;
-	private Boton _miniaturaB;
+	private Boton _miniaturaB;*/
 	private TipoUsuario _usuario;
 	public Lista_Videos_De_Reproduccion _unnamed_Lista_Videos_De_Reproduccion_;
 	public Pag_Inicio_NR _unnamed_Pag_Inicio_NR_;

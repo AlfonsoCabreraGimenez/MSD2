@@ -1,4 +1,4 @@
-package diagramaclasesiu;
+package Codigo;
 
 public enum TipoOrdenacionVideo {
 	titulo, 

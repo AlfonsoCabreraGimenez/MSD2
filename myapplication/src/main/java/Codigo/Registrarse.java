@@ -1,7 +1,7 @@
-package diagramaclasesiu;
+package Codigo;
 
-public class Registrarse {
-	private Label _datosPL;
+public class Registrarse extends Registrarse_ventana{
+	/*private Label _datosPL;
 	private TextField _nombreTF;
 	private TextField _apellido1;
 	private TextField _apellido2;
@@ -16,11 +16,11 @@ public class Registrarse {
 	private TextField _recPassTF;
 	private Label _avatarL;
 	private Image _avatarI;
-	private Boton _registrarB;
+	private Boton _registrarB;*/
 	public Ingreso_Aplicacion _unnamed_Ingreso_Aplicacion_;
 	public Perfil_Ajeno _unnamed_Perfil_Ajeno_;
 	public Nuevo_Pass _unnamed_Nuevo_Pass_;
-
+	
 	public void registrarse() {
 		throw new UnsupportedOperationException();
 	}

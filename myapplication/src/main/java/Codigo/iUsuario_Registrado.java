@@ -1,4 +1,7 @@
-package diagramaclasesiu;
+package Codigo;
+
+import java.util.Date;
+import java.util.List;
 
 import diagramaclasesbd.Video;
 
@@ -40,9 +43,9 @@ public interface iUsuario_Registrado {
 
 	public void eliminarComentario(int aID);
 
-	public void modificarDatos(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aEmail, String aPass, String aNuevaPass, String aRepPass, Image aAvatar);
+	public void modificarDatos(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aEmail, String aPass, String aNuevaPass, String aRepPass, String aAvatar);
 
-	public void modificarDatosVideo(String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, Image aMiniatura);
+	public void modificarDatosVideo(String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aMiniatura);
 
 	public void quitarMegusta(int aID);
 

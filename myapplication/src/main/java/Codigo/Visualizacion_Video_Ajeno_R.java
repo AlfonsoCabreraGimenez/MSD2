@@ -1,8 +1,8 @@
-package diagramaclasesiu;
+package Codigo;
 
 public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Comun_Registrado {
-	private Boton _darMegustaB;
-	private TextArea _escribirTA;
+	/*private Boton _darMegustaB;
+	private TextArea _escribirTA;*/
 	public Video2 _unnamed_Video2_;
 	public Comentario_Video_Ajeno_R _unnamed_Comentario_Video_Ajeno_R_;
 

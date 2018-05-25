@@ -1,5 +1,6 @@
 package diagramaclasesbd;
 
+import java.util.List;
 import java.util.Vector;
 import diagramaclasesbd.Comentario;
 

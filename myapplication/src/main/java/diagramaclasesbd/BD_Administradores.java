@@ -2,8 +2,8 @@ package diagramaclasesbd;
 
 import java.util.Vector;
 import diagramaclasesbd.Administrador;
-import diagramaclasesiu.Usuario2;
-import diagramaclasesiu.Video2;
+import Codigo.Usuario2;
+import Codigo.Video2;
 
 public class BD_Administradores {
 	public BD_Principal _bd_prin_admin;

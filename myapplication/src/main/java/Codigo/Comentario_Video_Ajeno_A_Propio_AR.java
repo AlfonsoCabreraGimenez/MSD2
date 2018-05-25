@@ -1,4 +1,4 @@
-package diagramaclasesiu;
+package Codigo;
 
 public class Comentario_Video_Ajeno_A_Propio_AR extends Comentario_Video_Ajeno_R {
 	public Visualizacion_Video_Ajeno_A _unnamed_Visualizacion_Video_Ajeno_A_;

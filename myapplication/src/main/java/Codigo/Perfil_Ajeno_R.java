@@ -1,4 +1,4 @@
-package diagramaclasesiu;
+package Codigo;
 
 public class Perfil_Ajeno_R extends Perfil_Ajeno {
 	public Video2 _unnamed_Video2_;

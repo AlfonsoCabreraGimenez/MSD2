@@ -1,10 +1,10 @@
-package diagramaclasesiu;
+package Codigo;
 
 public class Usuario2 {
-	private Imagen _avatarI;
+	/*private Imagen _avatarI;
 	private Boton _avatarB;
 	private Boton _apodoB;
-	private Label _numSuscriptoresL;
+	private Label _numSuscriptoresL;*/
 	public Perfil_Propio_A _unnamed_Perfil_Propio_A_;
 	public Lista_Suscriptores _unnamed_Lista_Suscriptores_;
 	public Lista_Suscripciones _unnamed_Lista_Suscripciones_;
