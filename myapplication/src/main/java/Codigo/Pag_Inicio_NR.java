@@ -10,6 +10,7 @@ public class Pag_Inicio_NR extends Pag_Inicio_NR_ventana{
 	Cabecera_Comun cc = new Cabecera_Comun();
 	Buscador bus = new Buscador();
 	Cabecera_NR cnr = new Cabecera_NR();
+	
 	public Pag_Inicio_NR() {
 		inicializar();
 	}

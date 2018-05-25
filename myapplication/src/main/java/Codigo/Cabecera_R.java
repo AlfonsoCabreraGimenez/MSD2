@@ -1,6 +1,6 @@
 package Codigo;
 
-public class Cabecera_R extends Cabecera_Comun {
+public class Cabecera_R extends Cabecera_R_ventana{
 	/*private Boton _cerrarSesionB;
 	private Boton _subirVideoB;
 	private Boton _accederPerfilPropioB;*/

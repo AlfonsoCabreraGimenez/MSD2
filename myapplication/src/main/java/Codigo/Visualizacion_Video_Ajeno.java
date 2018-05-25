@@ -1,6 +1,6 @@
 package Codigo;
 
-public class Visualizacion_Video_Ajeno {
+public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana{
 	/*private Label _tituloL;
 	private Label _categoriaL;
 	private Label _etiquetaL;

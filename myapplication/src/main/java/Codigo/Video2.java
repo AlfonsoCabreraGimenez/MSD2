@@ -1,6 +1,6 @@
 package Codigo;
 
-public class Video2 {
+public class Video2 extends Video2_ventana{
 	/*private Label _tituloL;
 	private Boton _tituloB;
 	private Label _usuarioPropL;

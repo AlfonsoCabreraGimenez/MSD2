@@ -12,8 +12,13 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
-import Codigo.Ingreso_Aplicacion;
 import Codigo.Pag_Inicio_NR;
+import Codigo.Pag_Inicio_R;
+import Codigo.Perfil_Ajeno;
+import Codigo.Perfil_Ajeno_A;
+import Codigo.Perfil_Ajeno_R;
+import Codigo.Perfil_Propio_R;
+import Codigo.Visualizacion_Video_Ajeno_A;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -27,8 +32,11 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-    	Pag_Inicio_NR pnr = new Pag_Inicio_NR();
-        setContent(pnr);
+    	
+    Visualizacion_Video_Ajeno_A p = new Visualizacion_Video_Ajeno_A();
+    
+    setContent(p);
+    
     }
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
