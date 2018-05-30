@@ -7,13 +7,17 @@
   <meta name="package-mapping" content="codigo:Codigo">
  </head>
  <body>
-  <vaadin-vertical-layout width="50%" height-full>
+  <vaadin-vertical-layout size-full>
    <vaadin-vertical-layout margin="false" _id="vModificarDatosVideo">
     <vaadin-label plain-text _id="modificarInformacion" :center>
       Modificar información del video 
     </vaadin-label>
     <vaadin-horizontal-layout width-full _id="hDatosVideo">
      <vaadin-vertical-layout margin="false" _id="vPropVideo">
+      <vaadin-horizontal-layout width-full _id="hURL">
+       <vaadin-text-field caption="Url" _id="url"></vaadin-text-field>
+       <vaadin-upload button-caption=". . ." description="Examinar" _id="upload1" :bottom :right></vaadin-upload>
+      </vaadin-horizontal-layout>
       <vaadin-text-field caption="Título" width-full _id="titulo"></vaadin-text-field>
       <vaadin-combo-box caption="Categoría" data-item-type="java.lang.String" _id="categoria">
        <option item="Option1">Option 1</option>

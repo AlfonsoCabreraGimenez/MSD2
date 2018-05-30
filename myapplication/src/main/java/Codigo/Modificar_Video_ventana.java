@@ -29,6 +29,9 @@ public class Modificar_Video_ventana extends VerticalLayout {
 	protected Label modificarInformacion;
 	protected HorizontalLayout hDatosVideo;
 	protected VerticalLayout vPropVideo;
+	protected HorizontalLayout hURL;
+	protected TextField url;
+	protected Upload upload1;
 	protected TextField titulo;
 	protected ComboBox<java.lang.String> categoria;
 	protected TextField etiqueta;

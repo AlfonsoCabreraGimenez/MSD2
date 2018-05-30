@@ -1,16 +1,30 @@
 package Codigo;
 
-public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana{
-	/*private Label _tituloL;
-	private Label _categoriaL;
-	private Label _etiquetaL;
-	private Label _numVisualizacionesL;
-	private Label _numMegustasL;
-	private Label _fechaSubidaL;
-	private TextArea _descripcionTA;
-	private Boton _verVideoB;*/
-	public Video2 _unnamed_Video2_;
+import com.vaadin.navigator.View;
 
+public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_A_ventana implements View{
+	
+	public Video2 _unnamed_Video2_;
+	Cabecera_NR cnr = new Cabecera_NR();
+	Cabecera_Comun cc = new Cabecera_Comun();
+	
+	
+	public Visualizacion_Video_Ajeno() {
+		inicializar();
+	}
+	void inicializar() {
+		hInicio.addComponent(cc.inicio);
+		hCabeceraGeneral.addComponent(cnr.hIniciarSesionRegistrarse);
+		propVideo.setVisible(false);
+		escribirComentario.setVisible(false);
+		comentar.setVisible(false);
+		htituloComentario.setVisible(false);
+		vComentario.setVisible(false);
+		modificarVideo.setVisible(false);
+
+		
+		
+	}
 	public void cargarVisualizacionAjenoNR() {
 		throw new UnsupportedOperationException();
 	}

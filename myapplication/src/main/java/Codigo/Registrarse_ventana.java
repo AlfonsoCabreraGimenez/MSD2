@@ -49,6 +49,7 @@ public class Registrarse_ventana extends VerticalLayout {
 	protected Upload botonSubir;
 	protected HorizontalLayout hVacio1;
 	protected Button botonRegistrarse;
+	protected Button modificarDatosUser;
 
 	public Registrarse_ventana() {
 		Design.read(this);

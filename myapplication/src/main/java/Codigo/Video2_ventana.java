@@ -5,7 +5,6 @@ import com.vaadin.annotations.DesignRoot;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.Link;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Video;
 import com.vaadin.ui.declarative.Design;
@@ -23,14 +22,14 @@ import com.vaadin.ui.declarative.Design;
 @SuppressWarnings("serial")
 public class Video2_ventana extends VerticalLayout {
 	protected VerticalLayout vVerticalVideoGeneral;
-	protected Label titulo;
+	protected Button titulo;
 	protected VerticalLayout vVideoGeneral;
 	protected HorizontalLayout hVideo;
 	protected Video video;
 	protected VerticalLayout vAccionesVideo;
 	protected Button modificarVideo;
 	protected Button eliminarVideo;
-	protected Link usuario;
+	protected Button usuario;
 	protected Label categoria;
 	protected Label etiqueta;
 	protected Label fechasubida;

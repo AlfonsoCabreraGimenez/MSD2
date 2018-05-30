@@ -1,6 +1,11 @@
 package Codigo;
 
-public class Perfil_Ajeno extends Perfil_Ajeno_ventana{
+import com.vaadin.navigator.View;
+import com.vaadin.ui.UI;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
+
+public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 	/*private Label _suscriptoresL;
 	private Label _visitasL;
 	private Label _apodoL;
@@ -16,6 +21,7 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana{
 
 	Cabecera_Comun cc = new Cabecera_Comun();
 	Cabecera_NR cnr = new Cabecera_NR();
+	Cabecera_R cr = new Cabecera_R();
 	
 	public Perfil_Ajeno(){
 		inicializar();
@@ -24,6 +30,12 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana{
 	void inicializar(){
 		hCabeceraComun.addComponent(cc);
 		hCabeceraGeneral.addComponent(cnr);
+		suscribirse.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				UI.getCurrent().getNavigator().navigateTo("Ingreso");
+			}
+		});
+		darDeBaja.setVisible(false);
 	}
 	
 	public void cargarPerfilAjenoNR() {

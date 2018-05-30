@@ -1,6 +1,6 @@
 package Codigo;
 
-public class Conf_Suscribirse {
+public class Conf_Suscribirse extends Conf_Suscribirse_ventana{
 	/*private Label _confirmarL;
 	private Boton _aceptarB;
 	private Boton _cancelarB;*/

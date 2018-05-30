@@ -1,6 +1,11 @@
 package Codigo;
 
-public class Iniciar_Sesion extends Iniciar_Sesion_ventana{
+import com.vaadin.navigator.View;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.UI;
+
+public class Iniciar_Sesion extends Iniciar_Sesion_ventana {
 	/*private TextField _usuarioCorreoTF;
 	private TextField _passTF;
 	private Boton _recordarPassB;

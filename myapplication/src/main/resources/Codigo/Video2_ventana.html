@@ -8,9 +8,9 @@
  <body>
   <vaadin-vertical-layout style-name="vVerticalSuperGeneral" spacing="false" size-auto margin="false">
    <vaadin-vertical-layout spacing="false" size-auto margin="false" _id="vVerticalVideoGeneral" :center>
-    <vaadin-label plain-text _id="titulo" :middle :center>
-      Título 
-    </vaadin-label>
+    <vaadin-button style-name="borderless" plain-text _id="titulo" :center>
+      Titulo 
+    </vaadin-button>
     <vaadin-vertical-layout spacing="false" size-auto margin="false" _id="vVideoGeneral">
      <vaadin-horizontal-layout _id="hVideo" :center>
       <vaadin-video _id="video"></vaadin-video>
@@ -19,7 +19,9 @@
        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" description="Eliminar video" style-name="icon-only" width="25px" height="20px" plain-text _id="eliminarVideo"></vaadin-button>
       </vaadin-vertical-layout>
      </vaadin-horizontal-layout>
-     <vaadin-link caption="Usuario" _id="usuario" :center></vaadin-link>
+     <vaadin-button style-name="borderless" plain-text _id="usuario" :center>
+       Usuario 
+     </vaadin-button>
      <vaadin-label plain-text _id="categoria" :center>
        Categoria 
      </vaadin-label>

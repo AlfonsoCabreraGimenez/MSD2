@@ -1,5 +1,12 @@
 package Codigo;
 
+import com.vaadin.event.ContextClickEvent;
+import com.vaadin.event.ContextClickEvent.ContextClickListener;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.UI;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
+
 public class Video2 extends Video2_ventana{
 	/*private Label _tituloL;
 	private Boton _tituloB;
@@ -24,4 +31,19 @@ public class Video2 extends Video2_ventana{
 	public Visualizacion_Video_Propio_AR _unnamed_Visualizacion_Video_Propio_AR_;
 	public Visualizacion_Video_Ajeno_A _unnamed_Visualizacion_Video_Ajeno_A_;
 	public Visualizacion_Video_Ajeno_R _unnamed_Visualizacion_Video_Ajeno_R_;
+	
+	public Video2() {
+		titulo.addClickListener(new ClickListener() {
+
+			public void buttonClick(ClickEvent event) {
+				UI.getCurrent().getNavigator().navigateTo("VisAjeno");
+			}
+		});
+		usuario.addClickListener(new ClickListener() {
+
+			public void buttonClick(ClickEvent event) {
+				UI.getCurrent().getNavigator().navigateTo("PAjeno");
+			}
+		});
+	}
 }

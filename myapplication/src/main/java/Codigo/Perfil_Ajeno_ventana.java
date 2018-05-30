@@ -33,6 +33,7 @@ public class Perfil_Ajeno_ventana extends VerticalLayout {
 	protected Image imagen;
 	protected Link apodo;
 	protected HorizontalLayout hSuscribirse;
+	protected Button darDeBaja;
 	protected Button suscribirse;
 	protected VerticalLayout vDatosPerfil;
 	protected HorizontalLayout hApartados;

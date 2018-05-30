@@ -26,6 +26,7 @@ import com.vaadin.ui.declarative.Design;
 public class Visualizacion_Video_Ajeno_A_ventana extends VerticalLayout {
 	protected HorizontalLayout hCabeceraGeneral;
 	protected HorizontalLayout hInicio;
+	protected VerticalLayout vBuscador;
 	protected HorizontalLayout hdatosUserVideo;
 	protected VerticalLayout datosUser;
 	protected Image fotoUser;
@@ -48,6 +49,7 @@ public class Visualizacion_Video_Ajeno_A_ventana extends VerticalLayout {
 	protected VerticalLayout vComentario;
 	protected VerticalLayout propVideo;
 	protected Button meGusta;
+	protected Button modificarVideo;
 	protected Button añadirAListaRepro;
 	protected Button descargar;
 	protected Button eliminarVideo;

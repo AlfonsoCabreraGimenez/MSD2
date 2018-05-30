@@ -17,9 +17,10 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno_A_ven
 	}
 	
 	void inicializar(){
-		hInicio.addComponent(cc);
-		hCabeceraGeneral.addComponent(cr);
+		hInicio.addComponent(cc.inicio);
+		hCabeceraGeneral.addComponent(cr.hCabeceraR);
 		vComentario.addComponent(c2);
+		modificarVideo.setVisible(false);
 	}
 	
 	

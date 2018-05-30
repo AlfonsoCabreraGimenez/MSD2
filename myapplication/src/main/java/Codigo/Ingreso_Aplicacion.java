@@ -1,6 +1,8 @@
 package Codigo;
 
-public class Ingreso_Aplicacion extends Ingreso_Aplicacion_ventana{
+import com.vaadin.navigator.View;
+
+public class Ingreso_Aplicacion extends Ingreso_Aplicacion_ventana implements View{
 	public Registrarse _unnamed_Registrarse_;
 	public Iniciar_Sesion _unnamed_Iniciar_Sesion_;
 	public Cabecera_NR _unnamed_Cabecera_NR_;

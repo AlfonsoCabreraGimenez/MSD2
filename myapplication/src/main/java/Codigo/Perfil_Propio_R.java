@@ -1,14 +1,17 @@
 package Codigo;
 
-public class Perfil_Propio_R extends Perfil_Propio_R_ventana{
-	/*private Label _nombreL;
-	private Label _emailL;
-	private Label _apellidoL;
-	private Label _fechaNacimientoL;
-	private Boton _modificarDatosB;
-	private Boton _crearListaRepB;
-	private Boton _modificarVideoB;
-	private Borrar _borrarVideoB;*/
+import com.vaadin.navigator.View;
+import com.vaadin.ui.UI;
+import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Window;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
+
+public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
+	Window popup = new Window();
+	Window popup2 = new Window();
+	VerticalLayout subContent = new VerticalLayout();
+	VerticalLayout subContent2 = new VerticalLayout();
 	public Video2 _unnamed_Video2_;
 	public Usuario2 _unnamed_Usuario2_;
 	public Cabecera_R _unnamed_Cabecera_R_;
@@ -19,18 +22,47 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana{
 	Cabecera_Comun cc = new Cabecera_Comun();
 	Cabecera_R cr = new Cabecera_R();
 	Video2 v2 = new Video2();
+	Modificar_Datos_Usuario mdu = new Modificar_Datos_Usuario();
+	Crear_Lista_Reproduccion clr = new Crear_Lista_Reproduccion();
+	
 	
 	public Perfil_Propio_R(){
-		inicializar();
-	}
-	
-	void inicializar(){
 		hCabeceraInicio.addComponent(cc.inicio);
 		hCabeceraRegistrado.addComponent(cr.avatar);
 		hCabeceraRegistrado.addComponent(cr.botonSubirVideo);
 		hCabeceraRegistrado.addComponent(cr.botonCerrarSesion);
 		hPanel.addComponent(v2.vVerticalVideoGeneral);
+		inicializar();
+	}
+	
+	void inicializar(){
 		
+		//hPanel.addComponent(v2.vVerticalVideoGeneral);
+		categoria.setVisible(false);
+		modificarDatos.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+
+				popup.setContent(subContent);
+				subContent.addComponent(mdu);
+				popup.center();
+				popup.setWidth("720px");
+				//popup.setClosable(false);
+				popup.setModal(true);
+				UI.getCurrent().addWindow(popup);
+			}
+		});
+		crearListaReproduccion.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+
+				popup2.setContent(subContent2);
+				subContent2.addComponent(clr);
+				popup2.center();
+				popup2.setWidth("720px");
+				//popup.setClosable(false);
+				popup2.setModal(true);
+				UI.getCurrent().addWindow(popup2);
+			}
+		});
 	}
 	public void borrarVideo() {
 		throw new UnsupportedOperationException();
