@@ -3,6 +3,8 @@ package diagramaclasesbd;
 import java.util.Date;
 import java.util.List;
 
+import org.orm.PersistentException;
+
 import Codigo.TipoBusqueda;
 import Codigo.Usuario2;
 import Codigo.Video2;
@@ -15,7 +17,7 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	public BD_Videos _bd_videos;
 	public BD_Listas_De_Reproduccion _bd_listasrep;
 	public BD_Comentarios _bd_coment;
-	public BD_Registrados _bd_regis;
+	public BD_Registrados registrados = new BD_Registrados();
 	public BD_Administradores _bd_admin;
 
 	public void anadirAListaRep(int aID) {
@@ -143,7 +145,12 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	}
 
 	public void registrarse(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aPass, String aRepPass, String aEmail, String aAvatar) {
-		throw new UnsupportedOperationException();
+		try {
+			registrados.registrarse(aNombre, aApellido1, aApellido2, aFechaN, aApodo, aPass, aRepPass, aEmail, aAvatar);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void nuevaPass(String aPass, String aRepPass) {

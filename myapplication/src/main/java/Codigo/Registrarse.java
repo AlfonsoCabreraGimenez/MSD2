@@ -1,26 +1,15 @@
 package Codigo;
 
 import com.vaadin.ui.UI;
+
+import diagramaclasesbd.BD_Principal;
+
+import java.util.Date;
+
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
-
 public class Registrarse extends Registrarse_ventana {
-	/*private Label _datosPL;
-	private TextField _nombreTF;
-	private TextField _apellido1;
-	private TextField _apellido2;
-	private Label _fechaNL;
-	private ComboBox _mesCB;
-	private ComboBox _diaCB;
-	private ComboBox _anoCB;
-	private Label _datosUL;
-	private TextField _apodoTF;
-	private TextField _emailTF;
-	private TextField _passTF;
-	private TextField _recPassTF;
-	private Label _avatarL;
-	private Image _avatarI;
-	private Boton _registrarB;*/
+	iUsuario_No_Registrado unr = new BD_Principal();
 	public Ingreso_Aplicacion _unnamed_Ingreso_Aplicacion_;
 	public Perfil_Ajeno _unnamed_Perfil_Ajeno_;
 	public Nuevo_Pass _unnamed_Nuevo_Pass_;
@@ -29,11 +18,21 @@ public class Registrarse extends Registrarse_ventana {
 		modificarDatosUser.setVisible(false);
 		botonRegistrarse.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				UI.getCurrent().getNavigator().navigateTo("PagIR");	
-			}
+					UI.getCurrent().getNavigator().navigateTo("PagIR");
+					//registrarse();
+				}	
 		});
 	}
-	public void registrarse() {
-		throw new UnsupportedOperationException();
+	public void registrarse()  {
+		String aNombre = tNombre.getValue();
+		String aApellido1 = tApellido1.getValue();
+		String aApellido2 = tApellido2.getValue();
+		Date aFechaN = null;
+		String aApodo = tApodo.getValue();
+		String aPass = tPass.getValue();
+		String aRepPass = tRepPass.getValue();
+		String aEmail = tEmail.getValue();
+		String aAvatar = "as";
+		unr.registrarse(aNombre, aApellido1, aApellido2, aFechaN, aApodo, aPass, aRepPass, aEmail, aAvatar);
 	}
 }
