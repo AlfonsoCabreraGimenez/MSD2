@@ -23,12 +23,12 @@ public class Comentario implements Serializable {
 	}
 	
 	private void this_setOwner(Object owner, int key) {
-		if (key == ORMConstants.KEY_COMENTARIO_VIDEO) {
-			this.video = (diagramaclasesbd.Video) owner;
+		if (key == ORMConstants.KEY_COMENTARIO_VIDEO_COMENT) {
+			this.video_coment = (diagramaclasesbd.Video) owner;
 		}
 		
-		else if (key == ORMConstants.KEY_COMENTARIO_USUARIOCOMENTARIO) {
-			this.usuarioComentario = (diagramaclasesbd.Usuario) owner;
+		else if (key == ORMConstants.KEY_COMENTARIO_USUARIO_COMENTARIO) {
+			this.usuario_comentario = (diagramaclasesbd.Usuario) owner;
 		}
 	}
 	
@@ -40,37 +40,37 @@ public class Comentario implements Serializable {
 		
 	};
 	
-	@Column(name="Id", nullable=false, length=10)	
+	@Column(name="ID", nullable=false, length=10)	
 	@Id	
 	@GeneratedValue(generator="DIAGRAMACLASESBD_COMENTARIO_ID_GENERATOR")	
 	@org.hibernate.annotations.GenericGenerator(name="DIAGRAMACLASESBD_COMENTARIO_ID_GENERATOR", strategy="native")	
-	private int id;
+	private int ID;
 	
 	@ManyToOne(targetEntity=diagramaclasesbd.Usuario.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="UsuarioID", referencedColumnName="ID", nullable=false) })	
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private diagramaclasesbd.Usuario usuarioComentario;
+	private diagramaclasesbd.Usuario usuario_comentario;
 	
 	@ManyToOne(targetEntity=diagramaclasesbd.Video.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="VideoId", referencedColumnName="Id", nullable=false) })	
+	@JoinColumns({ @JoinColumn(name="VideoID", referencedColumnName="ID", nullable=false) })	
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private diagramaclasesbd.Video video;
+	private diagramaclasesbd.Video video_coment;
 	
 	@Column(name="Descripcion", nullable=true, length=255)	
 	private String descripcion;
 	
-	private void setId(int value) {
-		this.id = value;
+	private void setID(int value) {
+		this.ID = value;
 	}
 	
-	public int getId() {
-		return id;
+	public int getID() {
+		return ID;
 	}
 	
 	public int getORMID() {
-		return getId();
+		return getID();
 	}
 	
 	public void setDescripcion(String value) {
@@ -81,56 +81,56 @@ public class Comentario implements Serializable {
 		return descripcion;
 	}
 	
-	public void setVideo(diagramaclasesbd.Video value) {
-		if (video != null) {
-			video.comentario.remove(this);
+	public void setVideo_coment(diagramaclasesbd.Video value) {
+		if (video_coment != null) {
+			video_coment.comentarios.remove(this);
 		}
 		if (value != null) {
-			value.comentario.add(this);
+			value.comentarios.add(this);
 		}
 	}
 	
-	public diagramaclasesbd.Video getVideo() {
-		return video;
+	public diagramaclasesbd.Video getVideo_coment() {
+		return video_coment;
 	}
 	
 	/**
 	 * This method is for internal use only.
 	 */
-	public void setORM_Video(diagramaclasesbd.Video value) {
-		this.video = value;
+	public void setORM_Video_coment(diagramaclasesbd.Video value) {
+		this.video_coment = value;
 	}
 	
-	private diagramaclasesbd.Video getORM_Video() {
-		return video;
+	private diagramaclasesbd.Video getORM_Video_coment() {
+		return video_coment;
 	}
 	
-	public void setUsuarioComentario(diagramaclasesbd.Usuario value) {
-		if (usuarioComentario != null) {
-			usuarioComentario.es_escrito.remove(this);
+	public void setUsuario_comentario(diagramaclasesbd.Usuario value) {
+		if (usuario_comentario != null) {
+			usuario_comentario.es_escrito.remove(this);
 		}
 		if (value != null) {
 			value.es_escrito.add(this);
 		}
 	}
 	
-	public diagramaclasesbd.Usuario getUsuarioComentario() {
-		return usuarioComentario;
+	public diagramaclasesbd.Usuario getUsuario_comentario() {
+		return usuario_comentario;
 	}
 	
 	/**
 	 * This method is for internal use only.
 	 */
-	public void setORM_UsuarioComentario(diagramaclasesbd.Usuario value) {
-		this.usuarioComentario = value;
+	public void setORM_Usuario_comentario(diagramaclasesbd.Usuario value) {
+		this.usuario_comentario = value;
 	}
 	
-	private diagramaclasesbd.Usuario getORM_UsuarioComentario() {
-		return usuarioComentario;
+	private diagramaclasesbd.Usuario getORM_Usuario_comentario() {
+		return usuario_comentario;
 	}
 	
 	public String toString() {
-		return String.valueOf(getId());
+		return String.valueOf(getID());
 	}
 	
 }

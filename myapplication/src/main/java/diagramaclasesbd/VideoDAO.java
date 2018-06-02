@@ -19,10 +19,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class VideoDAO {
-	public static Video loadVideoByORMID(int id) throws PersistentException {
+	public static Video loadVideoByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = Actividad11CabreraFuentesPersistentManager.instance().getSession();
-			return loadVideoByORMID(session, id);
+			return loadVideoByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class VideoDAO {
 		}
 	}
 	
-	public static Video getVideoByORMID(int id) throws PersistentException {
+	public static Video getVideoByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = Actividad11CabreraFuentesPersistentManager.instance().getSession();
-			return getVideoByORMID(session, id);
+			return getVideoByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +41,10 @@ public class VideoDAO {
 		}
 	}
 	
-	public static Video loadVideoByORMID(int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Video loadVideoByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = Actividad11CabreraFuentesPersistentManager.instance().getSession();
-			return loadVideoByORMID(session, id, lockMode);
+			return loadVideoByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class VideoDAO {
 		}
 	}
 	
-	public static Video getVideoByORMID(int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Video getVideoByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = Actividad11CabreraFuentesPersistentManager.instance().getSession();
-			return getVideoByORMID(session, id, lockMode);
+			return getVideoByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +63,9 @@ public class VideoDAO {
 		}
 	}
 	
-	public static Video loadVideoByORMID(PersistentSession session, int id) throws PersistentException {
+	public static Video loadVideoByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Video) session.load(diagramaclasesbd.Video.class, new Integer(id));
+			return (Video) session.load(diagramaclasesbd.Video.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +73,9 @@ public class VideoDAO {
 		}
 	}
 	
-	public static Video getVideoByORMID(PersistentSession session, int id) throws PersistentException {
+	public static Video getVideoByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Video) session.get(diagramaclasesbd.Video.class, new Integer(id));
+			return (Video) session.get(diagramaclasesbd.Video.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +83,9 @@ public class VideoDAO {
 		}
 	}
 	
-	public static Video loadVideoByORMID(PersistentSession session, int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Video loadVideoByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Video) session.load(diagramaclasesbd.Video.class, new Integer(id), lockMode);
+			return (Video) session.load(diagramaclasesbd.Video.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +93,9 @@ public class VideoDAO {
 		}
 	}
 	
-	public static Video getVideoByORMID(PersistentSession session, int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Video getVideoByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Video) session.get(diagramaclasesbd.Video.class, new Integer(id), lockMode);
+			return (Video) session.get(diagramaclasesbd.Video.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -323,45 +323,45 @@ public class VideoDAO {
 	
 	public static boolean deleteAndDissociate(diagramaclasesbd.Video video)throws PersistentException {
 		try {
-			if (video.getCategoria() != null) {
-				video.getCategoria().video.remove(video);
-			}
-			
 			if (video.getUsuario() != null) {
-				video.getUsuario().otros_usuario.remove(video);
-			}
-			
-			if (video.getUsuarioHistorial() != null) {
-				video.getUsuarioHistorial().historial.remove(video);
-			}
-			
-			if (video.getRelacionados() != null) {
-				video.getRelacionados().videos.remove(video);
-			}
-			
-			if (video.getMas_gusta() != null) {
-				video.getMas_gusta().videoMasMegusta.remove(video);
-			}
-			
-			if (video.getUltimos() != null) {
-				video.getUltimos().videoUltimos.remove(video);
-			}
-			
-			if (video.getLista_rep() != null) {
-				video.getLista_rep().video.remove(video);
+				video.getUsuario().otros_usuarios.remove(video);
 			}
 			
 			if (video.getEs_propietario() != null) {
 				video.getEs_propietario().propiedad_video_de.remove(video);
 			}
 			
-			diagramaclasesbd.Comentario[] lComentarios = video.comentario.toArray();
-			for(int i = 0; i < lComentarios.length; i++) {
-				lComentarios[i].setVideo(null);
-			}
 			diagramaclasesbd.Usuario[] lUsuarioss = video.usuarios.toArray();
 			for(int i = 0; i < lUsuarioss.length; i++) {
 				lUsuarioss[i].me_gusta.remove(video);
+			}
+			if (video.getRelacionados() != null) {
+				video.getRelacionados().videosRel.remove(video);
+			}
+			
+			if (video.getUltimos() != null) {
+				video.getUltimos().videos_ultimos.remove(video);
+			}
+			
+			if (video.getMas_gusta() != null) {
+				video.getMas_gusta().video_masmegusta.remove(video);
+			}
+			
+			if (video.getLista_rep() != null) {
+				video.getLista_rep().videos_rep.remove(video);
+			}
+			
+			if (video.getCategoria() != null) {
+				video.getCategoria().videos.remove(video);
+			}
+			
+			if (video.getUsuario_historial() != null) {
+				video.getUsuario_historial().historial.remove(video);
+			}
+			
+			diagramaclasesbd.Comentario[] lComentarioss = video.comentarios.toArray();
+			for(int i = 0; i < lComentarioss.length; i++) {
+				lComentarioss[i].setVideo_coment(null);
 			}
 			return delete(video);
 		}
@@ -373,45 +373,45 @@ public class VideoDAO {
 	
 	public static boolean deleteAndDissociate(diagramaclasesbd.Video video, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			if (video.getCategoria() != null) {
-				video.getCategoria().video.remove(video);
-			}
-			
 			if (video.getUsuario() != null) {
-				video.getUsuario().otros_usuario.remove(video);
-			}
-			
-			if (video.getUsuarioHistorial() != null) {
-				video.getUsuarioHistorial().historial.remove(video);
-			}
-			
-			if (video.getRelacionados() != null) {
-				video.getRelacionados().videos.remove(video);
-			}
-			
-			if (video.getMas_gusta() != null) {
-				video.getMas_gusta().videoMasMegusta.remove(video);
-			}
-			
-			if (video.getUltimos() != null) {
-				video.getUltimos().videoUltimos.remove(video);
-			}
-			
-			if (video.getLista_rep() != null) {
-				video.getLista_rep().video.remove(video);
+				video.getUsuario().otros_usuarios.remove(video);
 			}
 			
 			if (video.getEs_propietario() != null) {
 				video.getEs_propietario().propiedad_video_de.remove(video);
 			}
 			
-			diagramaclasesbd.Comentario[] lComentarios = video.comentario.toArray();
-			for(int i = 0; i < lComentarios.length; i++) {
-				lComentarios[i].setVideo(null);
-			}
 			diagramaclasesbd.Usuario[] lUsuarioss = video.usuarios.toArray();
 			for(int i = 0; i < lUsuarioss.length; i++) {
 				lUsuarioss[i].me_gusta.remove(video);
+			}
+			if (video.getRelacionados() != null) {
+				video.getRelacionados().videosRel.remove(video);
+			}
+			
+			if (video.getUltimos() != null) {
+				video.getUltimos().videos_ultimos.remove(video);
+			}
+			
+			if (video.getMas_gusta() != null) {
+				video.getMas_gusta().video_masmegusta.remove(video);
+			}
+			
+			if (video.getLista_rep() != null) {
+				video.getLista_rep().videos_rep.remove(video);
+			}
+			
+			if (video.getCategoria() != null) {
+				video.getCategoria().videos.remove(video);
+			}
+			
+			if (video.getUsuario_historial() != null) {
+				video.getUsuario_historial().historial.remove(video);
+			}
+			
+			diagramaclasesbd.Comentario[] lComentarioss = video.comentarios.toArray();
+			for(int i = 0; i < lComentarioss.length; i++) {
+				lComentarioss[i].setVideo_coment(null);
 			}
 			try {
 				session.delete(video);

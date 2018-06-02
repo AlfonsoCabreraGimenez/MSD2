@@ -19,39 +19,39 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class ComentarioDetachedCriteria extends AbstractORMDetachedCriteria {
-	public final IntegerExpression id;
-	public final IntegerExpression usuarioComentarioId;
-	public final AssociationExpression usuarioComentario;
-	public final IntegerExpression videoId;
-	public final AssociationExpression video;
+	public final IntegerExpression ID;
+	public final IntegerExpression usuario_comentarioId;
+	public final AssociationExpression usuario_comentario;
+	public final IntegerExpression video_comentId;
+	public final AssociationExpression video_coment;
 	public final StringExpression descripcion;
 	
 	public ComentarioDetachedCriteria() {
 		super(diagramaclasesbd.Comentario.class, diagramaclasesbd.ComentarioCriteria.class);
-		id = new IntegerExpression("id", this.getDetachedCriteria());
-		usuarioComentarioId = new IntegerExpression("usuarioComentario.ID", this.getDetachedCriteria());
-		usuarioComentario = new AssociationExpression("usuarioComentario", this.getDetachedCriteria());
-		videoId = new IntegerExpression("video.id", this.getDetachedCriteria());
-		video = new AssociationExpression("video", this.getDetachedCriteria());
+		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		usuario_comentarioId = new IntegerExpression("usuario_comentario.ID", this.getDetachedCriteria());
+		usuario_comentario = new AssociationExpression("usuario_comentario", this.getDetachedCriteria());
+		video_comentId = new IntegerExpression("video_coment.ID", this.getDetachedCriteria());
+		video_coment = new AssociationExpression("video_coment", this.getDetachedCriteria());
 		descripcion = new StringExpression("descripcion", this.getDetachedCriteria());
 	}
 	
 	public ComentarioDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, diagramaclasesbd.ComentarioCriteria.class);
-		id = new IntegerExpression("id", this.getDetachedCriteria());
-		usuarioComentarioId = new IntegerExpression("usuarioComentario.ID", this.getDetachedCriteria());
-		usuarioComentario = new AssociationExpression("usuarioComentario", this.getDetachedCriteria());
-		videoId = new IntegerExpression("video.id", this.getDetachedCriteria());
-		video = new AssociationExpression("video", this.getDetachedCriteria());
+		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		usuario_comentarioId = new IntegerExpression("usuario_comentario.ID", this.getDetachedCriteria());
+		usuario_comentario = new AssociationExpression("usuario_comentario", this.getDetachedCriteria());
+		video_comentId = new IntegerExpression("video_coment.ID", this.getDetachedCriteria());
+		video_coment = new AssociationExpression("video_coment", this.getDetachedCriteria());
 		descripcion = new StringExpression("descripcion", this.getDetachedCriteria());
 	}
 	
-	public UsuarioDetachedCriteria createUsuarioComentarioCriteria() {
-		return new UsuarioDetachedCriteria(createCriteria("usuarioComentario"));
+	public UsuarioDetachedCriteria createUsuario_comentarioCriteria() {
+		return new UsuarioDetachedCriteria(createCriteria("usuario_comentario"));
 	}
 	
-	public VideoDetachedCriteria createVideoCriteria() {
-		return new VideoDetachedCriteria(createCriteria("video"));
+	public VideoDetachedCriteria createVideo_comentCriteria() {
+		return new VideoDetachedCriteria(createCriteria("video_coment"));
 	}
 	
 	public Comentario uniqueComentario(PersistentSession session) {

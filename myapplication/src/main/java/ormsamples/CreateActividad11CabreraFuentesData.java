@@ -9,21 +9,21 @@ public class CreateActividad11CabreraFuentesData {
 	public void createTestData() throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
+			diagramaclasesbd.Categoria ldiagramaclasesbdCategoria = diagramaclasesbd.CategoriaDAO.createCategoria();
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : videos, edad
+			diagramaclasesbd.CategoriaDAO.save(ldiagramaclasesbdCategoria);
+			diagramaclasesbd.Video ldiagramaclasesbdVideo = diagramaclasesbd.VideoDAO.createVideo();
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : comentarios, usuario_historial, megusta, visualizaciones, categoria, lista_rep, mas_gusta, ultimos, relacionados, usuarios, es_propietario, usuario
+			diagramaclasesbd.VideoDAO.save(ldiagramaclasesbdVideo);
 			diagramaclasesbd.Lista_De_Reproduccion ldiagramaclasesbdLista_De_Reproduccion = diagramaclasesbd.Lista_De_ReproduccionDAO.createLista_De_Reproduccion();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : videos, videoUltimos, videoMasMegusta, video, es_propietario_de
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : videosRel, videos_ultimos, video_masmegusta, videos_rep, es_propietario_lista
 			diagramaclasesbd.Lista_De_ReproduccionDAO.save(ldiagramaclasesbdLista_De_Reproduccion);
 			diagramaclasesbd.Comentario ldiagramaclasesbdComentario = diagramaclasesbd.ComentarioDAO.createComentario();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : video, usuarioComentario
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : video_coment, usuario_comentario
 			diagramaclasesbd.ComentarioDAO.save(ldiagramaclasesbdComentario);
-			diagramaclasesbd.Categoria ldiagramaclasesbdCategoria = diagramaclasesbd.CategoriaDAO.createCategoria();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : video, edad
-			diagramaclasesbd.CategoriaDAO.save(ldiagramaclasesbdCategoria);
 			diagramaclasesbd.Usuario ldiagramaclasesbdUsuario = diagramaclasesbd.UsuarioDAO.createUsuario();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : es_escrito, suscriptores, otros_usuario, historial, propiedad_de, me_gusta, propiedad_video_de, suscripciones, es_suscriptor, usuario
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : usuario_suscriptores, suscripciones, suscriptores, usuario_sucripciones, es_escrito, propiedad_de, otros_usuarios, propiedad_video_de, historial, me_gusta, visitas, isAdmin
 			diagramaclasesbd.UsuarioDAO.save(ldiagramaclasesbdUsuario);
-			diagramaclasesbd.Video ldiagramaclasesbdVideo = diagramaclasesbd.VideoDAO.createVideo();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : usuarios, comentario, megusta, visualizaciones, es_propietario, lista_rep, ultimos, mas_gusta, relacionados, usuarioHistorial, usuario, categoria
-			diagramaclasesbd.VideoDAO.save(ldiagramaclasesbdVideo);
 			diagramaclasesbd.Registrado ldiagramaclasesbdRegistrado = diagramaclasesbd.RegistradoDAO.createRegistrado();
 			// Initialize the properties of the persistent object here
 			diagramaclasesbd.RegistradoDAO.save(ldiagramaclasesbdRegistrado);

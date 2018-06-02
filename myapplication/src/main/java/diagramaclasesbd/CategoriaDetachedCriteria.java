@@ -19,29 +19,29 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class CategoriaDetachedCriteria extends AbstractORMDetachedCriteria {
-	public final IntegerExpression id;
+	public final IntegerExpression ID;
 	public final StringExpression nombre;
 	public final IntegerExpression edad;
-	public final CollectionExpression video;
+	public final CollectionExpression videos;
 	
 	public CategoriaDetachedCriteria() {
 		super(diagramaclasesbd.Categoria.class, diagramaclasesbd.CategoriaCriteria.class);
-		id = new IntegerExpression("id", this.getDetachedCriteria());
+		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		nombre = new StringExpression("nombre", this.getDetachedCriteria());
 		edad = new IntegerExpression("edad", this.getDetachedCriteria());
-		video = new CollectionExpression("ORM_video", this.getDetachedCriteria());
+		videos = new CollectionExpression("ORM_videos", this.getDetachedCriteria());
 	}
 	
 	public CategoriaDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, diagramaclasesbd.CategoriaCriteria.class);
-		id = new IntegerExpression("id", this.getDetachedCriteria());
+		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		nombre = new StringExpression("nombre", this.getDetachedCriteria());
 		edad = new IntegerExpression("edad", this.getDetachedCriteria());
-		video = new CollectionExpression("ORM_video", this.getDetachedCriteria());
+		videos = new CollectionExpression("ORM_videos", this.getDetachedCriteria());
 	}
 	
-	public VideoDetachedCriteria createVideoCriteria() {
-		return new VideoDetachedCriteria(createCriteria("ORM_video"));
+	public VideoDetachedCriteria createVideosCriteria() {
+		return new VideoDetachedCriteria(createCriteria("ORM_videos"));
 	}
 	
 	public Categoria uniqueCategoria(PersistentSession session) {

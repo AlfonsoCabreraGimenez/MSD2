@@ -19,10 +19,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class ComentarioDAO {
-	public static Comentario loadComentarioByORMID(int id) throws PersistentException {
+	public static Comentario loadComentarioByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = Actividad11CabreraFuentesPersistentManager.instance().getSession();
-			return loadComentarioByORMID(session, id);
+			return loadComentarioByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class ComentarioDAO {
 		}
 	}
 	
-	public static Comentario getComentarioByORMID(int id) throws PersistentException {
+	public static Comentario getComentarioByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = Actividad11CabreraFuentesPersistentManager.instance().getSession();
-			return getComentarioByORMID(session, id);
+			return getComentarioByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +41,10 @@ public class ComentarioDAO {
 		}
 	}
 	
-	public static Comentario loadComentarioByORMID(int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Comentario loadComentarioByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = Actividad11CabreraFuentesPersistentManager.instance().getSession();
-			return loadComentarioByORMID(session, id, lockMode);
+			return loadComentarioByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class ComentarioDAO {
 		}
 	}
 	
-	public static Comentario getComentarioByORMID(int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Comentario getComentarioByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = Actividad11CabreraFuentesPersistentManager.instance().getSession();
-			return getComentarioByORMID(session, id, lockMode);
+			return getComentarioByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +63,9 @@ public class ComentarioDAO {
 		}
 	}
 	
-	public static Comentario loadComentarioByORMID(PersistentSession session, int id) throws PersistentException {
+	public static Comentario loadComentarioByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Comentario) session.load(diagramaclasesbd.Comentario.class, new Integer(id));
+			return (Comentario) session.load(diagramaclasesbd.Comentario.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +73,9 @@ public class ComentarioDAO {
 		}
 	}
 	
-	public static Comentario getComentarioByORMID(PersistentSession session, int id) throws PersistentException {
+	public static Comentario getComentarioByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Comentario) session.get(diagramaclasesbd.Comentario.class, new Integer(id));
+			return (Comentario) session.get(diagramaclasesbd.Comentario.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +83,9 @@ public class ComentarioDAO {
 		}
 	}
 	
-	public static Comentario loadComentarioByORMID(PersistentSession session, int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Comentario loadComentarioByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Comentario) session.load(diagramaclasesbd.Comentario.class, new Integer(id), lockMode);
+			return (Comentario) session.load(diagramaclasesbd.Comentario.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +93,9 @@ public class ComentarioDAO {
 		}
 	}
 	
-	public static Comentario getComentarioByORMID(PersistentSession session, int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Comentario getComentarioByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Comentario) session.get(diagramaclasesbd.Comentario.class, new Integer(id), lockMode);
+			return (Comentario) session.get(diagramaclasesbd.Comentario.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -323,12 +323,12 @@ public class ComentarioDAO {
 	
 	public static boolean deleteAndDissociate(diagramaclasesbd.Comentario comentario)throws PersistentException {
 		try {
-			if (comentario.getUsuarioComentario() != null) {
-				comentario.getUsuarioComentario().es_escrito.remove(comentario);
+			if (comentario.getUsuario_comentario() != null) {
+				comentario.getUsuario_comentario().es_escrito.remove(comentario);
 			}
 			
-			if (comentario.getVideo() != null) {
-				comentario.getVideo().comentario.remove(comentario);
+			if (comentario.getVideo_coment() != null) {
+				comentario.getVideo_coment().comentarios.remove(comentario);
 			}
 			
 			return delete(comentario);
@@ -341,12 +341,12 @@ public class ComentarioDAO {
 	
 	public static boolean deleteAndDissociate(diagramaclasesbd.Comentario comentario, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			if (comentario.getUsuarioComentario() != null) {
-				comentario.getUsuarioComentario().es_escrito.remove(comentario);
+			if (comentario.getUsuario_comentario() != null) {
+				comentario.getUsuario_comentario().es_escrito.remove(comentario);
 			}
 			
-			if (comentario.getVideo() != null) {
-				comentario.getVideo().comentario.remove(comentario);
+			if (comentario.getVideo_coment() != null) {
+				comentario.getVideo_coment().comentarios.remove(comentario);
 			}
 			
 			try {

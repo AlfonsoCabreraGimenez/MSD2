@@ -36,11 +36,11 @@ public class Actividad11CabreraFuentesPersistentManager extends PersistentManage
 	@Override
 	public Configuration createConfiguration() {
 		Configuration configuration = new Configuration();
+		configuration.addAnnotatedClass(diagramaclasesbd.Categoria.class);
+		configuration.addAnnotatedClass(diagramaclasesbd.Video.class);
 		configuration.addAnnotatedClass(diagramaclasesbd.Lista_De_Reproduccion.class);
 		configuration.addAnnotatedClass(diagramaclasesbd.Comentario.class);
-		configuration.addAnnotatedClass(diagramaclasesbd.Categoria.class);
 		configuration.addAnnotatedClass(diagramaclasesbd.Usuario.class);
-		configuration.addAnnotatedClass(diagramaclasesbd.Video.class);
 		configuration.addAnnotatedClass(diagramaclasesbd.Registrado.class);
 		configuration.addAnnotatedClass(diagramaclasesbd.Administrador.class);
 		configuration.buildMappings();

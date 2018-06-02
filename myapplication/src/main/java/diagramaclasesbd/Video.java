@@ -23,11 +23,11 @@ public class Video implements Serializable {
 	}
 	
 	private java.util.Set this_getSet (int key) {
-		if (key == ORMConstants.KEY_VIDEO_COMENTARIO) {
-			return ORM_comentario;
-		}
-		else if (key == ORMConstants.KEY_VIDEO_USUARIOS) {
+		if (key == ORMConstants.KEY_VIDEO_USUARIOS) {
 			return ORM_usuarios;
+		}
+		else if (key == ORMConstants.KEY_VIDEO_COMENTARIOS) {
+			return ORM_comentarios;
 		}
 		
 		return null;
@@ -36,10 +36,6 @@ public class Video implements Serializable {
 	private void this_setOwner(Object owner, int key) {
 		if (key == ORMConstants.KEY_VIDEO_CATEGORIA) {
 			this.categoria = (diagramaclasesbd.Categoria) owner;
-		}
-		
-		else if (key == ORMConstants.KEY_VIDEO_ES_PROPIETARIO) {
-			this.es_propietario = (diagramaclasesbd.Usuario) owner;
 		}
 		
 		else if (key == ORMConstants.KEY_VIDEO_LISTA_REP) {
@@ -58,8 +54,12 @@ public class Video implements Serializable {
 			this.relacionados = (diagramaclasesbd.Lista_De_Reproduccion) owner;
 		}
 		
-		else if (key == ORMConstants.KEY_VIDEO_USUARIOHISTORIAL) {
-			this.usuarioHistorial = (diagramaclasesbd.Usuario) owner;
+		else if (key == ORMConstants.KEY_VIDEO_USUARIO_HISTORIAL) {
+			this.usuario_historial = (diagramaclasesbd.Usuario) owner;
+		}
+		
+		else if (key == ORMConstants.KEY_VIDEO_ES_PROPIETARIO) {
+			this.es_propietario = (diagramaclasesbd.Usuario) owner;
 		}
 		
 		else if (key == ORMConstants.KEY_VIDEO_USUARIO) {
@@ -79,17 +79,11 @@ public class Video implements Serializable {
 		
 	};
 	
-	@Column(name="Id", nullable=false, length=10)	
+	@Column(name="ID", nullable=false, length=10)	
 	@Id	
 	@GeneratedValue(generator="DIAGRAMACLASESBD_VIDEO_ID_GENERATOR")	
 	@org.hibernate.annotations.GenericGenerator(name="DIAGRAMACLASESBD_VIDEO_ID_GENERATOR", strategy="native")	
-	private int id;
-	
-	@ManyToOne(targetEntity=diagramaclasesbd.Categoria.class, fetch=FetchType.LAZY)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="CategoriaId", referencedColumnName="Id", nullable=false) })	
-	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private diagramaclasesbd.Categoria categoria;
+	private int ID;
 	
 	@ManyToOne(targetEntity=diagramaclasesbd.Usuario.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
@@ -101,37 +95,45 @@ public class Video implements Serializable {
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="UsuarioID2", referencedColumnName="ID", nullable=false) })	
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private diagramaclasesbd.Usuario usuarioHistorial;
+	private diagramaclasesbd.Usuario es_propietario;
+	
+	@ManyToMany(mappedBy="ORM_me_gusta", targetEntity=diagramaclasesbd.Usuario.class)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set ORM_usuarios = new java.util.HashSet();
 	
 	@ManyToOne(targetEntity=diagramaclasesbd.Lista_De_Reproduccion.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="Lista_De_ReproduccionId4", referencedColumnName="Id", nullable=false) })	
+	@JoinColumns({ @JoinColumn(name="Lista_De_ReproduccionID4", referencedColumnName="ID", nullable=false) })	
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
 	private diagramaclasesbd.Lista_De_Reproduccion relacionados;
 	
 	@ManyToOne(targetEntity=diagramaclasesbd.Lista_De_Reproduccion.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="Lista_De_ReproduccionId3", referencedColumnName="Id", nullable=false) })	
-	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private diagramaclasesbd.Lista_De_Reproduccion mas_gusta;
-	
-	@ManyToOne(targetEntity=diagramaclasesbd.Lista_De_Reproduccion.class, fetch=FetchType.LAZY)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="Lista_De_ReproduccionId2", referencedColumnName="Id", nullable=false) })	
+	@JoinColumns({ @JoinColumn(name="Lista_De_ReproduccionID3", referencedColumnName="ID", nullable=false) })	
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
 	private diagramaclasesbd.Lista_De_Reproduccion ultimos;
 	
 	@ManyToOne(targetEntity=diagramaclasesbd.Lista_De_Reproduccion.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="Lista_De_ReproduccionId", referencedColumnName="Id", nullable=false) })	
+	@JoinColumns({ @JoinColumn(name="Lista_De_ReproduccionID2", referencedColumnName="ID", nullable=false) })	
+	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
+	private diagramaclasesbd.Lista_De_Reproduccion mas_gusta;
+	
+	@ManyToOne(targetEntity=diagramaclasesbd.Lista_De_Reproduccion.class, fetch=FetchType.LAZY)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
+	@JoinColumns({ @JoinColumn(name="Lista_De_ReproduccionID", referencedColumnName="ID", nullable=false) })	
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
 	private diagramaclasesbd.Lista_De_Reproduccion lista_rep;
 	
-	@ManyToOne(targetEntity=diagramaclasesbd.Usuario.class, fetch=FetchType.LAZY)	
+	@ManyToOne(targetEntity=diagramaclasesbd.Categoria.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="UsuarioID", referencedColumnName="ID", nullable=false) })	
+	@JoinColumns({ @JoinColumn(name="CategoriaID", referencedColumnName="ID", nullable=false) })	
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private diagramaclasesbd.Usuario es_propietario;
+	private diagramaclasesbd.Categoria categoria;
+	
+	@Column(name="Url", nullable=true, length=255)	
+	private String url;
 	
 	@Column(name="Titulo", nullable=true, length=255)	
 	private String titulo;
@@ -151,15 +153,36 @@ public class Video implements Serializable {
 	@Column(name="Megusta", nullable=false, length=10)	
 	private int megusta;
 	
-	@OneToMany(mappedBy="video", targetEntity=diagramaclasesbd.Comentario.class)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_comentario = new java.util.HashSet();
+	@ManyToOne(targetEntity=diagramaclasesbd.Usuario.class, fetch=FetchType.LAZY)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
+	@JoinColumns({ @JoinColumn(name="UsuarioID", referencedColumnName="ID", nullable=false) })	
+	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
+	private diagramaclasesbd.Usuario usuario_historial;
 	
-	@ManyToMany(mappedBy="ORM_me_gusta", targetEntity=diagramaclasesbd.Usuario.class)	
+	@OneToMany(mappedBy="video_coment", targetEntity=diagramaclasesbd.Comentario.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_usuarios = new java.util.HashSet();
+	private java.util.Set ORM_comentarios = new java.util.HashSet();
+	
+	private void setID(int value) {
+		this.ID = value;
+	}
+	
+	public int getID() {
+		return ID;
+	}
+	
+	public int getORMID() {
+		return getID();
+	}
+	
+	public void setUrl(String value) {
+		this.url = value;
+	}
+	
+	public String getUrl() {
+		return url;
+	}
 	
 	public void setTitulo(String value) {
 		this.titulo = value;
@@ -209,24 +232,12 @@ public class Video implements Serializable {
 		return megusta;
 	}
 	
-	private void setId(int value) {
-		this.id = value;
-	}
-	
-	public int getId() {
-		return id;
-	}
-	
-	public int getORMID() {
-		return getId();
-	}
-	
 	public void setCategoria(diagramaclasesbd.Categoria value) {
 		if (categoria != null) {
-			categoria.video.remove(this);
+			categoria.videos.remove(this);
 		}
 		if (value != null) {
-			value.video.add(this);
+			value.videos.add(this);
 		}
 	}
 	
@@ -245,16 +256,136 @@ public class Video implements Serializable {
 		return categoria;
 	}
 	
-	private void setORM_Comentario(java.util.Set value) {
-		this.ORM_comentario = value;
+	public void setLista_rep(diagramaclasesbd.Lista_De_Reproduccion value) {
+		if (lista_rep != null) {
+			lista_rep.videos_rep.remove(this);
+		}
+		if (value != null) {
+			value.videos_rep.add(this);
+		}
 	}
 	
-	private java.util.Set getORM_Comentario() {
-		return ORM_comentario;
+	public diagramaclasesbd.Lista_De_Reproduccion getLista_rep() {
+		return lista_rep;
+	}
+	
+	/**
+	 * This method is for internal use only.
+	 */
+	public void setORM_Lista_rep(diagramaclasesbd.Lista_De_Reproduccion value) {
+		this.lista_rep = value;
+	}
+	
+	private diagramaclasesbd.Lista_De_Reproduccion getORM_Lista_rep() {
+		return lista_rep;
+	}
+	
+	public void setMas_gusta(diagramaclasesbd.Lista_De_Reproduccion value) {
+		if (mas_gusta != null) {
+			mas_gusta.video_masmegusta.remove(this);
+		}
+		if (value != null) {
+			value.video_masmegusta.add(this);
+		}
+	}
+	
+	public diagramaclasesbd.Lista_De_Reproduccion getMas_gusta() {
+		return mas_gusta;
+	}
+	
+	/**
+	 * This method is for internal use only.
+	 */
+	public void setORM_Mas_gusta(diagramaclasesbd.Lista_De_Reproduccion value) {
+		this.mas_gusta = value;
+	}
+	
+	private diagramaclasesbd.Lista_De_Reproduccion getORM_Mas_gusta() {
+		return mas_gusta;
+	}
+	
+	public void setUltimos(diagramaclasesbd.Lista_De_Reproduccion value) {
+		if (ultimos != null) {
+			ultimos.videos_ultimos.remove(this);
+		}
+		if (value != null) {
+			value.videos_ultimos.add(this);
+		}
+	}
+	
+	public diagramaclasesbd.Lista_De_Reproduccion getUltimos() {
+		return ultimos;
+	}
+	
+	/**
+	 * This method is for internal use only.
+	 */
+	public void setORM_Ultimos(diagramaclasesbd.Lista_De_Reproduccion value) {
+		this.ultimos = value;
+	}
+	
+	private diagramaclasesbd.Lista_De_Reproduccion getORM_Ultimos() {
+		return ultimos;
+	}
+	
+	public void setRelacionados(diagramaclasesbd.Lista_De_Reproduccion value) {
+		if (relacionados != null) {
+			relacionados.videosRel.remove(this);
+		}
+		if (value != null) {
+			value.videosRel.add(this);
+		}
+	}
+	
+	public diagramaclasesbd.Lista_De_Reproduccion getRelacionados() {
+		return relacionados;
+	}
+	
+	/**
+	 * This method is for internal use only.
+	 */
+	public void setORM_Relacionados(diagramaclasesbd.Lista_De_Reproduccion value) {
+		this.relacionados = value;
+	}
+	
+	private diagramaclasesbd.Lista_De_Reproduccion getORM_Relacionados() {
+		return relacionados;
+	}
+	
+	private void setORM_Usuarios(java.util.Set value) {
+		this.ORM_usuarios = value;
+	}
+	
+	private java.util.Set getORM_Usuarios() {
+		return ORM_usuarios;
 	}
 	
 	@Transient	
-	public final diagramaclasesbd.ComentarioSetCollection comentario = new diagramaclasesbd.ComentarioSetCollection(this, _ormAdapter, ORMConstants.KEY_VIDEO_COMENTARIO, ORMConstants.KEY_COMENTARIO_VIDEO, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final diagramaclasesbd.UsuarioSetCollection usuarios = new diagramaclasesbd.UsuarioSetCollection(this, _ormAdapter, ORMConstants.KEY_VIDEO_USUARIOS, ORMConstants.KEY_USUARIO_ME_GUSTA, ORMConstants.KEY_MUL_MANY_TO_MANY);
+	
+	public void setUsuario_historial(diagramaclasesbd.Usuario value) {
+		if (usuario_historial != null) {
+			usuario_historial.historial.remove(this);
+		}
+		if (value != null) {
+			value.historial.add(this);
+		}
+	}
+	
+	public diagramaclasesbd.Usuario getUsuario_historial() {
+		return usuario_historial;
+	}
+	
+	/**
+	 * This method is for internal use only.
+	 */
+	public void setORM_Usuario_historial(diagramaclasesbd.Usuario value) {
+		this.usuario_historial = value;
+	}
+	
+	private diagramaclasesbd.Usuario getORM_Usuario_historial() {
+		return usuario_historial;
+	}
 	
 	public void setEs_propietario(diagramaclasesbd.Usuario value) {
 		if (es_propietario != null) {
@@ -280,143 +411,12 @@ public class Video implements Serializable {
 		return es_propietario;
 	}
 	
-	private void setORM_Usuarios(java.util.Set value) {
-		this.ORM_usuarios = value;
-	}
-	
-	private java.util.Set getORM_Usuarios() {
-		return ORM_usuarios;
-	}
-	
-	@Transient	
-	public final diagramaclasesbd.UsuarioSetCollection usuarios = new diagramaclasesbd.UsuarioSetCollection(this, _ormAdapter, ORMConstants.KEY_VIDEO_USUARIOS, ORMConstants.KEY_USUARIO_ME_GUSTA, ORMConstants.KEY_MUL_MANY_TO_MANY);
-	
-	public void setLista_rep(diagramaclasesbd.Lista_De_Reproduccion value) {
-		if (lista_rep != null) {
-			lista_rep.video.remove(this);
-		}
-		if (value != null) {
-			value.video.add(this);
-		}
-	}
-	
-	public diagramaclasesbd.Lista_De_Reproduccion getLista_rep() {
-		return lista_rep;
-	}
-	
-	/**
-	 * This method is for internal use only.
-	 */
-	public void setORM_Lista_rep(diagramaclasesbd.Lista_De_Reproduccion value) {
-		this.lista_rep = value;
-	}
-	
-	private diagramaclasesbd.Lista_De_Reproduccion getORM_Lista_rep() {
-		return lista_rep;
-	}
-	
-	public void setMas_gusta(diagramaclasesbd.Lista_De_Reproduccion value) {
-		if (mas_gusta != null) {
-			mas_gusta.videoMasMegusta.remove(this);
-		}
-		if (value != null) {
-			value.videoMasMegusta.add(this);
-		}
-	}
-	
-	public diagramaclasesbd.Lista_De_Reproduccion getMas_gusta() {
-		return mas_gusta;
-	}
-	
-	/**
-	 * This method is for internal use only.
-	 */
-	public void setORM_Mas_gusta(diagramaclasesbd.Lista_De_Reproduccion value) {
-		this.mas_gusta = value;
-	}
-	
-	private diagramaclasesbd.Lista_De_Reproduccion getORM_Mas_gusta() {
-		return mas_gusta;
-	}
-	
-	public void setUltimos(diagramaclasesbd.Lista_De_Reproduccion value) {
-		if (ultimos != null) {
-			ultimos.videoUltimos.remove(this);
-		}
-		if (value != null) {
-			value.videoUltimos.add(this);
-		}
-	}
-	
-	public diagramaclasesbd.Lista_De_Reproduccion getUltimos() {
-		return ultimos;
-	}
-	
-	/**
-	 * This method is for internal use only.
-	 */
-	public void setORM_Ultimos(diagramaclasesbd.Lista_De_Reproduccion value) {
-		this.ultimos = value;
-	}
-	
-	private diagramaclasesbd.Lista_De_Reproduccion getORM_Ultimos() {
-		return ultimos;
-	}
-	
-	public void setRelacionados(diagramaclasesbd.Lista_De_Reproduccion value) {
-		if (relacionados != null) {
-			relacionados.videos.remove(this);
-		}
-		if (value != null) {
-			value.videos.add(this);
-		}
-	}
-	
-	public diagramaclasesbd.Lista_De_Reproduccion getRelacionados() {
-		return relacionados;
-	}
-	
-	/**
-	 * This method is for internal use only.
-	 */
-	public void setORM_Relacionados(diagramaclasesbd.Lista_De_Reproduccion value) {
-		this.relacionados = value;
-	}
-	
-	private diagramaclasesbd.Lista_De_Reproduccion getORM_Relacionados() {
-		return relacionados;
-	}
-	
-	public void setUsuarioHistorial(diagramaclasesbd.Usuario value) {
-		if (usuarioHistorial != null) {
-			usuarioHistorial.historial.remove(this);
-		}
-		if (value != null) {
-			value.historial.add(this);
-		}
-	}
-	
-	public diagramaclasesbd.Usuario getUsuarioHistorial() {
-		return usuarioHistorial;
-	}
-	
-	/**
-	 * This method is for internal use only.
-	 */
-	public void setORM_UsuarioHistorial(diagramaclasesbd.Usuario value) {
-		this.usuarioHistorial = value;
-	}
-	
-	private diagramaclasesbd.Usuario getORM_UsuarioHistorial() {
-		return usuarioHistorial;
-	}
-	
 	public void setUsuario(diagramaclasesbd.Usuario value) {
 		if (usuario != null) {
-			usuario.otros_usuario.remove(this);
+			usuario.otros_usuarios.remove(this);
 		}
 		if (value != null) {
-			value.otros_usuario.add(this);
+			value.otros_usuarios.add(this);
 		}
 	}
 	
@@ -435,8 +435,19 @@ public class Video implements Serializable {
 		return usuario;
 	}
 	
+	private void setORM_Comentarios(java.util.Set value) {
+		this.ORM_comentarios = value;
+	}
+	
+	private java.util.Set getORM_Comentarios() {
+		return ORM_comentarios;
+	}
+	
+	@Transient	
+	public final diagramaclasesbd.ComentarioSetCollection comentarios = new diagramaclasesbd.ComentarioSetCollection(this, _ormAdapter, ORMConstants.KEY_VIDEO_COMENTARIOS, ORMConstants.KEY_COMENTARIO_VIDEO_COMENT, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	
 	public String toString() {
-		return String.valueOf(getId());
+		return String.valueOf(getID());
 	}
 	
 }

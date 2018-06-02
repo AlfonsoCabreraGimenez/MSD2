@@ -49,7 +49,7 @@ public interface iUsuario_Registrado {
 
 	public void quitarMegusta(int aID);
 
-	public void subirVideo(int aID, Video aVideo, String aMiniatura, String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion);
+	public void subirVideo(int aID, Video aVideo, String aMiniatura, String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aUrl);
 
 	public void suscribirse(int aID);
 

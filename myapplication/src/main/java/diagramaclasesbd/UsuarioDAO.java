@@ -331,45 +331,45 @@ public class UsuarioDAO {
 		}
 		
 		try {
-			if (usuario.getUsuario() != null) {
-				usuario.getUsuario().suscripciones.remove(usuario);
+			diagramaclasesbd.Video[] lMe_gustas = usuario.me_gusta.toArray();
+			for(int i = 0; i < lMe_gustas.length; i++) {
+				lMe_gustas[i].usuarios.remove(usuario);
 			}
-			
-			if (usuario.getEs_suscriptor() != null) {
-				usuario.getEs_suscriptor().suscriptores.remove(usuario);
-			}
-			
-			diagramaclasesbd.Usuario[] lSuscripcioness = usuario.suscripciones.toArray();
-			for(int i = 0; i < lSuscripcioness.length; i++) {
-				lSuscripcioness[i].setUsuario(null);
+			diagramaclasesbd.Video[] lHistorials = usuario.historial.toArray();
+			for(int i = 0; i < lHistorials.length; i++) {
+				lHistorials[i].setUsuario_historial(null);
 			}
 			diagramaclasesbd.Video[] lPropiedad_video_des = usuario.propiedad_video_de.toArray();
 			for(int i = 0; i < lPropiedad_video_des.length; i++) {
 				lPropiedad_video_des[i].setEs_propietario(null);
 			}
-			diagramaclasesbd.Video[] lMe_gustas = usuario.me_gusta.toArray();
-			for(int i = 0; i < lMe_gustas.length; i++) {
-				lMe_gustas[i].usuarios.remove(usuario);
+			diagramaclasesbd.Video[] lOtros_usuarioss = usuario.otros_usuarios.toArray();
+			for(int i = 0; i < lOtros_usuarioss.length; i++) {
+				lOtros_usuarioss[i].setUsuario(null);
 			}
 			diagramaclasesbd.Lista_De_Reproduccion[] lPropiedad_des = usuario.propiedad_de.toArray();
 			for(int i = 0; i < lPropiedad_des.length; i++) {
-				lPropiedad_des[i].setEs_propietario_de(null);
-			}
-			diagramaclasesbd.Video[] lHistorials = usuario.historial.toArray();
-			for(int i = 0; i < lHistorials.length; i++) {
-				lHistorials[i].setUsuarioHistorial(null);
-			}
-			diagramaclasesbd.Video[] lOtros_usuarios = usuario.otros_usuario.toArray();
-			for(int i = 0; i < lOtros_usuarios.length; i++) {
-				lOtros_usuarios[i].setUsuario(null);
-			}
-			diagramaclasesbd.Usuario[] lSuscriptoress = usuario.suscriptores.toArray();
-			for(int i = 0; i < lSuscriptoress.length; i++) {
-				lSuscriptoress[i].setEs_suscriptor(null);
+				lPropiedad_des[i].setEs_propietario_lista(null);
 			}
 			diagramaclasesbd.Comentario[] lEs_escritos = usuario.es_escrito.toArray();
 			for(int i = 0; i < lEs_escritos.length; i++) {
-				lEs_escritos[i].setUsuarioComentario(null);
+				lEs_escritos[i].setUsuario_comentario(null);
+			}
+			diagramaclasesbd.Usuario[] lUsuario_sucripcioness = usuario.usuario_sucripciones.toArray();
+			for(int i = 0; i < lUsuario_sucripcioness.length; i++) {
+				lUsuario_sucripcioness[i].suscripciones.remove(usuario);
+			}
+			diagramaclasesbd.Usuario[] lSuscriptoress = usuario.suscriptores.toArray();
+			for(int i = 0; i < lSuscriptoress.length; i++) {
+				lSuscriptoress[i].usuario_suscriptores.remove(usuario);
+			}
+			diagramaclasesbd.Usuario[] lSuscripcioness = usuario.suscripciones.toArray();
+			for(int i = 0; i < lSuscripcioness.length; i++) {
+				lSuscripcioness[i].usuario_sucripciones.remove(usuario);
+			}
+			diagramaclasesbd.Usuario[] lUsuario_suscriptoress = usuario.usuario_suscriptores.toArray();
+			for(int i = 0; i < lUsuario_suscriptoress.length; i++) {
+				lUsuario_suscriptoress[i].suscriptores.remove(usuario);
 			}
 			return delete(usuario);
 		}
@@ -389,45 +389,45 @@ public class UsuarioDAO {
 		}
 		
 		try {
-			if (usuario.getUsuario() != null) {
-				usuario.getUsuario().suscripciones.remove(usuario);
+			diagramaclasesbd.Video[] lMe_gustas = usuario.me_gusta.toArray();
+			for(int i = 0; i < lMe_gustas.length; i++) {
+				lMe_gustas[i].usuarios.remove(usuario);
 			}
-			
-			if (usuario.getEs_suscriptor() != null) {
-				usuario.getEs_suscriptor().suscriptores.remove(usuario);
-			}
-			
-			diagramaclasesbd.Usuario[] lSuscripcioness = usuario.suscripciones.toArray();
-			for(int i = 0; i < lSuscripcioness.length; i++) {
-				lSuscripcioness[i].setUsuario(null);
+			diagramaclasesbd.Video[] lHistorials = usuario.historial.toArray();
+			for(int i = 0; i < lHistorials.length; i++) {
+				lHistorials[i].setUsuario_historial(null);
 			}
 			diagramaclasesbd.Video[] lPropiedad_video_des = usuario.propiedad_video_de.toArray();
 			for(int i = 0; i < lPropiedad_video_des.length; i++) {
 				lPropiedad_video_des[i].setEs_propietario(null);
 			}
-			diagramaclasesbd.Video[] lMe_gustas = usuario.me_gusta.toArray();
-			for(int i = 0; i < lMe_gustas.length; i++) {
-				lMe_gustas[i].usuarios.remove(usuario);
+			diagramaclasesbd.Video[] lOtros_usuarioss = usuario.otros_usuarios.toArray();
+			for(int i = 0; i < lOtros_usuarioss.length; i++) {
+				lOtros_usuarioss[i].setUsuario(null);
 			}
 			diagramaclasesbd.Lista_De_Reproduccion[] lPropiedad_des = usuario.propiedad_de.toArray();
 			for(int i = 0; i < lPropiedad_des.length; i++) {
-				lPropiedad_des[i].setEs_propietario_de(null);
-			}
-			diagramaclasesbd.Video[] lHistorials = usuario.historial.toArray();
-			for(int i = 0; i < lHistorials.length; i++) {
-				lHistorials[i].setUsuarioHistorial(null);
-			}
-			diagramaclasesbd.Video[] lOtros_usuarios = usuario.otros_usuario.toArray();
-			for(int i = 0; i < lOtros_usuarios.length; i++) {
-				lOtros_usuarios[i].setUsuario(null);
-			}
-			diagramaclasesbd.Usuario[] lSuscriptoress = usuario.suscriptores.toArray();
-			for(int i = 0; i < lSuscriptoress.length; i++) {
-				lSuscriptoress[i].setEs_suscriptor(null);
+				lPropiedad_des[i].setEs_propietario_lista(null);
 			}
 			diagramaclasesbd.Comentario[] lEs_escritos = usuario.es_escrito.toArray();
 			for(int i = 0; i < lEs_escritos.length; i++) {
-				lEs_escritos[i].setUsuarioComentario(null);
+				lEs_escritos[i].setUsuario_comentario(null);
+			}
+			diagramaclasesbd.Usuario[] lUsuario_sucripcioness = usuario.usuario_sucripciones.toArray();
+			for(int i = 0; i < lUsuario_sucripcioness.length; i++) {
+				lUsuario_sucripcioness[i].suscripciones.remove(usuario);
+			}
+			diagramaclasesbd.Usuario[] lSuscriptoress = usuario.suscriptores.toArray();
+			for(int i = 0; i < lSuscriptoress.length; i++) {
+				lSuscriptoress[i].usuario_suscriptores.remove(usuario);
+			}
+			diagramaclasesbd.Usuario[] lSuscripcioness = usuario.suscripciones.toArray();
+			for(int i = 0; i < lSuscripcioness.length; i++) {
+				lSuscripcioness[i].usuario_sucripciones.remove(usuario);
+			}
+			diagramaclasesbd.Usuario[] lUsuario_suscriptoress = usuario.usuario_suscriptores.toArray();
+			for(int i = 0; i < lUsuario_suscriptoress.length; i++) {
+				lUsuario_suscriptoress[i].suscriptores.remove(usuario);
 			}
 			try {
 				session.delete(usuario);

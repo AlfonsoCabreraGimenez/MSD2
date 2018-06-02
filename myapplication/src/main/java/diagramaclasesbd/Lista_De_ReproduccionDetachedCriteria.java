@@ -19,57 +19,57 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class Lista_De_ReproduccionDetachedCriteria extends AbstractORMDetachedCriteria {
-	public final IntegerExpression id;
-	public final IntegerExpression es_propietario_deId;
-	public final AssociationExpression es_propietario_de;
+	public final IntegerExpression ID;
+	public final IntegerExpression es_propietario_listaId;
+	public final AssociationExpression es_propietario_lista;
 	public final StringExpression titulo;
-	public final CollectionExpression video;
-	public final CollectionExpression videoMasMegusta;
-	public final CollectionExpression videoUltimos;
-	public final CollectionExpression videos;
+	public final CollectionExpression videos_rep;
+	public final CollectionExpression video_masmegusta;
+	public final CollectionExpression videos_ultimos;
+	public final CollectionExpression videosRel;
 	
 	public Lista_De_ReproduccionDetachedCriteria() {
 		super(diagramaclasesbd.Lista_De_Reproduccion.class, diagramaclasesbd.Lista_De_ReproduccionCriteria.class);
-		id = new IntegerExpression("id", this.getDetachedCriteria());
-		es_propietario_deId = new IntegerExpression("es_propietario_de.ID", this.getDetachedCriteria());
-		es_propietario_de = new AssociationExpression("es_propietario_de", this.getDetachedCriteria());
+		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		es_propietario_listaId = new IntegerExpression("es_propietario_lista.ID", this.getDetachedCriteria());
+		es_propietario_lista = new AssociationExpression("es_propietario_lista", this.getDetachedCriteria());
 		titulo = new StringExpression("titulo", this.getDetachedCriteria());
-		video = new CollectionExpression("ORM_video", this.getDetachedCriteria());
-		videoMasMegusta = new CollectionExpression("ORM_videoMasMegusta", this.getDetachedCriteria());
-		videoUltimos = new CollectionExpression("ORM_videoUltimos", this.getDetachedCriteria());
-		videos = new CollectionExpression("ORM_videos", this.getDetachedCriteria());
+		videos_rep = new CollectionExpression("ORM_videos_rep", this.getDetachedCriteria());
+		video_masmegusta = new CollectionExpression("ORM_video_masmegusta", this.getDetachedCriteria());
+		videos_ultimos = new CollectionExpression("ORM_videos_ultimos", this.getDetachedCriteria());
+		videosRel = new CollectionExpression("ORM_videosRel", this.getDetachedCriteria());
 	}
 	
 	public Lista_De_ReproduccionDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, diagramaclasesbd.Lista_De_ReproduccionCriteria.class);
-		id = new IntegerExpression("id", this.getDetachedCriteria());
-		es_propietario_deId = new IntegerExpression("es_propietario_de.ID", this.getDetachedCriteria());
-		es_propietario_de = new AssociationExpression("es_propietario_de", this.getDetachedCriteria());
+		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		es_propietario_listaId = new IntegerExpression("es_propietario_lista.ID", this.getDetachedCriteria());
+		es_propietario_lista = new AssociationExpression("es_propietario_lista", this.getDetachedCriteria());
 		titulo = new StringExpression("titulo", this.getDetachedCriteria());
-		video = new CollectionExpression("ORM_video", this.getDetachedCriteria());
-		videoMasMegusta = new CollectionExpression("ORM_videoMasMegusta", this.getDetachedCriteria());
-		videoUltimos = new CollectionExpression("ORM_videoUltimos", this.getDetachedCriteria());
-		videos = new CollectionExpression("ORM_videos", this.getDetachedCriteria());
+		videos_rep = new CollectionExpression("ORM_videos_rep", this.getDetachedCriteria());
+		video_masmegusta = new CollectionExpression("ORM_video_masmegusta", this.getDetachedCriteria());
+		videos_ultimos = new CollectionExpression("ORM_videos_ultimos", this.getDetachedCriteria());
+		videosRel = new CollectionExpression("ORM_videosRel", this.getDetachedCriteria());
 	}
 	
-	public UsuarioDetachedCriteria createEs_propietario_deCriteria() {
-		return new UsuarioDetachedCriteria(createCriteria("es_propietario_de"));
+	public UsuarioDetachedCriteria createEs_propietario_listaCriteria() {
+		return new UsuarioDetachedCriteria(createCriteria("es_propietario_lista"));
 	}
 	
-	public VideoDetachedCriteria createVideoCriteria() {
-		return new VideoDetachedCriteria(createCriteria("ORM_video"));
+	public VideoDetachedCriteria createVideos_repCriteria() {
+		return new VideoDetachedCriteria(createCriteria("ORM_videos_rep"));
 	}
 	
-	public VideoDetachedCriteria createVideoMasMegustaCriteria() {
-		return new VideoDetachedCriteria(createCriteria("ORM_videoMasMegusta"));
+	public VideoDetachedCriteria createVideo_masmegustaCriteria() {
+		return new VideoDetachedCriteria(createCriteria("ORM_video_masmegusta"));
 	}
 	
-	public VideoDetachedCriteria createVideoUltimosCriteria() {
-		return new VideoDetachedCriteria(createCriteria("ORM_videoUltimos"));
+	public VideoDetachedCriteria createVideos_ultimosCriteria() {
+		return new VideoDetachedCriteria(createCriteria("ORM_videos_ultimos"));
 	}
 	
-	public VideoDetachedCriteria createVideosCriteria() {
-		return new VideoDetachedCriteria(createCriteria("ORM_videos"));
+	public VideoDetachedCriteria createVideosRelCriteria() {
+		return new VideoDetachedCriteria(createCriteria("ORM_videosRel"));
 	}
 	
 	public Lista_De_Reproduccion uniqueLista_De_Reproduccion(PersistentSession session) {

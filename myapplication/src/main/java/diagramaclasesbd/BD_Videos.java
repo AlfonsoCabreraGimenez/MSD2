@@ -34,7 +34,7 @@ public class BD_Videos {
 		throw new UnsupportedOperationException();
 	}
 
-	public void subirVideo(int aID, Video aVideo, String aMiniatura, String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion) {
+	public void subirVideo(int aID, Video aVideo, String aMiniatura, String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aUrl) {
 		throw new UnsupportedOperationException();
 	}
 

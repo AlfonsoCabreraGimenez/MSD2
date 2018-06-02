@@ -3,8 +3,10 @@ package diagramaclasesbd;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
+
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
+
 import diagramaclasesbd.Registrado;
 import Codigo.TipoBusqueda;
 import Codigo.Usuario2;
@@ -17,7 +19,7 @@ public class BD_Registrados {
 		throw new UnsupportedOperationException();
 	}
 
-	public void registrarse(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aPass, String aRepPass, String aEmail, String aAvatar)throws PersistentException {
+	public void registrarse(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aPass, String aRepPass, String aEmail, String aAvatar) throws PersistentException{
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
 			diagramaclasesbd.Registrado r = diagramaclasesbd.RegistradoDAO.createRegistrado();
@@ -35,7 +37,6 @@ public class BD_Registrados {
 			// TODO Auto-generated catch block
 			t.rollback();
 		}
-
 	}
 
 	public void nuevaPass(String aPass, String aRepPass) {

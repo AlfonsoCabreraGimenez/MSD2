@@ -9,21 +9,21 @@ public class RetrieveAndUpdateActividad11CabreraFuentesData {
 	public void retrieveAndUpdateTestData() throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
+			diagramaclasesbd.Categoria ldiagramaclasesbdCategoria = diagramaclasesbd.CategoriaDAO.loadCategoriaByQuery(null, null);
+			// Update the properties of the persistent object
+			diagramaclasesbd.CategoriaDAO.save(ldiagramaclasesbdCategoria);
+			diagramaclasesbd.Video ldiagramaclasesbdVideo = diagramaclasesbd.VideoDAO.loadVideoByQuery(null, null);
+			// Update the properties of the persistent object
+			diagramaclasesbd.VideoDAO.save(ldiagramaclasesbdVideo);
 			diagramaclasesbd.Lista_De_Reproduccion ldiagramaclasesbdLista_De_Reproduccion = diagramaclasesbd.Lista_De_ReproduccionDAO.loadLista_De_ReproduccionByQuery(null, null);
 			// Update the properties of the persistent object
 			diagramaclasesbd.Lista_De_ReproduccionDAO.save(ldiagramaclasesbdLista_De_Reproduccion);
 			diagramaclasesbd.Comentario ldiagramaclasesbdComentario = diagramaclasesbd.ComentarioDAO.loadComentarioByQuery(null, null);
 			// Update the properties of the persistent object
 			diagramaclasesbd.ComentarioDAO.save(ldiagramaclasesbdComentario);
-			diagramaclasesbd.Categoria ldiagramaclasesbdCategoria = diagramaclasesbd.CategoriaDAO.loadCategoriaByQuery(null, null);
-			// Update the properties of the persistent object
-			diagramaclasesbd.CategoriaDAO.save(ldiagramaclasesbdCategoria);
 			diagramaclasesbd.Usuario ldiagramaclasesbdUsuario = diagramaclasesbd.UsuarioDAO.loadUsuarioByQuery(null, null);
 			// Update the properties of the persistent object
 			diagramaclasesbd.UsuarioDAO.save(ldiagramaclasesbdUsuario);
-			diagramaclasesbd.Video ldiagramaclasesbdVideo = diagramaclasesbd.VideoDAO.loadVideoByQuery(null, null);
-			// Update the properties of the persistent object
-			diagramaclasesbd.VideoDAO.save(ldiagramaclasesbdVideo);
 			diagramaclasesbd.Registrado ldiagramaclasesbdRegistrado = diagramaclasesbd.RegistradoDAO.loadRegistradoByQuery(null, null);
 			// Update the properties of the persistent object
 			diagramaclasesbd.RegistradoDAO.save(ldiagramaclasesbdRegistrado);
@@ -39,35 +39,35 @@ public class RetrieveAndUpdateActividad11CabreraFuentesData {
 	}
 	
 	public void retrieveByCriteria() throws PersistentException {
+		System.out.println("Retrieving Categoria by CategoriaCriteria");
+		diagramaclasesbd.CategoriaCriteria ldiagramaclasesbdCategoriaCriteria = new diagramaclasesbd.CategoriaCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//ldiagramaclasesbdCategoriaCriteria.ID.eq();
+		System.out.println(ldiagramaclasesbdCategoriaCriteria.uniqueCategoria());
+		
+		System.out.println("Retrieving Video by VideoCriteria");
+		diagramaclasesbd.VideoCriteria ldiagramaclasesbdVideoCriteria = new diagramaclasesbd.VideoCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//ldiagramaclasesbdVideoCriteria.ID.eq();
+		System.out.println(ldiagramaclasesbdVideoCriteria.uniqueVideo());
+		
 		System.out.println("Retrieving Lista_De_Reproduccion by Lista_De_ReproduccionCriteria");
 		diagramaclasesbd.Lista_De_ReproduccionCriteria ldiagramaclasesbdLista_De_ReproduccionCriteria = new diagramaclasesbd.Lista_De_ReproduccionCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//ldiagramaclasesbdLista_De_ReproduccionCriteria.id.eq();
+		//ldiagramaclasesbdLista_De_ReproduccionCriteria.ID.eq();
 		System.out.println(ldiagramaclasesbdLista_De_ReproduccionCriteria.uniqueLista_De_Reproduccion());
 		
 		System.out.println("Retrieving Comentario by ComentarioCriteria");
 		diagramaclasesbd.ComentarioCriteria ldiagramaclasesbdComentarioCriteria = new diagramaclasesbd.ComentarioCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//ldiagramaclasesbdComentarioCriteria.id.eq();
+		//ldiagramaclasesbdComentarioCriteria.ID.eq();
 		System.out.println(ldiagramaclasesbdComentarioCriteria.uniqueComentario());
-		
-		System.out.println("Retrieving Categoria by CategoriaCriteria");
-		diagramaclasesbd.CategoriaCriteria ldiagramaclasesbdCategoriaCriteria = new diagramaclasesbd.CategoriaCriteria();
-		// Please uncomment the follow line and fill in parameter(s)
-		//ldiagramaclasesbdCategoriaCriteria.id.eq();
-		System.out.println(ldiagramaclasesbdCategoriaCriteria.uniqueCategoria());
 		
 		System.out.println("Retrieving Usuario by UsuarioCriteria");
 		diagramaclasesbd.UsuarioCriteria ldiagramaclasesbdUsuarioCriteria = new diagramaclasesbd.UsuarioCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
 		//ldiagramaclasesbdUsuarioCriteria.ID.eq();
 		System.out.println(ldiagramaclasesbdUsuarioCriteria.uniqueUsuario());
-		
-		System.out.println("Retrieving Video by VideoCriteria");
-		diagramaclasesbd.VideoCriteria ldiagramaclasesbdVideoCriteria = new diagramaclasesbd.VideoCriteria();
-		// Please uncomment the follow line and fill in parameter(s)
-		//ldiagramaclasesbdVideoCriteria.id.eq();
-		System.out.println(ldiagramaclasesbdVideoCriteria.uniqueVideo());
 		
 		System.out.println("Retrieving Registrado by RegistradoCriteria");
 		diagramaclasesbd.RegistradoCriteria ldiagramaclasesbdRegistradoCriteria = new diagramaclasesbd.RegistradoCriteria();

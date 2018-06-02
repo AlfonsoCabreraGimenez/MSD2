@@ -70,7 +70,8 @@ public class VideoSetCollection extends org.orm.util.ORMSet {
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
-	 * <li>id</li>
+	 * <li>ID</li>
+	 * <li>url</li>
 	 * <li>titulo</li>
 	 * <li>etiqueta</li>
 	 * <li>descripcion</li>
@@ -87,7 +88,8 @@ public class VideoSetCollection extends org.orm.util.ORMSet {
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
-	 * <li>id</li>
+	 * <li>ID</li>
+	 * <li>url</li>
 	 * <li>titulo</li>
 	 * <li>etiqueta</li>
 	 * <li>descripcion</li>

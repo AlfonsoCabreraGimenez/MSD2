@@ -23,8 +23,8 @@ public class Categoria implements Serializable {
 	}
 	
 	private java.util.Set this_getSet (int key) {
-		if (key == ORMConstants.KEY_CATEGORIA_VIDEO) {
-			return ORM_video;
+		if (key == ORMConstants.KEY_CATEGORIA_VIDEOS) {
+			return ORM_videos;
 		}
 		
 		return null;
@@ -38,11 +38,11 @@ public class Categoria implements Serializable {
 		
 	};
 	
-	@Column(name="Id", nullable=false, length=10)	
+	@Column(name="ID", nullable=false, length=10)	
 	@Id	
 	@GeneratedValue(generator="DIAGRAMACLASESBD_CATEGORIA_ID_GENERATOR")	
 	@org.hibernate.annotations.GenericGenerator(name="DIAGRAMACLASESBD_CATEGORIA_ID_GENERATOR", strategy="native")	
-	private int id;
+	private int ID;
 	
 	@Column(name="Nombre", nullable=true, length=255)	
 	private String nombre;
@@ -53,18 +53,18 @@ public class Categoria implements Serializable {
 	@OneToMany(mappedBy="categoria", targetEntity=diagramaclasesbd.Video.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_video = new java.util.HashSet();
+	private java.util.Set ORM_videos = new java.util.HashSet();
 	
-	private void setId(int value) {
-		this.id = value;
+	private void setID(int value) {
+		this.ID = value;
 	}
 	
-	public int getId() {
-		return id;
+	public int getID() {
+		return ID;
 	}
 	
 	public int getORMID() {
-		return getId();
+		return getID();
 	}
 	
 	public void setNombre(String value) {
@@ -83,19 +83,19 @@ public class Categoria implements Serializable {
 		return edad;
 	}
 	
-	private void setORM_Video(java.util.Set value) {
-		this.ORM_video = value;
+	private void setORM_Videos(java.util.Set value) {
+		this.ORM_videos = value;
 	}
 	
-	private java.util.Set getORM_Video() {
-		return ORM_video;
+	private java.util.Set getORM_Videos() {
+		return ORM_videos;
 	}
 	
 	@Transient	
-	public final diagramaclasesbd.VideoSetCollection video = new diagramaclasesbd.VideoSetCollection(this, _ormAdapter, ORMConstants.KEY_CATEGORIA_VIDEO, ORMConstants.KEY_VIDEO_CATEGORIA, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final diagramaclasesbd.VideoSetCollection videos = new diagramaclasesbd.VideoSetCollection(this, _ormAdapter, ORMConstants.KEY_CATEGORIA_VIDEOS, ORMConstants.KEY_VIDEO_CATEGORIA, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
-		return String.valueOf(getId());
+		return String.valueOf(getID());
 	}
 	
 }

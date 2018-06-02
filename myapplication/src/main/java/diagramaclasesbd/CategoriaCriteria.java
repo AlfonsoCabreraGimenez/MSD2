@@ -19,17 +19,17 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class CategoriaCriteria extends AbstractORMCriteria {
-	public final IntegerExpression id;
+	public final IntegerExpression ID;
 	public final StringExpression nombre;
 	public final IntegerExpression edad;
-	public final CollectionExpression video;
+	public final CollectionExpression videos;
 	
 	public CategoriaCriteria(Criteria criteria) {
 		super(criteria);
-		id = new IntegerExpression("id", this);
+		ID = new IntegerExpression("ID", this);
 		nombre = new StringExpression("nombre", this);
 		edad = new IntegerExpression("edad", this);
-		video = new CollectionExpression("ORM_video", this);
+		videos = new CollectionExpression("ORM_videos", this);
 	}
 	
 	public CategoriaCriteria(PersistentSession session) {
@@ -40,8 +40,8 @@ public class CategoriaCriteria extends AbstractORMCriteria {
 		this(Actividad11CabreraFuentesPersistentManager.instance().getSession());
 	}
 	
-	public VideoCriteria createVideoCriteria() {
-		return new VideoCriteria(createCriteria("ORM_video"));
+	public VideoCriteria createVideosCriteria() {
+		return new VideoCriteria(createCriteria("ORM_videos"));
 	}
 	
 	public Categoria uniqueCategoria() {

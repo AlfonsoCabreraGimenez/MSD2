@@ -19,10 +19,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class Lista_De_ReproduccionDAO {
-	public static Lista_De_Reproduccion loadLista_De_ReproduccionByORMID(int id) throws PersistentException {
+	public static Lista_De_Reproduccion loadLista_De_ReproduccionByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = Actividad11CabreraFuentesPersistentManager.instance().getSession();
-			return loadLista_De_ReproduccionByORMID(session, id);
+			return loadLista_De_ReproduccionByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class Lista_De_ReproduccionDAO {
 		}
 	}
 	
-	public static Lista_De_Reproduccion getLista_De_ReproduccionByORMID(int id) throws PersistentException {
+	public static Lista_De_Reproduccion getLista_De_ReproduccionByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = Actividad11CabreraFuentesPersistentManager.instance().getSession();
-			return getLista_De_ReproduccionByORMID(session, id);
+			return getLista_De_ReproduccionByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +41,10 @@ public class Lista_De_ReproduccionDAO {
 		}
 	}
 	
-	public static Lista_De_Reproduccion loadLista_De_ReproduccionByORMID(int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Lista_De_Reproduccion loadLista_De_ReproduccionByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = Actividad11CabreraFuentesPersistentManager.instance().getSession();
-			return loadLista_De_ReproduccionByORMID(session, id, lockMode);
+			return loadLista_De_ReproduccionByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class Lista_De_ReproduccionDAO {
 		}
 	}
 	
-	public static Lista_De_Reproduccion getLista_De_ReproduccionByORMID(int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Lista_De_Reproduccion getLista_De_ReproduccionByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = Actividad11CabreraFuentesPersistentManager.instance().getSession();
-			return getLista_De_ReproduccionByORMID(session, id, lockMode);
+			return getLista_De_ReproduccionByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +63,9 @@ public class Lista_De_ReproduccionDAO {
 		}
 	}
 	
-	public static Lista_De_Reproduccion loadLista_De_ReproduccionByORMID(PersistentSession session, int id) throws PersistentException {
+	public static Lista_De_Reproduccion loadLista_De_ReproduccionByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Lista_De_Reproduccion) session.load(diagramaclasesbd.Lista_De_Reproduccion.class, new Integer(id));
+			return (Lista_De_Reproduccion) session.load(diagramaclasesbd.Lista_De_Reproduccion.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +73,9 @@ public class Lista_De_ReproduccionDAO {
 		}
 	}
 	
-	public static Lista_De_Reproduccion getLista_De_ReproduccionByORMID(PersistentSession session, int id) throws PersistentException {
+	public static Lista_De_Reproduccion getLista_De_ReproduccionByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Lista_De_Reproduccion) session.get(diagramaclasesbd.Lista_De_Reproduccion.class, new Integer(id));
+			return (Lista_De_Reproduccion) session.get(diagramaclasesbd.Lista_De_Reproduccion.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +83,9 @@ public class Lista_De_ReproduccionDAO {
 		}
 	}
 	
-	public static Lista_De_Reproduccion loadLista_De_ReproduccionByORMID(PersistentSession session, int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Lista_De_Reproduccion loadLista_De_ReproduccionByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Lista_De_Reproduccion) session.load(diagramaclasesbd.Lista_De_Reproduccion.class, new Integer(id), lockMode);
+			return (Lista_De_Reproduccion) session.load(diagramaclasesbd.Lista_De_Reproduccion.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +93,9 @@ public class Lista_De_ReproduccionDAO {
 		}
 	}
 	
-	public static Lista_De_Reproduccion getLista_De_ReproduccionByORMID(PersistentSession session, int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Lista_De_Reproduccion getLista_De_ReproduccionByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Lista_De_Reproduccion) session.get(diagramaclasesbd.Lista_De_Reproduccion.class, new Integer(id), lockMode);
+			return (Lista_De_Reproduccion) session.get(diagramaclasesbd.Lista_De_Reproduccion.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -323,25 +323,25 @@ public class Lista_De_ReproduccionDAO {
 	
 	public static boolean deleteAndDissociate(diagramaclasesbd.Lista_De_Reproduccion lista_De_Reproduccion)throws PersistentException {
 		try {
-			if (lista_De_Reproduccion.getEs_propietario_de() != null) {
-				lista_De_Reproduccion.getEs_propietario_de().propiedad_de.remove(lista_De_Reproduccion);
+			if (lista_De_Reproduccion.getEs_propietario_lista() != null) {
+				lista_De_Reproduccion.getEs_propietario_lista().propiedad_de.remove(lista_De_Reproduccion);
 			}
 			
-			diagramaclasesbd.Video[] lVideos = lista_De_Reproduccion.video.toArray();
-			for(int i = 0; i < lVideos.length; i++) {
-				lVideos[i].setLista_rep(null);
+			diagramaclasesbd.Video[] lVideos_reps = lista_De_Reproduccion.videos_rep.toArray();
+			for(int i = 0; i < lVideos_reps.length; i++) {
+				lVideos_reps[i].setLista_rep(null);
 			}
-			diagramaclasesbd.Video[] lVideoMasMegustas = lista_De_Reproduccion.videoMasMegusta.toArray();
-			for(int i = 0; i < lVideoMasMegustas.length; i++) {
-				lVideoMasMegustas[i].setMas_gusta(null);
+			diagramaclasesbd.Video[] lVideo_masmegustas = lista_De_Reproduccion.video_masmegusta.toArray();
+			for(int i = 0; i < lVideo_masmegustas.length; i++) {
+				lVideo_masmegustas[i].setMas_gusta(null);
 			}
-			diagramaclasesbd.Video[] lVideoUltimoss = lista_De_Reproduccion.videoUltimos.toArray();
-			for(int i = 0; i < lVideoUltimoss.length; i++) {
-				lVideoUltimoss[i].setUltimos(null);
+			diagramaclasesbd.Video[] lVideos_ultimoss = lista_De_Reproduccion.videos_ultimos.toArray();
+			for(int i = 0; i < lVideos_ultimoss.length; i++) {
+				lVideos_ultimoss[i].setUltimos(null);
 			}
-			diagramaclasesbd.Video[] lVideoss = lista_De_Reproduccion.videos.toArray();
-			for(int i = 0; i < lVideoss.length; i++) {
-				lVideoss[i].setRelacionados(null);
+			diagramaclasesbd.Video[] lVideosRels = lista_De_Reproduccion.videosRel.toArray();
+			for(int i = 0; i < lVideosRels.length; i++) {
+				lVideosRels[i].setRelacionados(null);
 			}
 			return delete(lista_De_Reproduccion);
 		}
@@ -353,25 +353,25 @@ public class Lista_De_ReproduccionDAO {
 	
 	public static boolean deleteAndDissociate(diagramaclasesbd.Lista_De_Reproduccion lista_De_Reproduccion, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			if (lista_De_Reproduccion.getEs_propietario_de() != null) {
-				lista_De_Reproduccion.getEs_propietario_de().propiedad_de.remove(lista_De_Reproduccion);
+			if (lista_De_Reproduccion.getEs_propietario_lista() != null) {
+				lista_De_Reproduccion.getEs_propietario_lista().propiedad_de.remove(lista_De_Reproduccion);
 			}
 			
-			diagramaclasesbd.Video[] lVideos = lista_De_Reproduccion.video.toArray();
-			for(int i = 0; i < lVideos.length; i++) {
-				lVideos[i].setLista_rep(null);
+			diagramaclasesbd.Video[] lVideos_reps = lista_De_Reproduccion.videos_rep.toArray();
+			for(int i = 0; i < lVideos_reps.length; i++) {
+				lVideos_reps[i].setLista_rep(null);
 			}
-			diagramaclasesbd.Video[] lVideoMasMegustas = lista_De_Reproduccion.videoMasMegusta.toArray();
-			for(int i = 0; i < lVideoMasMegustas.length; i++) {
-				lVideoMasMegustas[i].setMas_gusta(null);
+			diagramaclasesbd.Video[] lVideo_masmegustas = lista_De_Reproduccion.video_masmegusta.toArray();
+			for(int i = 0; i < lVideo_masmegustas.length; i++) {
+				lVideo_masmegustas[i].setMas_gusta(null);
 			}
-			diagramaclasesbd.Video[] lVideoUltimoss = lista_De_Reproduccion.videoUltimos.toArray();
-			for(int i = 0; i < lVideoUltimoss.length; i++) {
-				lVideoUltimoss[i].setUltimos(null);
+			diagramaclasesbd.Video[] lVideos_ultimoss = lista_De_Reproduccion.videos_ultimos.toArray();
+			for(int i = 0; i < lVideos_ultimoss.length; i++) {
+				lVideos_ultimoss[i].setUltimos(null);
 			}
-			diagramaclasesbd.Video[] lVideoss = lista_De_Reproduccion.videos.toArray();
-			for(int i = 0; i < lVideoss.length; i++) {
-				lVideoss[i].setRelacionados(null);
+			diagramaclasesbd.Video[] lVideosRels = lista_De_Reproduccion.videosRel.toArray();
+			for(int i = 0; i < lVideosRels.length; i++) {
+				lVideosRels[i].setRelacionados(null);
 			}
 			try {
 				session.delete(lista_De_Reproduccion);

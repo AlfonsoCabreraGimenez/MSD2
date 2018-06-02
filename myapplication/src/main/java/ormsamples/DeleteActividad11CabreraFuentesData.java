@@ -9,21 +9,21 @@ public class DeleteActividad11CabreraFuentesData {
 	public void deleteTestData() throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
+			diagramaclasesbd.Categoria ldiagramaclasesbdCategoria = diagramaclasesbd.CategoriaDAO.loadCategoriaByQuery(null, null);
+			// Delete the persistent object
+			diagramaclasesbd.CategoriaDAO.delete(ldiagramaclasesbdCategoria);
+			diagramaclasesbd.Video ldiagramaclasesbdVideo = diagramaclasesbd.VideoDAO.loadVideoByQuery(null, null);
+			// Delete the persistent object
+			diagramaclasesbd.VideoDAO.delete(ldiagramaclasesbdVideo);
 			diagramaclasesbd.Lista_De_Reproduccion ldiagramaclasesbdLista_De_Reproduccion = diagramaclasesbd.Lista_De_ReproduccionDAO.loadLista_De_ReproduccionByQuery(null, null);
 			// Delete the persistent object
 			diagramaclasesbd.Lista_De_ReproduccionDAO.delete(ldiagramaclasesbdLista_De_Reproduccion);
 			diagramaclasesbd.Comentario ldiagramaclasesbdComentario = diagramaclasesbd.ComentarioDAO.loadComentarioByQuery(null, null);
 			// Delete the persistent object
 			diagramaclasesbd.ComentarioDAO.delete(ldiagramaclasesbdComentario);
-			diagramaclasesbd.Categoria ldiagramaclasesbdCategoria = diagramaclasesbd.CategoriaDAO.loadCategoriaByQuery(null, null);
-			// Delete the persistent object
-			diagramaclasesbd.CategoriaDAO.delete(ldiagramaclasesbdCategoria);
 			diagramaclasesbd.Usuario ldiagramaclasesbdUsuario = diagramaclasesbd.UsuarioDAO.loadUsuarioByQuery(null, null);
 			// Delete the persistent object
 			diagramaclasesbd.UsuarioDAO.delete(ldiagramaclasesbdUsuario);
-			diagramaclasesbd.Video ldiagramaclasesbdVideo = diagramaclasesbd.VideoDAO.loadVideoByQuery(null, null);
-			// Delete the persistent object
-			diagramaclasesbd.VideoDAO.delete(ldiagramaclasesbdVideo);
 			diagramaclasesbd.Registrado ldiagramaclasesbdRegistrado = diagramaclasesbd.RegistradoDAO.loadRegistradoByQuery(null, null);
 			// Delete the persistent object
 			diagramaclasesbd.RegistradoDAO.delete(ldiagramaclasesbdRegistrado);

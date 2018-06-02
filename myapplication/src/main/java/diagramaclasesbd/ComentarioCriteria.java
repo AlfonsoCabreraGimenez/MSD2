@@ -19,20 +19,20 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class ComentarioCriteria extends AbstractORMCriteria {
-	public final IntegerExpression id;
-	public final IntegerExpression usuarioComentarioId;
-	public final AssociationExpression usuarioComentario;
-	public final IntegerExpression videoId;
-	public final AssociationExpression video;
+	public final IntegerExpression ID;
+	public final IntegerExpression usuario_comentarioId;
+	public final AssociationExpression usuario_comentario;
+	public final IntegerExpression video_comentId;
+	public final AssociationExpression video_coment;
 	public final StringExpression descripcion;
 	
 	public ComentarioCriteria(Criteria criteria) {
 		super(criteria);
-		id = new IntegerExpression("id", this);
-		usuarioComentarioId = new IntegerExpression("usuarioComentario.ID", this);
-		usuarioComentario = new AssociationExpression("usuarioComentario", this);
-		videoId = new IntegerExpression("video.id", this);
-		video = new AssociationExpression("video", this);
+		ID = new IntegerExpression("ID", this);
+		usuario_comentarioId = new IntegerExpression("usuario_comentario.ID", this);
+		usuario_comentario = new AssociationExpression("usuario_comentario", this);
+		video_comentId = new IntegerExpression("video_coment.ID", this);
+		video_coment = new AssociationExpression("video_coment", this);
 		descripcion = new StringExpression("descripcion", this);
 	}
 	
@@ -44,12 +44,12 @@ public class ComentarioCriteria extends AbstractORMCriteria {
 		this(Actividad11CabreraFuentesPersistentManager.instance().getSession());
 	}
 	
-	public UsuarioCriteria createUsuarioComentarioCriteria() {
-		return new UsuarioCriteria(createCriteria("usuarioComentario"));
+	public UsuarioCriteria createUsuario_comentarioCriteria() {
+		return new UsuarioCriteria(createCriteria("usuario_comentario"));
 	}
 	
-	public VideoCriteria createVideoCriteria() {
-		return new VideoCriteria(createCriteria("video"));
+	public VideoCriteria createVideo_comentCriteria() {
+		return new VideoCriteria(createCriteria("video_coment"));
 	}
 	
 	public Comentario uniqueComentario() {
