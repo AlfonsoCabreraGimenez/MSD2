@@ -18,8 +18,9 @@ public class Registrarse extends Registrarse_ventana {
 		modificarDatosUser.setVisible(false);
 		botonRegistrarse.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
+					registrarse();
 					UI.getCurrent().getNavigator().navigateTo("PagIR");
-					//registrarse();
+					
 				}	
 		});
 	}

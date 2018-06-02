@@ -13,12 +13,12 @@ import Codigo.iAdministrador2;
 import Codigo.iUsuario_No_Registrado;
 
 public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsuario_No_Registrado {
-	public BD_Categorias _bd_categ;
+	public BD_Categorias categoria = new BD_Categorias();
 	public BD_Videos _bd_videos;
 	public BD_Listas_De_Reproduccion _bd_listasrep;
 	public BD_Comentarios _bd_coment;
 	public BD_Registrados registrados = new BD_Registrados();
-	public BD_Administradores _bd_admin;
+	public BD_Administradores administrador;
 
 	public void anadirAListaRep(int aID) {
 		throw new UnsupportedOperationException();
@@ -125,7 +125,13 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	}
 
 	public void crearCategoria(String aCategoria, int aEdad) {
-		throw new UnsupportedOperationException();
+		try {
+			categoria.crearCategoria(aCategoria, aEdad);
+		}catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	public void eliminarUsuario(int aID) {
