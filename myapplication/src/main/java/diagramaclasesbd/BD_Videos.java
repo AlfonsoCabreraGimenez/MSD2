@@ -2,6 +2,10 @@ package diagramaclasesbd;
 
 import java.util.List;
 import java.util.Vector;
+
+import org.orm.PersistentException;
+import org.orm.PersistentTransaction;
+
 import diagramaclasesbd.Video;
 import Codigo.TipoBusqueda;
 import Codigo.Video2;
@@ -34,8 +38,21 @@ public class BD_Videos {
 		throw new UnsupportedOperationException();
 	}
 
-	public void subirVideo(int aID, Video aVideo, String aMiniatura, String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aUrl) {
-		throw new UnsupportedOperationException();
+	public void subirVideo(int aID, Video aVideo, String aMiniatura, String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aUrl) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		try {
+			diagramaclasesbd.Video v = diagramaclasesbd.VideoDAO.createVideo();
+			v.setMiniatura(aMiniatura);
+			v.setTitulo(aTitulo);
+			v.setCategoria(null);
+			v.setEtiqueta(aEtiqueta);
+			v.setDescripcion(aDescripcion);
+			v.setUrl(aUrl);
+			t.commit();
+			
+		} catch (Exception e) {
+			t.rollback();
+		}
 	}
 
 	public List cargar_Videos_Subidos(int aID) {

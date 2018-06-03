@@ -14,7 +14,7 @@ import Codigo.iUsuario_No_Registrado;
 
 public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsuario_No_Registrado {
 	public BD_Categorias categoria = new BD_Categorias();
-	public BD_Videos _bd_videos;
+	public BD_Videos videos = new BD_Videos();
 	public BD_Listas_De_Reproduccion _bd_listasrep;
 	public BD_Comentarios _bd_coment;
 	public BD_Registrados registrados = new BD_Registrados();
@@ -105,7 +105,11 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	}
 
 	public void subirVideo(int aID, Video aVideo, String aMiniatura, String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aUrl) {
-		throw new UnsupportedOperationException();
+		try {
+			videos.subirVideo(aID, null, aMiniatura, aTitulo, aCategoria, aEtiqueta, aDescripcion, aUrl);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void suscribirse(int aID) {

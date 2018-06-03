@@ -28,7 +28,22 @@ public class Cabecera_R extends Cabecera_R_ventana{
 				//popup.setClosable(false);
 				popup.setModal(true);
 				UI.getCurrent().addWindow(popup);
+				
+				//Subir video con el boton aceptar
+				sv.confirmar.addClickListener(new ClickListener() {
+					public void buttonClick(ClickEvent event) {
+						sv.subirVideo();
+						popup.close();
+						
+					}
+				});
+				//Cerrrar el popup cuando se da a cancelar
+				sv.cancelar.addClickListener(new ClickListener() {
+					public void buttonClick(ClickEvent event) {
+						popup.close();
 			}
 		});
+	}
+});
 	}
 }
