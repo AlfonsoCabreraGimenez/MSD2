@@ -3,10 +3,6 @@ package diagramaclasesbd;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
-
-import org.orm.PersistentException;
-import org.orm.PersistentTransaction;
-
 import diagramaclasesbd.Registrado;
 import Codigo.TipoBusqueda;
 import Codigo.Usuario2;
@@ -19,24 +15,8 @@ public class BD_Registrados {
 		throw new UnsupportedOperationException();
 	}
 
-	public void registrarse(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aPass, String aRepPass, String aEmail, String aAvatar) throws PersistentException{
-		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
-		try {
-			diagramaclasesbd.Registrado r = diagramaclasesbd.RegistradoDAO.createRegistrado();
-			r.setNombre(aNombre);
-			r.setApellido1(aApellido1);
-			r.setApellido2(aApellido2);
-			r.setFechaN(null);
-			r.setApodo(aApodo);
-			r.setAvatar(aAvatar);
-			r.setEmail(aEmail);
-			r.setPassword(aPass);
-			diagramaclasesbd.RegistradoDAO.save(r);
-			t.commit();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			t.rollback();
-		}
+	public void registrarse(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aPass, String aRepPass, String aEmail, String aAvatar) {
+		throw new UnsupportedOperationException();
 	}
 
 	public void nuevaPass(String aPass, String aRepPass) {

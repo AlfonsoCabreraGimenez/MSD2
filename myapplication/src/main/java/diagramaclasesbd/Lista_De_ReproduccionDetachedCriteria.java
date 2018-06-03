@@ -26,7 +26,7 @@ public class Lista_De_ReproduccionDetachedCriteria extends AbstractORMDetachedCr
 	public final CollectionExpression videos_rep;
 	public final CollectionExpression video_masmegusta;
 	public final CollectionExpression videos_ultimos;
-	public final CollectionExpression videosRel;
+	public final CollectionExpression videos_rel;
 	
 	public Lista_De_ReproduccionDetachedCriteria() {
 		super(diagramaclasesbd.Lista_De_Reproduccion.class, diagramaclasesbd.Lista_De_ReproduccionCriteria.class);
@@ -37,7 +37,7 @@ public class Lista_De_ReproduccionDetachedCriteria extends AbstractORMDetachedCr
 		videos_rep = new CollectionExpression("ORM_videos_rep", this.getDetachedCriteria());
 		video_masmegusta = new CollectionExpression("ORM_video_masmegusta", this.getDetachedCriteria());
 		videos_ultimos = new CollectionExpression("ORM_videos_ultimos", this.getDetachedCriteria());
-		videosRel = new CollectionExpression("ORM_videosRel", this.getDetachedCriteria());
+		videos_rel = new CollectionExpression("ORM_videos_rel", this.getDetachedCriteria());
 	}
 	
 	public Lista_De_ReproduccionDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -49,7 +49,7 @@ public class Lista_De_ReproduccionDetachedCriteria extends AbstractORMDetachedCr
 		videos_rep = new CollectionExpression("ORM_videos_rep", this.getDetachedCriteria());
 		video_masmegusta = new CollectionExpression("ORM_video_masmegusta", this.getDetachedCriteria());
 		videos_ultimos = new CollectionExpression("ORM_videos_ultimos", this.getDetachedCriteria());
-		videosRel = new CollectionExpression("ORM_videosRel", this.getDetachedCriteria());
+		videos_rel = new CollectionExpression("ORM_videos_rel", this.getDetachedCriteria());
 	}
 	
 	public UsuarioDetachedCriteria createEs_propietario_listaCriteria() {
@@ -68,8 +68,8 @@ public class Lista_De_ReproduccionDetachedCriteria extends AbstractORMDetachedCr
 		return new VideoDetachedCriteria(createCriteria("ORM_videos_ultimos"));
 	}
 	
-	public VideoDetachedCriteria createVideosRelCriteria() {
-		return new VideoDetachedCriteria(createCriteria("ORM_videosRel"));
+	public VideoDetachedCriteria createVideos_relCriteria() {
+		return new VideoDetachedCriteria(createCriteria("ORM_videos_rel"));
 	}
 	
 	public Lista_De_Reproduccion uniqueLista_De_Reproduccion(PersistentSession session) {

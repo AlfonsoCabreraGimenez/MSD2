@@ -17,13 +17,13 @@ public class Subir_Video extends Modificar_Video {
 		//Se implementa subir video
 		//int ID = /*ID del video*/ 6;
 		String url = mv.url.getValue();
-		String miniatura = mv.miniatura.getValue();
+		//String miniatura = mv.miniatura.getValue();
 		String titulo = mv.titulo.getValue();
-		String categoria = mv.categoria.getValue();
+		String categoria = null;
 		String descripcion = mv.descripcion.getValue();
 		String etiqueta = mv.etiqueta.getValue();
 		
-		ur.subirVideo(5, null, "pequeña", "titulo", null, "etiqueta", "descripcion", "url");
+		//ur.subirVideo(1, null, "miniatura", titulo, categoria, etiqueta, categoria, url);
 
 	}
 }

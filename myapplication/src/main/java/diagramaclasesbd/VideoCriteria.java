@@ -22,9 +22,10 @@ public class VideoCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
 	public final IntegerExpression usuarioId;
 	public final AssociationExpression usuario;
+	public final IntegerExpression usuario_historialId;
+	public final AssociationExpression usuario_historial;
 	public final IntegerExpression es_propietarioId;
 	public final AssociationExpression es_propietario;
-	public final CollectionExpression usuarios;
 	public final IntegerExpression relacionadosId;
 	public final AssociationExpression relacionados;
 	public final IntegerExpression ultimosId;
@@ -42,8 +43,6 @@ public class VideoCriteria extends AbstractORMCriteria {
 	public final IntegerExpression visualizaciones;
 	public final StringExpression miniatura;
 	public final IntegerExpression megusta;
-	public final IntegerExpression usuario_historialId;
-	public final AssociationExpression usuario_historial;
 	public final CollectionExpression comentarios;
 	
 	public VideoCriteria(Criteria criteria) {
@@ -51,9 +50,10 @@ public class VideoCriteria extends AbstractORMCriteria {
 		ID = new IntegerExpression("ID", this);
 		usuarioId = new IntegerExpression("usuario.ID", this);
 		usuario = new AssociationExpression("usuario", this);
+		usuario_historialId = new IntegerExpression("usuario_historial.ID", this);
+		usuario_historial = new AssociationExpression("usuario_historial", this);
 		es_propietarioId = new IntegerExpression("es_propietario.ID", this);
 		es_propietario = new AssociationExpression("es_propietario", this);
-		usuarios = new CollectionExpression("ORM_usuarios", this);
 		relacionadosId = new IntegerExpression("relacionados.ID", this);
 		relacionados = new AssociationExpression("relacionados", this);
 		ultimosId = new IntegerExpression("ultimos.ID", this);
@@ -71,8 +71,6 @@ public class VideoCriteria extends AbstractORMCriteria {
 		visualizaciones = new IntegerExpression("visualizaciones", this);
 		miniatura = new StringExpression("miniatura", this);
 		megusta = new IntegerExpression("megusta", this);
-		usuario_historialId = new IntegerExpression("usuario_historial.ID", this);
-		usuario_historial = new AssociationExpression("usuario_historial", this);
 		comentarios = new CollectionExpression("ORM_comentarios", this);
 	}
 	
@@ -88,12 +86,12 @@ public class VideoCriteria extends AbstractORMCriteria {
 		return new UsuarioCriteria(createCriteria("usuario"));
 	}
 	
-	public UsuarioCriteria createEs_propietarioCriteria() {
-		return new UsuarioCriteria(createCriteria("es_propietario"));
+	public UsuarioCriteria createUsuario_historialCriteria() {
+		return new UsuarioCriteria(createCriteria("usuario_historial"));
 	}
 	
-	public UsuarioCriteria createUsuariosCriteria() {
-		return new UsuarioCriteria(createCriteria("ORM_usuarios"));
+	public UsuarioCriteria createEs_propietarioCriteria() {
+		return new UsuarioCriteria(createCriteria("es_propietario"));
 	}
 	
 	public Lista_De_ReproduccionCriteria createRelacionadosCriteria() {
@@ -114,10 +112,6 @@ public class VideoCriteria extends AbstractORMCriteria {
 	
 	public CategoriaCriteria createCategoriaCriteria() {
 		return new CategoriaCriteria(createCriteria("categoria"));
-	}
-	
-	public UsuarioCriteria createUsuario_historialCriteria() {
-		return new UsuarioCriteria(createCriteria("usuario_historial"));
 	}
 	
 	public ComentarioCriteria createComentariosCriteria() {

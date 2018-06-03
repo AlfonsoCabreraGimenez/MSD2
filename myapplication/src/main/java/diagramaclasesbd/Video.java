@@ -23,10 +23,7 @@ public class Video implements Serializable {
 	}
 	
 	private java.util.Set this_getSet (int key) {
-		if (key == ORMConstants.KEY_VIDEO_USUARIOS) {
-			return ORM_usuarios;
-		}
-		else if (key == ORMConstants.KEY_VIDEO_COMENTARIOS) {
+		if (key == ORMConstants.KEY_VIDEO_COMENTARIOS) {
 			return ORM_comentarios;
 		}
 		
@@ -54,12 +51,12 @@ public class Video implements Serializable {
 			this.relacionados = (diagramaclasesbd.Lista_De_Reproduccion) owner;
 		}
 		
-		else if (key == ORMConstants.KEY_VIDEO_USUARIO_HISTORIAL) {
-			this.usuario_historial = (diagramaclasesbd.Usuario) owner;
-		}
-		
 		else if (key == ORMConstants.KEY_VIDEO_ES_PROPIETARIO) {
 			this.es_propietario = (diagramaclasesbd.Usuario) owner;
+		}
+		
+		else if (key == ORMConstants.KEY_VIDEO_USUARIO_HISTORIAL) {
+			this.usuario_historial = (diagramaclasesbd.Usuario) owner;
 		}
 		
 		else if (key == ORMConstants.KEY_VIDEO_USUARIO) {
@@ -95,12 +92,13 @@ public class Video implements Serializable {
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="UsuarioID2", referencedColumnName="ID", nullable=false) })	
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private diagramaclasesbd.Usuario es_propietario;
+	private diagramaclasesbd.Usuario usuario_historial;
 	
-	@ManyToMany(mappedBy="ORM_me_gusta", targetEntity=diagramaclasesbd.Usuario.class)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_usuarios = new java.util.HashSet();
+	@ManyToOne(targetEntity=diagramaclasesbd.Usuario.class, fetch=FetchType.LAZY)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
+	@JoinColumns({ @JoinColumn(name="UsuarioID", referencedColumnName="ID", nullable=false) })	
+	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
+	private diagramaclasesbd.Usuario es_propietario;
 	
 	@ManyToOne(targetEntity=diagramaclasesbd.Lista_De_Reproduccion.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
@@ -152,12 +150,6 @@ public class Video implements Serializable {
 	
 	@Column(name="Megusta", nullable=false, length=10)	
 	private int megusta;
-	
-	@ManyToOne(targetEntity=diagramaclasesbd.Usuario.class, fetch=FetchType.LAZY)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="UsuarioID", referencedColumnName="ID", nullable=false) })	
-	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private diagramaclasesbd.Usuario usuario_historial;
 	
 	@OneToMany(mappedBy="video_coment", targetEntity=diagramaclasesbd.Comentario.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
@@ -330,10 +322,10 @@ public class Video implements Serializable {
 	
 	public void setRelacionados(diagramaclasesbd.Lista_De_Reproduccion value) {
 		if (relacionados != null) {
-			relacionados.videosRel.remove(this);
+			relacionados.videos_rel.remove(this);
 		}
 		if (value != null) {
-			value.videosRel.add(this);
+			value.videos_rel.add(this);
 		}
 	}
 	
@@ -350,41 +342,6 @@ public class Video implements Serializable {
 	
 	private diagramaclasesbd.Lista_De_Reproduccion getORM_Relacionados() {
 		return relacionados;
-	}
-	
-	private void setORM_Usuarios(java.util.Set value) {
-		this.ORM_usuarios = value;
-	}
-	
-	private java.util.Set getORM_Usuarios() {
-		return ORM_usuarios;
-	}
-	
-	@Transient	
-	public final diagramaclasesbd.UsuarioSetCollection usuarios = new diagramaclasesbd.UsuarioSetCollection(this, _ormAdapter, ORMConstants.KEY_VIDEO_USUARIOS, ORMConstants.KEY_USUARIO_ME_GUSTA, ORMConstants.KEY_MUL_MANY_TO_MANY);
-	
-	public void setUsuario_historial(diagramaclasesbd.Usuario value) {
-		if (usuario_historial != null) {
-			usuario_historial.historial.remove(this);
-		}
-		if (value != null) {
-			value.historial.add(this);
-		}
-	}
-	
-	public diagramaclasesbd.Usuario getUsuario_historial() {
-		return usuario_historial;
-	}
-	
-	/**
-	 * This method is for internal use only.
-	 */
-	public void setORM_Usuario_historial(diagramaclasesbd.Usuario value) {
-		this.usuario_historial = value;
-	}
-	
-	private diagramaclasesbd.Usuario getORM_Usuario_historial() {
-		return usuario_historial;
 	}
 	
 	public void setEs_propietario(diagramaclasesbd.Usuario value) {
@@ -409,6 +366,30 @@ public class Video implements Serializable {
 	
 	private diagramaclasesbd.Usuario getORM_Es_propietario() {
 		return es_propietario;
+	}
+	
+	public void setUsuario_historial(diagramaclasesbd.Usuario value) {
+		if (usuario_historial != null) {
+			usuario_historial.historial.remove(this);
+		}
+		if (value != null) {
+			value.historial.add(this);
+		}
+	}
+	
+	public diagramaclasesbd.Usuario getUsuario_historial() {
+		return usuario_historial;
+	}
+	
+	/**
+	 * This method is for internal use only.
+	 */
+	public void setORM_Usuario_historial(diagramaclasesbd.Usuario value) {
+		this.usuario_historial = value;
+	}
+	
+	private diagramaclasesbd.Usuario getORM_Usuario_historial() {
+		return usuario_historial;
 	}
 	
 	public void setUsuario(diagramaclasesbd.Usuario value) {

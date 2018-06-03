@@ -339,9 +339,9 @@ public class Lista_De_ReproduccionDAO {
 			for(int i = 0; i < lVideos_ultimoss.length; i++) {
 				lVideos_ultimoss[i].setUltimos(null);
 			}
-			diagramaclasesbd.Video[] lVideosRels = lista_De_Reproduccion.videosRel.toArray();
-			for(int i = 0; i < lVideosRels.length; i++) {
-				lVideosRels[i].setRelacionados(null);
+			diagramaclasesbd.Video[] lVideos_rels = lista_De_Reproduccion.videos_rel.toArray();
+			for(int i = 0; i < lVideos_rels.length; i++) {
+				lVideos_rels[i].setRelacionados(null);
 			}
 			return delete(lista_De_Reproduccion);
 		}
@@ -369,9 +369,9 @@ public class Lista_De_ReproduccionDAO {
 			for(int i = 0; i < lVideos_ultimoss.length; i++) {
 				lVideos_ultimoss[i].setUltimos(null);
 			}
-			diagramaclasesbd.Video[] lVideosRels = lista_De_Reproduccion.videosRel.toArray();
-			for(int i = 0; i < lVideosRels.length; i++) {
-				lVideosRels[i].setRelacionados(null);
+			diagramaclasesbd.Video[] lVideos_rels = lista_De_Reproduccion.videos_rel.toArray();
+			for(int i = 0; i < lVideos_rels.length; i++) {
+				lVideos_rels[i].setRelacionados(null);
 			}
 			try {
 				session.delete(lista_De_Reproduccion);

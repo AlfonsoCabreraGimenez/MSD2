@@ -30,16 +30,15 @@ public class RegistradoCriteria extends AbstractORMCriteria {
 	public final StringExpression avatar;
 	public final BooleanExpression isAdmin;
 	public final IntegerExpression visitas;
-	public final CollectionExpression me_gusta;
-	public final CollectionExpression historial;
-	public final CollectionExpression propiedad_video_de;
-	public final CollectionExpression otros_usuarios;
-	public final CollectionExpression propiedad_de;
-	public final CollectionExpression es_escrito;
 	public final CollectionExpression usuario_sucripciones;
 	public final CollectionExpression suscriptores;
 	public final CollectionExpression suscripciones;
 	public final CollectionExpression usuario_suscriptores;
+	public final CollectionExpression es_escrito;
+	public final CollectionExpression propiedad_de;
+	public final CollectionExpression propiedad_video_de;
+	public final CollectionExpression historial;
+	public final CollectionExpression otros_usuarios;
 	
 	public RegistradoCriteria(Criteria criteria) {
 		super(criteria);
@@ -54,16 +53,15 @@ public class RegistradoCriteria extends AbstractORMCriteria {
 		avatar = new StringExpression("avatar", this);
 		isAdmin = new BooleanExpression("isAdmin", this);
 		visitas = new IntegerExpression("visitas", this);
-		me_gusta = new CollectionExpression("ORM_me_gusta", this);
-		historial = new CollectionExpression("ORM_historial", this);
-		propiedad_video_de = new CollectionExpression("ORM_propiedad_video_de", this);
-		otros_usuarios = new CollectionExpression("ORM_otros_usuarios", this);
-		propiedad_de = new CollectionExpression("ORM_propiedad_de", this);
-		es_escrito = new CollectionExpression("ORM_es_escrito", this);
 		usuario_sucripciones = new CollectionExpression("ORM_usuario_sucripciones", this);
 		suscriptores = new CollectionExpression("ORM_suscriptores", this);
 		suscripciones = new CollectionExpression("ORM_suscripciones", this);
 		usuario_suscriptores = new CollectionExpression("ORM_usuario_suscriptores", this);
+		es_escrito = new CollectionExpression("ORM_es_escrito", this);
+		propiedad_de = new CollectionExpression("ORM_propiedad_de", this);
+		propiedad_video_de = new CollectionExpression("ORM_propiedad_video_de", this);
+		historial = new CollectionExpression("ORM_historial", this);
+		otros_usuarios = new CollectionExpression("ORM_otros_usuarios", this);
 	}
 	
 	public RegistradoCriteria(PersistentSession session) {
@@ -72,30 +70,6 @@ public class RegistradoCriteria extends AbstractORMCriteria {
 	
 	public RegistradoCriteria() throws PersistentException {
 		this(Actividad11CabreraFuentesPersistentManager.instance().getSession());
-	}
-	
-	public VideoCriteria createMe_gustaCriteria() {
-		return new VideoCriteria(createCriteria("ORM_me_gusta"));
-	}
-	
-	public VideoCriteria createHistorialCriteria() {
-		return new VideoCriteria(createCriteria("ORM_historial"));
-	}
-	
-	public VideoCriteria createPropiedad_video_deCriteria() {
-		return new VideoCriteria(createCriteria("ORM_propiedad_video_de"));
-	}
-	
-	public VideoCriteria createOtros_usuariosCriteria() {
-		return new VideoCriteria(createCriteria("ORM_otros_usuarios"));
-	}
-	
-	public Lista_De_ReproduccionCriteria createPropiedad_deCriteria() {
-		return new Lista_De_ReproduccionCriteria(createCriteria("ORM_propiedad_de"));
-	}
-	
-	public ComentarioCriteria createEs_escritoCriteria() {
-		return new ComentarioCriteria(createCriteria("ORM_es_escrito"));
 	}
 	
 	public UsuarioCriteria createUsuario_sucripcionesCriteria() {
@@ -112,6 +86,26 @@ public class RegistradoCriteria extends AbstractORMCriteria {
 	
 	public UsuarioCriteria createUsuario_suscriptoresCriteria() {
 		return new UsuarioCriteria(createCriteria("ORM_usuario_suscriptores"));
+	}
+	
+	public ComentarioCriteria createEs_escritoCriteria() {
+		return new ComentarioCriteria(createCriteria("ORM_es_escrito"));
+	}
+	
+	public Lista_De_ReproduccionCriteria createPropiedad_deCriteria() {
+		return new Lista_De_ReproduccionCriteria(createCriteria("ORM_propiedad_de"));
+	}
+	
+	public VideoCriteria createPropiedad_video_deCriteria() {
+		return new VideoCriteria(createCriteria("ORM_propiedad_video_de"));
+	}
+	
+	public VideoCriteria createHistorialCriteria() {
+		return new VideoCriteria(createCriteria("ORM_historial"));
+	}
+	
+	public VideoCriteria createOtros_usuariosCriteria() {
+		return new VideoCriteria(createCriteria("ORM_otros_usuarios"));
 	}
 	
 	public Registrado uniqueRegistrado() {

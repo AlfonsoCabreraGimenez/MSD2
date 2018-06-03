@@ -22,9 +22,10 @@ public class VideoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression ID;
 	public final IntegerExpression usuarioId;
 	public final AssociationExpression usuario;
+	public final IntegerExpression usuario_historialId;
+	public final AssociationExpression usuario_historial;
 	public final IntegerExpression es_propietarioId;
 	public final AssociationExpression es_propietario;
-	public final CollectionExpression usuarios;
 	public final IntegerExpression relacionadosId;
 	public final AssociationExpression relacionados;
 	public final IntegerExpression ultimosId;
@@ -42,8 +43,6 @@ public class VideoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression visualizaciones;
 	public final StringExpression miniatura;
 	public final IntegerExpression megusta;
-	public final IntegerExpression usuario_historialId;
-	public final AssociationExpression usuario_historial;
 	public final CollectionExpression comentarios;
 	
 	public VideoDetachedCriteria() {
@@ -51,9 +50,10 @@ public class VideoDetachedCriteria extends AbstractORMDetachedCriteria {
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		usuarioId = new IntegerExpression("usuario.ID", this.getDetachedCriteria());
 		usuario = new AssociationExpression("usuario", this.getDetachedCriteria());
+		usuario_historialId = new IntegerExpression("usuario_historial.ID", this.getDetachedCriteria());
+		usuario_historial = new AssociationExpression("usuario_historial", this.getDetachedCriteria());
 		es_propietarioId = new IntegerExpression("es_propietario.ID", this.getDetachedCriteria());
 		es_propietario = new AssociationExpression("es_propietario", this.getDetachedCriteria());
-		usuarios = new CollectionExpression("ORM_usuarios", this.getDetachedCriteria());
 		relacionadosId = new IntegerExpression("relacionados.ID", this.getDetachedCriteria());
 		relacionados = new AssociationExpression("relacionados", this.getDetachedCriteria());
 		ultimosId = new IntegerExpression("ultimos.ID", this.getDetachedCriteria());
@@ -71,8 +71,6 @@ public class VideoDetachedCriteria extends AbstractORMDetachedCriteria {
 		visualizaciones = new IntegerExpression("visualizaciones", this.getDetachedCriteria());
 		miniatura = new StringExpression("miniatura", this.getDetachedCriteria());
 		megusta = new IntegerExpression("megusta", this.getDetachedCriteria());
-		usuario_historialId = new IntegerExpression("usuario_historial.ID", this.getDetachedCriteria());
-		usuario_historial = new AssociationExpression("usuario_historial", this.getDetachedCriteria());
 		comentarios = new CollectionExpression("ORM_comentarios", this.getDetachedCriteria());
 	}
 	
@@ -81,9 +79,10 @@ public class VideoDetachedCriteria extends AbstractORMDetachedCriteria {
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		usuarioId = new IntegerExpression("usuario.ID", this.getDetachedCriteria());
 		usuario = new AssociationExpression("usuario", this.getDetachedCriteria());
+		usuario_historialId = new IntegerExpression("usuario_historial.ID", this.getDetachedCriteria());
+		usuario_historial = new AssociationExpression("usuario_historial", this.getDetachedCriteria());
 		es_propietarioId = new IntegerExpression("es_propietario.ID", this.getDetachedCriteria());
 		es_propietario = new AssociationExpression("es_propietario", this.getDetachedCriteria());
-		usuarios = new CollectionExpression("ORM_usuarios", this.getDetachedCriteria());
 		relacionadosId = new IntegerExpression("relacionados.ID", this.getDetachedCriteria());
 		relacionados = new AssociationExpression("relacionados", this.getDetachedCriteria());
 		ultimosId = new IntegerExpression("ultimos.ID", this.getDetachedCriteria());
@@ -101,8 +100,6 @@ public class VideoDetachedCriteria extends AbstractORMDetachedCriteria {
 		visualizaciones = new IntegerExpression("visualizaciones", this.getDetachedCriteria());
 		miniatura = new StringExpression("miniatura", this.getDetachedCriteria());
 		megusta = new IntegerExpression("megusta", this.getDetachedCriteria());
-		usuario_historialId = new IntegerExpression("usuario_historial.ID", this.getDetachedCriteria());
-		usuario_historial = new AssociationExpression("usuario_historial", this.getDetachedCriteria());
 		comentarios = new CollectionExpression("ORM_comentarios", this.getDetachedCriteria());
 	}
 	
@@ -110,12 +107,12 @@ public class VideoDetachedCriteria extends AbstractORMDetachedCriteria {
 		return new UsuarioDetachedCriteria(createCriteria("usuario"));
 	}
 	
-	public UsuarioDetachedCriteria createEs_propietarioCriteria() {
-		return new UsuarioDetachedCriteria(createCriteria("es_propietario"));
+	public UsuarioDetachedCriteria createUsuario_historialCriteria() {
+		return new UsuarioDetachedCriteria(createCriteria("usuario_historial"));
 	}
 	
-	public UsuarioDetachedCriteria createUsuariosCriteria() {
-		return new UsuarioDetachedCriteria(createCriteria("ORM_usuarios"));
+	public UsuarioDetachedCriteria createEs_propietarioCriteria() {
+		return new UsuarioDetachedCriteria(createCriteria("es_propietario"));
 	}
 	
 	public Lista_De_ReproduccionDetachedCriteria createRelacionadosCriteria() {
@@ -136,10 +133,6 @@ public class VideoDetachedCriteria extends AbstractORMDetachedCriteria {
 	
 	public CategoriaDetachedCriteria createCategoriaCriteria() {
 		return new CategoriaDetachedCriteria(createCriteria("categoria"));
-	}
-	
-	public UsuarioDetachedCriteria createUsuario_historialCriteria() {
-		return new UsuarioDetachedCriteria(createCriteria("usuario_historial"));
 	}
 	
 	public ComentarioDetachedCriteria createComentariosCriteria() {

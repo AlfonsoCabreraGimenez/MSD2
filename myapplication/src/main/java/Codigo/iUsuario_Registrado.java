@@ -3,8 +3,6 @@ package Codigo;
 import java.util.Date;
 import java.util.List;
 
-import diagramaclasesbd.Video;
-
 public interface iUsuario_Registrado {
 
 	public void anadirAListaRep(int aID);
@@ -49,7 +47,7 @@ public interface iUsuario_Registrado {
 
 	public void quitarMegusta(int aID);
 
-	public void subirVideo(int aID, Video aVideo, String aMiniatura, String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aUrl);
+	public void subirVideo(int aID, String aMiniatura, String aTitulo, String aEtiqueta, String aDescripcion, String aUrl, String aCategoria);
 
 	public void suscribirse(int aID);
 

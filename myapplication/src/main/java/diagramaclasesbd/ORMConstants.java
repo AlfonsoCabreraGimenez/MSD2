@@ -24,7 +24,7 @@ public interface ORMConstants extends org.orm.util.ORMBaseConstants {
 	
 	final int KEY_LISTA_DE_REPRODUCCION_VIDEO_MASMEGUSTA = 1782351135;
 	
-	final int KEY_LISTA_DE_REPRODUCCION_VIDEOSREL = -1488194335;
+	final int KEY_LISTA_DE_REPRODUCCION_VIDEOS_REL = 1111015538;
 	
 	final int KEY_LISTA_DE_REPRODUCCION_VIDEOS_REP = 1111015542;
 	
@@ -33,8 +33,6 @@ public interface ORMConstants extends org.orm.util.ORMBaseConstants {
 	final int KEY_USUARIO_ES_ESCRITO = -722121433;
 	
 	final int KEY_USUARIO_HISTORIAL = -1095275586;
-	
-	final int KEY_USUARIO_ME_GUSTA = 249329436;
 	
 	final int KEY_USUARIO_OTROS_USUARIOS = -1364418812;
 	
@@ -67,7 +65,5 @@ public interface ORMConstants extends org.orm.util.ORMBaseConstants {
 	final int KEY_VIDEO_USUARIO = -1602145462;
 	
 	final int KEY_VIDEO_USUARIO_HISTORIAL = 1527970042;
-	
-	final int KEY_VIDEO_USUARIOS = 1873098345;
 	
 }

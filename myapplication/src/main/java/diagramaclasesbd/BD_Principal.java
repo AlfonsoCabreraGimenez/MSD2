@@ -3,8 +3,6 @@ package diagramaclasesbd;
 import java.util.Date;
 import java.util.List;
 
-import org.orm.PersistentException;
-
 import Codigo.TipoBusqueda;
 import Codigo.Usuario2;
 import Codigo.Video2;
@@ -13,12 +11,12 @@ import Codigo.iAdministrador2;
 import Codigo.iUsuario_No_Registrado;
 
 public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsuario_No_Registrado {
-	public BD_Categorias categoria = new BD_Categorias();
-	public BD_Videos videos = new BD_Videos();
+	public BD_Categorias _bd_categ;
+	public BD_Videos _bd_videos;
 	public BD_Listas_De_Reproduccion _bd_listasrep;
 	public BD_Comentarios _bd_coment;
-	public BD_Registrados registrados = new BD_Registrados();
-	public BD_Administradores administrador;
+	public BD_Registrados _bd_regis;
+	public BD_Administradores _bd_admin;
 
 	public void anadirAListaRep(int aID) {
 		throw new UnsupportedOperationException();
@@ -104,12 +102,8 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		throw new UnsupportedOperationException();
 	}
 
-	public void subirVideo(int aID, Video aVideo, String aMiniatura, String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aUrl) {
-		try {
-			videos.subirVideo(aID, null, aMiniatura, aTitulo, aCategoria, aEtiqueta, aDescripcion, aUrl);
-		} catch (PersistentException e) {
-			e.printStackTrace();
-		}
+	public void subirVideo(int aID, String aMiniatura, String aTitulo, String aEtiqueta, String aDescripcion, String aUrl, String aCategoria) {
+		throw new UnsupportedOperationException();
 	}
 
 	public void suscribirse(int aID) {
@@ -129,13 +123,7 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	}
 
 	public void crearCategoria(String aCategoria, int aEdad) {
-		try {
-			categoria.crearCategoria(aCategoria, aEdad);
-		}catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		throw new UnsupportedOperationException();
 	}
 
 	public void eliminarUsuario(int aID) {
@@ -155,12 +143,7 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	}
 
 	public void registrarse(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aPass, String aRepPass, String aEmail, String aAvatar) {
-		try {
-			registrados.registrarse(aNombre, aApellido1, aApellido2, aFechaN, aApodo, aPass, aRepPass, aEmail, aAvatar);
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		throw new UnsupportedOperationException();
 	}
 
 	public void nuevaPass(String aPass, String aRepPass) {

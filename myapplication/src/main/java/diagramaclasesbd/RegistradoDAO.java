@@ -323,30 +323,6 @@ public class RegistradoDAO {
 	
 	public static boolean deleteAndDissociate(diagramaclasesbd.Registrado registrado)throws PersistentException {
 		try {
-			diagramaclasesbd.Video[] lMe_gustas = registrado.me_gusta.toArray();
-			for(int i = 0; i < lMe_gustas.length; i++) {
-				lMe_gustas[i].usuarios.remove(registrado);
-			}
-			diagramaclasesbd.Video[] lHistorials = registrado.historial.toArray();
-			for(int i = 0; i < lHistorials.length; i++) {
-				lHistorials[i].setUsuario_historial(null);
-			}
-			diagramaclasesbd.Video[] lPropiedad_video_des = registrado.propiedad_video_de.toArray();
-			for(int i = 0; i < lPropiedad_video_des.length; i++) {
-				lPropiedad_video_des[i].setEs_propietario(null);
-			}
-			diagramaclasesbd.Video[] lOtros_usuarioss = registrado.otros_usuarios.toArray();
-			for(int i = 0; i < lOtros_usuarioss.length; i++) {
-				lOtros_usuarioss[i].setUsuario(null);
-			}
-			diagramaclasesbd.Lista_De_Reproduccion[] lPropiedad_des = registrado.propiedad_de.toArray();
-			for(int i = 0; i < lPropiedad_des.length; i++) {
-				lPropiedad_des[i].setEs_propietario_lista(null);
-			}
-			diagramaclasesbd.Comentario[] lEs_escritos = registrado.es_escrito.toArray();
-			for(int i = 0; i < lEs_escritos.length; i++) {
-				lEs_escritos[i].setUsuario_comentario(null);
-			}
 			diagramaclasesbd.Usuario[] lUsuario_sucripcioness = registrado.usuario_sucripciones.toArray();
 			for(int i = 0; i < lUsuario_sucripcioness.length; i++) {
 				lUsuario_sucripcioness[i].suscripciones.remove(registrado);
@@ -362,6 +338,26 @@ public class RegistradoDAO {
 			diagramaclasesbd.Usuario[] lUsuario_suscriptoress = registrado.usuario_suscriptores.toArray();
 			for(int i = 0; i < lUsuario_suscriptoress.length; i++) {
 				lUsuario_suscriptoress[i].suscriptores.remove(registrado);
+			}
+			diagramaclasesbd.Comentario[] lEs_escritos = registrado.es_escrito.toArray();
+			for(int i = 0; i < lEs_escritos.length; i++) {
+				lEs_escritos[i].setUsuario_comentario(null);
+			}
+			diagramaclasesbd.Lista_De_Reproduccion[] lPropiedad_des = registrado.propiedad_de.toArray();
+			for(int i = 0; i < lPropiedad_des.length; i++) {
+				lPropiedad_des[i].setEs_propietario_lista(null);
+			}
+			diagramaclasesbd.Video[] lPropiedad_video_des = registrado.propiedad_video_de.toArray();
+			for(int i = 0; i < lPropiedad_video_des.length; i++) {
+				lPropiedad_video_des[i].setEs_propietario(null);
+			}
+			diagramaclasesbd.Video[] lHistorials = registrado.historial.toArray();
+			for(int i = 0; i < lHistorials.length; i++) {
+				lHistorials[i].setUsuario_historial(null);
+			}
+			diagramaclasesbd.Video[] lOtros_usuarioss = registrado.otros_usuarios.toArray();
+			for(int i = 0; i < lOtros_usuarioss.length; i++) {
+				lOtros_usuarioss[i].setUsuario(null);
 			}
 			return delete(registrado);
 		}
@@ -373,30 +369,6 @@ public class RegistradoDAO {
 	
 	public static boolean deleteAndDissociate(diagramaclasesbd.Registrado registrado, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			diagramaclasesbd.Video[] lMe_gustas = registrado.me_gusta.toArray();
-			for(int i = 0; i < lMe_gustas.length; i++) {
-				lMe_gustas[i].usuarios.remove(registrado);
-			}
-			diagramaclasesbd.Video[] lHistorials = registrado.historial.toArray();
-			for(int i = 0; i < lHistorials.length; i++) {
-				lHistorials[i].setUsuario_historial(null);
-			}
-			diagramaclasesbd.Video[] lPropiedad_video_des = registrado.propiedad_video_de.toArray();
-			for(int i = 0; i < lPropiedad_video_des.length; i++) {
-				lPropiedad_video_des[i].setEs_propietario(null);
-			}
-			diagramaclasesbd.Video[] lOtros_usuarioss = registrado.otros_usuarios.toArray();
-			for(int i = 0; i < lOtros_usuarioss.length; i++) {
-				lOtros_usuarioss[i].setUsuario(null);
-			}
-			diagramaclasesbd.Lista_De_Reproduccion[] lPropiedad_des = registrado.propiedad_de.toArray();
-			for(int i = 0; i < lPropiedad_des.length; i++) {
-				lPropiedad_des[i].setEs_propietario_lista(null);
-			}
-			diagramaclasesbd.Comentario[] lEs_escritos = registrado.es_escrito.toArray();
-			for(int i = 0; i < lEs_escritos.length; i++) {
-				lEs_escritos[i].setUsuario_comentario(null);
-			}
 			diagramaclasesbd.Usuario[] lUsuario_sucripcioness = registrado.usuario_sucripciones.toArray();
 			for(int i = 0; i < lUsuario_sucripcioness.length; i++) {
 				lUsuario_sucripcioness[i].suscripciones.remove(registrado);
@@ -412,6 +384,26 @@ public class RegistradoDAO {
 			diagramaclasesbd.Usuario[] lUsuario_suscriptoress = registrado.usuario_suscriptores.toArray();
 			for(int i = 0; i < lUsuario_suscriptoress.length; i++) {
 				lUsuario_suscriptoress[i].suscriptores.remove(registrado);
+			}
+			diagramaclasesbd.Comentario[] lEs_escritos = registrado.es_escrito.toArray();
+			for(int i = 0; i < lEs_escritos.length; i++) {
+				lEs_escritos[i].setUsuario_comentario(null);
+			}
+			diagramaclasesbd.Lista_De_Reproduccion[] lPropiedad_des = registrado.propiedad_de.toArray();
+			for(int i = 0; i < lPropiedad_des.length; i++) {
+				lPropiedad_des[i].setEs_propietario_lista(null);
+			}
+			diagramaclasesbd.Video[] lPropiedad_video_des = registrado.propiedad_video_de.toArray();
+			for(int i = 0; i < lPropiedad_video_des.length; i++) {
+				lPropiedad_video_des[i].setEs_propietario(null);
+			}
+			diagramaclasesbd.Video[] lHistorials = registrado.historial.toArray();
+			for(int i = 0; i < lHistorials.length; i++) {
+				lHistorials[i].setUsuario_historial(null);
+			}
+			diagramaclasesbd.Video[] lOtros_usuarioss = registrado.otros_usuarios.toArray();
+			for(int i = 0; i < lOtros_usuarioss.length; i++) {
+				lOtros_usuarioss[i].setUsuario(null);
 			}
 			try {
 				session.delete(registrado);

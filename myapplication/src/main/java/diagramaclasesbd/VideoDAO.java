@@ -327,16 +327,16 @@ public class VideoDAO {
 				video.getUsuario().otros_usuarios.remove(video);
 			}
 			
+			if (video.getUsuario_historial() != null) {
+				video.getUsuario_historial().historial.remove(video);
+			}
+			
 			if (video.getEs_propietario() != null) {
 				video.getEs_propietario().propiedad_video_de.remove(video);
 			}
 			
-			diagramaclasesbd.Usuario[] lUsuarioss = video.usuarios.toArray();
-			for(int i = 0; i < lUsuarioss.length; i++) {
-				lUsuarioss[i].me_gusta.remove(video);
-			}
 			if (video.getRelacionados() != null) {
-				video.getRelacionados().videosRel.remove(video);
+				video.getRelacionados().videos_rel.remove(video);
 			}
 			
 			if (video.getUltimos() != null) {
@@ -353,10 +353,6 @@ public class VideoDAO {
 			
 			if (video.getCategoria() != null) {
 				video.getCategoria().videos.remove(video);
-			}
-			
-			if (video.getUsuario_historial() != null) {
-				video.getUsuario_historial().historial.remove(video);
 			}
 			
 			diagramaclasesbd.Comentario[] lComentarioss = video.comentarios.toArray();
@@ -377,16 +373,16 @@ public class VideoDAO {
 				video.getUsuario().otros_usuarios.remove(video);
 			}
 			
+			if (video.getUsuario_historial() != null) {
+				video.getUsuario_historial().historial.remove(video);
+			}
+			
 			if (video.getEs_propietario() != null) {
 				video.getEs_propietario().propiedad_video_de.remove(video);
 			}
 			
-			diagramaclasesbd.Usuario[] lUsuarioss = video.usuarios.toArray();
-			for(int i = 0; i < lUsuarioss.length; i++) {
-				lUsuarioss[i].me_gusta.remove(video);
-			}
 			if (video.getRelacionados() != null) {
-				video.getRelacionados().videosRel.remove(video);
+				video.getRelacionados().videos_rel.remove(video);
 			}
 			
 			if (video.getUltimos() != null) {
@@ -403,10 +399,6 @@ public class VideoDAO {
 			
 			if (video.getCategoria() != null) {
 				video.getCategoria().videos.remove(video);
-			}
-			
-			if (video.getUsuario_historial() != null) {
-				video.getUsuario_historial().historial.remove(video);
 			}
 			
 			diagramaclasesbd.Comentario[] lComentarioss = video.comentarios.toArray();

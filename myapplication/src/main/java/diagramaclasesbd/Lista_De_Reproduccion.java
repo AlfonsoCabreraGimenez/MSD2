@@ -32,8 +32,8 @@ public class Lista_De_Reproduccion implements Serializable {
 		else if (key == ORMConstants.KEY_LISTA_DE_REPRODUCCION_VIDEOS_ULTIMOS) {
 			return ORM_videos_ultimos;
 		}
-		else if (key == ORMConstants.KEY_LISTA_DE_REPRODUCCION_VIDEOSREL) {
-			return ORM_videosRel;
+		else if (key == ORMConstants.KEY_LISTA_DE_REPRODUCCION_VIDEOS_REL) {
+			return ORM_videos_rel;
 		}
 		
 		return null;
@@ -90,7 +90,7 @@ public class Lista_De_Reproduccion implements Serializable {
 	@OneToMany(mappedBy="relacionados", targetEntity=diagramaclasesbd.Video.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_videosRel = new java.util.HashSet();
+	private java.util.Set ORM_videos_rel = new java.util.HashSet();
 	
 	private void setID(int value) {
 		this.ID = value;
@@ -110,6 +110,30 @@ public class Lista_De_Reproduccion implements Serializable {
 	
 	public String getTitulo() {
 		return titulo;
+	}
+	
+	public void setEs_propietario_lista(diagramaclasesbd.Usuario value) {
+		if (es_propietario_lista != null) {
+			es_propietario_lista.propiedad_de.remove(this);
+		}
+		if (value != null) {
+			value.propiedad_de.add(this);
+		}
+	}
+	
+	public diagramaclasesbd.Usuario getEs_propietario_lista() {
+		return es_propietario_lista;
+	}
+	
+	/**
+	 * This method is for internal use only.
+	 */
+	public void setORM_Es_propietario_lista(diagramaclasesbd.Usuario value) {
+		this.es_propietario_lista = value;
+	}
+	
+	private diagramaclasesbd.Usuario getORM_Es_propietario_lista() {
+		return es_propietario_lista;
 	}
 	
 	private void setORM_Videos_rep(java.util.Set value) {
@@ -145,40 +169,16 @@ public class Lista_De_Reproduccion implements Serializable {
 	@Transient	
 	public final diagramaclasesbd.VideoSetCollection videos_ultimos = new diagramaclasesbd.VideoSetCollection(this, _ormAdapter, ORMConstants.KEY_LISTA_DE_REPRODUCCION_VIDEOS_ULTIMOS, ORMConstants.KEY_VIDEO_ULTIMOS, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
-	private void setORM_VideosRel(java.util.Set value) {
-		this.ORM_videosRel = value;
+	private void setORM_Videos_rel(java.util.Set value) {
+		this.ORM_videos_rel = value;
 	}
 	
-	private java.util.Set getORM_VideosRel() {
-		return ORM_videosRel;
+	private java.util.Set getORM_Videos_rel() {
+		return ORM_videos_rel;
 	}
 	
 	@Transient	
-	public final diagramaclasesbd.VideoSetCollection videosRel = new diagramaclasesbd.VideoSetCollection(this, _ormAdapter, ORMConstants.KEY_LISTA_DE_REPRODUCCION_VIDEOSREL, ORMConstants.KEY_VIDEO_RELACIONADOS, ORMConstants.KEY_MUL_ONE_TO_MANY);
-	
-	public void setEs_propietario_lista(diagramaclasesbd.Usuario value) {
-		if (es_propietario_lista != null) {
-			es_propietario_lista.propiedad_de.remove(this);
-		}
-		if (value != null) {
-			value.propiedad_de.add(this);
-		}
-	}
-	
-	public diagramaclasesbd.Usuario getEs_propietario_lista() {
-		return es_propietario_lista;
-	}
-	
-	/**
-	 * This method is for internal use only.
-	 */
-	public void setORM_Es_propietario_lista(diagramaclasesbd.Usuario value) {
-		this.es_propietario_lista = value;
-	}
-	
-	private diagramaclasesbd.Usuario getORM_Es_propietario_lista() {
-		return es_propietario_lista;
-	}
+	public final diagramaclasesbd.VideoSetCollection videos_rel = new diagramaclasesbd.VideoSetCollection(this, _ormAdapter, ORMConstants.KEY_LISTA_DE_REPRODUCCION_VIDEOS_REL, ORMConstants.KEY_VIDEO_RELACIONADOS, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
 		return String.valueOf(getID());

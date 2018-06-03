@@ -26,7 +26,7 @@ public class Lista_De_ReproduccionCriteria extends AbstractORMCriteria {
 	public final CollectionExpression videos_rep;
 	public final CollectionExpression video_masmegusta;
 	public final CollectionExpression videos_ultimos;
-	public final CollectionExpression videosRel;
+	public final CollectionExpression videos_rel;
 	
 	public Lista_De_ReproduccionCriteria(Criteria criteria) {
 		super(criteria);
@@ -37,7 +37,7 @@ public class Lista_De_ReproduccionCriteria extends AbstractORMCriteria {
 		videos_rep = new CollectionExpression("ORM_videos_rep", this);
 		video_masmegusta = new CollectionExpression("ORM_video_masmegusta", this);
 		videos_ultimos = new CollectionExpression("ORM_videos_ultimos", this);
-		videosRel = new CollectionExpression("ORM_videosRel", this);
+		videos_rel = new CollectionExpression("ORM_videos_rel", this);
 	}
 	
 	public Lista_De_ReproduccionCriteria(PersistentSession session) {
@@ -64,8 +64,8 @@ public class Lista_De_ReproduccionCriteria extends AbstractORMCriteria {
 		return new VideoCriteria(createCriteria("ORM_videos_ultimos"));
 	}
 	
-	public VideoCriteria createVideosRelCriteria() {
-		return new VideoCriteria(createCriteria("ORM_videosRel"));
+	public VideoCriteria createVideos_relCriteria() {
+		return new VideoCriteria(createCriteria("ORM_videos_rel"));
 	}
 	
 	public Lista_De_Reproduccion uniqueLista_De_Reproduccion() {
