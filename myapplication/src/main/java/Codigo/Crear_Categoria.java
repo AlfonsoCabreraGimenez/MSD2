@@ -13,9 +13,7 @@ public class Crear_Categoria extends Crear_Categoria_ventana{
 	public void crearCategoria() {
 		
 		String nombreCategoria = tCategoria.getValue();
-		String numeroEdad = comboEdad.getValue();
-		//int numEntero = Integer.parseInt(numeroEdad);
-		
+		String numeroEdad = comboEdad.getValue();		
 		admin.crearCategoria(nombreCategoria,15);
 		
 	}
