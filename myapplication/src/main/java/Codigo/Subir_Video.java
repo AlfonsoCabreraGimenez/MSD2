@@ -1,8 +1,15 @@
 package Codigo;
 
-import diagramaclasesbd.BD_Principal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class Subir_Video extends Modificar_Video {
+import com.vaadin.ui.Label;
+
+import diagramaclasesbd.BD_Principal;
+import diagramaclasesbd.Registrado;
+
+public class Subir_Video extends Modificar_Video_ventana {
 
 	public Cabecera_R _unnamed_Cabecera_R_;
 	Modificar_Video mv = new Modificar_Video();
@@ -10,20 +17,23 @@ public class Subir_Video extends Modificar_Video {
 	public iUsuario_Registrado ur = new BD_Principal();
 	
 	public Subir_Video() {
+		modificarInformacion.setVisible(false);
+		
 		hURL.setVisible(true);
 		
 	}
-	public void subirVideo() {
-		//Se implementa subir video
-		//int ID = /*ID del video*/ 6;
-		String url = mv.url.getValue();
-		String miniatura = mv.miniatura.getValue();
-		String titulo = mv.titulo.getValue();
-		String categoria = mv.categoria.getValue();
-		String descripcion = mv.descripcion.getValue();
-		String etiqueta = mv.etiqueta.getValue();
+	public void subirVideo(){
+
+		String mini = miniatura.getValue();
+		String titu = titulo.getValue();
+		String cate = categoria.getValue();
+		String etique = etiqueta.getValue();
+		String des = descripcion.getValue();
+		String urls = url.getValue();
 		
-		ur.subirVideo(5, null, "pequeña", "titulo", null, "etiqueta", "descripcion", "url");
+		ur.subirVideo(1, mini, titu, cate, etique, des, urls, null);
+		
+		
 
 	}
 }

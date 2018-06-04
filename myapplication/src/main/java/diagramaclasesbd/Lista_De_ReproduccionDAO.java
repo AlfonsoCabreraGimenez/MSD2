@@ -8,7 +8,7 @@
  */
 
 /**
- * Licensee: usuario(University of Almeria)
+ * Licensee: Alfonso(University of Almeria)
  * License Type: Academic
  */
 package diagramaclasesbd;
@@ -323,25 +323,13 @@ public class Lista_De_ReproduccionDAO {
 	
 	public static boolean deleteAndDissociate(diagramaclasesbd.Lista_De_Reproduccion lista_De_Reproduccion)throws PersistentException {
 		try {
-			if (lista_De_Reproduccion.getEs_propietario_lista() != null) {
-				lista_De_Reproduccion.getEs_propietario_lista().propiedad_de.remove(lista_De_Reproduccion);
+			if (lista_De_Reproduccion.getEs_prop_lista() != null) {
+				lista_De_Reproduccion.getEs_prop_lista().prop_de.remove(lista_De_Reproduccion);
 			}
 			
-			diagramaclasesbd.Video[] lVideos_reps = lista_De_Reproduccion.videos_rep.toArray();
-			for(int i = 0; i < lVideos_reps.length; i++) {
-				lVideos_reps[i].setLista_rep(null);
-			}
-			diagramaclasesbd.Video[] lVideo_masmegustas = lista_De_Reproduccion.video_masmegusta.toArray();
-			for(int i = 0; i < lVideo_masmegustas.length; i++) {
-				lVideo_masmegustas[i].setMas_gusta(null);
-			}
-			diagramaclasesbd.Video[] lVideos_ultimoss = lista_De_Reproduccion.videos_ultimos.toArray();
-			for(int i = 0; i < lVideos_ultimoss.length; i++) {
-				lVideos_ultimoss[i].setUltimos(null);
-			}
-			diagramaclasesbd.Video[] lVideosRels = lista_De_Reproduccion.videosRel.toArray();
-			for(int i = 0; i < lVideosRels.length; i++) {
-				lVideosRels[i].setRelacionados(null);
+			diagramaclasesbd.Video[] lVideos = lista_De_Reproduccion.video.toArray();
+			for(int i = 0; i < lVideos.length; i++) {
+				lVideos[i].lista_de_Reproduccion.remove(lista_De_Reproduccion);
 			}
 			return delete(lista_De_Reproduccion);
 		}
@@ -353,25 +341,13 @@ public class Lista_De_ReproduccionDAO {
 	
 	public static boolean deleteAndDissociate(diagramaclasesbd.Lista_De_Reproduccion lista_De_Reproduccion, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			if (lista_De_Reproduccion.getEs_propietario_lista() != null) {
-				lista_De_Reproduccion.getEs_propietario_lista().propiedad_de.remove(lista_De_Reproduccion);
+			if (lista_De_Reproduccion.getEs_prop_lista() != null) {
+				lista_De_Reproduccion.getEs_prop_lista().prop_de.remove(lista_De_Reproduccion);
 			}
 			
-			diagramaclasesbd.Video[] lVideos_reps = lista_De_Reproduccion.videos_rep.toArray();
-			for(int i = 0; i < lVideos_reps.length; i++) {
-				lVideos_reps[i].setLista_rep(null);
-			}
-			diagramaclasesbd.Video[] lVideo_masmegustas = lista_De_Reproduccion.video_masmegusta.toArray();
-			for(int i = 0; i < lVideo_masmegustas.length; i++) {
-				lVideo_masmegustas[i].setMas_gusta(null);
-			}
-			diagramaclasesbd.Video[] lVideos_ultimoss = lista_De_Reproduccion.videos_ultimos.toArray();
-			for(int i = 0; i < lVideos_ultimoss.length; i++) {
-				lVideos_ultimoss[i].setUltimos(null);
-			}
-			diagramaclasesbd.Video[] lVideosRels = lista_De_Reproduccion.videosRel.toArray();
-			for(int i = 0; i < lVideosRels.length; i++) {
-				lVideosRels[i].setRelacionados(null);
+			diagramaclasesbd.Video[] lVideos = lista_De_Reproduccion.video.toArray();
+			for(int i = 0; i < lVideos.length; i++) {
+				lVideos[i].lista_de_Reproduccion.remove(lista_De_Reproduccion);
 			}
 			try {
 				session.delete(lista_De_Reproduccion);

@@ -8,7 +8,7 @@
  */
 
 /**
- * Licensee: usuario(University of Almeria)
+ * Licensee: Alfonso(University of Almeria)
  * License Type: Academic
  */
 package diagramaclasesbd;
@@ -327,8 +327,8 @@ public class ComentarioDAO {
 				comentario.getUsuario_comentario().es_escrito.remove(comentario);
 			}
 			
-			if (comentario.getVideo_coment() != null) {
-				comentario.getVideo_coment().comentarios.remove(comentario);
+			if (comentario.getVideo() != null) {
+				comentario.getVideo().comentarios.remove(comentario);
 			}
 			
 			return delete(comentario);
@@ -345,8 +345,8 @@ public class ComentarioDAO {
 				comentario.getUsuario_comentario().es_escrito.remove(comentario);
 			}
 			
-			if (comentario.getVideo_coment() != null) {
-				comentario.getVideo_coment().comentarios.remove(comentario);
+			if (comentario.getVideo() != null) {
+				comentario.getVideo().comentarios.remove(comentario);
 			}
 			
 			try {

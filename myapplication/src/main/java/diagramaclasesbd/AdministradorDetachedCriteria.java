@@ -8,7 +8,7 @@
  */
 
 /**
- * Licensee: usuario(University of Almeria)
+ * Licensee: Alfonso(University of Almeria)
  * License Type: Academic
  */
 package diagramaclasesbd;
@@ -30,16 +30,14 @@ public class AdministradorDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final StringExpression avatar;
 	public final BooleanExpression isAdmin;
 	public final IntegerExpression visitas;
-	public final CollectionExpression me_gusta;
-	public final CollectionExpression historial;
-	public final CollectionExpression propiedad_video_de;
-	public final CollectionExpression otros_usuarios;
-	public final CollectionExpression propiedad_de;
-	public final CollectionExpression es_escrito;
 	public final CollectionExpression usuario_sucripciones;
 	public final CollectionExpression suscriptores;
 	public final CollectionExpression suscripciones;
 	public final CollectionExpression usuario_suscriptores;
+	public final CollectionExpression prop_de;
+	public final CollectionExpression es_escrito;
+	public final CollectionExpression prop_video_de;
+	public final CollectionExpression me_gusta;
 	
 	public AdministradorDetachedCriteria() {
 		super(diagramaclasesbd.Administrador.class, diagramaclasesbd.AdministradorCriteria.class);
@@ -54,16 +52,14 @@ public class AdministradorDetachedCriteria extends AbstractORMDetachedCriteria {
 		avatar = new StringExpression("avatar", this.getDetachedCriteria());
 		isAdmin = new BooleanExpression("isAdmin", this.getDetachedCriteria());
 		visitas = new IntegerExpression("visitas", this.getDetachedCriteria());
-		me_gusta = new CollectionExpression("ORM_me_gusta", this.getDetachedCriteria());
-		historial = new CollectionExpression("ORM_historial", this.getDetachedCriteria());
-		propiedad_video_de = new CollectionExpression("ORM_propiedad_video_de", this.getDetachedCriteria());
-		otros_usuarios = new CollectionExpression("ORM_otros_usuarios", this.getDetachedCriteria());
-		propiedad_de = new CollectionExpression("ORM_propiedad_de", this.getDetachedCriteria());
-		es_escrito = new CollectionExpression("ORM_es_escrito", this.getDetachedCriteria());
 		usuario_sucripciones = new CollectionExpression("ORM_usuario_sucripciones", this.getDetachedCriteria());
 		suscriptores = new CollectionExpression("ORM_suscriptores", this.getDetachedCriteria());
 		suscripciones = new CollectionExpression("ORM_suscripciones", this.getDetachedCriteria());
 		usuario_suscriptores = new CollectionExpression("ORM_usuario_suscriptores", this.getDetachedCriteria());
+		prop_de = new CollectionExpression("ORM_prop_de", this.getDetachedCriteria());
+		es_escrito = new CollectionExpression("ORM_es_escrito", this.getDetachedCriteria());
+		prop_video_de = new CollectionExpression("ORM_prop_video_de", this.getDetachedCriteria());
+		me_gusta = new CollectionExpression("ORM_me_gusta", this.getDetachedCriteria());
 	}
 	
 	public AdministradorDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -79,40 +75,14 @@ public class AdministradorDetachedCriteria extends AbstractORMDetachedCriteria {
 		avatar = new StringExpression("avatar", this.getDetachedCriteria());
 		isAdmin = new BooleanExpression("isAdmin", this.getDetachedCriteria());
 		visitas = new IntegerExpression("visitas", this.getDetachedCriteria());
-		me_gusta = new CollectionExpression("ORM_me_gusta", this.getDetachedCriteria());
-		historial = new CollectionExpression("ORM_historial", this.getDetachedCriteria());
-		propiedad_video_de = new CollectionExpression("ORM_propiedad_video_de", this.getDetachedCriteria());
-		otros_usuarios = new CollectionExpression("ORM_otros_usuarios", this.getDetachedCriteria());
-		propiedad_de = new CollectionExpression("ORM_propiedad_de", this.getDetachedCriteria());
-		es_escrito = new CollectionExpression("ORM_es_escrito", this.getDetachedCriteria());
 		usuario_sucripciones = new CollectionExpression("ORM_usuario_sucripciones", this.getDetachedCriteria());
 		suscriptores = new CollectionExpression("ORM_suscriptores", this.getDetachedCriteria());
 		suscripciones = new CollectionExpression("ORM_suscripciones", this.getDetachedCriteria());
 		usuario_suscriptores = new CollectionExpression("ORM_usuario_suscriptores", this.getDetachedCriteria());
-	}
-	
-	public VideoDetachedCriteria createMe_gustaCriteria() {
-		return new VideoDetachedCriteria(createCriteria("ORM_me_gusta"));
-	}
-	
-	public VideoDetachedCriteria createHistorialCriteria() {
-		return new VideoDetachedCriteria(createCriteria("ORM_historial"));
-	}
-	
-	public VideoDetachedCriteria createPropiedad_video_deCriteria() {
-		return new VideoDetachedCriteria(createCriteria("ORM_propiedad_video_de"));
-	}
-	
-	public VideoDetachedCriteria createOtros_usuariosCriteria() {
-		return new VideoDetachedCriteria(createCriteria("ORM_otros_usuarios"));
-	}
-	
-	public Lista_De_ReproduccionDetachedCriteria createPropiedad_deCriteria() {
-		return new Lista_De_ReproduccionDetachedCriteria(createCriteria("ORM_propiedad_de"));
-	}
-	
-	public ComentarioDetachedCriteria createEs_escritoCriteria() {
-		return new ComentarioDetachedCriteria(createCriteria("ORM_es_escrito"));
+		prop_de = new CollectionExpression("ORM_prop_de", this.getDetachedCriteria());
+		es_escrito = new CollectionExpression("ORM_es_escrito", this.getDetachedCriteria());
+		prop_video_de = new CollectionExpression("ORM_prop_video_de", this.getDetachedCriteria());
+		me_gusta = new CollectionExpression("ORM_me_gusta", this.getDetachedCriteria());
 	}
 	
 	public UsuarioDetachedCriteria createUsuario_sucripcionesCriteria() {
@@ -129,6 +99,22 @@ public class AdministradorDetachedCriteria extends AbstractORMDetachedCriteria {
 	
 	public UsuarioDetachedCriteria createUsuario_suscriptoresCriteria() {
 		return new UsuarioDetachedCriteria(createCriteria("ORM_usuario_suscriptores"));
+	}
+	
+	public Lista_De_ReproduccionDetachedCriteria createProp_deCriteria() {
+		return new Lista_De_ReproduccionDetachedCriteria(createCriteria("ORM_prop_de"));
+	}
+	
+	public ComentarioDetachedCriteria createEs_escritoCriteria() {
+		return new ComentarioDetachedCriteria(createCriteria("ORM_es_escrito"));
+	}
+	
+	public VideoDetachedCriteria createProp_video_deCriteria() {
+		return new VideoDetachedCriteria(createCriteria("ORM_prop_video_de"));
+	}
+	
+	public VideoDetachedCriteria createMe_gustaCriteria() {
+		return new VideoDetachedCriteria(createCriteria("ORM_me_gusta"));
 	}
 	
 	public Administrador uniqueAdministrador(PersistentSession session) {

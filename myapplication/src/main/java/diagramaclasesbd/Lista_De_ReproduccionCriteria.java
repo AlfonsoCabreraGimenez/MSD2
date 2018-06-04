@@ -8,7 +8,7 @@
  */
 
 /**
- * Licensee: usuario(University of Almeria)
+ * Licensee: Alfonso(University of Almeria)
  * License Type: Academic
  */
 package diagramaclasesbd;
@@ -20,24 +20,18 @@ import org.orm.criteria.*;
 
 public class Lista_De_ReproduccionCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
-	public final IntegerExpression es_propietario_listaId;
-	public final AssociationExpression es_propietario_lista;
+	public final IntegerExpression es_prop_listaId;
+	public final AssociationExpression es_prop_lista;
 	public final StringExpression titulo;
-	public final CollectionExpression videos_rep;
-	public final CollectionExpression video_masmegusta;
-	public final CollectionExpression videos_ultimos;
-	public final CollectionExpression videosRel;
+	public final CollectionExpression video;
 	
 	public Lista_De_ReproduccionCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new IntegerExpression("ID", this);
-		es_propietario_listaId = new IntegerExpression("es_propietario_lista.ID", this);
-		es_propietario_lista = new AssociationExpression("es_propietario_lista", this);
+		es_prop_listaId = new IntegerExpression("es_prop_lista.ID", this);
+		es_prop_lista = new AssociationExpression("es_prop_lista", this);
 		titulo = new StringExpression("titulo", this);
-		videos_rep = new CollectionExpression("ORM_videos_rep", this);
-		video_masmegusta = new CollectionExpression("ORM_video_masmegusta", this);
-		videos_ultimos = new CollectionExpression("ORM_videos_ultimos", this);
-		videosRel = new CollectionExpression("ORM_videosRel", this);
+		video = new CollectionExpression("ORM_video", this);
 	}
 	
 	public Lista_De_ReproduccionCriteria(PersistentSession session) {
@@ -48,24 +42,12 @@ public class Lista_De_ReproduccionCriteria extends AbstractORMCriteria {
 		this(Actividad11CabreraFuentesPersistentManager.instance().getSession());
 	}
 	
-	public UsuarioCriteria createEs_propietario_listaCriteria() {
-		return new UsuarioCriteria(createCriteria("es_propietario_lista"));
+	public UsuarioCriteria createEs_prop_listaCriteria() {
+		return new UsuarioCriteria(createCriteria("es_prop_lista"));
 	}
 	
-	public VideoCriteria createVideos_repCriteria() {
-		return new VideoCriteria(createCriteria("ORM_videos_rep"));
-	}
-	
-	public VideoCriteria createVideo_masmegustaCriteria() {
-		return new VideoCriteria(createCriteria("ORM_video_masmegusta"));
-	}
-	
-	public VideoCriteria createVideos_ultimosCriteria() {
-		return new VideoCriteria(createCriteria("ORM_videos_ultimos"));
-	}
-	
-	public VideoCriteria createVideosRelCriteria() {
-		return new VideoCriteria(createCriteria("ORM_videosRel"));
+	public VideoCriteria createVideoCriteria() {
+		return new VideoCriteria(createCriteria("ORM_video"));
 	}
 	
 	public Lista_De_Reproduccion uniqueLista_De_Reproduccion() {

@@ -1,5 +1,7 @@
 package Codigo;
 
+import java.text.ParseException;
+
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.PopupView;
@@ -32,9 +34,9 @@ public class Cabecera_R extends Cabecera_R_ventana{
 				//Subir video con el boton aceptar
 				sv.confirmar.addClickListener(new ClickListener() {
 					public void buttonClick(ClickEvent event) {
-						sv.subirVideo();
+							sv.subirVideo();
+				
 						popup.close();
-						
 					}
 				});
 				//Cerrrar el popup cuando se da a cancelar

@@ -1,11 +1,13 @@
 package Codigo;
 
+import diagramaclasesbd.BD_Principal;
+
 public class Crear_Lista_Reproduccion extends Crear_Lista_Reproduccion_ventana{
-	/*private Label _tituloL;
-	private TextField _tituloTF;
-	private Label _seleccionarL;
-	private CheckBox _clickCH;*/
+	
 	public Perfil_Propio_R _unnamed_Perfil_Propio_R_;
+	
+	iUsuario_Registrado r = new BD_Principal();
+	
 
 	public Crear_Lista_Reproduccion() {
 		
@@ -15,6 +17,7 @@ public class Crear_Lista_Reproduccion extends Crear_Lista_Reproduccion_ventana{
 	}
 
 	public void crearListaRep() {
-		throw new UnsupportedOperationException();
+		String titulo = tTitulo.getValue();
+		r.crearListaRep(titulo, null);
 	}
 }

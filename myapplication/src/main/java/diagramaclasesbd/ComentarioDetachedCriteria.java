@@ -8,7 +8,7 @@
  */
 
 /**
- * Licensee: usuario(University of Almeria)
+ * Licensee: Alfonso(University of Almeria)
  * License Type: Academic
  */
 package diagramaclasesbd;
@@ -22,8 +22,8 @@ public class ComentarioDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression ID;
 	public final IntegerExpression usuario_comentarioId;
 	public final AssociationExpression usuario_comentario;
-	public final IntegerExpression video_comentId;
-	public final AssociationExpression video_coment;
+	public final IntegerExpression videoId;
+	public final AssociationExpression video;
 	public final StringExpression descripcion;
 	
 	public ComentarioDetachedCriteria() {
@@ -31,8 +31,8 @@ public class ComentarioDetachedCriteria extends AbstractORMDetachedCriteria {
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		usuario_comentarioId = new IntegerExpression("usuario_comentario.ID", this.getDetachedCriteria());
 		usuario_comentario = new AssociationExpression("usuario_comentario", this.getDetachedCriteria());
-		video_comentId = new IntegerExpression("video_coment.ID", this.getDetachedCriteria());
-		video_coment = new AssociationExpression("video_coment", this.getDetachedCriteria());
+		videoId = new IntegerExpression("video.ID", this.getDetachedCriteria());
+		video = new AssociationExpression("video", this.getDetachedCriteria());
 		descripcion = new StringExpression("descripcion", this.getDetachedCriteria());
 	}
 	
@@ -41,8 +41,8 @@ public class ComentarioDetachedCriteria extends AbstractORMDetachedCriteria {
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		usuario_comentarioId = new IntegerExpression("usuario_comentario.ID", this.getDetachedCriteria());
 		usuario_comentario = new AssociationExpression("usuario_comentario", this.getDetachedCriteria());
-		video_comentId = new IntegerExpression("video_coment.ID", this.getDetachedCriteria());
-		video_coment = new AssociationExpression("video_coment", this.getDetachedCriteria());
+		videoId = new IntegerExpression("video.ID", this.getDetachedCriteria());
+		video = new AssociationExpression("video", this.getDetachedCriteria());
 		descripcion = new StringExpression("descripcion", this.getDetachedCriteria());
 	}
 	
@@ -50,8 +50,8 @@ public class ComentarioDetachedCriteria extends AbstractORMDetachedCriteria {
 		return new UsuarioDetachedCriteria(createCriteria("usuario_comentario"));
 	}
 	
-	public VideoDetachedCriteria createVideo_comentCriteria() {
-		return new VideoDetachedCriteria(createCriteria("video_coment"));
+	public VideoDetachedCriteria createVideoCriteria() {
+		return new VideoDetachedCriteria(createCriteria("video"));
 	}
 	
 	public Comentario uniqueComentario(PersistentSession session) {

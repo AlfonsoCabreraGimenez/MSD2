@@ -63,6 +63,18 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 				UI.getCurrent().addWindow(popup2);
 			}
 		});
+		clr.cancelar.addClickListener(new ClickListener() {
+
+			public void buttonClick(ClickEvent event) {
+				popup2.close();
+			}
+		});
+		clr.confirmar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				clr.crearListaRep();
+				popup2.close();
+			}
+		});
 	}
 	public void borrarVideo() {
 		throw new UnsupportedOperationException();

@@ -40,7 +40,7 @@ public class MyUI extends UI {
     	navigator = new Navigator(this, this);
     	//navigator.addView("",new Pag_Inicio_NR());
     	//navigator.addView("",new Perfil_Ajeno_A());
-    	navigator.addView("", new Perfil_Propio_A());
+    	navigator.addView("", new Perfil_Propio_R());
     	navigator.addView("inicioNR",new Pag_Inicio_NR());
     	navigator.addView("Ingreso",new Ingreso_Aplicacion());
     	navigator.addView("PagIR",new Pag_Inicio_R());

@@ -8,7 +8,7 @@
  */
 
 /**
- * Licensee: usuario(University of Almeria)
+ * Licensee: Alfonso(University of Almeria)
  * License Type: Academic
  */
 package diagramaclasesbd;
@@ -323,45 +323,25 @@ public class VideoDAO {
 	
 	public static boolean deleteAndDissociate(diagramaclasesbd.Video video)throws PersistentException {
 		try {
-			if (video.getUsuario() != null) {
-				video.getUsuario().otros_usuarios.remove(video);
-			}
-			
-			if (video.getEs_propietario() != null) {
-				video.getEs_propietario().propiedad_video_de.remove(video);
-			}
-			
-			diagramaclasesbd.Usuario[] lUsuarioss = video.usuarios.toArray();
-			for(int i = 0; i < lUsuarioss.length; i++) {
-				lUsuarioss[i].me_gusta.remove(video);
-			}
-			if (video.getRelacionados() != null) {
-				video.getRelacionados().videosRel.remove(video);
-			}
-			
-			if (video.getUltimos() != null) {
-				video.getUltimos().videos_ultimos.remove(video);
-			}
-			
-			if (video.getMas_gusta() != null) {
-				video.getMas_gusta().video_masmegusta.remove(video);
-			}
-			
-			if (video.getLista_rep() != null) {
-				video.getLista_rep().videos_rep.remove(video);
+			if (video.getUsuario_video() != null) {
+				video.getUsuario_video().prop_video_de.remove(video);
 			}
 			
 			if (video.getCategoria() != null) {
 				video.getCategoria().videos.remove(video);
 			}
 			
-			if (video.getUsuario_historial() != null) {
-				video.getUsuario_historial().historial.remove(video);
+			diagramaclasesbd.Lista_De_Reproduccion[] lLista_de_Reproduccions = video.lista_de_Reproduccion.toArray();
+			for(int i = 0; i < lLista_de_Reproduccions.length; i++) {
+				lLista_de_Reproduccions[i].video.remove(video);
 			}
-			
+			diagramaclasesbd.Usuario[] lDa_megustas = video.da_megusta.toArray();
+			for(int i = 0; i < lDa_megustas.length; i++) {
+				lDa_megustas[i].me_gusta.remove(video);
+			}
 			diagramaclasesbd.Comentario[] lComentarioss = video.comentarios.toArray();
 			for(int i = 0; i < lComentarioss.length; i++) {
-				lComentarioss[i].setVideo_coment(null);
+				lComentarioss[i].setVideo(null);
 			}
 			return delete(video);
 		}
@@ -373,45 +353,25 @@ public class VideoDAO {
 	
 	public static boolean deleteAndDissociate(diagramaclasesbd.Video video, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			if (video.getUsuario() != null) {
-				video.getUsuario().otros_usuarios.remove(video);
-			}
-			
-			if (video.getEs_propietario() != null) {
-				video.getEs_propietario().propiedad_video_de.remove(video);
-			}
-			
-			diagramaclasesbd.Usuario[] lUsuarioss = video.usuarios.toArray();
-			for(int i = 0; i < lUsuarioss.length; i++) {
-				lUsuarioss[i].me_gusta.remove(video);
-			}
-			if (video.getRelacionados() != null) {
-				video.getRelacionados().videosRel.remove(video);
-			}
-			
-			if (video.getUltimos() != null) {
-				video.getUltimos().videos_ultimos.remove(video);
-			}
-			
-			if (video.getMas_gusta() != null) {
-				video.getMas_gusta().video_masmegusta.remove(video);
-			}
-			
-			if (video.getLista_rep() != null) {
-				video.getLista_rep().videos_rep.remove(video);
+			if (video.getUsuario_video() != null) {
+				video.getUsuario_video().prop_video_de.remove(video);
 			}
 			
 			if (video.getCategoria() != null) {
 				video.getCategoria().videos.remove(video);
 			}
 			
-			if (video.getUsuario_historial() != null) {
-				video.getUsuario_historial().historial.remove(video);
+			diagramaclasesbd.Lista_De_Reproduccion[] lLista_de_Reproduccions = video.lista_de_Reproduccion.toArray();
+			for(int i = 0; i < lLista_de_Reproduccions.length; i++) {
+				lLista_de_Reproduccions[i].video.remove(video);
 			}
-			
+			diagramaclasesbd.Usuario[] lDa_megustas = video.da_megusta.toArray();
+			for(int i = 0; i < lDa_megustas.length; i++) {
+				lDa_megustas[i].me_gusta.remove(video);
+			}
 			diagramaclasesbd.Comentario[] lComentarioss = video.comentarios.toArray();
 			for(int i = 0; i < lComentarioss.length; i++) {
-				lComentarioss[i].setVideo_coment(null);
+				lComentarioss[i].setVideo(null);
 			}
 			try {
 				session.delete(video);

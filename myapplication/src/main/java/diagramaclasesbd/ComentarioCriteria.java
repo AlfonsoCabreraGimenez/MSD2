@@ -8,7 +8,7 @@
  */
 
 /**
- * Licensee: usuario(University of Almeria)
+ * Licensee: Alfonso(University of Almeria)
  * License Type: Academic
  */
 package diagramaclasesbd;
@@ -22,8 +22,8 @@ public class ComentarioCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
 	public final IntegerExpression usuario_comentarioId;
 	public final AssociationExpression usuario_comentario;
-	public final IntegerExpression video_comentId;
-	public final AssociationExpression video_coment;
+	public final IntegerExpression videoId;
+	public final AssociationExpression video;
 	public final StringExpression descripcion;
 	
 	public ComentarioCriteria(Criteria criteria) {
@@ -31,8 +31,8 @@ public class ComentarioCriteria extends AbstractORMCriteria {
 		ID = new IntegerExpression("ID", this);
 		usuario_comentarioId = new IntegerExpression("usuario_comentario.ID", this);
 		usuario_comentario = new AssociationExpression("usuario_comentario", this);
-		video_comentId = new IntegerExpression("video_coment.ID", this);
-		video_coment = new AssociationExpression("video_coment", this);
+		videoId = new IntegerExpression("video.ID", this);
+		video = new AssociationExpression("video", this);
 		descripcion = new StringExpression("descripcion", this);
 	}
 	
@@ -48,8 +48,8 @@ public class ComentarioCriteria extends AbstractORMCriteria {
 		return new UsuarioCriteria(createCriteria("usuario_comentario"));
 	}
 	
-	public VideoCriteria createVideo_comentCriteria() {
-		return new VideoCriteria(createCriteria("video_coment"));
+	public VideoCriteria createVideoCriteria() {
+		return new VideoCriteria(createCriteria("video"));
 	}
 	
 	public Comentario uniqueComentario() {

@@ -8,7 +8,7 @@
  */
 
 /**
- * Licensee: usuario(University of Almeria)
+ * Licensee: Alfonso(University of Almeria)
  * License Type: Academic
  */
 package diagramaclasesbd;
@@ -23,8 +23,8 @@ public class Comentario implements Serializable {
 	}
 	
 	private void this_setOwner(Object owner, int key) {
-		if (key == ORMConstants.KEY_COMENTARIO_VIDEO_COMENT) {
-			this.video_coment = (diagramaclasesbd.Video) owner;
+		if (key == ORMConstants.KEY_COMENTARIO_VIDEO) {
+			this.video = (diagramaclasesbd.Video) owner;
 		}
 		
 		else if (key == ORMConstants.KEY_COMENTARIO_USUARIO_COMENTARIO) {
@@ -56,7 +56,7 @@ public class Comentario implements Serializable {
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="VideoID", referencedColumnName="ID", nullable=false) })	
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private diagramaclasesbd.Video video_coment;
+	private diagramaclasesbd.Video video;
 	
 	@Column(name="Descripcion", nullable=true, length=255)	
 	private String descripcion;
@@ -81,28 +81,28 @@ public class Comentario implements Serializable {
 		return descripcion;
 	}
 	
-	public void setVideo_coment(diagramaclasesbd.Video value) {
-		if (video_coment != null) {
-			video_coment.comentarios.remove(this);
+	public void setVideo(diagramaclasesbd.Video value) {
+		if (video != null) {
+			video.comentarios.remove(this);
 		}
 		if (value != null) {
 			value.comentarios.add(this);
 		}
 	}
 	
-	public diagramaclasesbd.Video getVideo_coment() {
-		return video_coment;
+	public diagramaclasesbd.Video getVideo() {
+		return video;
 	}
 	
 	/**
 	 * This method is for internal use only.
 	 */
-	public void setORM_Video_coment(diagramaclasesbd.Video value) {
-		this.video_coment = value;
+	public void setORM_Video(diagramaclasesbd.Video value) {
+		this.video = value;
 	}
 	
-	private diagramaclasesbd.Video getORM_Video_coment() {
-		return video_coment;
+	private diagramaclasesbd.Video getORM_Video() {
+		return video;
 	}
 	
 	public void setUsuario_comentario(diagramaclasesbd.Usuario value) {

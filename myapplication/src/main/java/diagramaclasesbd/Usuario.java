@@ -8,7 +8,7 @@
  */
 
 /**
- * Licensee: usuario(University of Almeria)
+ * Licensee: Alfonso(University of Almeria)
  * License Type: Academic
  */
 package diagramaclasesbd;
@@ -24,25 +24,7 @@ public class Usuario implements Serializable {
 	}
 	
 	private java.util.Set this_getSet (int key) {
-		if (key == ORMConstants.KEY_USUARIO_ME_GUSTA) {
-			return ORM_me_gusta;
-		}
-		else if (key == ORMConstants.KEY_USUARIO_HISTORIAL) {
-			return ORM_historial;
-		}
-		else if (key == ORMConstants.KEY_USUARIO_PROPIEDAD_VIDEO_DE) {
-			return ORM_propiedad_video_de;
-		}
-		else if (key == ORMConstants.KEY_USUARIO_OTROS_USUARIOS) {
-			return ORM_otros_usuarios;
-		}
-		else if (key == ORMConstants.KEY_USUARIO_PROPIEDAD_DE) {
-			return ORM_propiedad_de;
-		}
-		else if (key == ORMConstants.KEY_USUARIO_ES_ESCRITO) {
-			return ORM_es_escrito;
-		}
-		else if (key == ORMConstants.KEY_USUARIO_USUARIO_SUCRIPCIONES) {
+		if (key == ORMConstants.KEY_USUARIO_USUARIO_SUCRIPCIONES) {
 			return ORM_usuario_sucripciones;
 		}
 		else if (key == ORMConstants.KEY_USUARIO_SUSCRIPTORES) {
@@ -53,6 +35,18 @@ public class Usuario implements Serializable {
 		}
 		else if (key == ORMConstants.KEY_USUARIO_USUARIO_SUSCRIPTORES) {
 			return ORM_usuario_suscriptores;
+		}
+		else if (key == ORMConstants.KEY_USUARIO_PROP_DE) {
+			return ORM_prop_de;
+		}
+		else if (key == ORMConstants.KEY_USUARIO_ES_ESCRITO) {
+			return ORM_es_escrito;
+		}
+		else if (key == ORMConstants.KEY_USUARIO_PROP_VIDEO_DE) {
+			return ORM_prop_video_de;
+		}
+		else if (key == ORMConstants.KEY_USUARIO_ME_GUSTA) {
+			return ORM_me_gusta;
 		}
 		
 		return null;
@@ -103,37 +97,6 @@ public class Usuario implements Serializable {
 	@Column(name="Visitas", nullable=false, length=10)	
 	private int visitas;
 	
-	@ManyToMany(targetEntity=diagramaclasesbd.Video.class)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinTable(name="Video_Usuario", joinColumns={ @JoinColumn(name="UsuarioID") }, inverseJoinColumns={ @JoinColumn(name="VideoID") })	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_me_gusta = new java.util.HashSet();
-	
-	@OneToMany(mappedBy="usuario_historial", targetEntity=diagramaclasesbd.Video.class)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_historial = new java.util.HashSet();
-	
-	@OneToMany(mappedBy="es_propietario", targetEntity=diagramaclasesbd.Video.class)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_propiedad_video_de = new java.util.HashSet();
-	
-	@OneToMany(mappedBy="usuario", targetEntity=diagramaclasesbd.Video.class)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_otros_usuarios = new java.util.HashSet();
-	
-	@OneToMany(mappedBy="es_propietario_lista", targetEntity=diagramaclasesbd.Lista_De_Reproduccion.class)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_propiedad_de = new java.util.HashSet();
-	
-	@OneToMany(mappedBy="usuario_comentario", targetEntity=diagramaclasesbd.Comentario.class)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_es_escrito = new java.util.HashSet();
-	
 	@ManyToMany(targetEntity=diagramaclasesbd.Usuario.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinTable(name="Usuario_Usuario", joinColumns={ @JoinColumn(name="UsuarioID2") }, inverseJoinColumns={ @JoinColumn(name="UsuarioID") })	
@@ -155,6 +118,26 @@ public class Usuario implements Serializable {
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_usuario_suscriptores = new java.util.HashSet();
+	
+	@OneToMany(mappedBy="es_prop_lista", targetEntity=diagramaclasesbd.Lista_De_Reproduccion.class)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set ORM_prop_de = new java.util.HashSet();
+	
+	@OneToMany(mappedBy="usuario_comentario", targetEntity=diagramaclasesbd.Comentario.class)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set ORM_es_escrito = new java.util.HashSet();
+	
+	@OneToMany(mappedBy="usuario_video", targetEntity=diagramaclasesbd.Video.class)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set ORM_prop_video_de = new java.util.HashSet();
+	
+	@ManyToMany(mappedBy="ORM_da_megusta", targetEntity=diagramaclasesbd.Video.class)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set ORM_me_gusta = new java.util.HashSet();
 	
 	private void setID(int value) {
 		this.ID = value;
@@ -248,72 +231,6 @@ public class Usuario implements Serializable {
 		return visitas;
 	}
 	
-	private void setORM_Me_gusta(java.util.Set value) {
-		this.ORM_me_gusta = value;
-	}
-	
-	private java.util.Set getORM_Me_gusta() {
-		return ORM_me_gusta;
-	}
-	
-	@Transient	
-	public final diagramaclasesbd.VideoSetCollection me_gusta = new diagramaclasesbd.VideoSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_ME_GUSTA, ORMConstants.KEY_VIDEO_USUARIOS, ORMConstants.KEY_MUL_MANY_TO_MANY);
-	
-	private void setORM_Historial(java.util.Set value) {
-		this.ORM_historial = value;
-	}
-	
-	private java.util.Set getORM_Historial() {
-		return ORM_historial;
-	}
-	
-	@Transient	
-	public final diagramaclasesbd.VideoSetCollection historial = new diagramaclasesbd.VideoSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_HISTORIAL, ORMConstants.KEY_VIDEO_USUARIO_HISTORIAL, ORMConstants.KEY_MUL_ONE_TO_MANY);
-	
-	private void setORM_Propiedad_video_de(java.util.Set value) {
-		this.ORM_propiedad_video_de = value;
-	}
-	
-	private java.util.Set getORM_Propiedad_video_de() {
-		return ORM_propiedad_video_de;
-	}
-	
-	@Transient	
-	public final diagramaclasesbd.VideoSetCollection propiedad_video_de = new diagramaclasesbd.VideoSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_PROPIEDAD_VIDEO_DE, ORMConstants.KEY_VIDEO_ES_PROPIETARIO, ORMConstants.KEY_MUL_ONE_TO_MANY);
-	
-	private void setORM_Otros_usuarios(java.util.Set value) {
-		this.ORM_otros_usuarios = value;
-	}
-	
-	private java.util.Set getORM_Otros_usuarios() {
-		return ORM_otros_usuarios;
-	}
-	
-	@Transient	
-	public final diagramaclasesbd.VideoSetCollection otros_usuarios = new diagramaclasesbd.VideoSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_OTROS_USUARIOS, ORMConstants.KEY_VIDEO_USUARIO, ORMConstants.KEY_MUL_ONE_TO_MANY);
-	
-	private void setORM_Propiedad_de(java.util.Set value) {
-		this.ORM_propiedad_de = value;
-	}
-	
-	private java.util.Set getORM_Propiedad_de() {
-		return ORM_propiedad_de;
-	}
-	
-	@Transient	
-	public final diagramaclasesbd.Lista_De_ReproduccionSetCollection propiedad_de = new diagramaclasesbd.Lista_De_ReproduccionSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_PROPIEDAD_DE, ORMConstants.KEY_LISTA_DE_REPRODUCCION_ES_PROPIETARIO_LISTA, ORMConstants.KEY_MUL_ONE_TO_MANY);
-	
-	private void setORM_Es_escrito(java.util.Set value) {
-		this.ORM_es_escrito = value;
-	}
-	
-	private java.util.Set getORM_Es_escrito() {
-		return ORM_es_escrito;
-	}
-	
-	@Transient	
-	public final diagramaclasesbd.ComentarioSetCollection es_escrito = new diagramaclasesbd.ComentarioSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_ES_ESCRITO, ORMConstants.KEY_COMENTARIO_USUARIO_COMENTARIO, ORMConstants.KEY_MUL_ONE_TO_MANY);
-	
 	private void setORM_Usuario_sucripciones(java.util.Set value) {
 		this.ORM_usuario_sucripciones = value;
 	}
@@ -357,6 +274,50 @@ public class Usuario implements Serializable {
 	
 	@Transient	
 	public final diagramaclasesbd.UsuarioSetCollection usuario_suscriptores = new diagramaclasesbd.UsuarioSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_USUARIO_SUSCRIPTORES, ORMConstants.KEY_USUARIO_SUSCRIPTORES, ORMConstants.KEY_MUL_MANY_TO_MANY);
+	
+	private void setORM_Prop_de(java.util.Set value) {
+		this.ORM_prop_de = value;
+	}
+	
+	private java.util.Set getORM_Prop_de() {
+		return ORM_prop_de;
+	}
+	
+	@Transient	
+	public final diagramaclasesbd.Lista_De_ReproduccionSetCollection prop_de = new diagramaclasesbd.Lista_De_ReproduccionSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_PROP_DE, ORMConstants.KEY_LISTA_DE_REPRODUCCION_ES_PROP_LISTA, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	
+	private void setORM_Es_escrito(java.util.Set value) {
+		this.ORM_es_escrito = value;
+	}
+	
+	private java.util.Set getORM_Es_escrito() {
+		return ORM_es_escrito;
+	}
+	
+	@Transient	
+	public final diagramaclasesbd.ComentarioSetCollection es_escrito = new diagramaclasesbd.ComentarioSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_ES_ESCRITO, ORMConstants.KEY_COMENTARIO_USUARIO_COMENTARIO, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	
+	private void setORM_Prop_video_de(java.util.Set value) {
+		this.ORM_prop_video_de = value;
+	}
+	
+	private java.util.Set getORM_Prop_video_de() {
+		return ORM_prop_video_de;
+	}
+	
+	@Transient	
+	public final diagramaclasesbd.VideoSetCollection prop_video_de = new diagramaclasesbd.VideoSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_PROP_VIDEO_DE, ORMConstants.KEY_VIDEO_USUARIO_VIDEO, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	
+	private void setORM_Me_gusta(java.util.Set value) {
+		this.ORM_me_gusta = value;
+	}
+	
+	private java.util.Set getORM_Me_gusta() {
+		return ORM_me_gusta;
+	}
+	
+	@Transient	
+	public final diagramaclasesbd.VideoSetCollection me_gusta = new diagramaclasesbd.VideoSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_ME_GUSTA, ORMConstants.KEY_VIDEO_DA_MEGUSTA, ORMConstants.KEY_MUL_MANY_TO_MANY);
 	
 	public String toString() {
 		return String.valueOf(getID());

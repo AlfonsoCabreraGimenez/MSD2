@@ -8,7 +8,7 @@
  */
 
 /**
- * Licensee: usuario(University of Almeria)
+ * Licensee: Alfonso(University of Almeria)
  * License Type: Academic
  */
 package diagramaclasesbd;
@@ -78,6 +78,7 @@ public class VideoSetCollection extends org.orm.util.ORMSet {
 	 * <li>visualizaciones</li>
 	 * <li>miniatura</li>
 	 * <li>megusta</li>
+	 * <li>fechaCreacion</li>
 	 * </ul>
 	 * @return The persistent objects sorted array
 	 */
@@ -96,6 +97,7 @@ public class VideoSetCollection extends org.orm.util.ORMSet {
 	 * <li>visualizaciones</li>
 	 * <li>miniatura</li>
 	 * <li>megusta</li>
+	 * <li>fechaCreacion</li>
 	 * </ul>
 	 * @param ascending true for ascending, false for descending
 	 * @return The persistent objects sorted array
