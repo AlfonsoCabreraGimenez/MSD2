@@ -18,7 +18,7 @@ public class Subir_Video extends Modificar_Video_ventana {
 	
 	public Subir_Video() {
 		modificarInformacion.setVisible(false);
-		
+		//Modicoa
 		hURL.setVisible(true);
 		
 	}
@@ -31,7 +31,8 @@ public class Subir_Video extends Modificar_Video_ventana {
 		String des = descripcion.getValue();
 		String urls = url.getValue();
 		
-		ur.subirVideo(1, mini, titu, cate, etique, des, urls, null);
+		Date horaActual = null;
+		ur.subirVideo(1, mini, titu, cate, etique, des, urls, horaActual);
 		
 		
 
