@@ -4,19 +4,15 @@ import com.vaadin.event.ContextClickEvent;
 import com.vaadin.event.ContextClickEvent.ContextClickListener;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
+import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Window;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
 public class Video2 extends Video2_ventana{
-	/*private Label _tituloL;
-	private Boton _tituloB;
-	private Label _usuarioPropL;
-	private Boton _usuarioPropB;
-	private Label _categoriaL;
-	private Label _etiquetaL;
-	private Label _fechaSuL;
-	private Imagen _minuaturaI;
-	private Boton _miniaturaB;*/
+	Window popup = new Window();
+	VerticalLayout subContent = new VerticalLayout();
+	
 	private TipoUsuario _usuario;
 	public Lista_Videos_De_Reproduccion _unnamed_Lista_Videos_De_Reproduccion_;
 	public Pag_Inicio_NR _unnamed_Pag_Inicio_NR_;
@@ -32,17 +28,48 @@ public class Video2 extends Video2_ventana{
 	public Visualizacion_Video_Ajeno_A _unnamed_Visualizacion_Video_Ajeno_A_;
 	public Visualizacion_Video_Ajeno_R _unnamed_Visualizacion_Video_Ajeno_R_;
 	
+	Modificar_Video mv = new Modificar_Video();
+	
 	public Video2() {
+		//IR A VISUALIZACION DE VIDEO
 		titulo.addClickListener(new ClickListener() {
 
 			public void buttonClick(ClickEvent event) {
 				UI.getCurrent().getNavigator().navigateTo("VisAjeno");
 			}
 		});
+		//IR A PAGINA AJENA
 		usuario.addClickListener(new ClickListener() {
 
 			public void buttonClick(ClickEvent event) {
 				UI.getCurrent().getNavigator().navigateTo("PAjeno");
+			}
+		});
+		modificarVideo.addClickListener(new ClickListener() {
+			
+			public void buttonClick(ClickEvent event) {
+				popup.setContent(subContent);
+				subContent.addComponent(mv);
+				popup.center();
+				popup.setWidth("720px");
+				//popup.setClosable(false);
+				popup.setModal(true);
+				UI.getCurrent().addWindow(popup);
+				
+				mv.confirmar.addClickListener(new ClickListener() {
+					public void buttonClick(ClickEvent event) {
+							mv.modificarDatosVideo();
+				
+						popup.close();
+					}
+				});
+				//Cerrrar el popup cuando se da a cancelar
+				mv.cancelar.addClickListener(new ClickListener() {
+					public void buttonClick(ClickEvent event) {
+						popup.close();
+			}
+		});
+				
 			}
 		});
 	}

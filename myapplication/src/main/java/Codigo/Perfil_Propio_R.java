@@ -1,9 +1,16 @@
 package Codigo;
 
+import org.orm.PersistentException;
+
 import com.vaadin.navigator.View;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.Link;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
+
+import diagramaclasesbd.Registrado;
+
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
@@ -26,13 +33,14 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	Crear_Lista_Reproduccion clr = new Crear_Lista_Reproduccion();
 	
 	
-	public Perfil_Propio_R(){
+	public Perfil_Propio_R() throws PersistentException{
 		hCabeceraInicio.addComponent(cc.inicio);
 		hCabeceraRegistrado.addComponent(cr.avatar);
 		hCabeceraRegistrado.addComponent(cr.botonSubirVideo);
 		hCabeceraRegistrado.addComponent(cr.botonCerrarSesion);
 		hPanel.addComponent(v2.vVerticalVideoGeneral);
 		inicializar();
+	//	cargarPerfilPropioR();
 	}
 	
 	void inicializar(){
@@ -80,7 +88,13 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 		throw new UnsupportedOperationException();
 	}
 
-	public void cargarPerfilPropioR() {
-		throw new UnsupportedOperationException();
+	public void cargarPerfilPropioR() throws PersistentException {
+		Registrado r = diagramaclasesbd.RegistradoDAO.getRegistradoByORMID(2);
+		/*protected Label nSuscriptores;
+		protected Label nVisitas;
+		protected Link apodo;*/
+		String visitas = String.valueOf(r.getVisitas());
+		//nVisitas.setValue(visitas);
+		nSuscriptores.setValue("234");
 	}
 }

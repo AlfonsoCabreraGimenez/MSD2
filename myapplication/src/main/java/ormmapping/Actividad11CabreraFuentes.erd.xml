@@ -48,82 +48,10 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="UsuarioID3">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>diagramaclasesbd.Usuario.ID</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="UsuarioID2">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>diagramaclasesbd.Usuario.ID</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
     <Column name="UsuarioID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
       <ReferencedColumn>diagramaclasesbd.Usuario.ID</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="Lista_De_ReproduccionID4">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>diagramaclasesbd.Lista_De_Reproduccion.ID</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="Lista_De_ReproduccionID3">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>diagramaclasesbd.Lista_De_Reproduccion.ID</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="Lista_De_ReproduccionID2">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>diagramaclasesbd.Lista_De_Reproduccion.ID</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="Lista_De_ReproduccionID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>diagramaclasesbd.Lista_De_Reproduccion.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>10</Length>
       <Nullable>false</Nullable>
@@ -216,6 +144,17 @@
       <Type>9</Type>
       <Length>10</Length>
       <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="FechaCreacion">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>17</Type>
+      <Length>0</Length>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -457,32 +396,6 @@
       <UserTypes/>
     </Column>
   </Entity>
-  <Entity name="Video_Usuario" Unlogged="false" PKClustered="0">
-    <Column name="VideoID">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>diagramaclasesbd.Video.ID</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="UsuarioID">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>diagramaclasesbd.Usuario.ID</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-  </Entity>
   <Entity name="Usuario_Usuario" Unlogged="false" PKClustered="0">
     <Column name="UsuarioID">
       <PrimaryKey>true</PrimaryKey>
@@ -535,6 +448,58 @@
       <UserTypes/>
     </Column>
   </Entity>
+  <Entity name="Lista_De_Reproduccion_Video" Unlogged="false" PKClustered="0">
+    <Column name="Lista_De_ReproduccionID">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>diagramaclasesbd.Lista_De_Reproduccion.ID</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="VideoID">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>diagramaclasesbd.Video.ID</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+  </Entity>
+  <Entity name="Usuario_Video" Unlogged="false" PKClustered="0">
+    <Column name="UsuarioID">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>diagramaclasesbd.Usuario.ID</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="VideoID">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>diagramaclasesbd.Video.ID</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+  </Entity>
   <ForeignKey name="FKRegistrado929607">
     <ReferenceTable>Registrado</ReferenceTable>
     <ReferencedTable>Usuario</ReferencedTable>
@@ -547,136 +512,6 @@
   </ForeignKey>
   <ForeignKey name="FKAdministra741035">
     <ReferenceTable>Administrador</ReferenceTable>
-    <ReferencedTable>Usuario</ReferencedTable>
-    <Columns>
-      <Column>UsuarioID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKVideo298445">
-    <ReferenceTable>Video</ReferenceTable>
-    <ReferencedTable>Categoria</ReferencedTable>
-    <Columns>
-      <Column>CategoriaID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKVideo157978">
-    <ReferenceTable>Video</ReferenceTable>
-    <ReferencedTable>Lista_De_Reproduccion</ReferencedTable>
-    <Columns>
-      <Column>Lista_De_ReproduccionID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKVideo279198">
-    <ReferenceTable>Video</ReferenceTable>
-    <ReferencedTable>Lista_De_Reproduccion</ReferencedTable>
-    <Columns>
-      <Column>Lista_De_ReproduccionID2</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKVideo279197">
-    <ReferenceTable>Video</ReferenceTable>
-    <ReferencedTable>Lista_De_Reproduccion</ReferencedTable>
-    <Columns>
-      <Column>Lista_De_ReproduccionID3</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKVideo279196">
-    <ReferenceTable>Video</ReferenceTable>
-    <ReferencedTable>Lista_De_Reproduccion</ReferencedTable>
-    <Columns>
-      <Column>Lista_De_ReproduccionID4</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKVideo_Usua372890">
-    <ReferenceTable>Video_Usuario</ReferenceTable>
-    <ReferencedTable>Video</ReferencedTable>
-    <Columns>
-      <Column>VideoID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKVideo_Usua532452">
-    <ReferenceTable>Video_Usuario</ReferenceTable>
-    <ReferencedTable>Usuario</ReferencedTable>
-    <Columns>
-      <Column>UsuarioID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKVideo674857">
-    <ReferenceTable>Video</ReferenceTable>
-    <ReferencedTable>Usuario</ReferencedTable>
-    <Columns>
-      <Column>UsuarioID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKVideo813131">
-    <ReferenceTable>Video</ReferenceTable>
-    <ReferencedTable>Usuario</ReferencedTable>
-    <Columns>
-      <Column>UsuarioID2</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKVideo813132">
-    <ReferenceTable>Video</ReferenceTable>
-    <ReferencedTable>Usuario</ReferencedTable>
-    <Columns>
-      <Column>UsuarioID3</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKComentario671395">
-    <ReferenceTable>Comentario</ReferenceTable>
-    <ReferencedTable>Video</ReferencedTable>
-    <Columns>
-      <Column>VideoID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKLista_De_R481033">
-    <ReferenceTable>Lista_De_Reproduccion</ReferenceTable>
-    <ReferencedTable>Usuario</ReferencedTable>
-    <Columns>
-      <Column>UsuarioID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKComentario233947">
-    <ReferenceTable>Comentario</ReferenceTable>
     <ReferencedTable>Usuario</ReferencedTable>
     <Columns>
       <Column>UsuarioID</Column>
@@ -720,6 +555,96 @@
     <ReferencedTable>Usuario</ReferencedTable>
     <Columns>
       <Column>UsuarioID2</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKVideo298445">
+    <ReferenceTable>Video</ReferenceTable>
+    <ReferencedTable>Categoria</ReferencedTable>
+    <Columns>
+      <Column>CategoriaID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKComentario671395">
+    <ReferenceTable>Comentario</ReferenceTable>
+    <ReferencedTable>Video</ReferencedTable>
+    <Columns>
+      <Column>VideoID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKLista_De_R481033">
+    <ReferenceTable>Lista_De_Reproduccion</ReferenceTable>
+    <ReferencedTable>Usuario</ReferencedTable>
+    <Columns>
+      <Column>UsuarioID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKComentario233947">
+    <ReferenceTable>Comentario</ReferenceTable>
+    <ReferencedTable>Usuario</ReferencedTable>
+    <Columns>
+      <Column>UsuarioID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKVideo674857">
+    <ReferenceTable>Video</ReferenceTable>
+    <ReferencedTable>Usuario</ReferencedTable>
+    <Columns>
+      <Column>UsuarioID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKLista_De_R854712">
+    <ReferenceTable>Lista_De_Reproduccion_Video</ReferenceTable>
+    <ReferencedTable>Lista_De_Reproduccion</ReferencedTable>
+    <Columns>
+      <Column>Lista_De_ReproduccionID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKLista_De_R782205">
+    <ReferenceTable>Lista_De_Reproduccion_Video</ReferenceTable>
+    <ReferencedTable>Video</ReferencedTable>
+    <Columns>
+      <Column>VideoID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKUsuario_Vi445067">
+    <ReferenceTable>Usuario_Video</ReferenceTable>
+    <ReferencedTable>Usuario</ReferencedTable>
+    <Columns>
+      <Column>UsuarioID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKUsuario_Vi378819">
+    <ReferenceTable>Usuario_Video</ReferenceTable>
+    <ReferencedTable>Video</ReferencedTable>
+    <Columns>
+      <Column>VideoID</Column>
     </Columns>
     <RefColumns>
       <Column>ID</Column>

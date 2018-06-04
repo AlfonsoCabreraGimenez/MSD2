@@ -2,6 +2,8 @@ package GY;
 
 import javax.servlet.annotation.WebServlet;
 
+import org.orm.PersistentException;
+
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.navigator.Navigator;
@@ -40,7 +42,12 @@ public class MyUI extends UI {
     	navigator = new Navigator(this, this);
     	//navigator.addView("",new Pag_Inicio_NR());
     	//navigator.addView("",new Perfil_Ajeno_A());
-    	navigator.addView("", new Perfil_Propio_R());
+    	try {
+			navigator.addView("", new Perfil_Propio_A());
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	navigator.addView("inicioNR",new Pag_Inicio_NR());
     	navigator.addView("Ingreso",new Ingreso_Aplicacion());
     	navigator.addView("PagIR",new Pag_Inicio_R());

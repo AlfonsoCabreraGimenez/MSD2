@@ -18,7 +18,7 @@ public class Subir_Video extends Modificar_Video_ventana {
 	
 	public Subir_Video() {
 		modificarInformacion.setVisible(false);
-		//Modicoa
+		
 		hURL.setVisible(true);
 		
 	}

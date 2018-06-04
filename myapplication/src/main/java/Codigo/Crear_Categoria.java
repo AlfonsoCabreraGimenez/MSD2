@@ -8,10 +8,10 @@ public class Crear_Categoria extends Crear_Categoria_ventana{
 	public iAdministrador2 admin = new BD_Principal();
 	
 	public Crear_Categoria() {
-	
+		tCategoria.setValue("");
 	}
 	public void crearCategoria() {
-		tCategoria.setValue("");
+		
 		String nombreCategoria = tCategoria.getValue();
 		String numeroEdad = comboEdad.getValue();
 		//int numEntero = Integer.parseInt(numeroEdad);
