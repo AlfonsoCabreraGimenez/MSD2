@@ -27,6 +27,7 @@ public class Perfil_Propio_A_ventana extends VerticalLayout {
 	protected HorizontalLayout hCabeceraInicio;
 	protected HorizontalLayout hCabeceraRegistrado;
 	protected Button categoria;
+	protected Button crearAdministrador;
 	protected HorizontalLayout hDatosUserPerfil;
 	protected VerticalLayout vDatosUsuario;
 	protected HorizontalLayout hDatosSusVisit;

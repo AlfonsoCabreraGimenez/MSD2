@@ -28,6 +28,7 @@ public class Perfil_Propio_R_ventana extends VerticalLayout {
 	protected HorizontalLayout hCabeceraRegistrado;
 	protected Button crearListaReproduccion;
 	protected Button categoria;
+	protected Button crearAdministrador;
 	protected HorizontalLayout hDatosUserPerfil;
 	protected VerticalLayout vDatosUsuario;
 	protected HorizontalLayout hDatosSusVisit;

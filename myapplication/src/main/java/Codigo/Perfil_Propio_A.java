@@ -14,20 +14,32 @@ public class Perfil_Propio_A extends Perfil_Propio_R implements View {
 	Window popup = new Window();
 	VerticalLayout subContent = new VerticalLayout();
 
+	Window crearAdmin = new Window();
+	VerticalLayout subContentAdmin = new VerticalLayout();
+	
 	public Video2 _unnamed_Video2_;
 	public Cabecera_R _unnamed_Cabecera_R_;
 	public Usuario2 _unnamed_Usuario2_;
 	public Crear_Categoria Crear_Categoria = new Crear_Categoria();
+	public Registrarse registrarseVentana = new Registrarse();
+	
 	
 	public Perfil_Propio_A() throws PersistentException{
 		
 		inicializar();
 		categoria.setVisible(true);
+		crearAdministrador.setVisible(true);
+		registrarseVentana.botonRegistrarse.setCaption("Dar de Alta");
 
 	}
 	
 	void inicializar() {
 		categoria.setVisible(true);
+		//crearAdministrador.setVisible(true);
+		
+		/*
+		 * Funcion del boton crear Categoria
+		 */
 		categoria.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				popup.setContent(subContent);
@@ -53,5 +65,32 @@ public class Perfil_Propio_A extends Perfil_Propio_R implements View {
 				
 			}
 		});
+		
+		/*Funcion del boton crear administrador
+		 * 
+		 */
+		
+			crearAdministrador.addClickListener(new ClickListener() {
+				public void buttonClick(ClickEvent event) {
+
+					crearAdmin.setContent(subContentAdmin);
+					subContentAdmin.addComponent(registrarseVentana);
+					crearAdmin.center();
+					crearAdmin.setWidth("720px");
+					crearAdmin.setModal(true);
+					UI.getCurrent().addWindow(crearAdmin);
+					
+					registrarseVentana.botonRegistrarse.addClickListener(new ClickListener() {
+
+						public void buttonClick(ClickEvent event) {
+							/*
+							 * REGISTRAR UN ADMINISTRADOR
+							 */
+							
+							crearAdmin.close();
+						}
+					});
+				}
+			});
 	}
 }

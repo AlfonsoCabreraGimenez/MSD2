@@ -39,6 +39,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 		hCabeceraRegistrado.addComponent(cr.botonSubirVideo);
 		hCabeceraRegistrado.addComponent(cr.botonCerrarSesion);
 		hPanel.addComponent(v2.vVerticalVideoGeneral);
+		crearAdministrador.setVisible(false);
 		inicializar();
 	//	cargarPerfilPropioR();
 	}
