@@ -17,7 +17,18 @@ public class Registrarse extends Registrarse_ventana {
 	public Ingreso_Aplicacion _unnamed_Ingreso_Aplicacion_;
 	public Perfil_Ajeno _unnamed_Perfil_Ajeno_;
 	public Nuevo_Pass _unnamed_Nuevo_Pass_;
-	
+	/*
+	 * 
+	 * 
+	 * 
+	 * FALTA REGISTRAR ADMINISTRADORES
+	 * QUE ESO LO DEBE DE HACER UN ADMIN
+	 * DEBEMOS CREAR PANTALLA Y METER BOTON EN 
+	 * PERFIL ADMIN
+	 * 
+	 * 
+	 * 
+	 */
 	public Registrarse() {
 		modificarDatosUser.setVisible(false);
 		botonRegistrarse.addClickListener(new ClickListener() {
@@ -51,11 +62,6 @@ public class Registrarse extends Registrarse_ventana {
 			ex.printStackTrace();
 		}
 		
-		
-		
-		/*Almacenamos todos los datos en String y lo pasamos a DATE*/
-		//Date aFechaN = null;
-		/*FECHA ACTUAL */ //java.util.Date utilDate = new java.util.Date();
 		String aApodo = tApodo.getValue();
 		String aPass = tPass.getValue();
 		String aRepPass = tRepPass.getValue();
