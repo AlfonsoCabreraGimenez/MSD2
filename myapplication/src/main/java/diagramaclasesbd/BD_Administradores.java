@@ -1,6 +1,11 @@
 package diagramaclasesbd;
 
+import java.util.Date;
 import java.util.Vector;
+
+import org.orm.PersistentException;
+import org.orm.PersistentTransaction;
+
 import diagramaclasesbd.Administrador;
 import Codigo.Usuario2;
 import Codigo.Video2;
@@ -20,4 +25,26 @@ public class BD_Administradores {
 	public Video2 cargarDatosVideo(int aID) {
 		throw new UnsupportedOperationException();
 	}
-}
+	public void registrarAdministrador(String aNombre, String aApellido1, String aApellido2, Date fechaFinal, String aApodo,
+			String aPass, String aRepPass, String aEmail, String aAvatar) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		try {
+			diagramaclasesbd.Administrador ad = diagramaclasesbd.AdministradorDAO.createAdministrador();
+			ad.setNombre(aNombre);
+			ad.setApellido1(aApellido1);
+			ad.setApellido2(aApellido2);
+			ad.setFechaN(fechaFinal);
+			ad.setApodo(aApodo);
+			ad.setAvatar(aAvatar);
+			ad.setEmail(aEmail);
+			ad.setPassword(aPass);
+			ad.setIsAdmin(true);
+			
+			diagramaclasesbd.AdministradorDAO.save(ad);
+			t.commit();
+		}catch (Exception e) {
+				t.rollback();
+			}
+		}
+		
+	}

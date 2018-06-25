@@ -4,7 +4,13 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
+import diagramaclasesbd.BD_Principal;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.orm.PersistentException;
+import org.w3c.flute.parser.ParseException;
 
 import com.vaadin.navigator.View;
 import com.vaadin.ui.Button.ClickEvent;
@@ -23,6 +29,7 @@ public class Perfil_Propio_A extends Perfil_Propio_R implements View {
 	public Crear_Categoria Crear_Categoria = new Crear_Categoria();
 	public Registrarse registrarseVentana = new Registrarse();
 	
+	iAdministrador2 adm = new BD_Principal();
 	
 	public Perfil_Propio_A() throws PersistentException{
 		
@@ -71,6 +78,7 @@ public class Perfil_Propio_A extends Perfil_Propio_R implements View {
 		 */
 		
 			crearAdministrador.addClickListener(new ClickListener() {
+				@Override
 				public void buttonClick(ClickEvent event) {
 
 					crearAdmin.setContent(subContentAdmin);
@@ -80,13 +88,49 @@ public class Perfil_Propio_A extends Perfil_Propio_R implements View {
 					crearAdmin.setModal(true);
 					UI.getCurrent().addWindow(crearAdmin);
 					
+					
 					registrarseVentana.botonRegistrarse.addClickListener(new ClickListener() {
 
 						public void buttonClick(ClickEvent event) {
 							/*
 							 * REGISTRAR UN ADMINISTRADOR
+							 * 
 							 */
 							
+							String aNombre = registrarseVentana.tNombre.getValue();
+							String aApellido1 = registrarseVentana.tApellido1.getValue();
+							String aApellido2 = registrarseVentana.tApellido2.getValue();
+							/*Parametros de la fecha*/
+							String anio = Integer.toString(registrarseVentana.fechaUsuario.getValue().getYear());
+							String mes = Integer.toString(registrarseVentana.fechaUsuario.getValue().getMonthValue());
+							String dia = Integer.toString(registrarseVentana.fechaUsuario.getValue().getDayOfMonth());
+							
+							SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
+							String fechaAlta = anio+"-"+mes+"-"+dia;
+							Date fechaFinal = null;
+							try {
+								try {
+									fechaFinal = formatoDelTexto.parse(fechaAlta);
+								} catch (java.text.ParseException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							} catch (ParseException ex) {
+								ex.printStackTrace();
+							}
+							
+							String aApodo = registrarseVentana.tApodo.getValue();
+							String aPass = registrarseVentana.tPass.getValue();
+							String aRepPass = registrarseVentana.tRepPass.getValue();
+							String aEmail = registrarseVentana.tEmail.getValue();
+							String aAvatar = "as";
+							try {
+								adm.registrarAdministrador(aNombre, aApellido1, aApellido2, fechaFinal, aApodo, aPass, aRepPass, aEmail, aAvatar);
+							} catch (PersistentException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						
 							crearAdmin.close();
 						}
 					});
