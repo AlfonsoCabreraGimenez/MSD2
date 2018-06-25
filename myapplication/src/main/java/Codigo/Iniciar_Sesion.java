@@ -14,6 +14,8 @@ public class Iniciar_Sesion extends Iniciar_Sesion_ventana {
 	public Recordar_Pass _unnamed_Recordar_Pass_;
 
 	public void iniciarSesion() {
+		
+		
 		throw new UnsupportedOperationException();
 	}
 }

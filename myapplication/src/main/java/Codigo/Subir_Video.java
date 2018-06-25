@@ -30,9 +30,10 @@ public class Subir_Video extends Modificar_Video_ventana {
 		String etique = etiqueta.getValue();
 		String des = descripcion.getValue();
 		String urls = url.getValue();
+		java.util.Date utilDate = new java.util.Date();
 		
-		Date horaActual = null;
-		ur.subirVideo(1, mini, titu, cate, etique, des, urls, horaActual);
+
+		ur.subirVideo(1, mini, titu, cate, etique, des, urls, utilDate);
 		
 		
 
