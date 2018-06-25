@@ -3,7 +3,7 @@
  <head>
   <meta charset="UTF-8">
   <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
-  <meta name="vaadin-version" content="8.0.5">
+  <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
   <vaadin-vertical-layout margin="false">
@@ -18,7 +18,12 @@
       <vaadin-text-field caption="Primer apellido" _id="tApellido1"></vaadin-text-field>
       <vaadin-text-field caption="Segundo apellido" _id="tApellido2"></vaadin-text-field>
      </vaadin-horizontal-layout>
-     <vaadin-date-time-field caption="Fecha de nacimiento" resolution="day" _id="fecha"></vaadin-date-time-field>
+     <vaadin-vertical-layout size-auto margin="false" _id="vFechaN">
+      <vaadin-label plain-text _id="fechaNacimiento">
+        Fecha De Nacimiento 
+      </vaadin-label>
+      <vaadin-date-time-field _id="fechaUsuario"></vaadin-date-time-field>
+     </vaadin-vertical-layout>
     </vaadin-vertical-layout>
     <vaadin-horizontal-layout width-full _id="hUsuario">
      <vaadin-vertical-layout size-auto margin="false" _id="vUsuario">

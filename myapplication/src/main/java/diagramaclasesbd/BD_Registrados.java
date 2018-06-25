@@ -26,7 +26,7 @@ public class BD_Registrados {
 			r.setNombre(aNombre);
 			r.setApellido1(aApellido1);
 			r.setApellido2(aApellido2);
-			r.setFechaN(null);
+			r.setFechaN(aFechaN);
 			r.setApodo(aApodo);
 			r.setAvatar(aAvatar);
 			r.setEmail(aEmail);

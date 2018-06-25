@@ -33,7 +33,9 @@ public class Registrarse_ventana extends VerticalLayout {
 	protected TextField tNombre;
 	protected TextField tApellido1;
 	protected TextField tApellido2;
-	protected DateTimeField fecha;
+	protected VerticalLayout vFechaN;
+	protected Label fechaNacimiento;
+	protected DateTimeField fechaUsuario;
 	protected HorizontalLayout hUsuario;
 	protected VerticalLayout vUsuario;
 	protected Label lUsuario;
