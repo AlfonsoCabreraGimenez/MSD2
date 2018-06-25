@@ -18,9 +18,16 @@ public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 	//Cabecera_R cr = new Cabecera_R();
 	Buscador bus = new Buscador();
 	Pag_Inicio_NR pnr = new Pag_Inicio_NR();
-
+	static Iniciar_Sesion is = new Iniciar_Sesion();
+	 static int identificador = -1;
 	
 	public Pag_Inicio_R(){
+		this.identificador = is.idUser;
+		
+		
+		
+		
+		
 		hCabeceraInicioBus.addComponent(pnr.cr.hCabeceraR);
 		cnr.iniciarSesionRegistrarse.setVisible(false);
 		addComponent(prv.videosRelacionados);
@@ -29,15 +36,17 @@ public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 		addComponent(prv.panelVideosOtrosUser);
 		addComponent(prv.videosVreciente);
 		addComponent(prv.panelVideosVreciente);
+		
 		cargar_Videos_Inicio_R();
 		cc.inicio.addClickListener(new ClickListener() {		
 			@Override
 			public void buttonClick(ClickEvent event) {
-				UI.getCurrent().getNavigator().navigateTo("Ingreso");
+				UI.getCurrent().getNavigator().navigateTo("PPropioR");
 			}
 		});
 	}
 	public void cargar_Videos_Inicio_R() {
 		prv.hPanelVideosVreciente.addComponent(_unnamed_Video2_.vVerticalVideoGeneral);
+		
 	}
 }

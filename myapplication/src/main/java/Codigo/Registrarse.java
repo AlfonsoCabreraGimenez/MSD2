@@ -6,29 +6,18 @@ import diagramaclasesbd.BD_Principal;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 import org.w3c.flute.parser.ParseException;
 
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 public class Registrarse extends Registrarse_ventana {
+	
 	iUsuario_No_Registrado unr = new BD_Principal();
 	public Ingreso_Aplicacion _unnamed_Ingreso_Aplicacion_;
 	public Perfil_Ajeno _unnamed_Perfil_Ajeno_;
 	public Nuevo_Pass _unnamed_Nuevo_Pass_;
-	/*
-	 * 
-	 * 
-	 * 
-	 * FALTA REGISTRAR ADMINISTRADORES
-	 * QUE ESO LO DEBE DE HACER UN ADMIN
-	 * DEBEMOS CREAR PANTALLA Y METER BOTON EN 
-	 * PERFIL ADMIN
-	 * 
-	 * 
-	 * 
-	 */
+
 	public Registrarse() {
 		modificarDatosUser.setVisible(false);
 		botonRegistrarse.addClickListener(new ClickListener() {

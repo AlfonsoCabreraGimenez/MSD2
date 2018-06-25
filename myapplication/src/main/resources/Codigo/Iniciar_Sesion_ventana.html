@@ -3,13 +3,14 @@
  <head>
   <meta charset="UTF-8">
   <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
-  <meta name="vaadin-version" content="8.0.5">
+  <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
   <vaadin-vertical-layout>
    <vaadin-vertical-layout _id="vIniciar" :middle :center>
     <vaadin-text-field caption="Usuario o email" _id="tUsuario" :middle :center></vaadin-text-field>
     <vaadin-password-field caption="Contraseña" _id="tPass" :middle :center></vaadin-password-field>
+    <vaadin-check-box caption="Administrador" _id="cbAdmin" :center></vaadin-check-box>
     <vaadin-link caption="Pulse aquí para recordar contraseña" _id="lPass" :middle :center></vaadin-link>
     <vaadin-horizontal-layout _id="hVacio"></vaadin-horizontal-layout>
     <vaadin-button style-name="danger" plain-text _id="botonIniciar" :middle :center>

@@ -16,4 +16,5 @@ public interface iAdministrador2 extends iUsuario_Registrado {
 	public void registrarAdministrador(String aNombre, String aApellido1, String aApellido2, Date fechaFinal, String aApodo,
 			String aPass, String aRepPass, String aEmail, String aAvatar) throws PersistentException;
 
+	public List<diagramaclasesbd.Administrador> cargarUsuarioAdmin();
 }

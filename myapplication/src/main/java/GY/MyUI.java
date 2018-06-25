@@ -42,20 +42,27 @@ public class MyUI extends UI {
     	navigator = new Navigator(this, this);
     	//navigator.addView("",new Pag_Inicio_NR());
     	//navigator.addView("",new Perfil_Ajeno_A());
-    	try {
-			navigator.addView("", new Perfil_Propio_A());
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    	
+			navigator.addView("", new Ingreso_Aplicacion());
+		
     	navigator.addView("inicioNR",new Pag_Inicio_NR());
     	navigator.addView("Ingreso",new Ingreso_Aplicacion());
     	navigator.addView("PagIR",new Pag_Inicio_R());
     	navigator.addView("VisAjeno",new Visualizacion_Video_Ajeno());
     	navigator.addView("PAjeno",new Perfil_Ajeno());
-    /*Visualizacion_Video_Ajeno_A p = new Visualizacion_Video_Ajeno_A();
-    
-    setContent(p);*/
+    	try {
+			navigator.addView("PPropioR",new Perfil_Propio_R());
+		} catch (PersistentException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+    	try {
+			navigator.addView("PPropioA",new Perfil_Propio_A());
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
     
     }
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

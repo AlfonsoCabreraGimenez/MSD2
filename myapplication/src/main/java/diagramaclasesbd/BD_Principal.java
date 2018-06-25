@@ -203,4 +203,16 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 			String aPass, String aRepPass, String aEmail, String aAvatar) throws PersistentException {
 			admin.registrarAdministrador(aNombre, aApellido1, aApellido2, fechaFinal, aApodo, aPass, aRepPass, aEmail, aAvatar);
 	}
+	////////////////////////////
+	public List cargarUsuarioAdmin(){
+		
+		try {
+			return admin.cargarUsuarioAdmin();
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

@@ -1,6 +1,7 @@
 package diagramaclasesbd;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Vector;
 
 import org.orm.PersistentException;
@@ -47,4 +48,20 @@ public class BD_Administradores {
 			}
 		}
 		
+	
+	public List cargarUsuarioAdmin() throws PersistentException {
+		List listado = null;
+		//Metodo para cargar todos los administradores
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		try {
+		
+			listado = AdministradorDAO.queryAdministrador(null, null);
+	
+			
+			t.commit();
+		} catch (Exception e) {
+			t.rollback();
+		}
+		return listado;
 	}
+}
