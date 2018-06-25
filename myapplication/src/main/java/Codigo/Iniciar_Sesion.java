@@ -12,18 +12,14 @@ import diagramaclasesbd.BD_Principal;
 
 public class Iniciar_Sesion extends Iniciar_Sesion_ventana {
 
-	public Ingreso_Aplicacion _unnamed_Ingreso_Aplicacion_;
-	public Recordar_Pass _unnamed_Recordar_Pass_;
-	static int idUser = -1;
+	public int idUser;
 	iAdministrador2 admin = new BD_Principal();
 	iUsuario_Registrado ur = new BD_Principal();
-	
+	DatosUsuario datosUser = new DatosUsuario();
 
 	public Iniciar_Sesion() {
 		List<diagramaclasesbd.Administrador> listaAdmin = admin.cargarUsuarioAdmin();
-		DatosUsuario datosUser = new DatosUsuario();
-
-		
+		List<diagramaclasesbd.Registrado> listaRegis = ur.cargarUsuariosRegis();
 		botonIniciar.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				String nombre = tUsuario.getValue();
@@ -34,21 +30,32 @@ public class Iniciar_Sesion extends Iniciar_Sesion_ventana {
 						administrador = listaAdmin.get(i);
 						if(nombre.equals(administrador.getNombre()) && pass.equals(administrador.getPassword())) {
 							datosUser.setID(administrador.getID());
-							
+							//String numero = String.valueOf(datosUser.getID());
+							//Notification.show(numero);
+							idUser = datosUser.getID();
 							UI.getCurrent().getNavigator().navigateTo("PagIR");
 							
 						}
 				
 					}
 
-			} else {
-				Notification.show("NO ERES ADMIN");
+			} else { 
+				diagramaclasesbd.Registrado registrado = diagramaclasesbd.RegistradoDAO.createRegistrado();
+				for(int i = 0; i < listaRegis.size()-1;i++) {
+					registrado = listaRegis.get(i);
+					if(nombre.equals(registrado.getNombre()) && pass.equals(registrado.getPassword())) {
+						datosUser.setID(registrado.getID());
+						String numero = String.valueOf(datosUser.getID());
+						Notification.show(numero);
+						UI.getCurrent().getNavigator().navigateTo("PagIR");
+					}
+				}
 				
 			}
 			
 			}
 		});
-		this.idUser = datosUser.getID();
+		
 	}
 	
 }

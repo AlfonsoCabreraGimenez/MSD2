@@ -86,4 +86,19 @@ public class BD_Registrados {
 	public void cancelarSuscripcion(int aID) {
 		throw new UnsupportedOperationException();
 	}
+	
+	public List cargarUsuariosRegis() throws PersistentException {
+		List listado = null;
+		//Metodo para cargar todos los registrados
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		try {
+		
+			listado = RegistradoDAO.queryRegistrado(null, null);
+	
+			t.commit();
+		} catch (Exception e) {
+			t.rollback();
+		}
+		return listado;
+	}
 }

@@ -22,20 +22,22 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	VerticalLayout subContent = new VerticalLayout();
 	VerticalLayout subContent2 = new VerticalLayout();
 	
+	public int num;
 	public Video2 _unnamed_Video2_;
 	public Usuario2 _unnamed_Usuario2_;
 	public Cabecera_R _unnamed_Cabecera_R_;
 	public Crear_Lista_Reproduccion _unnamed_Crear_Lista_Reproduccion_;
 	public Modificar_Datos_Usuario _unnamed_Modificar_Datos_Usuario_;
 	public Conf_Eliminar_Video _unnamed_Conf_Eliminar_Video_;
-	static Pag_Inicio_R pir = new Pag_Inicio_R();
+	
+	public Pag_Inicio_R pir = new Pag_Inicio_R();
 	
 	Cabecera_Comun cc = new Cabecera_Comun();
 	Cabecera_R cr = new Cabecera_R();
 	Video2 v2 = new Video2();
 	Modificar_Datos_Usuario mdu = new Modificar_Datos_Usuario();
 	Crear_Lista_Reproduccion clr = new Crear_Lista_Reproduccion();
-	private int ID = -1;
+	public int ID = pir.is.datosUser.getID();;
 	
 	public Perfil_Propio_R() throws PersistentException{
 		hCabeceraInicio.addComponent(cc.inicio);
@@ -44,7 +46,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 		hCabeceraRegistrado.addComponent(cr.botonCerrarSesion);
 		hPanel.addComponent(v2.vVerticalVideoGeneral);
 		crearAdministrador.setVisible(false);
-		this.ID = Iniciar_Sesion.idUser;
+		//this.ID = pir.is.datosUser.getID();
 		inicializar();
 		cargarPerfilPropioR();
 	}
@@ -95,10 +97,10 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	}
 
 	public void cargarPerfilPropioR() throws PersistentException {
-		Registrado r = diagramaclasesbd.RegistradoDAO.getRegistradoByORMID(this.ID);
+		Registrado r = diagramaclasesbd.RegistradoDAO.getRegistradoByORMID(ID);
 		//Notification.show(r.getNombre());
 		//nVisitas.setValue(r.getVisitas());
-		int numero = this.ID;
+		int numero = ID;
 		String num = String.valueOf(numero);
 		nSuscriptores.setValue(num);
 	}

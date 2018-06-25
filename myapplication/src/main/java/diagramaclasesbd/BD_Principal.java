@@ -214,5 +214,16 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		}
 		return null;
 	}
+	
+	public List<Registrado> cargarUsuariosRegis(){
+		
+		try {
+			return registrados.cargarUsuariosRegis();
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }
