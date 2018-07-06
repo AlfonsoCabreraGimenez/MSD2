@@ -22,10 +22,9 @@ public class Iniciar_Sesion extends Iniciar_Sesion_ventana implements View{
 
 	iAdministrador2 admin = new BD_Principal();
 	iUsuario_Registrado ur = new BD_Principal();
-	Pag_Inicio_R pir = new Pag_Inicio_R();
+	
 	Navigator navigator;
 	public Iniciar_Sesion() {
-		
 		List<diagramaclasesbd.Administrador> listaAdmin = admin.cargarUsuarioAdmin();
 		List<diagramaclasesbd.Registrado> listaRegis = ur.cargarUsuariosRegis();
 		botonIniciar.addClickListener(new ClickListener() {
@@ -47,7 +46,7 @@ public class Iniciar_Sesion extends Iniciar_Sesion_ventana implements View{
 						}
 				
 					}
-
+					
 			} else 
 				{ 
 					diagramaclasesbd.Registrado registrado = diagramaclasesbd.RegistradoDAO.createRegistrado();
@@ -56,7 +55,7 @@ public class Iniciar_Sesion extends Iniciar_Sesion_ventana implements View{
 						registrado = listaRegis.get(i);
 						if(nombre.equals(registrado.getNombre()) && pass.equals(registrado.getPassword()))
 						{
-							UI.getCurrent().getSession().setAttribute("registrado", registrado);
+							UI.getCurrent().getSession().setAttribute("usuario", registrado);
 							MyUI.getCurrent().getNavigator().addView("Pagina_Inicio_R", new Pag_Inicio_R());
 							UI.getCurrent().getNavigator().navigateTo("Pagina_Inicio_R");
 						}
