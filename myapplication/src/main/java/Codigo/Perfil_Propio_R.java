@@ -10,7 +10,10 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
+import GY.MyUI;
+import diagramaclasesbd.Administrador;
 import diagramaclasesbd.Registrado;
+import diagramaclasesbd.Usuario;
 
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
@@ -21,7 +24,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	
 	VerticalLayout subContent = new VerticalLayout();
 	VerticalLayout subContent2 = new VerticalLayout();
-	
+	public static int identificador;
 	public int num;
 	public Video2 _unnamed_Video2_;
 	public Usuario2 _unnamed_Usuario2_;
@@ -37,7 +40,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	Video2 v2 = new Video2();
 	Modificar_Datos_Usuario mdu = new Modificar_Datos_Usuario();
 	Crear_Lista_Reproduccion clr = new Crear_Lista_Reproduccion();
-	public int ID = pir.is.datosUser.getID();;
+	//public int ID = pir.is.datosUser.getID();;
 	
 	public Perfil_Propio_R() throws PersistentException{
 		hCabeceraInicio.addComponent(cc.inicio);
@@ -91,17 +94,21 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 				popup2.close();
 			}
 		});
+		//usuario = (User) UI.getCurrent().getSession().getAttribute("usuario");
+		
 	}
 	public void borrarVideo() {
 		throw new UnsupportedOperationException();
 	}
 
 	public void cargarPerfilPropioR() throws PersistentException {
-		Registrado r = diagramaclasesbd.RegistradoDAO.getRegistradoByORMID(ID);
-		//Notification.show(r.getNombre());
-		//nVisitas.setValue(r.getVisitas());
-		int numero = ID;
-		String num = String.valueOf(numero);
-		nSuscriptores.setValue(num);
+		//DEBEMOS DE CARGAR LA INFO DE USUARIO NO DE ADMIN NI DE REGIS
+		
+		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+		
+		
+		String numero = String.valueOf(admon.getID());
+		nVisitas.setValue(numero);
+		Notification.show("Hola tonto de la polla");
 	}
 }

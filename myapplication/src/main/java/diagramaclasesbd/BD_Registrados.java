@@ -58,9 +58,23 @@ public class BD_Registrados {
 	public Usuario2 cargarDatosUsuario(int aID) {
 		throw new UnsupportedOperationException();
 	}
-
-	public void eliminarUsuario(int aID) {
-		throw new UnsupportedOperationException();
+//////////////////////////////////
+	public void eliminarUsuario(int aID) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		try {
+			diagramaclasesbd.Registrado r = diagramaclasesbd.RegistradoDAO.getRegistradoByORMID(aID);
+			/*HAY QUE BORRAR TAMBN LISTAS Y VIDEOS
+			 * 
+			 */
+			r.prop_video_de.clear();
+			r.prop_de.clear();
+			RegistradoDAO.delete(r);
+			
+			t.commit();
+		} catch (Exception e) {
+			t.rollback();
+		}
+		
 	}
 
 	public List cargar_Lista_Suscriptores(int aID) {

@@ -148,7 +148,12 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	}
 
 	public void eliminarUsuario(int aID) {
-		throw new UnsupportedOperationException();
+		try {
+			registrados.eliminarUsuario(aID);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public List cargar_Videos_Masmegusta() {
@@ -203,7 +208,7 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 			String aPass, String aRepPass, String aEmail, String aAvatar) throws PersistentException {
 			admin.registrarAdministrador(aNombre, aApellido1, aApellido2, fechaFinal, aApodo, aPass, aRepPass, aEmail, aAvatar);
 	}
-	////////////////////////////
+	
 	public List cargarUsuarioAdmin(){
 		
 		try {
