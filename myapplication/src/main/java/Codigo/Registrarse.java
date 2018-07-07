@@ -20,7 +20,9 @@ public class Registrarse extends Registrarse_ventana {
 
 	public Registrarse() {
 		modificarDatosUser.setVisible(false);
+		
 		botonRegistrarse.addClickListener(new ClickListener() {
+			@Override
 			public void buttonClick(ClickEvent event) {
 					try {
 						registrarse();

@@ -1,6 +1,9 @@
 package Codigo;
 
+import org.orm.PersistentException;
+
 import com.vaadin.event.dd.acceptcriteria.Not;
+import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.UI;
@@ -29,7 +32,7 @@ public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 	//Cabecera_R cr = new Cabecera_R();
 	Buscador bus = new Buscador();
 	Pag_Inicio_NR pnr = new Pag_Inicio_NR();
-
+	Navigator navigator;
 	 	
 	public Pag_Inicio_R(){
 
@@ -48,7 +51,13 @@ public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				
-				//MyUI.getCurrent().getNavigator().addView("Pagina_Inicio_R", new Pag_Inicio_R());
+				try {
+					MyUI.getCurrent().getNavigator().addView("Perfil_Propio_R", new Perfil_Propio_R());
+					UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_R");
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 	}
@@ -60,7 +69,7 @@ public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 			Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
 			Notification.show(String.valueOf(registrado.getID()));
 			//CARGAR VIDEOS DE REGISTRADO
-			
+			/*
 			//Mas me gusta
 			unr.cargar_Videos_Masmegusta();
 			//Ultimos videos subido
@@ -72,14 +81,14 @@ public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 			//videos vistos recientemente (ID DEL USUARIO)
 			ur.cargar_Videos_Historial(registrado.getID());
 			
+			*/
 			
-			UI.getCurrent().getSession().close();
 		}
 		else 
 		{
 			//CARGAR VIDEOS DE ADMINISTRADOR
 			Notification.show(String.valueOf(admon.getID()));
-			UI.getCurrent().getSession().close();
+			
 		}
 	}
 }

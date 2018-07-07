@@ -50,6 +50,7 @@ public class Registrarse_ventana extends VerticalLayout {
 	protected Image imagen;
 	protected Upload botonSubir;
 	protected HorizontalLayout hVacio1;
+	protected HorizontalLayout hRegisModi;
 	protected Button botonRegistrarse;
 	protected Button modificarDatosUser;
 

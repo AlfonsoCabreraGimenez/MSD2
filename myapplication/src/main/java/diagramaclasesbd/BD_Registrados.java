@@ -7,6 +7,8 @@ import java.util.Vector;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
+import com.vaadin.ui.UI;
+
 import diagramaclasesbd.Registrado;
 import Codigo.TipoBusqueda;
 import Codigo.Usuario2;
@@ -85,8 +87,25 @@ public class BD_Registrados {
 		throw new UnsupportedOperationException();
 	}
 
-	public void modificarDatos(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aEmail, String aPass, String aNuevaPass, String aRepPass, String aAvatar) {
-		throw new UnsupportedOperationException();
+	public void modificarDatos(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aEmail, String aPass, String aNuevaPass, String aRepPass, String aAvatar) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+		Registrado r = diagramaclasesbd.RegistradoDAO.getRegistradoByORMID(registrado.getID());
+		try {
+			//Registrado r = diagramaclasesbd.RegistradoDAO.getRegistradoByORMID(registrado.getID());
+			r.setNombre(aNombre);
+			r.setApellido1(aApellido1);
+			r.setApellido2(aApellido2);
+			r.setApodo(aApodo);
+			r.setAvatar(null);
+			r.setEmail(aEmail);
+			r.setPassword(aNuevaPass);
+			
+			diagramaclasesbd.RegistradoDAO.save(r);
+			t.commit();
+		} catch (PersistentException e) {
+			t.rollback();
+		}
 	}
 
 	public List buscarUsuario(String aNombre) {
