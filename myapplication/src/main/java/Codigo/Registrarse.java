@@ -30,7 +30,7 @@ public class Registrarse extends Registrarse_ventana {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					UI.getCurrent().getNavigator().navigateTo("PagIR");
+					//UI.getCurrent().getNavigator().navigateTo("PagIR");
 					
 				}	
 		});

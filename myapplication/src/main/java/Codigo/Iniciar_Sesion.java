@@ -34,7 +34,7 @@ public class Iniciar_Sesion extends Iniciar_Sesion_ventana implements View{
 			if(cbAdmin.getValue() == true) 
 			{
 				diagramaclasesbd.Administrador administrador = diagramaclasesbd.AdministradorDAO.createAdministrador();
-					for(int i = 0; i< listaAdmin.size()-1; i++) 
+					for(int i = 0; i< listaAdmin.size(); i++) 
 					{
 						administrador = listaAdmin.get(i);
 						if(nombre.equals(administrador.getNombre()) && pass.equals(administrador.getPassword())) 
@@ -50,7 +50,7 @@ public class Iniciar_Sesion extends Iniciar_Sesion_ventana implements View{
 			} else 
 				{ 
 					diagramaclasesbd.Registrado registrado = diagramaclasesbd.RegistradoDAO.createRegistrado();
-					for(int i = 0; i < listaRegis.size()-1;i++) 
+					for(int i = 0; i < listaRegis.size();i++) 
 					{
 						registrado = listaRegis.get(i);
 						if(nombre.equals(registrado.getNombre()) && pass.equals(registrado.getPassword()))

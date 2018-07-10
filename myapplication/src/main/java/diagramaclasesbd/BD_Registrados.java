@@ -120,8 +120,8 @@ public class BD_Registrados {
 		throw new UnsupportedOperationException();
 	}
 	
-	public List cargarUsuariosRegis() throws PersistentException {
-		List listado = null;
+	public List<Registrado> cargarUsuariosRegis() throws PersistentException {
+		List<Registrado> listado = null;
 		//Metodo para cargar todos los registrados
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
