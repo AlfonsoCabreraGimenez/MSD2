@@ -61,7 +61,13 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	}
 
 	public List cargarCategorias() {
-		throw new UnsupportedOperationException();
+		try {
+			return categoria.cargarCategorias();
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public Usuario2 cargarDatosUsuario(int aID) {

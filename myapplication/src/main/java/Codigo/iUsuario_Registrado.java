@@ -5,6 +5,7 @@ import java.util.List;
 
 import diagramaclasesbd.Registrado;
 public interface iUsuario_Registrado {
+	
 
 	public void anadirAListaRep(int aID);
 
