@@ -1,5 +1,6 @@
 package Codigo;
 
+import org.hibernate.cfg.AvailableSettings;
 import org.orm.PersistentException;
 
 import com.vaadin.event.dd.acceptcriteria.Not;
@@ -36,7 +37,6 @@ public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 	 	
 	public Pag_Inicio_R(){
 
-
 		hCabeceraInicioBus.addComponent(pnr.cr.hCabeceraR);
 		cnr.iniciarSesionRegistrarse.setVisible(false);
 		addComponent(prv.videosRelacionados);
@@ -47,20 +47,20 @@ public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 		addComponent(prv.panelVideosVreciente);
 		
 		cargar_Videos_Inicio_R();
-		cc.inicio.addClickListener(new ClickListener() {		
+		
+		/*cc.inicio.addClickListener(new ClickListener() {		
 			@Override
 			public void buttonClick(ClickEvent event) {
 				
-				try {
-					MyUI.getCurrent().getNavigator().addView("Perfil_Propio_R", new Perfil_Propio_R());
-					UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_R");
-				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+					MyUI.getCurrent().getNavigator().addView("Pag_Inicio_R", new Pag_Inicio_R());
+					UI.getCurrent().getNavigator().navigateTo("Pag_Inicio_R");
 			}
-		});
+		});*/
+		
+		
 	}
+	
+	/////////////////////////////////////////////////////////////
 	public void cargar_Videos_Inicio_R() {
 		prv.hPanelVideosVreciente.addComponent(_unnamed_Video2_.vVerticalVideoGeneral);
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");

@@ -2,12 +2,22 @@ package Codigo;
 
 import java.text.ParseException;
 
+import org.orm.PersistentException;
+
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+
+import GY.MyUI;
+import diagramaclasesbd.Administrador;
+import diagramaclasesbd.Registrado;
+
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.PopupView;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
+import com.vaadin.event.MouseEvents;
+import com.vaadin.server.ExternalResource;
 
 public class Cabecera_R extends Cabecera_R_ventana{
 	Window popup = new Window();
@@ -43,9 +53,52 @@ public class Cabecera_R extends Cabecera_R_ventana{
 				sv.cancelar.addClickListener(new ClickListener() {
 					public void buttonClick(ClickEvent event) {
 						popup.close();
+					}
+				});
 			}
 		});
-	}
-});
+		avatar.addClickListener(new MouseEvents.ClickListener() {
+			
+			@Override
+			public void click(com.vaadin.event.MouseEvents.ClickEvent event) {
+				//Si es admin o registrado a un lado u otro.
+				Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+				if(admon == null)
+				{
+					Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+					try {
+						MyUI.getCurrent().getNavigator().addView("Perfil_Propio_R", new Perfil_Propio_R());
+						
+					} catch (PersistentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_R");
+				}
+				else 
+				{
+					try {
+						MyUI.getCurrent().getNavigator().addView("Perfil_Propio_A", new Perfil_Propio_A());
+						
+					} catch (PersistentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_A");
+				}
+				
+				
+			}
+		});
+		
+		botonCerrarSesion.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				UI.getCurrent().getSession().close();
+				MyUI.getCurrent().getNavigator().addView("", new Ingreso_Aplicacion());
+				UI.getCurrent().getNavigator().navigateTo("");
+				
+			}
+		});
+
 	}
 }

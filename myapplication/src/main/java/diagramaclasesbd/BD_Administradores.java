@@ -54,10 +54,7 @@ public class BD_Administradores {
 		//Metodo para cargar todos los administradores
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
-		
 			listado = AdministradorDAO.queryAdministrador(null, null);
-	
-			
 			t.commit();
 		} catch (Exception e) {
 			t.rollback();

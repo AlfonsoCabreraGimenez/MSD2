@@ -53,7 +53,13 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	}
 	
 	void inicializar(){
-		
+			cc.inicio.addClickListener(new ClickListener() {		
+				@Override
+				public void buttonClick(ClickEvent event) {
+					MyUI.getCurrent().getNavigator().addView("Pag_Inicio_R", new Pag_Inicio_R());
+					UI.getCurrent().getNavigator().navigateTo("Pag_Inicio_R");
+				}
+			});
 		//hPanel.addComponent(v2.vVerticalVideoGeneral);
 		categoria.setVisible(false);
 		
