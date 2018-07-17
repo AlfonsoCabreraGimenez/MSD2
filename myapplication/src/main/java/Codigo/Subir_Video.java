@@ -4,11 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.orm.PersistentException;
+
 import com.vaadin.data.provider.ListDataProvider;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.UI;
 
+import GY.MyUI;
+import diagramaclasesbd.Administrador;
 import diagramaclasesbd.BD_Principal;
+import diagramaclasesbd.Registrado;
 
 public class Subir_Video extends Modificar_Video_ventana {
 
@@ -43,8 +49,19 @@ public class Subir_Video extends Modificar_Video_ventana {
 		String des = descripcion.getValue();
 		String urls = url.getValue();
 		java.util.Date utilDate = new java.util.Date();
-		
+		//Sacar el id del usuario que lo sube
+		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+		int idUser = -1;
+		//No coge el id del administrador, el registrado si. Lo dejo comentado
+		/*if(admon == null)
+		{
+			Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+			idUser = registrado.getID();
 
-		ur.subirVideo(1, mini, titu, cate, etique, des, urls, utilDate);
+		} else {
+			idUser = admon.getID();
+		}*/
+
+		ur.subirVideo(/*idUser*/1, mini, titu, cate, etique, des, urls, utilDate);
 	}	
 }
