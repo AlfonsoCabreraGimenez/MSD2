@@ -91,29 +91,24 @@ public class BD_Videos {
 	
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
-			//diagramaclasesbd.Categoria cate = diagramaclasesbd.CategoriaDAO.getCategoriaByORMID(1);
-
 			diagramaclasesbd.Video video = diagramaclasesbd.VideoDAO.getVideoByORMID(1);
-			
+			diagramaclasesbd.Categoria cate=null;	
+			for(diagramaclasesbd.Categoria cat : CategoriaDAO.listCategoriaByQuery(null, null)) {
+				if(cat.getNombre().equals(aCategoria)) {
+					cate = cat;
+				}
+			}
+			video.setCategoria(cate);
 			video.setMiniatura(aMiniatura);
 			video.setTitulo(aTitulo);
 			video.setEtiqueta(aEtiqueta);
 			video.setDescripcion(aDescripcion);
+			diagramaclasesbd.VideoDAO.save(video);	
 			
-			/*video.setCategoria(cate);
-			video.setUsuario_video(r);
-			diagramaclasesbd.RegistradoDAO.save(r);
-			diagramaclasesbd.CategoriaDAO.save(cate);
-			*/
-			diagramaclasesbd.VideoDAO.save(video);
-			
-			
-			t.commit();
-			
+			t.commit();		
 		} catch (Exception e) {
 			t.rollback();
 		}
-
 	}
 
 	public void darMegusta(int aID) {

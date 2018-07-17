@@ -37,6 +37,5 @@ public class BD_Categorias {
 			// TODO Auto-generated catch block
 			t.rollback();
 		}
-
 	}
 }

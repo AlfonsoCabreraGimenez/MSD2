@@ -1,5 +1,8 @@
 package Codigo;
 
+import java.util.Optional;
+
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 
 import diagramaclasesbd.Administrador;
@@ -14,11 +17,10 @@ public class Crear_Categoria extends Crear_Categoria_ventana{
 		tCategoria.setValue("");
 	}
 	public void crearCategoria() {
-		
 		String nombreCategoria = tCategoria.getValue();
-		String numeroEdad = comboEdad.getValue();
-		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
-		admin.crearCategoria(nombreCategoria,admon.getID());
-		
+		Optional<String> seleccion = comboEdad.getSelectedItem();
+		int numeroEdad = Integer.parseInt(seleccion.get());
+		//Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+		admin.crearCategoria(nombreCategoria,numeroEdad);	
 	}
 }

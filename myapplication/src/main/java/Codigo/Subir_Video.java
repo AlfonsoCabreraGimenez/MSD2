@@ -14,26 +14,25 @@ public class Subir_Video extends Modificar_Video_ventana {
 
 	public Cabecera_R _unnamed_Cabecera_R_;
 	Modificar_Video mv = new Modificar_Video();
-	Label nombreCategoria = new Label("Hola");
 
 	public iUsuario_Registrado ur = new BD_Principal();
 	
 	public Subir_Video() {
+		inicializar();
+	}
+	public void inicializar() {
 		modificarInformacion.setVisible(false);
 		hURL.setVisible(true);
-		etiqueta.setVisible(false);
-		
+		etiqueta.setVisible(false);	
+		etiqueta.setVisible(true);
 		@SuppressWarnings("unchecked")
 		List <String> nombresCat = new ArrayList<String>();
 		for(diagramaclasesbd.Categoria cat :  ur.cargarCategorias()) {
 			nombresCat.add(cat.getNombre());
 		}
-		categoria.setItems(nombresCat);	
-		etiqueta.setVisible(true);
+		categoria.setItems(nombresCat);
 	}
-
 	public void subirVideo(){
-
 
 		String mini = miniatura.getValue();
 		String titu = titulo.getValue();
@@ -47,10 +46,5 @@ public class Subir_Video extends Modificar_Video_ventana {
 		
 
 		ur.subirVideo(1, mini, titu, cate, etique, des, urls, utilDate);
-		
-		
-
-	}
-
-	
-	}
+	}	
+}
