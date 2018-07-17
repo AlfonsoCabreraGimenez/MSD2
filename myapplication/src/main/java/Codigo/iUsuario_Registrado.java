@@ -27,7 +27,7 @@ public interface iUsuario_Registrado {
 
 	public void cargarAvatar(int aID);
 
-	public List cargarCategorias();
+	public List<diagramaclasesbd.Categoria> cargarCategorias();
 
 	public Usuario2 cargarDatosUsuario(int aID);
 

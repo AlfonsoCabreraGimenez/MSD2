@@ -13,7 +13,6 @@ public class Subir_Video extends Modificar_Video_ventana {
 
 	public Cabecera_R _unnamed_Cabecera_R_;
 	Modificar_Video mv = new Modificar_Video();
-	ComboBox<diagramaclasesbd.Categoria> cbCategoria = new ComboBox<>();
 	Label nombreCategoria = new Label("Hola");
 
 	public iUsuario_Registrado ur = new BD_Principal();
@@ -22,18 +21,13 @@ public class Subir_Video extends Modificar_Video_ventana {
 		modificarInformacion.setVisible(false);
 		hURL.setVisible(true);
 		etiqueta.setVisible(false);
-		categoria.setVisible(false);
 		
 		@SuppressWarnings("unchecked")
-		List<diagramaclasesbd.Categoria> listaCategorias = ur.cargarCategorias();
-
-		cbCategoria.setCaption("Categorias");
-		cbCategoria.setItems(listaCategorias);
-		
-		//cbCategoria.setItemIconGenerator(listaCategorias::get);
-
-		vPropVideo.addComponent(cbCategoria);
-		
+		List <String> nombresCat = new ArrayList<String>();
+		for(diagramaclasesbd.Categoria cat :  ur.cargarCategorias()) {
+			nombresCat.add(cat.getNombre());
+		}
+		categoria.setItems(nombresCat);	
 		etiqueta.setVisible(true);
 	}
 

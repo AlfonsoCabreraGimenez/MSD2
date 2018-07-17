@@ -12,9 +12,9 @@ public class BD_Categorias {
 	public BD_Principal _bd_prin_categ;
 	//public Vector<Categoria> _contiene_categ = new Vector<Categoria>();
 
-	public List cargarCategorias() throws PersistentException {
+	public List<diagramaclasesbd.Categoria> cargarCategorias() throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
-		List listaCategorias = null;
+		List<diagramaclasesbd.Categoria> listaCategorias = null;
 		try {
 			listaCategorias = CategoriaDAO.queryCategoria(null, null);
 			t.commit();

@@ -60,7 +60,7 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		throw new UnsupportedOperationException();
 	}
 
-	public List cargarCategorias() {
+	public List<diagramaclasesbd.Categoria> cargarCategorias() {
 		try {
 			return categoria.cargarCategorias();
 		} catch (PersistentException e) {
