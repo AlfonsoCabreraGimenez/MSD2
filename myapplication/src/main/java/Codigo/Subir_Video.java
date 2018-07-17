@@ -2,6 +2,7 @@ package Codigo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.vaadin.data.provider.ListDataProvider;
 import com.vaadin.ui.ComboBox;
@@ -36,8 +37,8 @@ public class Subir_Video extends Modificar_Video_ventana {
 
 		String mini = miniatura.getValue();
 		String titu = titulo.getValue();
-		String cate = categoria.getValue();
-
+		Optional<String> seleccion = categoria.getSelectedItem();
+		String cate = seleccion.get();
 		//vPropVideo.addComponent(nombreCategoria);
 		String etique = etiqueta.getValue();
 		String des = descripcion.getValue();
