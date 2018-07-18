@@ -167,8 +167,14 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		}
 	}
 
-	public List cargar_Videos_Masmegusta() {
-		throw new UnsupportedOperationException();
+	public List<diagramaclasesbd.Video> cargar_Videos_Masmegusta() {
+		try {
+			return videos.cargar_Videos_Masmegusta();
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public List cargar_Videos_Ultimos() {

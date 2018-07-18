@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 public interface iUsuario_No_Registrado {
 
-	public List cargar_Videos_Masmegusta();
+	public List<diagramaclasesbd.Video> cargar_Videos_Masmegusta();
 
 	public List cargar_Videos_Ultimos();
 

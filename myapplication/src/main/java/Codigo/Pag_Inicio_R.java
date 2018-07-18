@@ -1,5 +1,7 @@
 package Codigo;
 
+import java.util.Date;
+
 import org.hibernate.cfg.AvailableSettings;
 import org.orm.PersistentException;
 
@@ -15,6 +17,7 @@ import GY.MyUI;
 import diagramaclasesbd.Administrador;
 import diagramaclasesbd.BD_Administradores;
 import diagramaclasesbd.BD_Principal;
+import diagramaclasesbd.Categoria;
 import diagramaclasesbd.Registrado;
 import diagramaclasesbd.Usuario;
 
@@ -23,7 +26,7 @@ import com.vaadin.ui.Notification;
 public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 
 	public Cabecera_R _unnamed_Cabecera_R_;
-	public Video2 _unnamed_Video2_ = new Video2();
+//	public Video2 _unnamed_Video2_ = new Video2();
 	iUsuario_Registrado ur = new BD_Principal();
 	iUsuario_No_Registrado unr = new BD_Principal();
 	iAdministrador2 admon = new BD_Principal();
@@ -62,27 +65,42 @@ public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 	
 	/////////////////////////////////////////////////////////////
 	public void cargar_Videos_Inicio_R() {
-		prv.hPanelVideosVreciente.addComponent(_unnamed_Video2_.vVerticalVideoGeneral);
+		//prv.hPanelVideosVreciente.addComponent(_unnamed_Video2_.vVerticalVideoGeneral);
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 		if(admon == null)
 		{
 			Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
 			Notification.show(String.valueOf(registrado.getID()));
+			
 			//CARGAR VIDEOS DE REGISTRADO
-			/*
+			
 			//Mas me gusta
-			unr.cargar_Videos_Masmegusta();
+			int cont = 0;
+			for(diagramaclasesbd.Video video: unr.cargar_Videos_Masmegusta()) {
+					Video2 vid = new Video2();
+					hPanelVideosMasMeGusta.addComponent(vid);
+					vid.titulo.setCaption(video.getTitulo());
+					Registrado reg = (Registrado) video.getUsuario_video();
+					vid.usuario.setCaption(reg.getNombre());
+					Categoria cat = video.getCategoria();
+					vid.categoria.setValue(cat.getNombre());
+					vid.etiqueta.setValue(video.getEtiqueta());
+					Date fecha = video.getFechaCreacion();
+					vid.fechasubida.setCaption(fecha.toString());
+					cont++;
+					if(cont == 10) {
+						break;
+					}
+			}
+			//unr.cargar_Videos_Masmegusta();
 			//Ultimos videos subido
-			unr.cargar_Videos_Ultimos();
+			/*unr.cargar_Videos_Ultimos();
 			//videos relacionados (ID DEL USUARIO)
 			ur.cargar_Videos_Relacionados(registrado.getID());
 			//videos de otros usuarios (ID DEL USUARIO)
 			ur.cargar_Videos_Suscriptores(registrado.getID());
 			//videos vistos recientemente (ID DEL USUARIO)
-			ur.cargar_Videos_Historial(registrado.getID());
-			
-			*/
-			
+			ur.cargar_Videos_Historial(registrado.getID());*/
 		}
 		else 
 		{

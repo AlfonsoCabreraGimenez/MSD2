@@ -1,5 +1,9 @@
 package diagramaclasesbd;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
@@ -15,8 +19,39 @@ public class BD_Videos {
 	public BD_Principal _bd_prin_videos;
 	public Vector<Video> _contiene_videos = new Vector<Video>();
 
-	public List cargar_Videos_Masmegusta() {
-		throw new UnsupportedOperationException();
+	public List<diagramaclasesbd.Video> cargar_Videos_Masmegusta() throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		List<diagramaclasesbd.Video> lVideosMgusta = null;
+		ArrayList<Integer> megusta = new ArrayList<Integer>();
+		ArrayList<diagramaclasesbd.Video> resultado = new ArrayList<diagramaclasesbd.Video>();
+		//int max = -1;
+		//int pos = -1;
+		//int cont = 0;
+		try {
+			lVideosMgusta = VideoDAO.queryVideo(null, null);
+			for(diagramaclasesbd.Video v : lVideosMgusta){
+				megusta.add(v.getMegusta());
+			}
+			while(!megusta.isEmpty()) {
+				int  max = -1;
+				int pos = -1;
+				for(int i = 0 ; i < megusta.size();i++) {
+					int actual=megusta.get(i);
+					if(actual > max) {
+						max = actual;
+						pos=i;
+					}
+				}
+				resultado.add(lVideosMgusta.get(pos));
+				lVideosMgusta.remove(pos);
+				megusta.remove(pos);
+			}
+			t.commit();
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			t.rollback();
+		}
+		return resultado;
 	}
 
 	public List cargar_Videos_Ultimos() {
