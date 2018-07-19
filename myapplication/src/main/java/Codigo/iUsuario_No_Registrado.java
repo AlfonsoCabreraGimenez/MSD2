@@ -6,7 +6,7 @@ public interface iUsuario_No_Registrado {
 
 	public List<diagramaclasesbd.Video> cargar_Videos_Masmegusta();
 
-	public List cargar_Videos_Ultimos();
+	public List<diagramaclasesbd.Video> cargar_Videos_Ultimos();
 
 	public boolean iniciarSesion(String aUser, String aPass);
 

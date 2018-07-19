@@ -9,6 +9,7 @@ import org.orm.PersistentException;
 import com.vaadin.data.provider.ListDataProvider;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 
 import GY.MyUI;
@@ -53,15 +54,19 @@ public class Subir_Video extends Modificar_Video_ventana {
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 		int idUser = -1;
 		//No coge el id del administrador, el registrado si. Lo dejo comentado
-		/*if(admon == null)
+		if(admon == null)
 		{
 			Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
 			idUser = registrado.getID();
+			Notification.show(String.valueOf(idUser));
+			ur.subirVideo(idUser, mini, titu, cate, etique, des, urls, utilDate);
 
 		} else {
 			idUser = admon.getID();
-		}*/
+			Notification.show(String.valueOf(idUser));
+			ur.subirVideo(idUser, mini, titu, cate, etique, des, urls, utilDate);
+		}
 
-		ur.subirVideo(/*idUser*/1, mini, titu, cate, etique, des, urls, utilDate);
+		//ur.subirVideo(idUser, mini, titu, cate, etique, des, urls, utilDate);
 	}	
 }

@@ -49,8 +49,8 @@ public class MyUI extends UI {
     	//navigator.addView("",new Pag_Inicio_NR());
     	//navigator.addView("",new Perfil_Ajeno_A());
     	
-		navigator.addView("", new Ingreso_Aplicacion());
-    	//navigator.addView("inicioNR",new Pag_Inicio_NR());
+		//navigator.addView("", new Ingreso_Aplicacion());
+    	navigator.addView("",new Pag_Inicio_NR());
     	//navigator.addView("Ingreso",new Ingreso_Aplicacion());
     	//navigator.addView("PagIR",new Pag_Inicio_R());
     	//navigator.addView("VisAjeno",new Visualizacion_Video_Ajeno());

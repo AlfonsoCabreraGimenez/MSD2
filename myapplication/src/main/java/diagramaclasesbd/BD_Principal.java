@@ -177,8 +177,14 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		return null;
 	}
 
-	public List cargar_Videos_Ultimos() {
-		throw new UnsupportedOperationException();
+	public List<diagramaclasesbd.Video> cargar_Videos_Ultimos() {
+		try {
+			return videos.cargar_Videos_Ultimos();
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public boolean iniciarSesion(String aUser, String aPass) {

@@ -1,5 +1,7 @@
 package diagramaclasesbd;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -54,8 +56,43 @@ public class BD_Videos {
 		return resultado;
 	}
 
-	public List cargar_Videos_Ultimos() {
-		throw new UnsupportedOperationException();
+	public List cargar_Videos_Ultimos() throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		List<diagramaclasesbd.Video> lVideosUltimos = null;
+		ArrayList<Date> ultimos = new ArrayList<Date>();
+		ArrayList<diagramaclasesbd.Video> resultado = new ArrayList<diagramaclasesbd.Video>();
+		//int max = -1;
+		//int pos = -1;
+		//int cont = 0;
+		try {
+			lVideosUltimos = VideoDAO.queryVideo(null, null);
+			for(diagramaclasesbd.Video v : lVideosUltimos){
+				ultimos.add(v.getFechaCreacion());
+			}
+			while(!ultimos.isEmpty()) {
+				SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
+				Date max = formatoDelTexto.parse("0000-00-00");
+				int pos = -1;
+				for(int i = 0 ; i < ultimos.size();i++) {
+					Date actual = ultimos.get(i);
+					if(actual.compareTo(max) == 1) {
+						max = actual;
+						pos=i;
+					}
+				}
+				resultado.add(lVideosUltimos.get(pos));
+				lVideosUltimos.remove(pos);
+				ultimos.remove(pos);
+			}
+			t.commit();
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			t.rollback();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return resultado;
 	}
 
 	public List buscar(TipoBusqueda aTipoBusqueda) {

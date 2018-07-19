@@ -39,7 +39,6 @@ public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 	Navigator navigator;
 	 	
 	public Pag_Inicio_R(){
-
 		hCabeceraInicioBus.addComponent(pnr.cr.hCabeceraR);
 		cnr.iniciarSesionRegistrarse.setVisible(false);
 		addComponent(prv.videosRelacionados);
@@ -48,65 +47,10 @@ public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 		addComponent(prv.panelVideosOtrosUser);
 		addComponent(prv.videosVreciente);
 		addComponent(prv.panelVideosVreciente);
-		
 		cargar_Videos_Inicio_R();
-		
-		/*cc.inicio.addClickListener(new ClickListener() {		
-			@Override
-			public void buttonClick(ClickEvent event) {
-				
-					MyUI.getCurrent().getNavigator().addView("Pag_Inicio_R", new Pag_Inicio_R());
-					UI.getCurrent().getNavigator().navigateTo("Pag_Inicio_R");
-			}
-		});*/
-		
-		
 	}
-	
 	/////////////////////////////////////////////////////////////
 	public void cargar_Videos_Inicio_R() {
-		//prv.hPanelVideosVreciente.addComponent(_unnamed_Video2_.vVerticalVideoGeneral);
-		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
-		if(admon == null)
-		{
-			Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-			Notification.show(String.valueOf(registrado.getID()));
-			
-			//CARGAR VIDEOS DE REGISTRADO
-			
-			//Mas me gusta
-			int cont = 0;
-			for(diagramaclasesbd.Video video: unr.cargar_Videos_Masmegusta()) {
-					Video2 vid = new Video2();
-					hPanelVideosMasMeGusta.addComponent(vid);
-					vid.titulo.setCaption(video.getTitulo());
-					Registrado reg = (Registrado) video.getUsuario_video();
-					vid.usuario.setCaption(reg.getNombre());
-					Categoria cat = video.getCategoria();
-					vid.categoria.setValue(cat.getNombre());
-					vid.etiqueta.setValue(video.getEtiqueta());
-					Date fecha = video.getFechaCreacion();
-					vid.fechasubida.setCaption(fecha.toString());
-					cont++;
-					if(cont == 10) {
-						break;
-					}
-			}
-			//unr.cargar_Videos_Masmegusta();
-			//Ultimos videos subido
-			/*unr.cargar_Videos_Ultimos();
-			//videos relacionados (ID DEL USUARIO)
-			ur.cargar_Videos_Relacionados(registrado.getID());
-			//videos de otros usuarios (ID DEL USUARIO)
-			ur.cargar_Videos_Suscriptores(registrado.getID());
-			//videos vistos recientemente (ID DEL USUARIO)
-			ur.cargar_Videos_Historial(registrado.getID());*/
-		}
-		else 
-		{
-			//CARGAR VIDEOS DE ADMINISTRADOR
-			Notification.show(String.valueOf(admon.getID()));
-			
-		}
+		super.cargar_Videos_Inicio_NR();
 	}
 }
