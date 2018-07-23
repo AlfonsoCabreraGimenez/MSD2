@@ -23,13 +23,21 @@ public class Buscador extends Buscador_ventana{
 		botonBuscar.addClickListener(new ClickListener() {	
 			@Override
 			public void buttonClick(ClickEvent event) {
+				TipoBusqueda bus = null;
 				if(rButons.isSelected("Usuarios")) {
-						MyUI.getCurrent().getNavigator().addView("Buscador_usuario", new Buscador_Usuario());
-						UI.getCurrent().getNavigator().navigateTo("Buscador_usuario");
+					MyUI.getCurrent().getNavigator().addView("Buscador_usuario", new Buscador_Usuario());
+					UI.getCurrent().getNavigator().navigateTo("Buscador_usuario");
+				} else if(rButons.isSelected("Categoria")) {
+					bus = TipoBusqueda.categoria;
+				} else if(rButons.isSelected("Etiqueta")) {
+					bus = TipoBusqueda.etiqueta;
+				} else if(rButons.isSelected("Descripcion")) {
+					bus = TipoBusqueda.descripcion;
 				} else {
-					MyUI.getCurrent().getNavigator().addView("Buscador_video", new Buscador_Video());
-					UI.getCurrent().getNavigator().navigateTo("Buscador_video");
+					bus = TipoBusqueda.titulo;
 				}
+					MyUI.getCurrent().getNavigator().addView("Buscador_video", new Buscador_Video(bus));
+					UI.getCurrent().getNavigator().navigateTo("Buscador_video");
 			}
 		});
 	}

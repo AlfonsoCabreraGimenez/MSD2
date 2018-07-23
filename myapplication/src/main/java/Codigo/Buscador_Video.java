@@ -3,6 +3,7 @@ package Codigo;
 import java.util.Vector;
 
 import com.vaadin.navigator.View;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 
 import Codigo.Video2;
@@ -15,7 +16,7 @@ public class Buscador_Video extends Buscador implements View {
 	Cabecera_NR cnr = new Cabecera_NR();
 	Cabecera_Comun cc = new Cabecera_Comun();
 	Cabecera_R cr = new Cabecera_R();
-	public Buscador_Video () {
+	public Buscador_Video (TipoBusqueda busqueda) {
 		hCabeceraInicioBus.addComponentAsFirst(cc.inicio);
 		hCabeceraInicioBus.addComponent(cnr.hIniciarSesionRegistrarse);
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
@@ -24,6 +25,7 @@ public class Buscador_Video extends Buscador implements View {
 			cnr.hIniciarSesionRegistrarse.setVisible(false);
 			hCabeceraInicioBus.addComponent(cr.hCabeceraR);
 		}
+		Notification.show(busqueda.toString());
 	}
 	public void ordenarVideo(TipoOrdenacionVideo aTipoOrdenacionVideo) {
 		throw new UnsupportedOperationException();
