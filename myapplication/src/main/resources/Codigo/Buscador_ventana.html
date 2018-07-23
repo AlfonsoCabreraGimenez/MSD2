@@ -7,21 +7,25 @@
  </head>
  <body>
   <vaadin-vertical-layout>
-   <vaadin-vertical-layout size-auto margin="false" _id="vBuscador">
-    <vaadin-horizontal-layout :right>
-     <vaadin-text-field width="900px" height="50px" _id="tBuscador"></vaadin-text-field>
-     <vaadin-button icon="fonticon://Vaadin-Icons/e805" description="Buscar" height="50px" plain-text _id="botonBuscar"></vaadin-button>
+   <vaadin-horizontal-layout width-full _id="hCabeceraGeneral">
+    <vaadin-horizontal-layout _id="hCabeceraInicioBus">
+     <vaadin-vertical-layout size-auto margin="false" _id="vBuscador">
+      <vaadin-horizontal-layout :right>
+       <vaadin-text-field width="900px" height="50px" _id="tBuscador"></vaadin-text-field>
+       <vaadin-button icon="fonticon://Vaadin-Icons/e805" description="Buscar" height="50px" plain-text _id="botonBuscar"></vaadin-button>
+      </vaadin-horizontal-layout>
+      <vaadin-horizontal-layout width="900px" _id="hRadio">
+       <vaadin-radio-button-group style-name="horizontal" data-item-type="java.lang.String" _id="rButons">
+        <option item="Titulo">Título</option>
+        <option item="Categoria">Categoría</option>
+        <option item="Etiqueta">Etiqueta</option>
+        <option item="Descripcion">Descripción</option>
+        <option item="Usuarios">Usuarios</option>
+       </vaadin-radio-button-group>
+      </vaadin-horizontal-layout>
+     </vaadin-vertical-layout>
     </vaadin-horizontal-layout>
-    <vaadin-horizontal-layout width="900px" _id="hRadio">
-     <vaadin-radio-button-group style-name="horizontal" data-item-type="java.lang.String" _id="rButons">
-      <option item="Titulo">Título</option>
-      <option item="Categoria">Categoría</option>
-      <option item="Etiqueta">Etiqueta</option>
-      <option item="Descripcion">Descripción</option>
-      <option item="Usuarios">Usuarios</option>
-     </vaadin-radio-button-group>
-    </vaadin-horizontal-layout>
-   </vaadin-vertical-layout>
+   </vaadin-horizontal-layout>
   </vaadin-vertical-layout>
  </body>
 </html>
