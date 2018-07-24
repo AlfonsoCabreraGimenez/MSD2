@@ -58,4 +58,6 @@ public interface iUsuario_Registrado {
 	public void eliminarVideoListaReproduccion(int aID);
 
 	public List<Registrado> cargarUsuariosRegis();
+
+	public Boolean videoPropio(String id);
 }

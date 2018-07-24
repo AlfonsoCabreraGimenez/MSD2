@@ -37,7 +37,7 @@ public class Pag_Inicio_NR extends Pag_Inicio_NR_ventana implements View{
 	}
 	public void cargar_Videos_Masmegusta() {
 		int cont = 0;
-		for(diagramaclasesbd.Video video: unr.cargar_Videos_Masmegusta()) {
+	/*	for(diagramaclasesbd.Video video: unr.cargar_Videos_Masmegusta()) {
 				Video2 vid = new Video2();
 				hPanelVideosMasMeGusta.addComponent(vid);
 				vid.titulo.setCaption(video.getTitulo());
@@ -52,11 +52,11 @@ public class Pag_Inicio_NR extends Pag_Inicio_NR_ventana implements View{
 				if(cont == 10) {
 					break;
 				}
-		}
+		}*/
 	}
 	public void cargar_Videos_Ultimos() {
 		int cont = 0;
-		for(diagramaclasesbd.Video video: unr.cargar_Videos_Ultimos()) {
+		/*for(diagramaclasesbd.Video video: unr.cargar_Videos_Ultimos()) {
 				Video2 vid = new Video2();
 				hPanelUltimosVideosSubidos.addComponent(vid);
 				vid.titulo.setCaption(video.getTitulo());
@@ -71,6 +71,6 @@ public class Pag_Inicio_NR extends Pag_Inicio_NR_ventana implements View{
 				if(cont == 10) {
 					break;
 				}
-		}
+		}*/
 	}
 }

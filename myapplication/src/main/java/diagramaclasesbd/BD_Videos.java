@@ -244,4 +244,27 @@ public class BD_Videos {
 	public void eliminarVideoListaReproduccion(int aID) {
 		throw new UnsupportedOperationException();
 	}
+
+	public Boolean videoPropio(String id) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		List listaVideos = null;
+		try {
+			listaVideos = diagramaclasesbd.VideoDAO.queryVideo(null, null);
+			t.commit();
+			
+		}catch (Exception e) {
+			t.rollback();
+		}
+		// TODO Auto-generated method stub
+		for(int i = 0; i<= listaVideos.size()-1;i++)
+		{
+			if(id.equals(listaVideos.get(i)))
+			{
+				return true;
+			}
+		}
+		return false;
+		
+	}
+
 }
