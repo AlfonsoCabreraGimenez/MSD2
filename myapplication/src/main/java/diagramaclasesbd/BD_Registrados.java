@@ -1,5 +1,6 @@
 package diagramaclasesbd;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
@@ -44,7 +45,24 @@ public class BD_Registrados {
 	public void nuevaPass(String aPass, String aRepPass) {
 		throw new UnsupportedOperationException();
 	}
-
+	public List<diagramaclasesbd.Registrado> buscar(String buscador) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		List<diagramaclasesbd.Registrado> lista = null;
+		ArrayList<diagramaclasesbd.Registrado> resultado = new ArrayList<diagramaclasesbd.Registrado>();
+		try {
+			lista = RegistradoDAO.queryRegistrado(null, null);
+			for(diagramaclasesbd.Registrado u : lista){
+				if(u.getApodo().contains(buscador)) {
+					resultado.add(u);
+				}
+			}
+			t.commit();
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			t.rollback();
+		}
+		return resultado;
+	}
 	public List buscar(TipoBusqueda aTipoBusqueda) {
 		throw new UnsupportedOperationException();
 	}

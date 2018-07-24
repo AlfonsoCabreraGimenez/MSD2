@@ -1,6 +1,6 @@
 package Codigo;
 
-public class Usuario2 {
+public class Usuario2 extends Usuario2_ventana {
 	/*private Imagen _avatarI;
 	private Boton _avatarB;
 	private Boton _apodoB;

@@ -23,10 +23,10 @@ public class Buscador_Usuario_ventana extends VerticalLayout {
 	protected HorizontalLayout horizontalCabecera;
 	protected HorizontalLayout horizontalBuscador;
 	protected HorizontalLayout horizontalInicio;
-	protected ComboBox<java.lang.String> ordenarPor;
-	protected Panel panelBuscador;
-	protected VerticalLayout verticalBuscador;
-	protected HorizontalLayout horizontalResultado;
+	protected ComboBox<java.lang.String> ordenarPorUs;
+	protected Panel panelBuscadorUs;
+	protected VerticalLayout verticalBuscadorUs;
+	protected HorizontalLayout horizontalResultadoUs;
 
 	public Buscador_Usuario_ventana() {
 		Design.read(this);

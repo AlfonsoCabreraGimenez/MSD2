@@ -14,7 +14,9 @@ public interface iUsuario_No_Registrado {
 
 	public void nuevaPass(String aPass, String aRepPass);
 
-	public List buscar(TipoBusqueda aTipoBusqueda);
+	public List<diagramaclasesbd.Video> buscar(String buscador, TipoBusqueda aTipoBusqueda);
+	
+	public List<diagramaclasesbd.Registrado> buscar(String buscador);
 
 	public void regeneracionPass(String aEmail);
 

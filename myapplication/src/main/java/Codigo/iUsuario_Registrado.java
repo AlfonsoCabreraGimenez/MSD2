@@ -13,7 +13,7 @@ public interface iUsuario_Registrado {
 
 	public void borrarVideo(int aID);
 
-	public List buscar(TipoBusqueda aTipoBusqueda);
+	public List buscar(String buscador, TipoBusqueda aTipoBusqueda);
 
 	public List buscarVideo(String aTitulo);
 

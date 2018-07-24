@@ -24,7 +24,6 @@ public class Buscardor_Video_ventana extends VerticalLayout {
 	protected HorizontalLayout horizontalInicio;
 	protected Panel panelBuscador;
 	protected VerticalLayout verticalBuscador;
-	protected HorizontalLayout horizontalResultados;
 
 	public Buscardor_Video_ventana() {
 		Design.read(this);

@@ -25,27 +25,28 @@ public class Buscador extends Buscador_ventana{
 			public void buttonClick(ClickEvent event) {
 				TipoBusqueda bus = null;
 				if(rButons.isSelected("Usuarios")) {
-					MyUI.getCurrent().getNavigator().addView("Buscador_usuario", new Buscador_Usuario());
-					UI.getCurrent().getNavigator().navigateTo("Buscador_usuario");
-				} else if(rButons.isSelected("Categoria")) {
+					bus = TipoBusqueda.usuario;
+				}
+				if(rButons.isSelected("Categoria")) {
 					bus = TipoBusqueda.categoria;
-				} else if(rButons.isSelected("Etiqueta")) {
+				}
+				if(rButons.isSelected("Etiqueta")) {
 					bus = TipoBusqueda.etiqueta;
-				} else if(rButons.isSelected("Descripcion")) {
+				}
+				if(rButons.isSelected("Descripcion")) {
 					bus = TipoBusqueda.descripcion;
-				} else {
+				}
+				if(rButons.isSelected("Titulo") || rButons.isSelected(null)){
 					bus = TipoBusqueda.titulo;
 				}
-					MyUI.getCurrent().getNavigator().addView("Buscador_video", new Buscador_Video(bus));
+				if(bus.toString() == "usuario") {
+					MyUI.getCurrent().getNavigator().addView("Buscador_usuario", new Buscador_Usuario(tBuscador.getValue()));
+					UI.getCurrent().getNavigator().navigateTo("Buscador_usuario");
+				} else {
+					MyUI.getCurrent().getNavigator().addView("Buscador_video", new Buscador_Video(tBuscador.getValue(), bus));
 					UI.getCurrent().getNavigator().navigateTo("Buscador_video");
+				}
 			}
 		});
-	}
-	public void buscar(TipoBusqueda aTipoBusqueda) {
-		throw new UnsupportedOperationException();
-	}
-
-	public void buscar() {
-		throw new UnsupportedOperationException();
 	}
 }

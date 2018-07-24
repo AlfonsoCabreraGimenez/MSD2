@@ -57,7 +57,7 @@ public class Registrarse extends Registrarse_ventana {
 		String aPass = tPass.getValue();
 		String aRepPass = tRepPass.getValue();
 		String aEmail = tEmail.getValue();
-		String aAvatar = "as";
+		String aAvatar = "https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true";
 		unr.registrarse(aNombre, aApellido1, aApellido2, fechaFinal, aApodo, aPass, aRepPass, aEmail, aAvatar);
 	}
 }

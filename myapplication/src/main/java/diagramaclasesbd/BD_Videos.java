@@ -95,8 +95,43 @@ public class BD_Videos {
 		return resultado;
 	}
 
-	public List buscar(TipoBusqueda aTipoBusqueda) {
-		throw new UnsupportedOperationException();
+	public List<diagramaclasesbd.Video> buscar(String buscador, TipoBusqueda aTipoBusqueda) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		List<diagramaclasesbd.Video> lista = null;
+		ArrayList<diagramaclasesbd.Video> resultado = new ArrayList<diagramaclasesbd.Video>();
+		try {
+			lista = VideoDAO.queryVideo(null, null);
+			if(aTipoBusqueda.toString() == "titulo") {
+				for(diagramaclasesbd.Video v : lista){
+					if(v.getTitulo().contains(buscador)) {
+						resultado.add(v);
+					}
+				}
+			} else if(aTipoBusqueda.toString() == "categoria") {
+				for(diagramaclasesbd.Video v : lista){
+					if(v.getCategoria().getNombre().contains(buscador)) {
+						resultado.add(v);
+					}
+				}
+			} else if(aTipoBusqueda.toString() == "descripcion") {
+				for(diagramaclasesbd.Video v : lista){
+					if(v.getDescripcion().contains(buscador)) {
+						resultado.add(v);
+					}
+				}
+			}else if(aTipoBusqueda.toString() == "etiqueta") {
+				for(diagramaclasesbd.Video v : lista){
+					if(v.getEtiqueta().contains(buscador)) {
+						resultado.add(v);
+					}
+				}
+			}
+			t.commit();
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			t.rollback();
+		}
+		return resultado;
 	}
 
 	public List cargar_Videos_Historial(int aID) {
@@ -144,7 +179,6 @@ public class BD_Videos {
 		} catch (Exception e) {
 			t.rollback();
 		}
-
 	}
 
 	public List cargar_Videos_Subidos(int aID) {

@@ -31,9 +31,23 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	public void borrarVideo(int aID) {
 		throw new UnsupportedOperationException();
 	}
-
-	public List buscar(TipoBusqueda aTipoBusqueda) {
-		throw new UnsupportedOperationException();
+	public List<diagramaclasesbd.Registrado> buscar(String buscador) {
+		try {
+			return registrados.buscar(buscador);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public List<diagramaclasesbd.Video> buscar(String buscador, TipoBusqueda aTipoBusqueda) {
+		try {
+			return videos.buscar(buscador, aTipoBusqueda);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public List buscarVideo(String aTitulo) {
