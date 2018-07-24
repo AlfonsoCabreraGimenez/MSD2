@@ -31,6 +31,7 @@ public class Cabecera_R extends Cabecera_R_ventana{
 	
 	public Cabecera_R() {
 		botonSubirVideo.addClickListener(new ClickListener() {
+			@Override
 			public void buttonClick(ClickEvent event) {
 
 				popup.setContent(subContent);

@@ -52,5 +52,8 @@ public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 	/////////////////////////////////////////////////////////////
 	public void cargar_Videos_Inicio_R() {
 		super.cargar_Videos_Inicio_NR();
+		//CARGAR VIDEOS (HISTORIAL)
+		//CARGAR VIDEOS RELACIONADOS
+		//CARGAR VIDEOS SUSCRIPTORES
 	}
 }

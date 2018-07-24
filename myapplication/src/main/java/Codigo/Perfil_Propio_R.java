@@ -1,5 +1,7 @@
 package Codigo;
 
+import java.util.List;
+
 import org.orm.PersistentException;
 
 import com.vaadin.navigator.View;
@@ -12,6 +14,7 @@ import com.vaadin.ui.Window;
 
 import GY.MyUI;
 import diagramaclasesbd.Administrador;
+import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Registrado;
 import diagramaclasesbd.Usuario;
 
@@ -24,21 +27,21 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	
 	VerticalLayout subContent = new VerticalLayout();
 	VerticalLayout subContent2 = new VerticalLayout();
-	public static int identificador;
-	public int num;
-	public Video2 _unnamed_Video2_;
+	
+	/*public Video2 _unnamed_Video2_;
 	public Usuario2 _unnamed_Usuario2_;
 	public Cabecera_R _unnamed_Cabecera_R_;
 	public Crear_Lista_Reproduccion _unnamed_Crear_Lista_Reproduccion_;
 	public Modificar_Datos_Usuario _unnamed_Modificar_Datos_Usuario_;
 	public Conf_Eliminar_Video _unnamed_Conf_Eliminar_Video_;
-	Registrarse registro = new Registrarse();
+	Registrarse registro = new Registrarse();*/
 	Cabecera_Comun cc = new Cabecera_Comun();
 	Cabecera_R cr = new Cabecera_R();
 	Video2 v2 = new Video2();
 	Modificar_Datos_Usuario mdu = new Modificar_Datos_Usuario();
 	Crear_Lista_Reproduccion clr = new Crear_Lista_Reproduccion();
-	//public int ID = pir.is.datosUser.getID();;
+	iUsuario_Registrado ur = new BD_Principal();
+	
 	
 	public Perfil_Propio_R() throws PersistentException{
 		hCabeceraInicio.addComponent(cc.inicio);
@@ -116,19 +119,34 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	}
 
 	public void cargarPerfilPropioR() throws PersistentException {
-		//DEBEMOS DE CARGAR LA INFO DE USUARIO NO DE ADMIN NI DE REGIS
+		List videos = null;
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 		if (admon == null)
 		{
 			Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-			String numero = String.valueOf(registrado.getID());
-			nVisitas.setValue(numero);
+			int visitas = registrado.getVisitas();
+			nVisitas.setValue(String.valueOf(visitas));
+			//CARGAR VIDEOS PROPIOS
+			videos = ur.cargarVideosPropios(registrado.getID());
+			//CARGAR DATOS DE USUARIO con el id de sesion ya podemos hacerlo
+			for(int i = 0; i<2;i++)
+			{
+				v2 = (Video2) videos.get(i);
+				hPanel.addComponent(v2);
+				
+			}
 		} 
 		else 
 		{
-			String numero = String.valueOf(admon.getID());
-			nVisitas.setValue(numero);
+			int visitas = admon.getVisitas();
+			nVisitas.setValue(String.valueOf(visitas));
+			//CARGAR VIDEOS PROPIOS
+			
+			//CARGAR DATOS DE USUARIO con el id de sesion ya podemos hacerlo
+			
 		}
+		
+		
 		
 	}
 }

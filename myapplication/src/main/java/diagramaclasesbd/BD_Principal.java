@@ -279,4 +279,17 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		return null;
 	}
 
+	@Override
+	public List cargarVideosPropios(int ID) {
+		//Va a la bbdd de videos para cargar los videos de ese user
+		try {
+			videos.cargarVideosPropios(ID);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
 }

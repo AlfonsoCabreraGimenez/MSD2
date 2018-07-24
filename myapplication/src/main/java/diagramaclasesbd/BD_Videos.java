@@ -13,6 +13,8 @@ import java.util.Vector;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
+import com.vaadin.ui.UI;
+
 import diagramaclasesbd.Video;
 import Codigo.TipoBusqueda;
 import Codigo.Video2;
@@ -265,6 +267,33 @@ public class BD_Videos {
 		}
 		return false;
 		
+	}
+
+	@SuppressWarnings("null")
+	public List cargarVideosPropios(int iD) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+		
+		List listaVideos = null;
+		List listaVideosPropios = null;
+		diagramaclasesbd.Video video = null;
+		try
+		{
+			listaVideos = VideoDAO.queryVideo(null, null);
+			
+			for(int i = 0; i<= listaVideos.size()-1;i++)
+			{
+				video = (Video)listaVideos.get(i);
+				if(video.getUsuario_video() != null && video.getUsuario_video().equals(registrado))
+				{
+					listaVideosPropios.add(video);
+				}
+			}
+			t.commit();
+		}catch (Exception e) {
+			t.rollback();
+		}
+		return listaVideosPropios;
 	}
 
 }

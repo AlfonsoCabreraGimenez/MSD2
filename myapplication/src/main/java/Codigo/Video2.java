@@ -1,5 +1,7 @@
 package Codigo;
 
+import org.orm.PersistentException;
+
 import com.vaadin.event.ContextClickEvent;
 import com.vaadin.event.ContextClickEvent.ContextClickListener;
 import com.vaadin.ui.Notification;
@@ -76,7 +78,38 @@ public class Video2 extends Video2_ventana{
 		usuario.addClickListener(new ClickListener() {
 
 			public void buttonClick(ClickEvent event) {
-				UI.getCurrent().getNavigator().navigateTo("PAjeno");
+				if(videoPropio == false)
+				{
+					//IR A PAG Perfil Ajeno
+					MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno", new Perfil_Ajeno());
+					UI.getCurrent().getNavigator().navigateTo("Perfil_Ajeno");
+					
+					
+				} 
+				else 
+				{
+					//IR A PAG PERFIL PROPIO ---- DIFERENCIAR ADMIN DE REGISTRADO
+					if(admon == null)
+					{
+						try {
+							MyUI.getCurrent().getNavigator().addView("Perfil_Propio_R", new Perfil_Propio_R());
+						} catch (PersistentException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_R");
+					} 
+					else 
+					{
+						try {
+							MyUI.getCurrent().getNavigator().addView("Perfil_Propio_A", new Perfil_Propio_A());
+						} catch (PersistentException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_A");
+					}
+				}
 			}
 		});
 		modificarVideo.addClickListener(new ClickListener() {
