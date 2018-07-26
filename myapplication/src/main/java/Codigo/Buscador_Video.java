@@ -46,7 +46,7 @@ public class Buscador_Video extends Buscador implements View {
 		int cont = 0;
 		int i = 0;
 		for(diagramaclasesbd.Video video: unr.buscar(buscador, aTipoBusqueda)) {
-				Video2 vid = new Video2();
+				Video2 vid = new Video2(video.getID());
 				hor.get(i).setHeight("-1px");
 				hor.get(i).setWidth("100%");
 				verticalBuscador.addComponent(hor.get(i));

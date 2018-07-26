@@ -88,8 +88,14 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		throw new UnsupportedOperationException();
 	}
 
-	public Video2 cargarDatosVideo(int aID) {
-		throw new UnsupportedOperationException();
+	public diagramaclasesbd.Video cargarDatosVideo(int aID) {
+		diagramaclasesbd.Video video = null;
+		try {
+			video = videos.cargarDatosVideo(aID);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return video;
 	}
 
 	public List cargarListaComentarios(int aID) {

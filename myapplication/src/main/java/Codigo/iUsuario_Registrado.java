@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import diagramaclasesbd.Registrado;
+import diagramaclasesbd.Video;
 public interface iUsuario_Registrado {
 	
 
@@ -31,7 +32,7 @@ public interface iUsuario_Registrado {
 
 	public Usuario2 cargarDatosUsuario(int aID);
 
-	public Video2 cargarDatosVideo(int aID);
+	public diagramaclasesbd.Video cargarDatosVideo(int aID);
 
 	public List cargarListaComentarios(int aID);
 

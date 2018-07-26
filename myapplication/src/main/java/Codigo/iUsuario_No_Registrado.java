@@ -22,7 +22,7 @@ public interface iUsuario_No_Registrado {
 
 	public Usuario2 cargarDatosUsuario(int aID);
 
-	public Video2 cargarDatosVideo(int aID);
+	public diagramaclasesbd.Video cargarDatosVideo(int aID);
 
 	public List cargar_Videos_Subidos(int aID);
 

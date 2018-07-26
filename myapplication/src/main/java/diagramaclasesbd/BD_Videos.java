@@ -191,8 +191,16 @@ public class BD_Videos {
 		throw new UnsupportedOperationException();
 	}
 
-	public Video2 cargarDatosVideo(int aID) {
-		throw new UnsupportedOperationException();
+	public diagramaclasesbd.Video cargarDatosVideo(int aID) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		diagramaclasesbd.Video video = null;
+		try {
+			video = diagramaclasesbd.VideoDAO.getVideoByORMID(aID);			
+			t.commit();		
+		} catch (Exception e) {
+			t.rollback();
+		}
+		return video;
 	}
 
 	public void modificarDatosVideo(String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aMiniatura) throws PersistentException {

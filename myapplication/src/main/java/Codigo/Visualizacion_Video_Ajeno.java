@@ -21,9 +21,6 @@ public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_A_venta
 		htituloComentario.setVisible(false);
 		vComentario.setVisible(false);
 		modificarVideo.setVisible(false);
-
-		
-		
 	}
 	public void cargarVisualizacionAjenoNR() {
 		throw new UnsupportedOperationException();

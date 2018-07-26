@@ -37,8 +37,8 @@ public class Pag_Inicio_NR extends Pag_Inicio_NR_ventana implements View{
 	}
 	public void cargar_Videos_Masmegusta() {
 		int cont = 0;
-	/*	for(diagramaclasesbd.Video video: unr.cargar_Videos_Masmegusta()) {
-				Video2 vid = new Video2();
+		for(diagramaclasesbd.Video video: unr.cargar_Videos_Masmegusta()) {
+				Video2 vid = new Video2(video.getID());
 				hPanelVideosMasMeGusta.addComponent(vid);
 				vid.titulo.setCaption(video.getTitulo());
 				Registrado reg = (Registrado) video.getUsuario_video();
@@ -52,12 +52,12 @@ public class Pag_Inicio_NR extends Pag_Inicio_NR_ventana implements View{
 				if(cont == 10) {
 					break;
 				}
-		}*/
+		}
 	}
 	public void cargar_Videos_Ultimos() {
 		int cont = 0;
-		/*for(diagramaclasesbd.Video video: unr.cargar_Videos_Ultimos()) {
-				Video2 vid = new Video2();
+		for(diagramaclasesbd.Video video: unr.cargar_Videos_Ultimos()) {
+				Video2 vid = new Video2(video.getID());
 				hPanelUltimosVideosSubidos.addComponent(vid);
 				vid.titulo.setCaption(video.getTitulo());
 				Registrado reg = (Registrado) video.getUsuario_video();
@@ -71,6 +71,6 @@ public class Pag_Inicio_NR extends Pag_Inicio_NR_ventana implements View{
 				if(cont == 10) {
 					break;
 				}
-		}*/
+		}
 	}
 }

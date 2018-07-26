@@ -37,8 +37,7 @@ public class Video2 extends Video2_ventana{
 	iUsuario_Registrado ur = new BD_Principal();
 	Modificar_Video mv = new Modificar_Video();
 	boolean videoPropio = false;
-	
-	public Video2() {
+	public Video2(int id) {
 		//IR A VISUALIZACION DE VIDEO
 		//DIFERENCIAR SI ES ADMIN O USER Y SI ES VIDEO PROPIO O NO
 		/*CREADO Metodo para ver si el video es propio o no*/
@@ -68,7 +67,7 @@ public class Video2 extends Video2_ventana{
 					} 
 					else 
 					{
-						MyUI.getCurrent().getNavigator().addView("Pagina_Visualizacion_Ajeno_A", new Visualizacion_Video_Ajeno_A());
+						MyUI.getCurrent().getNavigator().addView("Pagina_Visualizacion_Ajeno_A", new Visualizacion_Video_Ajeno_A(id));
 						UI.getCurrent().getNavigator().navigateTo("Pagina_Visualizacion_Ajeno_A");
 					}
 				}
