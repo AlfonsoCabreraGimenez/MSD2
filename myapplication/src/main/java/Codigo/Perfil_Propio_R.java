@@ -52,7 +52,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 		crearAdministrador.setVisible(false);
 
 		inicializar();
-		cargarPerfilPropioR();
+		//cargarPerfilPropioR();
 	}
 	
 	void inicializar(){

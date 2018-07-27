@@ -151,7 +151,7 @@ public class BD_Videos {
 	public void subirVideo(int aID, String aMiniatura, String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aUrl, Date aFechaCreacion) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
-			diagramaclasesbd.Registrado r = diagramaclasesbd.RegistradoDAO.getRegistradoByORMID(aID);
+			diagramaclasesbd.Usuario r = diagramaclasesbd.UsuarioDAO.getUsuarioByORMID(aID);
 			diagramaclasesbd.Video video = diagramaclasesbd.VideoDAO.createVideo();
 			
 			video.setMiniatura(aMiniatura);

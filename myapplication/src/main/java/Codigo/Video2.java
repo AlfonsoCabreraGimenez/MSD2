@@ -38,6 +38,9 @@ public class Video2 extends Video2_ventana{
 	iUsuario_Registrado ur = new BD_Principal();
 	Modificar_Video mv = new Modificar_Video();
 	boolean videoPropio = false;
+	public Video2() {
+		
+	}
 	public Video2(int id) {
 		//IR A VISUALIZACION DE VIDEO
 		//DIFERENCIAR SI ES ADMIN O USER Y SI ES VIDEO PROPIO O NO

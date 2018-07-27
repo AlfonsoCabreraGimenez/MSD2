@@ -23,7 +23,7 @@ public class Subir_Video extends Modificar_Video_ventana {
 	Modificar_Video mv = new Modificar_Video();
 
 	public iUsuario_Registrado ur = new BD_Principal();
-	
+	public iAdministrador2 admin = new BD_Principal();
 	public Subir_Video() {
 		inicializar();
 	}
@@ -64,7 +64,7 @@ public class Subir_Video extends Modificar_Video_ventana {
 		} else {
 			idUser = admon.getID();
 			Notification.show(String.valueOf(idUser));
-			ur.subirVideo(idUser, mini, titu, cate, etique, des, urls, utilDate);
+			admin.subirVideo(idUser, mini, titu, cate, etique, des, urls, utilDate);
 		}
 
 		//ur.subirVideo(idUser, mini, titu, cate, etique, des, urls, utilDate);
