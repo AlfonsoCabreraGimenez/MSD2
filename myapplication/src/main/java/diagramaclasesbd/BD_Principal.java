@@ -111,7 +111,13 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	}
 
 	public void darMegusta(int aID) {
-		throw new UnsupportedOperationException();
+		
+		try {
+			videos.darMegusta(aID);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void descargarVideo(int aID) {

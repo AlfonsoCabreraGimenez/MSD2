@@ -222,8 +222,18 @@ public class BD_Videos {
 		}
 	}
 
-	public void darMegusta(int aID) {
-		throw new UnsupportedOperationException();
+	public void darMegusta(int aID) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		try {
+			diagramaclasesbd.Video video = diagramaclasesbd.VideoDAO.getVideoByORMID(aID);
+			video.setMegusta(video.getMegusta()+1);
+			VideoDAO.save(video);
+			t.commit();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+		t.rollback();	
+		}
+
 	}
 
 	public void quitarMegusta(int aID) {
