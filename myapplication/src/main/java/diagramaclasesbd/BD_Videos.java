@@ -151,7 +151,6 @@ public class BD_Videos {
 	public void subirVideo(int aID, String aMiniatura, String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aUrl, Date aFechaCreacion) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
-			//diagramaclasesbd.Categoria cate = diagramaclasesbd.CategoriaDAO.getCategoriaByORMID(1);
 			diagramaclasesbd.Registrado r = diagramaclasesbd.RegistradoDAO.getRegistradoByORMID(aID);
 			diagramaclasesbd.Video video = diagramaclasesbd.VideoDAO.createVideo();
 			
@@ -162,17 +161,13 @@ public class BD_Videos {
 			video.setUrl(aUrl);
 			video.setFechaCreacion(aFechaCreacion);
 			diagramaclasesbd.Categoria cate=null;	
-			//int idCat = -1;
 			for(diagramaclasesbd.Categoria cat : CategoriaDAO.listCategoriaByQuery(null, null)) {
 				if(cat.getNombre().equals(aCategoria)) {
-					//idCat = cat.getID();
 					cate = cat;
 				}
 			}
 			video.setCategoria(cate);
 			video.setUsuario_video(r);
-			/*diagramaclasesbd.RegistradoDAO.save(r);
-			diagramaclasesbd.CategoriaDAO.save(cate);*/
 			diagramaclasesbd.VideoDAO.save(video);
 			
 			

@@ -14,6 +14,7 @@ import com.vaadin.ui.Button.ClickListener;
 import GY.MyUI;
 import diagramaclasesbd.Administrador;
 import diagramaclasesbd.BD_Principal;
+import diagramaclasesbd.Registrado;
 
 public class Video2 extends Video2_ventana{
 	Window popup = new Window();
@@ -42,6 +43,7 @@ public class Video2 extends Video2_ventana{
 		//DIFERENCIAR SI ES ADMIN O USER Y SI ES VIDEO PROPIO O NO
 		/*CREADO Metodo para ver si el video es propio o no*/
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+		Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
 		if(this.getId() != null)
 		{
 			videoPropio = ur.videoPropio(this.getId());
@@ -53,22 +55,27 @@ public class Video2 extends Video2_ventana{
 				if(videoPropio == true)
 				{
 					//IR A PAG VIDEO PROPIO
-					MyUI.getCurrent().getNavigator().addView("Pagina_Visualizacion_Video_Propio_AR", new Visualizacion_Video_Propio_AR());
+					MyUI.getCurrent().getNavigator().addView("Pagina_Visualizacion_Video_Propio_AR", new Visualizacion_Video_Propio_AR(id));
 					UI.getCurrent().getNavigator().navigateTo("Pagina_Visualizacion_Video_Propio_AR");
 					
 					
-				} else 
-				{
+				} else {
 					//IR A PAG VIDEO AJENO ---- DIFERENCIAR ADMIN DE REGISTRADO
-					if(admon == null)
-					{
-						MyUI.getCurrent().getNavigator().addView("Pagina_Visualizacion_Ajeno_R", new Visualizacion_Video_Ajeno_R());
+					if(reg != null) {
+						MyUI.getCurrent().getNavigator().addView("Pagina_Visualizacion_Ajeno_R", new Visualizacion_Video_Ajeno_R(id));
 						UI.getCurrent().getNavigator().navigateTo("Pagina_Visualizacion_Ajeno_R");
+						/*MyUI.getCurrent().getNavigator().addView("Pagina_Visualizacion_Ajeno_A", new Visualizacion_Video_Ajeno_A(id));
+						UI.getCurrent().getNavigator().navigateTo("Pagina_Visualizacion_Ajeno_A");*/
+						/*MyUI.getCurrent().getNavigator().addView("Pagina_Visualizacion_Video_Propio_AR", new Visualizacion_Video_Propio_AR(id));
+						UI.getCurrent().getNavigator().navigateTo("Pagina_Visualizacion_Video_Propio_AR");*/
 					} 
-					else 
-					{
+					if(admon != null) {
 						MyUI.getCurrent().getNavigator().addView("Pagina_Visualizacion_Ajeno_A", new Visualizacion_Video_Ajeno_A(id));
 						UI.getCurrent().getNavigator().navigateTo("Pagina_Visualizacion_Ajeno_A");
+					} 
+					if(admon == null && reg == null) {
+						MyUI.getCurrent().getNavigator().addView("Visualizacion_Video_Ajeno", new Visualizacion_Video_Ajeno(id));
+						UI.getCurrent().getNavigator().navigateTo("Visualizacion_Video_Ajeno");
 					}
 				}
 			}

@@ -8,7 +8,7 @@
  <body>
   <vaadin-vertical-layout>
    <vaadin-horizontal-layout width-full _id="hCabeceraGeneral">
-    <vaadin-horizontal-layout _id="hCabeceraGeneral2"></vaadin-horizontal-layout>
+    <vaadin-horizontal-layout width-full _id="hCabeceraGeneral2"></vaadin-horizontal-layout>
    </vaadin-horizontal-layout>
    <vaadin-horizontal-layout _id="hUserVideo">
     <vaadin-vertical-layout size-auto _id="datosUser">
@@ -38,7 +38,27 @@
       <vaadin-text-area style-name="borderless" width="1000px" readonly _id="descripcion">
         Descripción del video... 
       </vaadin-text-area>
+      <vaadin-text-area width="1000px" _id="escribirComentario">
+        Escribir comentario... 
+      </vaadin-text-area>
+      <vaadin-button plain-text _id="comentar" :right>
+        Comentar 
+      </vaadin-button>
+      <vaadin-horizontal-layout _id="htituloComentario">
+       <vaadin-button icon="fonticon://Vaadin-Icons/e7f2" description="Activar o desactivar comentarios" plain-text _id="bloquearComentario" :right></vaadin-button>
+       <vaadin-label plain-text _id="labelComentario" :middle :center>
+         Comentarios 
+       </vaadin-label>
+      </vaadin-horizontal-layout>
+      <vaadin-vertical-layout size-auto margin="false" _id="vComentario"></vaadin-vertical-layout>
      </vaadin-vertical-layout>
+    </vaadin-vertical-layout>
+    <vaadin-vertical-layout width-auto height="600px" _id="propVideo">
+     <vaadin-button icon="fonticon://Vaadin-Icons/e6db" description="Dar/Quitar me gusta" width="70px" height="50px" plain-text _id="meGusta"></vaadin-button>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e771" description="Modificar video" width="70px" height="50px" plain-text _id="modificarVideo"></vaadin-button>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e929" description="Añadir a lista de reproduccion" width="70px" height="50px" plain-text _id="añadirAListaRepro"></vaadin-button>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e703" description="Descargar" width="70px" height="50px" plain-text _id="descargar"></vaadin-button>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" description="Eliminar" width="70px" height="50px" plain-text _id="eliminarVideo"></vaadin-button>
     </vaadin-vertical-layout>
    </vaadin-horizontal-layout>
   </vaadin-vertical-layout>
