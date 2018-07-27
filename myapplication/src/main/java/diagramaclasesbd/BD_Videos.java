@@ -253,12 +253,26 @@ public class BD_Videos {
 	public Boolean videoPropio(int id) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		diagramaclasesbd.Video v = diagramaclasesbd.VideoDAO.createVideo();
+		//VER SI EL QUE HA INICIADO SESION ES ADMIN O NO
+		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 		try {
 			v = VideoDAO.loadVideoByORMID(id);
-			if(v != null)
+			if(admon == null)
 			{
-				return true;
+				Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+				if(v != null && v.getUsuario_video() == registrado)
+				{
+					return true;
+				}
+			} 
+			else 
+			{
+				if(v != null && v.getUsuario_video() != admon)
+				{
+					return true;
+				}
 			}
+			
 			t.commit();
 			
 		}catch (Exception e) {
