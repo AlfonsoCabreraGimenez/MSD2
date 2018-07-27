@@ -38,18 +38,17 @@ public class Video2 extends Video2_ventana{
 	iUsuario_Registrado ur = new BD_Principal();
 	Modificar_Video mv = new Modificar_Video();
 	boolean videoPropio = false;
-	public Video2() {
-		
-	}
+	private int idVideo = -1;
 	public Video2(int id) {
+		this.idVideo = id;
 		//IR A VISUALIZACION DE VIDEO
 		//DIFERENCIAR SI ES ADMIN O USER Y SI ES VIDEO PROPIO O NO
 		/*CREADO Metodo para ver si el video es propio o no*/
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 		Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-		if(this.getId() != null)
+		if(idVideo != -1)
 		{
-			videoPropio = ur.videoPropio(this.getId());
+			videoPropio = ur.videoPropio(id);
 			
 		}
 		titulo.addClickListener(new ClickListener() {

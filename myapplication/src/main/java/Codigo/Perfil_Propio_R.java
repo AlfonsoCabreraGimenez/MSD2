@@ -37,7 +37,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	Registrarse registro = new Registrarse();*/
 	Cabecera_Comun cc = new Cabecera_Comun();
 	Cabecera_R cr = new Cabecera_R();
-	Video2 v2 = new Video2();
+	//Video2 v2 = new Video2();
 	Modificar_Datos_Usuario mdu = new Modificar_Datos_Usuario();
 	Crear_Lista_Reproduccion clr = new Crear_Lista_Reproduccion();
 	iUsuario_Registrado ur = new BD_Principal();
@@ -48,7 +48,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 		hCabeceraRegistrado.addComponent(cr.avatar);
 		hCabeceraRegistrado.addComponent(cr.botonSubirVideo);
 		hCabeceraRegistrado.addComponent(cr.botonCerrarSesion);
-		hPanel.addComponent(v2.vVerticalVideoGeneral);
+		//hPanel.addComponent(v2.vVerticalVideoGeneral);
 		crearAdministrador.setVisible(false);
 
 		inicializar();
@@ -131,8 +131,8 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			//CARGAR DATOS DE USUARIO con el id de sesion ya podemos hacerlo
 			for(int i = 0; i<2;i++)
 			{
-				v2 = (Video2) videos.get(i);
-				hPanel.addComponent(v2);
+				//v2 = (Video2) videos.get(i);
+				//hPanel.addComponent(v2);
 				
 			}
 		} 

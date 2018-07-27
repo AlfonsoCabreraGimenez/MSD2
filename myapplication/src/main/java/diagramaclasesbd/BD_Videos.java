@@ -250,24 +250,21 @@ public class BD_Videos {
 		throw new UnsupportedOperationException();
 	}
 
-	public Boolean videoPropio(String id) throws PersistentException {
+	public Boolean videoPropio(int id) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
-		List listaVideos = null;
+		diagramaclasesbd.Video v = diagramaclasesbd.VideoDAO.createVideo();
 		try {
-			listaVideos = diagramaclasesbd.VideoDAO.queryVideo(null, null);
+			v = VideoDAO.loadVideoByORMID(id);
+			if(v != null)
+			{
+				return true;
+			}
 			t.commit();
 			
 		}catch (Exception e) {
 			t.rollback();
 		}
-		// TODO Auto-generated method stub
-		for(int i = 0; i<= listaVideos.size()-1;i++)
-		{
-			if(id.equals(listaVideos.get(i)))
-			{
-				return true;
-			}
-		}
+
 		return false;
 		
 	}

@@ -275,7 +275,7 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	}
 
 	@Override
-	public Boolean videoPropio(String id) {
+	public Boolean videoPropio(int id) {
 		try {
 			videos.videoPropio(id);
 		} catch (PersistentException e) {
