@@ -21,7 +21,12 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	public BD_Administradores admin = new BD_Administradores();
 
 	public void anadirAListaRep(int aID) {
-		throw new UnsupportedOperationException();
+		try {
+			listas.anadirAListaRep(aID);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public void borrarLista(int aID) {

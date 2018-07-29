@@ -6,6 +6,8 @@ import java.util.Vector;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
+import com.vaadin.ui.UI;
+
 import diagramaclasesbd.Lista_De_Reproduccion;
 
 public class BD_Listas_De_Reproduccion {
@@ -16,8 +18,15 @@ public class BD_Listas_De_Reproduccion {
 		throw new UnsupportedOperationException();
 	}
 
-	public void anadirAListaRep(int aID) {
-		throw new UnsupportedOperationException();
+	public void anadirAListaRep(int aID) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		try {
+			
+			t.commit();
+		} catch (Exception e) {
+			t.rollback();
+		}
+		
 	}
 
 	public void borrarLista(int aID) {
@@ -26,16 +35,34 @@ public class BD_Listas_De_Reproduccion {
 	public void crearListaRep(String aTitulo, List aVideo) throws PersistentException{
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
-			diagramaclasesbd.Lista_De_Reproduccion lista = diagramaclasesbd.Lista_De_ReproduccionDAO.createLista_De_Reproduccion();
-			//diagramaclasesbd.Video videos = diagramaclasesbd.VideoDAO.getVideoByORMID(1);
-			diagramaclasesbd.Registrado registrado = diagramaclasesbd.RegistradoDAO.getRegistradoByORMID(1);
-			
-			lista.setTitulo(aTitulo);
-			lista.setEs_prop_lista(registrado);
-			diagramaclasesbd.RegistradoDAO.save(registrado);
-			diagramaclasesbd.Lista_De_ReproduccionDAO.save(lista);
-			
-			t.commit();
+			Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+			Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");			
+			if(admon == null)
+			{
+				diagramaclasesbd.Lista_De_Reproduccion lista = diagramaclasesbd.Lista_De_ReproduccionDAO.createLista_De_Reproduccion();
+				//diagramaclasesbd.Video videos = diagramaclasesbd.VideoDAO.getVideoByORMID(1);
+				diagramaclasesbd.Registrado registrado = diagramaclasesbd.RegistradoDAO.getRegistradoByORMID(reg.getID());
+				
+				lista.setTitulo(aTitulo);
+				lista.setEs_prop_lista(registrado);
+				diagramaclasesbd.RegistradoDAO.save(registrado);
+				diagramaclasesbd.Lista_De_ReproduccionDAO.save(lista);
+				
+				t.commit();
+			} 
+			else 
+			{
+				diagramaclasesbd.Lista_De_Reproduccion lista = diagramaclasesbd.Lista_De_ReproduccionDAO.createLista_De_Reproduccion();
+				//diagramaclasesbd.Video videos = diagramaclasesbd.VideoDAO.getVideoByORMID(1);
+				diagramaclasesbd.Administrador administrador = diagramaclasesbd.AdministradorDAO.getAdministradorByORMID(admon.getID());
+				
+				lista.setTitulo(aTitulo);
+				lista.setEs_prop_lista(admon);
+				diagramaclasesbd.AdministradorDAO.save(admon);
+				diagramaclasesbd.Lista_De_ReproduccionDAO.save(lista);
+				
+				t.commit();
+			}
 			
 		} catch (Exception e) {
 			t.rollback();
