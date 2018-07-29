@@ -5,6 +5,7 @@ import java.util.Date;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 import com.vaadin.ui.Button.ClickEvent;
@@ -27,7 +28,10 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 	
 	Visualizacion_Video_Ajeno visA = new Visualizacion_Video_Ajeno();
 	diagramaclasesbd.Video videoA;
+	
+	
 	public Visualizacion_Video_Ajeno_R(int idVideo) {
+		Anadir_a_ListaReproduccion anl = new Anadir_a_ListaReproduccion(idVideo);
 		cargarDatosVideo(idVideo);
 		
 		hCabeceraGeneral2.addComponent(cc.horizontalInicio);
@@ -68,7 +72,28 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				
+				popup.setContent(subContent);
+				subContent.addComponent(anl.vVerticalAnadir);
+				popup.center();
+				popup.setWidth("720px");
+				//popup.setClosable(false);
+				popup.setModal(true);
+				UI.getCurrent().addWindow(popup);
 				
+			}
+		});
+		//ACEPTAR DE AGREGAR A LISTA DE REPRO
+		anl.confirmar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				anl.anadirAListaRep();
+				popup.close();
+				
+			}
+		});
+		//CANCELAR LISTA REPRO
+		anl.cancelar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup.close();
 			}
 		});
 		

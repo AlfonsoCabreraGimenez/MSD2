@@ -68,4 +68,27 @@ public class BD_Listas_De_Reproduccion {
 			t.rollback();
 		}
 	}
+
+	public List cargarListasReproduccionPropia(int identVideo) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		List<Lista_De_Reproduccion> listasPropias = Lista_De_ReproduccionDAO.queryLista_De_Reproduccion(null, null);
+		Administrador admon = diagramaclasesbd.AdministradorDAO.createAdministrador();
+		Registrado regis = diagramaclasesbd.RegistradoDAO.createRegistrado();
+		if (admon == null) {
+			/////////////////////////////////////////////////////////////////////POR HACER
+			regis = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+			RegistradoCriteria regisC = new RegistradoCriteria();
+			Lista_De_ReproduccionCriteria listaC = new Lista_De_ReproduccionCriteria();
+			listaC.createCriteria(String.valueOf(regis.getID()));
+			
+			for(int i = 0; i<=listasPropias.size()-1;i++) 
+			{
+				listasPropias.get(i);
+			}
+		}
+
+		
+		
+		return listasPropias;
+	}
 }

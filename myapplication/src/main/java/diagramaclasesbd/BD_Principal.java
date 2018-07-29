@@ -305,7 +305,17 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		return null;
+	}
+
+	@Override
+	public List cargarListaReproduccionPropia(int identVideo) {
+		try {
+			listas.cargarListasReproduccionPropia(identVideo);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
