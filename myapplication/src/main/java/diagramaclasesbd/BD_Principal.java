@@ -286,14 +286,14 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	}
 
 	@Override
-	public Boolean videoPropio(int id) {
+	public boolean videoPropio(int id, int iduser) {
 		try {
-			videos.videoPropio(id);
+			return videos.videoPropio(id,iduser);
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return false;
 	}
 
 	@Override

@@ -47,7 +47,7 @@ public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 		addComponent(prv.panelVideosOtrosUser);
 		addComponent(prv.videosVreciente);
 		addComponent(prv.panelVideosVreciente);
-		cargar_Videos_Inicio_R();
+		//cargar_Videos_Inicio_R();
 	}
 	/////////////////////////////////////////////////////////////
 	public void cargar_Videos_Inicio_R() {

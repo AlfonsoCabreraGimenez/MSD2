@@ -37,18 +37,17 @@ public class Video2 extends Video2_ventana{
 	
 	iUsuario_Registrado ur = new BD_Principal();
 	Modificar_Video mv = new Modificar_Video();
-	boolean videoPropio = false;
-	private int idVideo = -1;
-	Boolean esVideoPropio = false;
+	boolean videoPropio;
+	//private int idVideo = -1;
+	boolean esVideoPropio;
 	public Video2(int id) {
-		this.idVideo = id;
+		//this.idVideo = id;
 		//IR A VISUALIZACION DE VIDEO
 		//DIFERENCIAR SI ES ADMIN O USER Y SI ES VIDEO PROPIO O NO
 		/*CREADO Metodo para ver si el video es propio o no*/
-		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
-		Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
 		
-		esVideoPropio = videoPropio();
+		
+		
 		
 		/*if(idVideo != -1)
 		{
@@ -58,6 +57,16 @@ public class Video2 extends Video2_ventana{
 		
 		titulo.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
+				int iduser = -1;
+				Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+				Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+				if(admon == null && reg != null ) {
+					iduser = reg.getID();
+				}
+				if(admon != null && reg == null ) {
+					iduser = admon.getID();
+				}
+				esVideoPropio = videoPropio(id,iduser);
 				if(esVideoPropio == true)
 				{
 					//IR A PAG VIDEO PROPIO
@@ -69,13 +78,13 @@ public class Video2 extends Video2_ventana{
 					if(reg != null && admon == null) {
 						MyUI.getCurrent().getNavigator().addView("Pagina_Visualizacion_Ajeno_R", new Visualizacion_Video_Ajeno_R(id));
 						UI.getCurrent().getNavigator().navigateTo("Pagina_Visualizacion_Ajeno_R");
-
+						
 					} 
 					if(admon != null && reg == null) {
 						MyUI.getCurrent().getNavigator().addView("Pagina_Visualizacion_Ajeno_A", new Visualizacion_Video_Ajeno_A(id));
 						UI.getCurrent().getNavigator().navigateTo("Pagina_Visualizacion_Ajeno_A");
 					} 
-					else {
+					if(reg == null && admon == null){
 						MyUI.getCurrent().getNavigator().addView("Visualizacion_Video_Ajeno", new Visualizacion_Video_Ajeno(id));
 						UI.getCurrent().getNavigator().navigateTo("Visualizacion_Video_Ajeno");
 					}
@@ -85,18 +94,21 @@ public class Video2 extends Video2_ventana{
 		//IR A PAGINA AJENA
 		usuario.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				if(esVideoPropio == false)
+				//esVideoPropio = videoPropio();
+				/*if(esVideoPropio == false)
 				{
-					if(admon == null)
+					if(admon == null && reg != null)
 					{
 						MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno_R", new Perfil_Ajeno_R());
 						UI.getCurrent().getNavigator().navigateTo("Perfil_Ajeno_R");
 					
-					} else if (reg == null) {
+					}
+					if (admon != null && reg == null) {
 						MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno_A", new Perfil_Ajeno_A());
 						UI.getCurrent().getNavigator().navigateTo("Perfil_Ajeno_A");
 					
-					} else {
+					}
+					if(admon == null && reg == null){
 						//IR A PAG Perfil Ajeno
 						MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno", new Perfil_Ajeno());
 						UI.getCurrent().getNavigator().navigateTo("Perfil_Ajeno");
@@ -126,7 +138,7 @@ public class Video2 extends Video2_ventana{
 						}
 						UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_A");
 					}
-				}
+				}*/
 			}
 		});
 		modificarVideo.addClickListener(new ClickListener() {
@@ -158,7 +170,7 @@ public class Video2 extends Video2_ventana{
 		});
 	}
 
-	public boolean videoPropio() {
-		return videoPropio = ur.videoPropio(idVideo);
+	public boolean videoPropio(int id, int iduser) {
+		return videoPropio = ur.videoPropio(id,iduser);
 	}
 }

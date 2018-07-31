@@ -7,6 +7,7 @@ import org.hibernate.engine.HibernateIterator;
 import com.vaadin.navigator.View;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Notification;
 
 import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Categoria;

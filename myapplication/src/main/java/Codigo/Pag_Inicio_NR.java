@@ -8,6 +8,7 @@ import com.vaadin.navigator.View;
 import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Categoria;
 import diagramaclasesbd.Registrado;
+import diagramaclasesbd.Usuario;
 
 public class Pag_Inicio_NR extends Pag_Inicio_NR_ventana implements View{
 	/*private Label _lista_Video_Mas_Megusta;
@@ -32,17 +33,17 @@ public class Pag_Inicio_NR extends Pag_Inicio_NR_ventana implements View{
 		hCabeceraInicioBus.addComponent(cnr.iniciarSesionRegistrarse);
 	}
 	public void cargar_Videos_Inicio_NR() {
-		//cargar_Videos_Masmegusta();
-		//cargar_Videos_Ultimos();
+		cargar_Videos_Masmegusta();
+		cargar_Videos_Ultimos();
 	}
-	/*public void cargar_Videos_Masmegusta() {
+	public void cargar_Videos_Masmegusta() {
 		int cont = 0;
 		for(diagramaclasesbd.Video video: unr.cargar_Videos_Masmegusta()) {
 				Video2 vid = new Video2(video.getID());
 				hPanelVideosMasMeGusta.addComponent(vid);
 				vid.titulo.setCaption(video.getTitulo());
-				Registrado reg = (Registrado) video.getUsuario_video();
-				vid.usuario.setCaption(reg.getNombre());
+				Usuario us = (Usuario) video.getUsuario_video();
+				vid.usuario.setCaption(us.getNombre());
 				Categoria cat = video.getCategoria();
 				vid.categoria.setValue(cat.getNombre());
 				vid.etiqueta.setValue(video.getEtiqueta());
@@ -60,8 +61,8 @@ public class Pag_Inicio_NR extends Pag_Inicio_NR_ventana implements View{
 				Video2 vid = new Video2(video.getID());
 				hPanelUltimosVideosSubidos.addComponent(vid);
 				vid.titulo.setCaption(video.getTitulo());
-				Registrado reg = (Registrado) video.getUsuario_video();
-				vid.usuario.setCaption(reg.getNombre());
+				Usuario us = (Usuario) video.getUsuario_video();
+				vid.usuario.setCaption(us.getNombre());
 				Categoria cat = video.getCategoria();
 				vid.categoria.setValue(cat.getNombre());
 				vid.etiqueta.setValue(video.getEtiqueta());
@@ -72,5 +73,5 @@ public class Pag_Inicio_NR extends Pag_Inicio_NR_ventana implements View{
 					break;
 				}
 		}
-	}*/
+	}
 }

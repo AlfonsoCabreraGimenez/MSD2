@@ -260,37 +260,23 @@ public class BD_Videos {
 		throw new UnsupportedOperationException();
 	}
 
-	public Boolean videoPropio(int id) throws PersistentException {
+	public boolean videoPropio(int id,int iduser) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
-		diagramaclasesbd.Video v = diagramaclasesbd.VideoDAO.createVideo();
 		//VER SI EL QUE HA INICIADO SESION ES ADMIN O NO
-		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+		/*Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");*/
+		boolean videop = false;
 		try {
-			v = VideoDAO.loadVideoByORMID(id);
-			if(admon == null)
+			diagramaclasesbd.Video v = VideoDAO.loadVideoByORMID(id);
+			if(v.getUsuario_video().getID() == iduser || v.getUsuario_video().getID() == iduser)
 			{
-				Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-				if(v != null && v.getUsuario_video() == registrado)
-				{
-					return true;
-				}
+				videop = true;
 			} 
-			else 
-			{
-				if(v != null && v.getUsuario_video() != admon)
-				{
-					return true;
-				}
-			}
-			
 			t.commit();
-			
 		}catch (Exception e) {
 			t.rollback();
 		}
-
-		return false;
-		
+		return videop;
 	}
 
 	@SuppressWarnings("null")
