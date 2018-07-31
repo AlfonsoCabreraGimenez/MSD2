@@ -94,8 +94,17 @@ public class Video2 extends Video2_ventana{
 		//IR A PAGINA AJENA
 		usuario.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				//esVideoPropio = videoPropio();
-				/*if(esVideoPropio == false)
+				int idUs = -1;
+				Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+				Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+				if(admon == null && reg != null ) {
+					idUs = reg.getID();
+				}
+				if(admon != null && reg == null ) {
+					idUs = admon.getID();
+				}
+				esVideoPropio = videoPropio(id,idUs);
+				if(esVideoPropio == false)
 				{
 					if(admon == null && reg != null)
 					{
@@ -138,7 +147,7 @@ public class Video2 extends Video2_ventana{
 						}
 						UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_A");
 					}
-				}*/
+				}
 			}
 		});
 		modificarVideo.addClickListener(new ClickListener() {
