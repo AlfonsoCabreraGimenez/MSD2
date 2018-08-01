@@ -7,6 +7,8 @@ import com.vaadin.navigator.View;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 
 import Codigo.Comentario_Video_Ajeno_A_Propio_AR;
 import diagramaclasesbd.BD_Principal;
@@ -19,6 +21,7 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 	public Video2 _unnamed_Video2_;
 	public Vector<Comentario_Video_Ajeno_A_Propio_AR> _unnamed_Comentario_Video_Ajeno_A_Propio_AR_ = new Vector<Comentario_Video_Ajeno_A_Propio_AR>();
 	Visualizacion_Video_Ajeno visA = new Visualizacion_Video_Ajeno();
+	iAdministrador2 adm = new BD_Principal();
 
 	diagramaclasesbd.Video videoA;
 	public Visualizacion_Video_Ajeno_A(int idVideo){
@@ -49,8 +52,18 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 		nGusta.setValue(String.valueOf(videoA.getMegusta() + " me gusta"));
 		Date fecha = videoA.getFechaCreacion();
 		fechaSubida.setValue(fecha.toString());
+		
+		meGusta.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				darMegusta();
+			}
+		});
 	}
 	public void cargarDatosVideo(int idVideo) {
 		videoA = unr.cargarDatosVideo(idVideo);
 	}	
+	public void darMegusta() {
+		Notification.show(String.valueOf(videoA.getID()));
+			adm.darMegusta(videoA.getID());
+}
 }

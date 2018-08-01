@@ -28,11 +28,13 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 	
 	Visualizacion_Video_Ajeno visA = new Visualizacion_Video_Ajeno();
 	diagramaclasesbd.Video videoA;
-	
+	int identVideo = -1;
 	
 	public Visualizacion_Video_Ajeno_R(int idVideo) {
 		Anadir_a_ListaReproduccion anl = new Anadir_a_ListaReproduccion(idVideo);
 		cargarDatosVideo(idVideo);
+		this.identVideo = idVideo;
+		//darMegusta();
 		
 		hCabeceraGeneral2.addComponent(cc.horizontalInicio);
 		hCabeceraGeneral2.addComponent(bus.vBuscador);
@@ -99,6 +101,7 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		
 	}
 	public void darMegusta() {
+			Notification.show(String.valueOf(videoA.getID()));
 				ur.darMegusta(videoA.getID());
 	}
 

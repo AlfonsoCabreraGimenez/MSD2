@@ -226,7 +226,25 @@ public class BD_Videos {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
 			diagramaclasesbd.Video video = diagramaclasesbd.VideoDAO.getVideoByORMID(aID);
-			video.setMegusta(video.getMegusta()+1);
+			Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+			int nMeGusta = video.getMegusta();
+			video.setMegusta(nMeGusta+1);
+			if(admon == null)
+			{
+				Registrado regis = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+				video.da_megusta.add(regis);
+				regis.me_gusta.add(video);
+				RegistradoDAO.save(regis);
+			} 
+			else 
+				
+			{
+				
+				video.da_megusta.add(admon);
+				admon.me_gusta.add(video);
+				AdministradorDAO.save(admon);
+			}
+			
 			VideoDAO.save(video);
 			t.commit();
 		} catch (Exception e) {
