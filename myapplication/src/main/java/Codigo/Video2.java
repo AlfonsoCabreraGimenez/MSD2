@@ -74,7 +74,7 @@ public class Video2 extends Video2_ventana{
 					UI.getCurrent().getNavigator().navigateTo("Pagina_Visualizacion_Video_Propio_AR");
 					
 				} else {
-					//IR A PAG VIDEO AJENO ---- DIFERENCIAR ADMIN DE REGISTRADO
+					//IR A PAG VIDEO AJENO -- DIFERENCIAR ADMIN DE REGISTRADO
 					if(reg != null && admon == null) {
 						MyUI.getCurrent().getNavigator().addView("Pagina_Visualizacion_Ajeno_R", new Visualizacion_Video_Ajeno_R(id));
 						UI.getCurrent().getNavigator().navigateTo("Pagina_Visualizacion_Ajeno_R");
@@ -84,7 +84,7 @@ public class Video2 extends Video2_ventana{
 						MyUI.getCurrent().getNavigator().addView("Pagina_Visualizacion_Ajeno_A", new Visualizacion_Video_Ajeno_A(id));
 						UI.getCurrent().getNavigator().navigateTo("Pagina_Visualizacion_Ajeno_A");
 					} 
-					if(reg == null && admon == null){
+					if (reg == null && admon == null){
 						MyUI.getCurrent().getNavigator().addView("Visualizacion_Video_Ajeno", new Visualizacion_Video_Ajeno(id));
 						UI.getCurrent().getNavigator().navigateTo("Visualizacion_Video_Ajeno");
 					}

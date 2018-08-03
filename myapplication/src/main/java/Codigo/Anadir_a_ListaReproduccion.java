@@ -2,6 +2,7 @@ package Codigo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.Vector;
 
 import org.hibernate.annotations.common.annotationfactory.AnnotationDescriptor;
@@ -22,21 +23,41 @@ public class Anadir_a_ListaReproduccion extends Anadir_a_ListaReproduccion_venta
 	public Vector<Lista_De_Reproduccion2> _unnamed_Lista_De_Reproduccion2_ = new Vector<Lista_De_Reproduccion2>();
 	iUsuario_Registrado ur = new BD_Principal();
 	iAdministrador2 admin = new BD_Principal();
-	
+	Lista_De_Reproduccion2 listaRepro = new Lista_De_Reproduccion2();
 	public int identVideo = -1;
 	
 	public Anadir_a_ListaReproduccion(int idVideo) {
 		this.identVideo = idVideo;
-
-	}
-	public void anadirAListaRep() {
-		//HAY QUE CARGAR TODOS LAS LISTAS DEL USUARIO EN CUESTION
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 		Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-		List<Lista_De_Reproduccion> lista = new ArrayList<Lista_De_Reproduccion>();
+		List<Lista_De_Reproduccion> lista = ur.cargarListaReproduccionPropia(reg.getID());
+		int numero = lista.size();
+		Notification.show(String.valueOf(numero));
+		//anadirAListaRep();
+
+	}
+	@SuppressWarnings("unchecked")
+	public void anadirAListaRep() {
+		//HAY QUE CARGAR TODOS LAS LISTAS DEL USUARIO EN CUESTION
+		/*Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+		Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+		List lista = null;
 		if(admon == null) {
 			lista = ur.cargarListaReproduccionPropia(reg.getID());
-			Notification.show(lista.get(0).getTitulo());
+			if(lista.get(0) == null)
+			{
+				Notification.show("Hola es null");
+			} else {
+			//verticalVideo.addComponent(lista.get(0));
+			}
+			/*for(int i = 0; i <=lista.size()-1; i++)
+			{
+				listaRepro = (Lista_De_Reproduccion2) lista.get(i);
+				verticalVideo.addComponent(listaRepro);
+			}*/
+
+			//verticalVideo.addComponent(listaRepro);
+			
 			//CARGAR LISTAS DE REPRODUCCION
 		}
 	/*	else {
@@ -45,4 +66,3 @@ public class Anadir_a_ListaReproduccion extends Anadir_a_ListaReproduccion_venta
 			//CARGAR LISTAS DE REPRODUCCION
 		}*/
 	}
-}

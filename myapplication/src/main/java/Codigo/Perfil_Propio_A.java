@@ -19,7 +19,10 @@ import com.vaadin.ui.Button.ClickListener;
 public class Perfil_Propio_A extends Perfil_Propio_R implements View {
 	Window popup = new Window();
 	VerticalLayout subContent = new VerticalLayout();
-
+	
+	Window popup3 = new Window();
+	VerticalLayout subContent3 = new VerticalLayout();
+	
 	Window crearAdmin = new Window();
 	VerticalLayout subContentAdmin = new VerticalLayout();
 	
@@ -28,6 +31,7 @@ public class Perfil_Propio_A extends Perfil_Propio_R implements View {
 	public Usuario2 _unnamed_Usuario2_;
 	public Crear_Categoria Crear_Categoria = new Crear_Categoria();
 	public Registrarse registrarseVentana = new Registrarse();
+
 	
 	iAdministrador2 adm = new BD_Principal();
 	
@@ -136,5 +140,35 @@ public class Perfil_Propio_A extends Perfil_Propio_R implements View {
 					});
 				}
 			});
+			
+			//DAR AL CREAR LISTA
+			
+			crearListaReproduccion.addClickListener(new ClickListener() {
+				@Override
+				public void buttonClick(ClickEvent event) {
+
+					popup3.setContent(subContent3);
+					subContent3.addComponent(clr);
+					popup3.center();
+					popup3.setWidth("720px");
+					//popup.setClosable(false);
+					popup3.setModal(true);
+					UI.getCurrent().addWindow(popup3);
+				}
+			});
+			clr.cancelar.addClickListener(new ClickListener() {
+				@Override
+				public void buttonClick(ClickEvent event) {
+					popup3.close();
+				}
+			});
+			clr.confirmar.addClickListener(new ClickListener() {
+				@Override
+				public void buttonClick(ClickEvent event) {
+					clr.crearListaRep();
+					popup3.close();
+				}
+			});
+
 	}
 }

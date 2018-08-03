@@ -1,6 +1,10 @@
 package Codigo;
 
-public class Lista_De_Reproduccion2 {
+import javax.persistence.metamodel.ListAttribute;
+
+import com.vaadin.ui.Component;
+
+public class Lista_De_Reproduccion2 extends Lista_De_Reproduccion2_ventana{
 	/*private Label _nombreListaL;
 	private Boton _nombreListaB;
 	private Imagen _miniaturaI;

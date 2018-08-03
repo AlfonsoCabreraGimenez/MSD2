@@ -314,18 +314,18 @@ public class BD_Videos {
 		
 		List listaVideos = null;
 		List listaVideosPropios = null;
-		diagramaclasesbd.Video video = null;
+		Video video = null;
 		try
 		{
 			listaVideos = VideoDAO.queryVideo(null, null);
 			
 			for(int i = 0; i<= listaVideos.size()-1;i++)
 			{
-				video = (Video)listaVideos.get(i);
-				if(video.getUsuario_video() != null && video.getUsuario_video().equals(registrado))
-				{
-					listaVideosPropios.add(video);
-				}
+			video = (Video)listaVideos.get(i);
+			if(registrado.prop_video_de.contains(video) == true) 
+			{
+				listaVideos.add(video);
+			}
 			}
 			t.commit();
 		}catch (Exception e) {
