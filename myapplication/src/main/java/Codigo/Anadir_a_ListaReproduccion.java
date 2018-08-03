@@ -1,15 +1,18 @@
 package Codigo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
 import org.hibernate.annotations.common.annotationfactory.AnnotationDescriptor;
 
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 
 import Codigo.Lista_De_Reproduccion2;
 import diagramaclasesbd.Administrador;
 import diagramaclasesbd.BD_Principal;
+import diagramaclasesbd.Lista_De_Reproduccion;
 import diagramaclasesbd.Registrado;
 
 public class Anadir_a_ListaReproduccion extends Anadir_a_ListaReproduccion_ventana{
@@ -27,23 +30,19 @@ public class Anadir_a_ListaReproduccion extends Anadir_a_ListaReproduccion_venta
 
 	}
 	public void anadirAListaRep() {
-		
 		//HAY QUE CARGAR TODOS LAS LISTAS DEL USUARIO EN CUESTION
-		diagramaclasesbd.Administrador admon = diagramaclasesbd.AdministradorDAO.createAdministrador();
-		diagramaclasesbd.Registrado regis = diagramaclasesbd.RegistradoDAO.createRegistrado();
-		List listasReproduccion = null;
+		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+		Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+		List<Lista_De_Reproduccion> lista = new ArrayList<Lista_De_Reproduccion>();
 		if(admon == null) {
-			regis = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-			ur.cargarListaReproduccionPropia(identVideo);
+			lista = ur.cargarListaReproduccionPropia(reg.getID());
+			Notification.show(lista.get(0).getTitulo());
 			//CARGAR LISTAS DE REPRODUCCION
 		}
-		else //SI NO, ES ADMIN
-		{
-			 admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
-			 admin.cargarListaReproduccionPropia(identVideo);
-			 //CARGAR LISTAS DE REPRODUCCION
-			 
-
-		}
+	/*	else {
+			//SI NO, ES ADMIN
+			admin.cargarListaReproduccionPropia(identVideo);
+			//CARGAR LISTAS DE REPRODUCCION
+		}*/
 	}
 }

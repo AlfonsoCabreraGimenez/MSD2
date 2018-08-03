@@ -3,6 +3,7 @@ package Codigo;
 import java.util.Date;
 import java.util.List;
 
+import diagramaclasesbd.Lista_De_Reproduccion;
 import diagramaclasesbd.Registrado;
 import diagramaclasesbd.Video;
 public interface iUsuario_Registrado {
@@ -38,7 +39,7 @@ public interface iUsuario_Registrado {
 
 	public void crearListaRep(String aTitulo, List aVideo);
 
-	public void darMegusta(int aID);
+	public boolean darQuitarMegusta(int aID);
 
 	public void descargarVideo(int aID);
 
@@ -64,5 +65,5 @@ public interface iUsuario_Registrado {
 
 	public List cargarVideosPropios(int ID);
 
-	public List cargarListaReproduccionPropia(int identVideo);
+	public List<Lista_De_Reproduccion> cargarListaReproduccionPropia(int idUsuario);
 }

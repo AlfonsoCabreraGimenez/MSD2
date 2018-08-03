@@ -115,14 +115,15 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		}
 	}
 
-	public void darMegusta(int aID) {
-		
+	public boolean darQuitarMegusta(int aID) {
+		boolean mg = false;
 		try {
-			videos.darMegusta(aID);
+			mg = videos.darQuitarMegusta(aID);
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return mg;
 	}
 
 	public void descargarVideo(int aID) {
@@ -309,9 +310,9 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	}
 
 	@Override
-	public List cargarListaReproduccionPropia(int identVideo) {
+	public List<Lista_De_Reproduccion> cargarListaReproduccionPropia(int idUsuario) {
 		try {
-			listas.cargarListasReproduccionPropia(identVideo);
+			listas.cargarListasReproduccionPropia(idUsuario);
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

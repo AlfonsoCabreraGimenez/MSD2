@@ -222,36 +222,48 @@ public class BD_Videos {
 		}
 	}
 
-	public void darMegusta(int aID) throws PersistentException {
+	public boolean darQuitarMegusta(int aID) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		boolean mg = false;
 		try {
 			diagramaclasesbd.Video video = diagramaclasesbd.VideoDAO.getVideoByORMID(aID);
 			Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
-			int nMeGusta = video.getMegusta();
-			video.setMegusta(nMeGusta+1);
-			if(admon == null)
-			{
+			//video.setMegusta(video.getMegusta()+1);
+			if(admon == null){
 				Registrado regis = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-				video.da_megusta.add(regis);
-				regis.me_gusta.add(video);
-				RegistradoDAO.save(regis);
-			} 
-			else 
-				
-			{
-				
-				video.da_megusta.add(admon);
-				admon.me_gusta.add(video);
-				AdministradorDAO.save(admon);
+				Registrado reg = RegistradoDAO.getRegistradoByORMID(regis.getID());
+				if(reg.me_gusta.contains(video)) {
+					reg.me_gusta.remove(video);
+					video.setMegusta(video.getMegusta()-1);
+				} else {
+					reg.me_gusta.add(video);
+					video.setMegusta(video.getMegusta()+1);
+					mg = true;
+				}
+				/*video.da_megusta.add(reg);
+				reg.me_gusta.add(video);*/
+				RegistradoDAO.save(reg);
+			} else {
+				Administrador adm = AdministradorDAO.getAdministradorByORMID(admon.getID());
+				if(adm.me_gusta.contains(video)) {
+					adm.me_gusta.remove(video);
+					video.setMegusta(video.getMegusta()-1);
+				} else {
+					adm.me_gusta.add(video);
+					video.setMegusta(video.getMegusta()+1);
+					mg = true;
+				}
+				/*video.da_megusta.add(adm);
+				adm.me_gusta.add(video);*/
+				AdministradorDAO.save(adm);
 			}
-			
 			VideoDAO.save(video);
 			t.commit();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-		t.rollback();	
+			t.rollback();	
 		}
-
+		return mg;
 	}
 
 	public void quitarMegusta(int aID) {

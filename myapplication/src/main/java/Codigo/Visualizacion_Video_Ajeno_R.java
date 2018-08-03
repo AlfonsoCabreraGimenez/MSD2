@@ -65,7 +65,7 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		
 		meGusta.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				darMegusta();
+				darQuitarMegusta();
 			}
 		});
 		
@@ -100,14 +100,16 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		});
 		
 	}
-	public void darMegusta() {
-			Notification.show(String.valueOf(videoA.getID()));
-				ur.darMegusta(videoA.getID());
+	public void darQuitarMegusta() {
+		if(ur.darQuitarMegusta(videoA.getID())) {
+			Notification.show("¡Te ha gustado el video!");
+		} else {
+			Notification.show("¡Ya no te gusta el video!");
+		}
 	}
-
-	public void quitarMegusta() {
+	/*public void quitarMegusta() {
 		throw new UnsupportedOperationException();
-	}
+	}*/
 
 	public void escribirComentario() {
 		throw new UnsupportedOperationException();

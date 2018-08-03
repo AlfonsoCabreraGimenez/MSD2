@@ -1,5 +1,7 @@
 package diagramaclasesbd;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
@@ -36,43 +38,44 @@ public class BD_Listas_De_Reproduccion {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
 			Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
-			Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");			
+			Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");	
+			diagramaclasesbd.Lista_De_Reproduccion lista = diagramaclasesbd.Lista_De_ReproduccionDAO.createLista_De_Reproduccion();
+			lista.setTitulo(aTitulo);
 			if(admon == null)
 			{
-				diagramaclasesbd.Lista_De_Reproduccion lista = diagramaclasesbd.Lista_De_ReproduccionDAO.createLista_De_Reproduccion();
 				//diagramaclasesbd.Video videos = diagramaclasesbd.VideoDAO.getVideoByORMID(1);
 				diagramaclasesbd.Registrado registrado = diagramaclasesbd.RegistradoDAO.getRegistradoByORMID(reg.getID());
-				
-				lista.setTitulo(aTitulo);
 				lista.setEs_prop_lista(registrado);
-				diagramaclasesbd.RegistradoDAO.save(registrado);
+				//registrado.prop_de.add(lista);
 				diagramaclasesbd.Lista_De_ReproduccionDAO.save(lista);
-				
-				t.commit();
-			} 
-			else 
-			{
-				diagramaclasesbd.Lista_De_Reproduccion lista = diagramaclasesbd.Lista_De_ReproduccionDAO.createLista_De_Reproduccion();
+				//diagramaclasesbd.RegistradoDAO.save(registrado);
+			} else {
 				//diagramaclasesbd.Video videos = diagramaclasesbd.VideoDAO.getVideoByORMID(1);
 				diagramaclasesbd.Administrador administrador = diagramaclasesbd.AdministradorDAO.getAdministradorByORMID(admon.getID());
-				
-				lista.setTitulo(aTitulo);
-				lista.setEs_prop_lista(admon);
-				diagramaclasesbd.AdministradorDAO.save(admon);
+				lista.setEs_prop_lista(administrador);
+				//administrador.prop_de.add(lista);
 				diagramaclasesbd.Lista_De_ReproduccionDAO.save(lista);
-				
-				t.commit();
+				//diagramaclasesbd.AdministradorDAO.save(administrador);		
 			}
+
+			t.commit();
 			
 		} catch (Exception e) {
 			t.rollback();
 		}
 	}
 
-	public List cargarListasReproduccionPropia(int identVideo) throws PersistentException {
+	public List<Lista_De_Reproduccion> cargarListasReproduccionPropia(int idUsuario) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
-		List<Lista_De_Reproduccion> listasPropias = Lista_De_ReproduccionDAO.queryLista_De_Reproduccion(null, null);
-		Administrador admon = diagramaclasesbd.AdministradorDAO.createAdministrador();
+		List<Lista_De_Reproduccion> listaRes = new ArrayList<Lista_De_Reproduccion>();
+		try {
+			Registrado reg = RegistradoDAO.getRegistradoByORMID(idUsuario);
+			listaRes = Arrays.asList(reg.prop_de.toArray());
+			t.commit();
+		} catch (Exception e) {
+			t.rollback();
+		}
+		/*Administrador admon = diagramaclasesbd.AdministradorDAO.createAdministrador();
 		Registrado regis = diagramaclasesbd.RegistradoDAO.createRegistrado();
 		if (admon == null) {
 			/////////////////////////////////////////////////////////////////////POR HACER
@@ -85,10 +88,7 @@ public class BD_Listas_De_Reproduccion {
 			{
 				listasPropias.get(i);
 			}
-		}
-
-		
-		
-		return listasPropias;
+		}*/
+		return listaRes;
 	}
 }

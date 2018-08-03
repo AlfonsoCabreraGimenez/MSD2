@@ -55,15 +55,18 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 		
 		meGusta.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				darMegusta();
+				darQuitarMegusta();
 			}
 		});
 	}
 	public void cargarDatosVideo(int idVideo) {
 		videoA = unr.cargarDatosVideo(idVideo);
 	}	
-	public void darMegusta() {
-		Notification.show(String.valueOf(videoA.getID()));
-			adm.darMegusta(videoA.getID());
-}
+	public void darQuitarMegusta() {
+		if(adm.darQuitarMegusta(videoA.getID())) {
+			Notification.show("¡Te ha gustado el video!");
+		} else {
+			Notification.show("¡Ya no te gusta el video!");
+		}
+	}
 }
