@@ -313,7 +313,7 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	@Override
 	public List<Lista_De_Reproduccion> cargarListaReproduccionPropia(int idUsuario) {
 		try {
-			listas.cargarListasReproduccionPropia(idUsuario);
+			return listas.cargarListasReproduccionPropia(idUsuario);
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

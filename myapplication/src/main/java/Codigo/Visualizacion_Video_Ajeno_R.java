@@ -73,7 +73,6 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		añadirAListaRepro.addClickListener(new ClickListener() {
 			@Override
 			public void buttonClick(ClickEvent event) {
-				
 				popup.setContent(subContent);
 				subContent.addComponent(anl.vVerticalAnadir);
 				popup.center();
@@ -81,6 +80,7 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 				//popup.setClosable(false);
 				popup.setModal(true);
 				UI.getCurrent().addWindow(popup);
+				anl.cargarlistaReproduccion();
 				
 			}
 		});
