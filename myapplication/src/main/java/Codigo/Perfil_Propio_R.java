@@ -129,7 +129,10 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			int visitas = registrado.getVisitas();
 			nVisitas.setValue(String.valueOf(visitas));
 			//CARGAR VIDEOS PROPIOS
-			
+			nombre.setValue(registrado.getNombre());
+			apellidos.setValue(registrado.getApellido1()+" "+registrado.getApellido2());
+			email.setValue(registrado.getEmail());
+			fNacimiento.setValue(String.valueOf(registrado.getFechaN()));
 			//CARGAR DATOS DE USUARIO con el id de sesion ya podemos hacerlo
 			for(Video v : ur.cargarVideosPropios(registrado.getID()))
 			{
@@ -147,12 +150,31 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 		} 
 		else 
 		{
+
+			//CARGAR VIDEOS PROPIOS
+			nombre.setValue(admon.getNombre());
+			apellidos.setValue(admon.getApellido1()+" "+admon.getApellido2());
+			email.setValue(admon.getEmail());
+			fNacimiento.setValue(String.valueOf(admon.getFechaN()));
+			//CARGAR DATOS DE USUARIO con el id de sesion ya podemos hacerlo
+			for(Video v : ur.cargarVideosPropios(admon.getID()))
+			{
+				Video2 video = new Video2(v.getID());
+				video.categoria.setValue(String.valueOf(v.getCategoria()));
+				video.titulo.setCaption(v.getTitulo());
+				Date fecha = v.getFechaCreacion();
+				video.fechasubida.setValue(fecha.toString());
+				Usuario us = (Usuario) v.getUsuario_video();
+				video.usuario.setCaption(us.getNombre());
+				video.etiqueta.setValue(v.getEtiqueta());
+				hPanel.addComponent(video);
 			int visitas = admon.getVisitas();
 			nVisitas.setValue(String.valueOf(visitas));
 			//CARGAR VIDEOS PROPIOS
 			
 			//CARGAR DATOS DE USUARIO con el id de sesion ya podemos hacerlo
 			
+		}
 		}
 		
 		

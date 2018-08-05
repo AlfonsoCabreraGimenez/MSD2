@@ -315,7 +315,7 @@ public class BD_Videos {
 		List<Video> videoProp = new ArrayList<Video>();
 		try
 		{
-			for(Object video : RegistradoDAO.getRegistradoByORMID(iD).prop_video_de.getCollection())
+			for(Object video : UsuarioDAO.getUsuarioByORMID(iD).prop_video_de.getCollection())
 			{
 				Video videoAux;
 				videoAux = (Video) video;
