@@ -64,7 +64,7 @@ public interface iUsuario_Registrado {
 
 	public boolean videoPropio(int idVideo, int iduser);
 
-	public List cargarVideosPropios(int ID);
+	public List<Video> cargarVideosPropios(int ID);
 
 	public List<Lista_De_Reproduccion> cargarListaReproduccionPropia(int idUsuario);
 }

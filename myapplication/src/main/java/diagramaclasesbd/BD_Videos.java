@@ -310,30 +310,22 @@ public class BD_Videos {
 	}
 
 	@SuppressWarnings("null")
-	public List cargarVideosPropios(int iD) throws PersistentException {
+	public List<Video> cargarVideosPropios(int iD) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
-		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-		
-		List listaVideos = null;
-		List listaVideosPropios = null;
-		Video video = null;
+		List<Video> videoProp = new ArrayList<Video>();
 		try
 		{
-			listaVideos = VideoDAO.queryVideo(null, null);
-			
-			for(int i = 0; i<= listaVideos.size()-1;i++)
+			for(Object video : RegistradoDAO.getRegistradoByORMID(iD).prop_video_de.getCollection())
 			{
-			video = (Video)listaVideos.get(i);
-			if(registrado.prop_video_de.contains(video) == true) 
-			{
-				listaVideos.add(video);
-			}
+				Video videoAux;
+				videoAux = (Video) video;
+				videoProp.add(videoAux);
 			}
 			t.commit();
 		}catch (Exception e) {
 			t.rollback();
 		}
-		return listaVideosPropios;
+		return videoProp;
 	}
 
 }

@@ -1,5 +1,6 @@
 package Codigo;
 
+import java.util.Date;
 import java.util.List;
 
 import org.orm.PersistentException;
@@ -17,6 +18,7 @@ import diagramaclasesbd.Administrador;
 import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Registrado;
 import diagramaclasesbd.Usuario;
+import diagramaclasesbd.Video;
 
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
@@ -52,7 +54,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 		crearAdministrador.setVisible(false);
 
 		inicializar();
-		//cargarPerfilPropioR();
+		cargarPerfilPropioR();
 	}
 	
 	void inicializar(){
@@ -119,7 +121,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	}
 
 	public void cargarPerfilPropioR() throws PersistentException {
-		List videos = null;
+		
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 		if (admon == null)
 		{
@@ -127,12 +129,19 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			int visitas = registrado.getVisitas();
 			nVisitas.setValue(String.valueOf(visitas));
 			//CARGAR VIDEOS PROPIOS
-			videos = ur.cargarVideosPropios(registrado.getID());
+			
 			//CARGAR DATOS DE USUARIO con el id de sesion ya podemos hacerlo
-			for(int i = 0; i<videos.size()-1;i++)
+			for(Video v : ur.cargarVideosPropios(registrado.getID()))
 			{
-				v2 = (Video2) videos.get(i);
-				hPanel.addComponent(v2);
+				Video2 video = new Video2(v.getID());
+				video.categoria.setValue(String.valueOf(v.getCategoria()));
+				video.titulo.setCaption(v.getTitulo());
+				Date fecha = v.getFechaCreacion();
+				video.fechasubida.setValue(fecha.toString());
+				Usuario us = (Usuario) v.getUsuario_video();
+				video.usuario.setCaption(us.getNombre());
+				video.etiqueta.setValue(v.getEtiqueta());
+				hPanel.addComponent(video);
 				
 			}
 		} 
