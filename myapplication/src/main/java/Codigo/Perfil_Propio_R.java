@@ -1,11 +1,14 @@
 package Codigo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.orm.PersistentException;
 
 import com.vaadin.navigator.View;
+import com.vaadin.server.ExternalResource;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Link;
 import com.vaadin.ui.Notification;
@@ -16,6 +19,7 @@ import com.vaadin.ui.Window;
 import GY.MyUI;
 import diagramaclasesbd.Administrador;
 import diagramaclasesbd.BD_Principal;
+import diagramaclasesbd.Lista_De_Reproduccion;
 import diagramaclasesbd.Registrado;
 import diagramaclasesbd.Usuario;
 import diagramaclasesbd.Video;
@@ -121,7 +125,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	}
 
 	public void cargarPerfilPropioR() throws PersistentException {
-		
+		int cont = 0, i = 0;
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 		if (admon == null)
 		{
@@ -133,7 +137,14 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			apellidos.setValue(registrado.getApellido1()+" "+registrado.getApellido2());
 			email.setValue(registrado.getEmail());
 			fNacimiento.setValue(String.valueOf(registrado.getFechaN()));
+			imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
 			//CARGAR DATOS DE USUARIO con el id de sesion ya podemos hacerlo
+			List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
+			HorizontalLayout h = new HorizontalLayout();
+			h.setWidth("100%");
+			h.setHeight("-1px");
+			listaH.add(h);
+			vPanel1.addComponent(listaH.get(i));
 			for(Video v : ur.cargarVideosPropios(registrado.getID()))
 			{
 				Video2 video = new Video2(v.getID());
@@ -144,13 +155,22 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 				Usuario us = (Usuario) v.getUsuario_video();
 				video.usuario.setCaption(us.getNombre());
 				video.etiqueta.setValue(v.getEtiqueta());
-				hPanel.addComponent(video);
-				
+				listaH.get(i).addComponent(video);
+				cont++;
+				if(cont == 3) {
+					HorizontalLayout h1 = new HorizontalLayout();
+					h1.setWidth("100%");
+					h1.setHeight("-1px");
+					listaH.add(h1);
+					i++;
+					vPanel1.addComponent(listaH.get(i));
+					cont = 0;
+				}	
 			}
 		} 
 		else 
 		{
-
+			//ESTO EN PRINCIPIO SOBRARIA AQUI, HABRIA QUE HACERLO EN LA PAG PERFIL_PROPIO_A
 			//CARGAR VIDEOS PROPIOS
 			nombre.setValue(admon.getNombre());
 			apellidos.setValue(admon.getApellido1()+" "+admon.getApellido2());
@@ -167,7 +187,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 				Usuario us = (Usuario) v.getUsuario_video();
 				video.usuario.setCaption(us.getNombre());
 				video.etiqueta.setValue(v.getEtiqueta());
-				hPanel.addComponent(video);
+				//hPanel.addComponent(video);
 			int visitas = admon.getVisitas();
 			nVisitas.setValue(String.valueOf(visitas));
 			//CARGAR VIDEOS PROPIOS
@@ -175,9 +195,6 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			//CARGAR DATOS DE USUARIO con el id de sesion ya podemos hacerlo
 			
 		}
-		}
-		
-		
-		
+		}		
 	}
 }

@@ -80,7 +80,7 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 				//popup.setClosable(false);
 				popup.setModal(true);
 				UI.getCurrent().addWindow(popup);
-				anl.cargarlistaReproduccion();
+				anl.cargarListaReproduccionPropia();
 				
 			}
 		});

@@ -51,7 +51,6 @@ public class Perfil_Propio_R_ventana extends VerticalLayout {
 	protected VerticalLayout vPanel;
 	protected Panel panel;
 	protected VerticalLayout vPanel1;
-	protected HorizontalLayout hPanel;
 
 	public Perfil_Propio_R_ventana() {
 		Design.read(this);

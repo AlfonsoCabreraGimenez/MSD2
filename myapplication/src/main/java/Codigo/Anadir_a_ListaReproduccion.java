@@ -7,7 +7,9 @@ import java.util.Vector;
 
 import org.hibernate.annotations.common.annotationfactory.AnnotationDescriptor;
 
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.RadioButtonGroup;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
@@ -66,18 +68,33 @@ public class Anadir_a_ListaReproduccion extends Anadir_a_ListaReproduccion_venta
 			//CARGAR LISTAS DE REPRODUCCION
 		}*/
 	
-	public void cargarlistaReproduccion() {
+	public void cargarListaReproduccionPropia() {
+		int cont = 0,i = 0;
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 		Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-		//Video2 vid = new Video2(video.getID());
-		
+		//FALTA MINIATURA DE LAS LISTAS
+		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
+		HorizontalLayout h = new HorizontalLayout();
+		h.setWidth("100%");
+		h.setHeight("100%");
+		listaH.add(h);
+		vListasTodas.addComponent(listaH.get(i));
 		for(Lista_De_Reproduccion lista : ur.cargarListaReproduccionPropia(reg.getID())) {
 			Lista_De_Reproduccion2 listaR = new Lista_De_Reproduccion2(lista.getID());
-			//listaR = (Lista_De_Reproduccion2) lista;
 			listaR.nombreLista.setValue(lista.getTitulo());
-			//Miniatura y Falta meterlos dentro del horizontal y sus vertical
-			
+			listaR.vBorrar.setVisible(false);
+			listaH.get(i).addComponent(listaR.vListaRep);
+			cont++;
+			if(cont == 2) {
+				HorizontalLayout h1 = new HorizontalLayout();
+				h1.setWidth("100%");
+				h1.setHeight("100%");
+				listaH.add(h1);
+				i++;
+				vListasTodas.addComponent(listaH.get(i));
+				cont = 0;
+			}	
 		}
-
 	}
+	
 	}
