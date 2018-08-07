@@ -1,12 +1,17 @@
 package Codigo;
 
+import java.awt.Checkbox;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import javax.swing.GroupLayout.Alignment;
+
 import org.hibernate.annotations.common.annotationfactory.AnnotationDescriptor;
 
+import com.vaadin.server.ExternalResource;
+import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.RadioButtonGroup;
@@ -30,59 +35,45 @@ public class Anadir_a_ListaReproduccion extends Anadir_a_ListaReproduccion_venta
 	//Lista_De_Reproduccion2 listaRepro = new Lista_De_Reproduccion2();
 	public int identVideo = -1;
 	VerticalLayout verti = new VerticalLayout();
-	
+	public List<CheckBox> check = new ArrayList<CheckBox>();
 	public Anadir_a_ListaReproduccion(int idVideo) {
 		this.identVideo = idVideo;
-
-		
-		//anadirAListaRep();
-
 	}
-	@SuppressWarnings("unchecked")
-	public void anadirAListaRep() {
-		//HAY QUE CARGAR TODOS LAS LISTAS DEL USUARIO EN CUESTION
-		/*Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
-		Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-		List lista = null;
-		if(admon == null) {
-			lista = ur.cargarListaReproduccionPropia(reg.getID());
-			if(lista.get(0) == null)
-			{
-				Notification.show("Hola es null");
-			} else {
-			//verticalVideo.addComponent(lista.get(0));
-			}
-			/*for(int i = 0; i <=lista.size()-1; i++)
-			{
-				listaRepro = (Lista_De_Reproduccion2) lista.get(i);
-				verticalVideo.addComponent(listaRepro);
-			}*/
 
-			//verticalVideo.addComponent(listaRepro);
-			
-			//CARGAR LISTAS DE REPRODUCCION
+	public void anadirAListaRep() {
+		for(CheckBox c : check) {
+			if(c.getValue() == true) {
+				int idLista = Integer.parseInt(c.getId());
+				ur.anadirAListaRep(this.identVideo, idLista);
+			}
 		}
-	/*	else {
-			//SI NO, ES ADMIN
-			admin.cargarListaReproduccionPropia(identVideo);
-			//CARGAR LISTAS DE REPRODUCCION
-		}*/
+	}
 	
 	public void cargarListaReproduccionPropia() {
-		int cont = 0,i = 0;
+		int cont = 0,i = 0,j = 0;
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 		Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-		//FALTA MINIATURA DE LAS LISTAS
 		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
 		HorizontalLayout h = new HorizontalLayout();
 		h.setWidth("100%");
 		h.setHeight("100%");
 		listaH.add(h);
-		vListasTodas.addComponent(listaH.get(i));
 		for(Lista_De_Reproduccion lista : ur.cargarListaReproduccionPropia(reg.getID())) {
 			Lista_De_Reproduccion2 listaR = new Lista_De_Reproduccion2(lista.getID());
 			listaR.nombreLista.setValue(lista.getTitulo());
 			listaR.vBorrar.setVisible(false);
+			listaR.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+			CheckBox c = new CheckBox();
+			c.setId(String.valueOf(lista.getID()));
+			c.addFocusListener(event -> {
+	                for(CheckBox c1 : check) {
+	                	if(c1.getId() != c.getId()) {
+	                		c1.setValue(false);
+	                	}
+	                }
+	            });
+			check.add(c);
+			listaR.vListaRep2.addComponent(check.get(j));
 			listaH.get(i).addComponent(listaR.vListaRep);
 			cont++;
 			if(cont == 2) {
@@ -93,8 +84,8 @@ public class Anadir_a_ListaReproduccion extends Anadir_a_ListaReproduccion_venta
 				i++;
 				vListasTodas.addComponent(listaH.get(i));
 				cont = 0;
-			}	
+			}
+			j++;
 		}
 	}
-	
 	}

@@ -24,10 +24,13 @@ public class BD_Listas_De_Reproduccion {
 		throw new UnsupportedOperationException();
 	}
 
-	public void anadirAListaRep(int aID) throws PersistentException {
+	public void anadirAListaRep(int aID, int idLista) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
-			
+			Lista_De_Reproduccion lista = Lista_De_ReproduccionDAO.getLista_De_ReproduccionByORMID(idLista);
+			Video video = VideoDAO.getVideoByORMID(aID);
+			lista.video.add(video);
+			Lista_De_ReproduccionDAO.save(lista);
 			t.commit();
 		} catch (Exception e) {
 			t.rollback();

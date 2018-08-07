@@ -21,9 +21,9 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	public BD_Registrados registrados = new BD_Registrados();
 	public BD_Administradores admin = new BD_Administradores();
 
-	public void anadirAListaRep(int aID) {
+	public void anadirAListaRep(int aID,int idLista) {
 		try {
-			listas.anadirAListaRep(aID);
+			listas.anadirAListaRep(aID, idLista);
 		} catch (PersistentException e) {
 			e.printStackTrace();
 		}

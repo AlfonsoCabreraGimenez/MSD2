@@ -10,7 +10,7 @@ import diagramaclasesbd.Video;
 public interface iUsuario_Registrado {
 	
 
-	public void anadirAListaRep(int aID);
+	public void anadirAListaRep(int aID, int idLista);
 
 	public void borrarLista(int aID);
 
