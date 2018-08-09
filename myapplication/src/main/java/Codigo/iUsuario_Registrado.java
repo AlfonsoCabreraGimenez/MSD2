@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import diagramaclasesbd.Comentario;
 import diagramaclasesbd.Lista_De_Reproduccion;
 import diagramaclasesbd.Registrado;
 import diagramaclasesbd.Video;
@@ -36,7 +37,7 @@ public interface iUsuario_Registrado {
 
 	public diagramaclasesbd.Video cargarDatosVideo(int aID);
 
-	public List cargarListaComentarios(int aID);
+	public List<Comentario> cargarListaComentarios(int aID);
 
 	public void crearListaRep(String aTitulo, List aVideo);
 

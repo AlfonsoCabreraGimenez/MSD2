@@ -104,8 +104,14 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		return video;
 	}
 
-	public List cargarListaComentarios(int aID) {
-		throw new UnsupportedOperationException();
+	public List<Comentario> cargarListaComentarios(int aID) {
+		try {
+			return comentarios.cargarListaComentarios(aID);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public void crearListaRep(String aTitulo, List aVideo) {

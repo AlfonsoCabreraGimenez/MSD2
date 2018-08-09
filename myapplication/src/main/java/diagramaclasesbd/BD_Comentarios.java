@@ -1,5 +1,6 @@
 package diagramaclasesbd;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -18,8 +19,22 @@ public class BD_Comentarios {
 		throw new UnsupportedOperationException();
 	}
 
-	public List cargarListaComentarios(int aID) {
-		throw new UnsupportedOperationException();
+	public List cargarListaComentarios(int aID) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		List<Comentario> listC = new ArrayList<Comentario>();
+		try {
+			for(Object c : VideoDAO.getVideoByORMID(aID).comentarios.getCollection()) {
+				Comentario coment;
+				coment = (Comentario) c;
+				listC.add(coment);
+			}
+			t.commit();
+			
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			t.rollback();
+		}
+		return listC;
 	}
 
 	public void escribirComentario(String aCadena, int aID) throws PersistentException {

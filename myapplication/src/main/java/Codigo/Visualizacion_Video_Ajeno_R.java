@@ -1,6 +1,8 @@
 package Codigo;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Alignment;
@@ -13,6 +15,7 @@ import com.vaadin.ui.Button.ClickListener;
 
 import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Categoria;
+import diagramaclasesbd.Comentario;
 import diagramaclasesbd.Usuario;
 
 public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
@@ -34,7 +37,6 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		Anadir_a_ListaReproduccion anl = new Anadir_a_ListaReproduccion(idVideo);
 		cargarDatosVideo(idVideo);
 		this.identVideo = idVideo;
-		//darMegusta();
 		
 		hCabeceraGeneral2.addComponent(cc.horizontalInicio);
 		hCabeceraGeneral2.addComponent(bus.vBuscador);
@@ -51,17 +53,7 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		vComentario.setVisible(true);
 		
 		
-		tituloVideo.setValue(videoA.getTitulo());
-		Categoria cat = videoA.getCategoria();
-		categoriaEtiqueta.setValue(cat.getNombre());
-		descripcion.setValue(videoA.getDescripcion());
-		Usuario us = videoA.getUsuario_video();
-		fotoUser.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
-		apodo.setCaption(us.getApodo());
-		nVisualizaciones.setValue(String.valueOf(videoA.getVisualizaciones() + " visualizaciones"));
-		nGusta.setValue(String.valueOf(videoA.getMegusta() + " me gusta"));
-		Date fecha = videoA.getFechaCreacion();
-		fechaSubida.setValue(fecha.toString());
+		
 		
 		meGusta.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
@@ -105,6 +97,9 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 				escribirComentario(escribirComentario.getValue());
 			}
 		});
+
+		//CARGAR COMENTARIOS
+		cargarListaComentarios();
 	}
 	public void darQuitarMegusta() {
 		if(ur.darQuitarMegusta(videoA.getID())) {
@@ -113,14 +108,36 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 			Notification.show("¡Ya no te gusta el video!");
 		}
 	}
-	/*public void quitarMegusta() {
-		throw new UnsupportedOperationException();
-	}*/
-
 	public void escribirComentario(String texto) {
 		ur.escribirComentario(texto, identVideo);
+		cargarListaComentarios();
 	}
 	public void cargarDatosVideo(int idVideo) {
 		videoA = unr.cargarDatosVideo(idVideo);
+		
+		tituloVideo.setValue(videoA.getTitulo());
+		Categoria cat = videoA.getCategoria();
+		categoriaEtiqueta.setValue(cat.getNombre());
+		descripcion.setValue(videoA.getDescripcion());
+		Usuario us = videoA.getUsuario_video();
+		fotoUser.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+		apodo.setCaption(us.getApodo());
+		nVisualizaciones.setValue(String.valueOf(videoA.getVisualizaciones() + " visualizaciones"));
+		nGusta.setValue(String.valueOf(videoA.getMegusta() + " me gusta"));
+		Date fecha = videoA.getFechaCreacion();
+		fechaSubida.setValue(fecha.toString());
 	}	
+	public void cargarListaComentarios() {
+		List<Comentario> listC = new ArrayList<Comentario>();
+		vComentario.removeAllComponents();
+		for(Comentario coment : ur.cargarListaComentarios(identVideo)){
+			Comentario2 com = new Comentario2();
+			vComentario.addComponent(com);
+			com.areaComentario.setValue(coment.getDescripcion());
+			Usuario us = (Usuario) coment.getUsuario_comentario();
+			com.apodo.setCaption(us.getApodo());
+			com.avatar.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+			com.bComentario.setVisible(false);
+		}
+	}
 }
