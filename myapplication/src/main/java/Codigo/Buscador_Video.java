@@ -16,6 +16,7 @@ import diagramaclasesbd.Administrador;
 import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Categoria;
 import diagramaclasesbd.Registrado;
+import diagramaclasesbd.Usuario;
 
 public class Buscador_Video extends Buscador implements View {
 	public Vector<Video2> _unnamed_Video2_ = new Vector<Video2>();
@@ -52,8 +53,8 @@ public class Buscador_Video extends Buscador implements View {
 				verticalBuscador.addComponent(hor.get(i));
 				hor.get(i).addComponent(vid);
 				vid.titulo.setCaption(video.getTitulo());
-				Registrado reg = (Registrado) video.getUsuario_video();
-				vid.usuario.setCaption(reg.getNombre());
+				Usuario us = (Usuario) video.getUsuario_video();
+				vid.usuario.setCaption(us.getNombre());
 				Categoria cat = video.getCategoria();
 				vid.categoria.setValue(cat.getNombre());
 				vid.etiqueta.setValue(video.getEtiqueta());
