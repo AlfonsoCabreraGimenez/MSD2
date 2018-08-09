@@ -99,6 +99,12 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 			}
 		});
 		
+		//ESCRIBIR COMENTARIO
+		comentar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				escribirComentario(escribirComentario.getValue());
+			}
+		});
 	}
 	public void darQuitarMegusta() {
 		if(ur.darQuitarMegusta(videoA.getID())) {
@@ -111,8 +117,8 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		throw new UnsupportedOperationException();
 	}*/
 
-	public void escribirComentario() {
-		throw new UnsupportedOperationException();
+	public void escribirComentario(String texto) {
+		ur.escribirComentario(texto, identVideo);
 	}
 	public void cargarDatosVideo(int idVideo) {
 		videoA = unr.cargarDatosVideo(idVideo);

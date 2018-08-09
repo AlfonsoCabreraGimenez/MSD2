@@ -17,7 +17,7 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	public BD_Categorias categoria = new BD_Categorias();
 	public BD_Videos videos = new BD_Videos();
 	public BD_Listas_De_Reproduccion listas = new BD_Listas_De_Reproduccion();
-	public BD_Comentarios _bd_coment;
+	public BD_Comentarios comentarios = new BD_Comentarios();
 	public BD_Registrados registrados = new BD_Registrados();
 	public BD_Administradores admin = new BD_Administradores();
 
@@ -171,7 +171,12 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	}
 
 	public void escribirComentario(String aCadena, int aID) {
-		throw new UnsupportedOperationException();
+		try {
+			comentarios.escribirComentario(aCadena, aID);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void eliminarVideoListaReproduccion(int aID) {
