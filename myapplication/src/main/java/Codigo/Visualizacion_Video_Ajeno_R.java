@@ -26,7 +26,7 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 	
 	public Video2 _unnamed_Video2_;
 	public Comentario_Video_Ajeno_R _unnamed_Comentario_Video_Ajeno_R_;
-	iUsuario_No_Registrado unr = new BD_Principal();
+	
 	iUsuario_Registrado ur = new BD_Principal();
 	
 	Visualizacion_Video_Ajeno visA = new Visualizacion_Video_Ajeno();
@@ -113,7 +113,7 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		cargarListaComentarios();
 	}
 	public void cargarDatosVideo(int idVideo) {
-		videoA = unr.cargarDatosVideo(idVideo);
+		videoA = ur.cargarDatosVideo(idVideo);
 		
 		tituloVideo.setValue(videoA.getTitulo());
 		Categoria cat = videoA.getCategoria();

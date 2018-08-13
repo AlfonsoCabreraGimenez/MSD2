@@ -77,7 +77,7 @@ public class BD_Listas_De_Reproduccion {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		List<Lista_De_Reproduccion> listaRes = new ArrayList<Lista_De_Reproduccion>();
 		try {
-			for(Object lista : RegistradoDAO.getRegistradoByORMID(idUsuario).prop_de.getCollection()) {
+			for(Object lista : UsuarioDAO.getUsuarioByORMID(idUsuario).prop_de.getCollection()) {
 				Lista_De_Reproduccion listaR;
 				listaR = (Lista_De_Reproduccion) lista;
 				listaRes.add(listaR);

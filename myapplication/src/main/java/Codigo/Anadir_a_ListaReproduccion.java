@@ -51,14 +51,21 @@ public class Anadir_a_ListaReproduccion extends Anadir_a_ListaReproduccion_venta
 	
 	public void cargarListaReproduccionPropia() {
 		int cont = 0,i = 0,j = 0;
+		//vListasTodas.removeAllComponents();
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 		Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+		List<Lista_De_Reproduccion> listPropia = new ArrayList<Lista_De_Reproduccion>();
+		if(admon == null) {
+			listPropia = ur.cargarListaReproduccionPropia(reg.getID());
+		} else {
+			listPropia = admin.cargarListaReproduccionPropia(admon.getID());
+		}
 		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
 		HorizontalLayout h = new HorizontalLayout();
 		h.setWidth("100%");
 		h.setHeight("100%");
 		listaH.add(h);
-		for(Lista_De_Reproduccion lista : ur.cargarListaReproduccionPropia(reg.getID())) {
+		for(Lista_De_Reproduccion lista : listPropia) {
 			Lista_De_Reproduccion2 listaR = new Lista_De_Reproduccion2(lista.getID());
 			listaR.nombreLista.setValue(lista.getTitulo());
 			listaR.vBorrar.setVisible(false);

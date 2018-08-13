@@ -41,12 +41,18 @@ public class BD_Comentarios {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
 			Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-			Registrado r = RegistradoDAO.getRegistradoByORMID(reg.getID());
+			Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 			Video vid = VideoDAO.getVideoByORMID(aID);
 			Comentario coment = ComentarioDAO.createComentario();
 			coment.setDescripcion(aCadena);
-			coment.setUsuario_comentario(r);
 			coment.setVideo(vid);
+			if(admon == null) {
+				Registrado r = RegistradoDAO.getRegistradoByORMID(reg.getID());
+				coment.setUsuario_comentario(r);
+			} else {
+				Administrador a = AdministradorDAO.getAdministradorByORMID(admon.getID());
+				coment.setUsuario_comentario(a);
+			}
 			ComentarioDAO.save(coment);
 			
 			t.commit();
