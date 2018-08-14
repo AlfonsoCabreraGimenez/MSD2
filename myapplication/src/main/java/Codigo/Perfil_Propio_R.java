@@ -126,6 +126,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			int visitas = registrado.getVisitas();
 			nVisitas.setValue(String.valueOf(visitas));
 			//CARGAR VIDEOS PROPIOS
+			apodo.setCaption(registrado.getApodo());
 			nombre.setValue(registrado.getNombre());
 			apellidos.setValue(registrado.getApellido1()+" "+registrado.getApellido2());
 			email.setValue(registrado.getEmail());

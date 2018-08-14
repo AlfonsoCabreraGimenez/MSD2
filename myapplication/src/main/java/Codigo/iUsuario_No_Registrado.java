@@ -2,6 +2,8 @@ package Codigo;
 
 import java.util.Date;
 import java.util.List;
+
+import diagramaclasesbd.Usuario;
 public interface iUsuario_No_Registrado {
 
 	public List<diagramaclasesbd.Video> cargar_Videos_Masmegusta();
@@ -20,7 +22,7 @@ public interface iUsuario_No_Registrado {
 
 	public void regeneracionPass(String aEmail);
 
-	public Usuario2 cargarDatosUsuario(int aID);
+	public Usuario cargarDatosUsuario(int aID);
 
 	public diagramaclasesbd.Video cargarDatosVideo(int aID);
 

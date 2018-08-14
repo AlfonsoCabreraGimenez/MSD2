@@ -75,8 +75,16 @@ public class BD_Registrados {
 		throw new UnsupportedOperationException();
 	}
 
-	public Usuario2 cargarDatosUsuario(int aID) {
-		throw new UnsupportedOperationException();
+	public Usuario cargarDatosUsuario(int aID) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		Usuario user = null;
+		try {
+			user = UsuarioDAO.getUsuarioByORMID(aID);	
+			t.commit();		
+		} catch (Exception e) {
+			t.rollback();
+		}
+		return user;
 	}
 //////////////////////////////////
 	public void eliminarUsuario(int aID) throws PersistentException {

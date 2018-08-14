@@ -15,6 +15,7 @@ import GY.MyUI;
 import diagramaclasesbd.Administrador;
 import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Registrado;
+import diagramaclasesbd.Video;
 
 public class Video2 extends Video2_ventana{
 	Window popup = new Window();
@@ -38,7 +39,6 @@ public class Video2 extends Video2_ventana{
 	iUsuario_Registrado ur = new BD_Principal();
 	Modificar_Video mv = new Modificar_Video();
 	boolean videoPropio;
-	//private int idVideo = -1;
 	boolean esVideoPropio;
 	public Video2(int id) {
 		//this.idVideo = id;
@@ -106,20 +106,22 @@ public class Video2 extends Video2_ventana{
 				esVideoPropio = videoPropio(id,idUs);
 				if(esVideoPropio == false)
 				{
+					Video vid;
+					vid = ur.cargarDatosVideo(id);
 					if(admon == null && reg != null)
 					{
-						MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno_R", new Perfil_Ajeno_R());
+						MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno_R", new Perfil_Ajeno_R(vid.getUsuario_video().getID()));
 						UI.getCurrent().getNavigator().navigateTo("Perfil_Ajeno_R");
 					
 					}
 					if (admon != null && reg == null) {
-						MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno_A", new Perfil_Ajeno_A());
+						MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno_A", new Perfil_Ajeno_A(vid.getUsuario_video().getID()));
 						UI.getCurrent().getNavigator().navigateTo("Perfil_Ajeno_A");
 					
 					}
 					if(admon == null && reg == null){
 						//IR A PAG Perfil Ajeno
-						MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno", new Perfil_Ajeno());
+						MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno", new Perfil_Ajeno(vid.getUsuario_video().getID()));
 						UI.getCurrent().getNavigator().navigateTo("Perfil_Ajeno");
 					}
 				

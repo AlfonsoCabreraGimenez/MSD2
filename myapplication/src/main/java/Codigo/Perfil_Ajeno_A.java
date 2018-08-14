@@ -1,5 +1,7 @@
 package Codigo;
 
+import com.vaadin.event.LayoutEvents.LayoutClickEvent;
+import com.vaadin.event.LayoutEvents.LayoutClickListener;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -9,6 +11,7 @@ import diagramaclasesbd.BD_Principal;
 
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.Notification;
 
 public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 	Window popup = new Window();
@@ -19,8 +22,43 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 	public Video2 _unnamed_Video2_;
 	public Conf_Eliminar_Usuario Conf_Eliminar_Usuario_ = new Conf_Eliminar_Usuario();
 	
-	public Perfil_Ajeno_A(){
+	public Perfil_Ajeno_A(int idUser){
 		inicializar();
+		cargarPerfilAjenoNR(idUser);
+		cargarVideosAjenoNR(idUser);
+		
+		hVideos.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				// TODO Auto-generated method stub
+				cargarVideosAjenoNR(idUser);
+			}
+		});
+		
+		hListas.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				// TODO Auto-generated method stub
+				cargarListasAjenoNR(idUser);
+			}
+		});
+		
+		hSuscripciones.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				// TODO Auto-generated method stub
+				cargarSuscripcionesAjenoNR(idUser);
+			}
+		});
+		
+		hSuscriptores.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				// TODO Auto-generated method stub
+				cargarSuscriptoresAjenoNR(idUser);
+			}
+		});
+		
 		darDeBaja.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				popup.setContent(subContent);
@@ -33,6 +71,7 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 				
 			}
 		});
+		
 		Conf_Eliminar_Usuario_.cancelar.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 			

@@ -7,6 +7,7 @@ import java.util.Set;
 import diagramaclasesbd.Comentario;
 import diagramaclasesbd.Lista_De_Reproduccion;
 import diagramaclasesbd.Registrado;
+import diagramaclasesbd.Usuario;
 import diagramaclasesbd.Video;
 public interface iUsuario_Registrado {
 	
@@ -33,7 +34,7 @@ public interface iUsuario_Registrado {
 
 	public List<diagramaclasesbd.Categoria> cargarCategorias();
 
-	public Usuario2 cargarDatosUsuario(int aID);
+	public Usuario cargarDatosUsuario(int aID);
 
 	public diagramaclasesbd.Video cargarDatosVideo(int aID);
 

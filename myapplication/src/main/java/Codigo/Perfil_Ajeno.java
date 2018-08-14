@@ -1,9 +1,28 @@
 package Codigo;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import com.vaadin.event.MouseEvents;
+import com.vaadin.event.LayoutEvents.LayoutClickEvent;
+import com.vaadin.event.LayoutEvents.LayoutClickListener;
+import com.vaadin.event.MouseEvents.DoubleClickEvent;
 import com.vaadin.navigator.View;
+import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Notification;
+
+import GY.MyUI;
+import diagramaclasesbd.Administrador;
+import diagramaclasesbd.BD_Principal;
+import diagramaclasesbd.Lista_De_Reproduccion;
+import diagramaclasesbd.Registrado;
+import diagramaclasesbd.Usuario;
+import diagramaclasesbd.Video;
 
 public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 	/*private Label _suscriptoresL;
@@ -22,9 +41,48 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 	Cabecera_Comun cc = new Cabecera_Comun();
 	Cabecera_NR cnr = new Cabecera_NR();
 	Cabecera_R cr = new Cabecera_R();
+	iUsuario_No_Registrado unr = new BD_Principal();
 	
-	public Perfil_Ajeno(){
+	public Perfil_Ajeno() {
+		
+	}
+	
+	public Perfil_Ajeno(int idUser){
 		inicializar();
+		cargarPerfilAjenoNR(idUser);
+		cargarVideosAjenoNR(idUser);
+		
+		hVideos.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				// TODO Auto-generated method stub
+				cargarVideosAjenoNR(idUser);
+			}
+		});
+		
+		hListas.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				// TODO Auto-generated method stub
+				cargarListasAjenoNR(idUser);
+			}
+		});
+		
+		hSuscripciones.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				// TODO Auto-generated method stub
+				cargarSuscripcionesAjenoNR(idUser);
+			}
+		});
+		
+		hSuscriptores.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				// TODO Auto-generated method stub
+				cargarSuscriptoresAjenoNR(idUser);
+			}
+		});
 	}
 	
 	void inicializar(){
@@ -32,13 +90,94 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 		hCabeceraGeneral.addComponent(cnr);
 		suscribirse.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				UI.getCurrent().getNavigator().navigateTo("Ingreso");
+				MyUI.getCurrent().getNavigator().addView("Ingreso_Aplicacion", new Ingreso_Aplicacion());
+				UI.getCurrent().getNavigator().navigateTo("Ingreso_Aplicacion");
 			}
 		});
 		darDeBaja.setVisible(false);
 	}
 	
-	public void cargarPerfilAjenoNR() {
-		throw new UnsupportedOperationException();
+	public void cargarPerfilAjenoNR(int idUser) {
+		Usuario user = unr.cargarDatosUsuario(idUser);
+		apodo.setCaption(user.getApodo());
+		nVisitas.setValue(String.valueOf(user.getVisitas()));
+		imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+	}
+	
+	public void cargarVideosAjenoNR(int idUser) {
+		vPanel1.removeAllComponents();
+		int cont = 0, i = 0;
+		Usuario user = unr.cargarDatosUsuario(idUser);
+		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
+		HorizontalLayout h = new HorizontalLayout();
+		h.setWidth("100%");
+		h.setHeight("-1px");
+		listaH.add(h);
+		vPanel1.addComponent(listaH.get(i));
+		for(Object v : user.prop_video_de.getCollection())
+		{
+			Video vid;
+			vid = (Video) v;
+			Video2 video = new Video2(vid.getID());
+			video.categoria.setValue(String.valueOf(vid.getCategoria()));
+			video.titulo.setCaption(vid.getTitulo());
+			Date fecha = vid.getFechaCreacion();
+			video.fechasubida.setValue(fecha.toString());
+			video.usuario.setCaption(user.getNombre());
+			video.etiqueta.setValue(vid.getEtiqueta());
+			listaH.get(i).addComponent(video);
+			cont++;
+			if(cont == 4) {
+				HorizontalLayout h1 = new HorizontalLayout();
+				h1.setWidth("100%");
+				h1.setHeight("-1px");
+				listaH.add(h1);
+				i++;
+				vPanel1.addComponent(listaH.get(i));
+				cont = 0;
+			}	
+		}
+	}
+	
+	public void cargarListasAjenoNR(int idUser) {
+		vPanel1.removeAllComponents();
+		int cont = 0, i = 0;
+		Usuario user = unr.cargarDatosUsuario(idUser);
+		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
+		HorizontalLayout h = new HorizontalLayout();
+		h.setWidth("100%");
+		h.setHeight("-1px");
+		listaH.add(h);
+		vPanel1.addComponent(listaH.get(i));
+		for(Object l : user.prop_de.getCollection())
+		{
+			Lista_De_Reproduccion lis;
+			lis = (Lista_De_Reproduccion) l;
+			Lista_De_Reproduccion2 lista = new Lista_De_Reproduccion2(lis.getID());
+			lista.nombreLista.setValue(lis.getTitulo());
+			lista.vBorrar.setVisible(false);
+			lista.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+			lista.setWidth("270px");
+			lista.setHeight("270px");
+			listaH.get(i).addComponent(lista);
+			cont++;
+			if(cont == 5) {
+				HorizontalLayout h1 = new HorizontalLayout();
+				h1.setWidth("100%");
+				h1.setHeight("-1px");
+				listaH.add(h1);
+				i++;
+				vPanel1.addComponent(listaH.get(i));
+				cont = 0;
+			}	
+		}
+	}
+	
+	public void cargarSuscripcionesAjenoNR(int idUser) {
+		vPanel1.removeAllComponents();
+	}
+	
+	public void cargarSuscriptoresAjenoNR(int idUser) {
+		vPanel1.removeAllComponents();
 	}
 }

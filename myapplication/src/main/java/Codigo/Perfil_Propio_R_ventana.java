@@ -44,9 +44,13 @@ public class Perfil_Propio_R_ventana extends VerticalLayout {
 	protected Button modificarDatos;
 	protected VerticalLayout vDatosPerfil;
 	protected HorizontalLayout hApartados;
+	protected HorizontalLayout hVideos;
 	protected Label videos;
+	protected HorizontalLayout hListas;
 	protected Label listaReproduccion;
+	protected HorizontalLayout hSuscripciones;
 	protected Label suscripciones;
+	protected HorizontalLayout hSuscriptores;
 	protected Label suscriptores;
 	protected VerticalLayout vPanel;
 	protected Panel panel;

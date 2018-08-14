@@ -34,24 +34,30 @@
     </vaadin-vertical-layout>
     <vaadin-vertical-layout spacing="false" size-auto _id="vDatosPerfil">
      <vaadin-horizontal-layout width-full _id="hApartados">
-      <vaadin-label style-name="colored" plain-text _id="videos">
-        Videos 
-      </vaadin-label>
-      <vaadin-label style-name="colored" plain-text _id="listaReproduccion">
-        Listas de reproducción 
-      </vaadin-label>
-      <vaadin-label style-name="colored" plain-text _id="suscripciones">
-        Suscripciones 
-      </vaadin-label>
-      <vaadin-label style-name="colored" plain-text _id="suscriptores">
-        Suscriptores 
-      </vaadin-label>
+      <vaadin-horizontal-layout _id="hVideos">
+       <vaadin-label style-name="colored" plain-text _id="videos">
+         Videos 
+       </vaadin-label>
+      </vaadin-horizontal-layout>
+      <vaadin-horizontal-layout _id="hListas">
+       <vaadin-label style-name="colored" plain-text _id="listaReproduccion">
+         Listas de reproducción 
+       </vaadin-label>
+      </vaadin-horizontal-layout>
+      <vaadin-horizontal-layout _id="hSuscripciones">
+       <vaadin-label style-name="colored" plain-text _id="suscripciones">
+         Suscripciones 
+       </vaadin-label>
+      </vaadin-horizontal-layout>
+      <vaadin-horizontal-layout _id="hSuscriptores">
+       <vaadin-label style-name="colored" plain-text _id="suscriptores">
+         Suscriptores 
+       </vaadin-label>
+      </vaadin-horizontal-layout>
      </vaadin-horizontal-layout>
-     <vaadin-vertical-layout size-auto margin="false" _id="vPanel">
+     <vaadin-vertical-layout width="1440px" margin="false" _id="vPanel">
       <vaadin-panel height="600px" _id="panel">
-       <vaadin-vertical-layout size-auto _id="vPanel1">
-        <vaadin-horizontal-layout margin _id="hPanel" :center></vaadin-horizontal-layout>
-       </vaadin-vertical-layout>
+       <vaadin-vertical-layout size-auto _id="vPanel1"></vaadin-vertical-layout>
       </vaadin-panel>
      </vaadin-vertical-layout>
     </vaadin-vertical-layout>

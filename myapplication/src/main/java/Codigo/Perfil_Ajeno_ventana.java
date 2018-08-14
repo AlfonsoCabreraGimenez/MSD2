@@ -37,14 +37,17 @@ public class Perfil_Ajeno_ventana extends VerticalLayout {
 	protected Button suscribirse;
 	protected VerticalLayout vDatosPerfil;
 	protected HorizontalLayout hApartados;
+	protected HorizontalLayout hVideos;
 	protected Label videos;
+	protected HorizontalLayout hListas;
 	protected Label listaReproduccion;
+	protected HorizontalLayout hSuscripciones;
 	protected Label suscripciones;
+	protected HorizontalLayout hSuscriptores;
 	protected Label suscriptores;
 	protected VerticalLayout vPanel;
 	protected Panel panel;
 	protected VerticalLayout vPanel1;
-	protected HorizontalLayout hPanel;
 
 	public Perfil_Ajeno_ventana() {
 		Design.read(this);

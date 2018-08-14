@@ -90,8 +90,18 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		return null;
 	}
 
-	public Usuario2 cargarDatosUsuario(int aID) {
-		throw new UnsupportedOperationException();
+	public Usuario cargarDatosUsuario(int aID) {
+		Usuario user = null;
+		try {
+			user = registrados.cargarDatosUsuario(aID);
+			if(user == null) {
+				user = admin.cargarDatosUsuario(aID);
+			}
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
 	}
 
 	public diagramaclasesbd.Video cargarDatosVideo(int aID) {
