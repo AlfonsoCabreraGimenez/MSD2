@@ -71,7 +71,7 @@ public class Perfil_Ajeno_R extends Perfil_Ajeno implements View {
 		});	
 	}
 	
-	void inicializar(){
+	public void inicializar(){
 		hCabeceraComun.addComponent(cc);
 		hCabeceraGeneral.addComponent(cr);
 		darDeBaja.setVisible(false);

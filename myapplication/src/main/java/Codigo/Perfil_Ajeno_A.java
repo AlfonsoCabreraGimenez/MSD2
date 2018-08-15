@@ -91,7 +91,7 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 		});
 	}
 	
-	void inicializar(){
+	public void inicializar(){
 		hCabeceraComun.addComponent(cc);
 		hCabeceraGeneral.addComponent(cr);
 	}

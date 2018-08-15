@@ -52,6 +52,8 @@ public class Perfil_Propio_R_ventana extends VerticalLayout {
 	protected Label suscripciones;
 	protected HorizontalLayout hSuscriptores;
 	protected Label suscriptores;
+	protected HorizontalLayout hUsuarios;
+	protected Label registrados;
 	protected VerticalLayout vPanel;
 	protected Panel panel;
 	protected VerticalLayout vPanel1;

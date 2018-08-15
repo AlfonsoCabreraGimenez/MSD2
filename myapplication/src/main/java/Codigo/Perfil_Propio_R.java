@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.orm.PersistentException;
 
+import com.vaadin.event.LayoutEvents.LayoutClickEvent;
+import com.vaadin.event.LayoutEvents.LayoutClickListener;
 import com.vaadin.navigator.View;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.HorizontalLayout;
@@ -46,24 +48,46 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	Video2 v2 = new Video2(1);
 	Modificar_Datos_Usuario mdu = new Modificar_Datos_Usuario();
 	Crear_Lista_Reproduccion clr = new Crear_Lista_Reproduccion();
-	iUsuario_Registrado ur = new BD_Principal();
-	
-	
-	public Perfil_Propio_R() throws PersistentException{
-		hCabeceraInicio.addComponent(cc.inicio);
-		hCabeceraRegistrado.addComponent(cr.avatar);
-		hCabeceraRegistrado.addComponent(cr.botonSubirVideo);
-		hCabeceraRegistrado.addComponent(cr.botonCerrarSesion);
-		//hPanel.addComponent(v2.vVerticalVideoGeneral);
-		crearAdministrador.setVisible(false);
+	iUsuario_Registrado ur = new BD_Principal();	
+
+	public Perfil_Propio_R(){
+		
 
 		inicializar();
 		cargarPerfilPropioR();
-	}
-	
-	void inicializar(){
-		//hPanel.addComponent(v2.vVerticalVideoGeneral);
-		categoria.setVisible(false);
+		cargarVideosPropiosR();
+		
+		hVideos.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				// TODO Auto-generated method stub
+				cargarVideosPropiosR();
+			}
+		});
+		
+		hListas.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				// TODO Auto-generated method stub
+				cargarListasPropiasR();
+			}
+		});
+		
+		hSuscripciones.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				// TODO Auto-generated method stub
+				cargarSuscripcionesPropiasR();
+			}
+		});
+		
+		hSuscriptores.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				// TODO Auto-generated method stub
+				cargarSuscriptoresPropiosR();
+			}
+		});
 		
 		modificarDatos.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
@@ -85,7 +109,6 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			}
 		});
 		
-		
 		crearListaReproduccion.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 
@@ -98,97 +121,142 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 				UI.getCurrent().addWindow(popup2);
 			}
 		});
+		
 		clr.cancelar.addClickListener(new ClickListener() {
 
 			public void buttonClick(ClickEvent event) {
 				popup2.close();
 			}
 		});
+		
 		clr.confirmar.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				clr.crearListaRep();
 				popup2.close();
 			}
 		});
-
 		
+	}
+	
+	void inicializar(){
+		hCabeceraInicio.addComponent(cc.inicio);
+		hCabeceraRegistrado.addComponent(cr.avatar);
+		hCabeceraRegistrado.addComponent(cr.botonSubirVideo);
+		hCabeceraRegistrado.addComponent(cr.botonCerrarSesion);
+		crearAdministrador.setVisible(false);
+		categoria.setVisible(false);		
 	}
 	public void borrarVideo() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void cargarPerfilPropioR() throws PersistentException {
-		int cont = 0, i = 0;
-		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
-		if (admon == null)
-		{
-			Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-			int visitas = registrado.getVisitas();
-			nVisitas.setValue(String.valueOf(visitas));
-			//CARGAR VIDEOS PROPIOS
-			apodo.setCaption(registrado.getApodo());
-			nombre.setValue(registrado.getNombre());
-			apellidos.setValue(registrado.getApellido1()+" "+registrado.getApellido2());
-			email.setValue(registrado.getEmail());
-			fNacimiento.setValue(String.valueOf(registrado.getFechaN()));
-			imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
-			//CARGAR DATOS DE USUARIO con el id de sesion ya podemos hacerlo
-			List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
-			HorizontalLayout h = new HorizontalLayout();
-			h.setWidth("100%");
-			h.setHeight("-1px");
-			listaH.add(h);
-			vPanel1.addComponent(listaH.get(i));
-			for(Video v : ur.cargarVideosPropios(registrado.getID()))
-			{
-				Video2 video = new Video2(v.getID());
-				video.categoria.setValue(String.valueOf(v.getCategoria()));
-				video.titulo.setCaption(v.getTitulo());
-				Date fecha = v.getFechaCreacion();
-				video.fechasubida.setValue(fecha.toString());
-				Usuario us = (Usuario) v.getUsuario_video();
-				video.usuario.setCaption(us.getNombre());
-				video.etiqueta.setValue(v.getEtiqueta());
-				listaH.get(i).addComponent(video);
-				cont++;
-				if(cont == 3) {
-					HorizontalLayout h1 = new HorizontalLayout();
-					h1.setWidth("100%");
-					h1.setHeight("-1px");
-					listaH.add(h1);
-					i++;
-					vPanel1.addComponent(listaH.get(i));
-					cont = 0;
-				}	
-			}
-		} 
-		else 
-		{
-			//ESTO EN PRINCIPIO SOBRARIA AQUI, HABRIA QUE HACERLO EN LA PAG PERFIL_PROPIO_A
-			//CARGAR VIDEOS PROPIOS
-			nombre.setValue(admon.getNombre());
-			apellidos.setValue(admon.getApellido1()+" "+admon.getApellido2());
-			email.setValue(admon.getEmail());
-			fNacimiento.setValue(String.valueOf(admon.getFechaN()));
-			//CARGAR DATOS DE USUARIO con el id de sesion ya podemos hacerlo
-			for(Video v : ur.cargarVideosPropios(admon.getID()))
-			{
-				Video2 video = new Video2(v.getID());
-				video.categoria.setValue(String.valueOf(v.getCategoria()));
-				video.titulo.setCaption(v.getTitulo());
-				Date fecha = v.getFechaCreacion();
-				video.fechasubida.setValue(fecha.toString());
-				Usuario us = (Usuario) v.getUsuario_video();
-				video.usuario.setCaption(us.getNombre());
-				video.etiqueta.setValue(v.getEtiqueta());
-				//hPanel.addComponent(video);
-			int visitas = admon.getVisitas();
-			nVisitas.setValue(String.valueOf(visitas));
-			//CARGAR VIDEOS PROPIOS
-			
-			//CARGAR DATOS DE USUARIO con el id de sesion ya podemos hacerlo
-			
+	public void cargarPerfilPropioR() {
+		Usuario user;
+		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+		if(registrado == null) {
+			Usuario admin = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
+			user = ur.cargarDatosUsuario(admin.getID());
+		} else {
+			user = ur.cargarDatosUsuario(registrado.getID());
 		}
-		}		
+		nVisitas.setValue(String.valueOf(user.getVisitas()));
+		apodo.setCaption(user.getApodo());
+		nombre.setValue(user.getNombre());
+		apellidos.setValue(user.getApellido1()+" "+user.getApellido2());
+		email.setValue(user.getEmail());
+		fNacimiento.setValue(String.valueOf(user.getFechaN()));
+		imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+		
+	} 	
+	
+	public void cargarVideosPropiosR() {
+		Usuario user;
+		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+		if(registrado == null) {
+			Usuario admin = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
+			user = ur.cargarDatosUsuario(admin.getID());
+		} else {
+			user = ur.cargarDatosUsuario(registrado.getID());
+		}
+		vPanel1.removeAllComponents();
+		int cont = 0, i = 0;
+		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
+		HorizontalLayout h = new HorizontalLayout();
+		h.setWidth("100%");
+		h.setHeight("-1px");
+		listaH.add(h);
+		vPanel1.addComponent(listaH.get(i));
+		for(Object v : user.prop_video_de.getCollection())
+		{
+			Video vid;
+			vid = (Video) v;
+			Video2 video = new Video2(vid.getID());
+			video.categoria.setValue(String.valueOf(vid.getCategoria()));
+			video.titulo.setCaption(vid.getTitulo());
+			Date fecha = vid.getFechaCreacion();
+			video.fechasubida.setValue(fecha.toString());
+			video.usuario.setCaption(user.getNombre());
+			video.etiqueta.setValue(vid.getEtiqueta());
+			listaH.get(i).addComponent(video);
+			cont++;
+			if(cont == 4) {
+				HorizontalLayout h1 = new HorizontalLayout();
+				h1.setWidth("100%");
+				h1.setHeight("-1px");
+				listaH.add(h1);
+				i++;
+				vPanel1.addComponent(listaH.get(i));
+				cont = 0;
+			}	
+		}
+	}
+	
+	public void cargarListasPropiasR() {
+		Usuario user;
+		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+		if(registrado == null) {
+			Usuario admin = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
+			user = ur.cargarDatosUsuario(admin.getID());
+		} else {
+			user = ur.cargarDatosUsuario(registrado.getID());
+		}
+		vPanel1.removeAllComponents();
+		int cont = 0, i = 0;
+		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
+		HorizontalLayout h = new HorizontalLayout();
+		h.setWidth("100%");
+		h.setHeight("-1px");
+		listaH.add(h);
+		vPanel1.addComponent(listaH.get(i));
+		for(Object l : user.prop_de.getCollection())
+		{
+			Lista_De_Reproduccion lis;
+			lis = (Lista_De_Reproduccion) l;
+			Lista_De_Reproduccion2 lista = new Lista_De_Reproduccion2(lis.getID());
+			lista.nombreLista.setValue(lis.getTitulo());
+			lista.vBorrar.setVisible(false);
+			lista.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+			lista.setWidth("270px");
+			lista.setHeight("270px");
+			listaH.get(i).addComponent(lista);
+			cont++;
+			if(cont == 5) {
+				HorizontalLayout h1 = new HorizontalLayout();
+				h1.setWidth("100%");
+				h1.setHeight("-1px");
+				listaH.add(h1);
+				i++;
+				vPanel1.addComponent(listaH.get(i));
+				cont = 0;
+			}	
+		}
+	}
+	
+	public void cargarSuscripcionesPropiasR() {
+		vPanel1.removeAllComponents();
+	}
+	
+	public void cargarSuscriptoresPropiosR() {
+		vPanel1.removeAllComponents();
 	}
 }

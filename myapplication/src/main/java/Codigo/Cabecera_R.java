@@ -67,28 +67,12 @@ public class Cabecera_R extends Cabecera_R_ventana{
 				if(admon == null)
 				{
 					Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-					try {
-						MyUI.getCurrent().getNavigator().addView("Perfil_Propio_R", new Perfil_Propio_R());
-						
-					} catch (PersistentException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					MyUI.getCurrent().getNavigator().addView("Perfil_Propio_R", new Perfil_Propio_R());
 					UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_R");
-				}
-				else 
-				{
-					try {
-						MyUI.getCurrent().getNavigator().addView("Perfil_Propio_A", new Perfil_Propio_A());
-						
-					} catch (PersistentException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+				}else {
+					MyUI.getCurrent().getNavigator().addView("Perfil_Propio_A", new Perfil_Propio_A());
 					UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_A");
 				}
-				
-				
 			}
 		});
 		

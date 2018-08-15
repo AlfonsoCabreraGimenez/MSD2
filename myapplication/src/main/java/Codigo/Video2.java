@@ -104,12 +104,10 @@ public class Video2 extends Video2_ventana{
 					idUs = admon.getID();
 				}
 				esVideoPropio = videoPropio(id,idUs);
-				if(esVideoPropio == false)
-				{
+				if(esVideoPropio == false) {
 					Video vid;
 					vid = ur.cargarDatosVideo(id);
-					if(admon == null && reg != null)
-					{
+					if(admon == null && reg != null) {
 						MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno_R", new Perfil_Ajeno_R(vid.getUsuario_video().getID()));
 						UI.getCurrent().getNavigator().navigateTo("Perfil_Ajeno_R");
 					
@@ -119,34 +117,18 @@ public class Video2 extends Video2_ventana{
 						UI.getCurrent().getNavigator().navigateTo("Perfil_Ajeno_A");
 					
 					}
-					if(admon == null && reg == null){
+					if(admon == null && reg == null) {
 						//IR A PAG Perfil Ajeno
 						MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno", new Perfil_Ajeno(vid.getUsuario_video().getID()));
 						UI.getCurrent().getNavigator().navigateTo("Perfil_Ajeno");
 					}
-				
-				} 
-				else 
-				{
+				} else {
 					//IR A PAG PERFIL PROPIO ---- DIFERENCIAR ADMIN DE REGISTRADO
-					if(admon == null)
-					{
-						try {
-							MyUI.getCurrent().getNavigator().addView("Perfil_Propio_R", new Perfil_Propio_R());
-						} catch (PersistentException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+					if(admon == null){
+						MyUI.getCurrent().getNavigator().addView("Perfil_Propio_R", new Perfil_Propio_R());
 						UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_R");
-					} 
-					else 
-					{
-						try {
-							MyUI.getCurrent().getNavigator().addView("Perfil_Propio_A", new Perfil_Propio_A());
-						} catch (PersistentException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+					} else {
+						MyUI.getCurrent().getNavigator().addView("Perfil_Propio_A", new Perfil_Propio_A());
 						UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_A");
 					}
 				}

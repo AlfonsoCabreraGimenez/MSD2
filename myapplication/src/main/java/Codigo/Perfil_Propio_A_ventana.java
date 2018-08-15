@@ -43,15 +43,19 @@ public class Perfil_Propio_A_ventana extends VerticalLayout {
 	protected Button modificarDatos;
 	protected VerticalLayout vDatosPerfil;
 	protected HorizontalLayout hApartados;
+	protected HorizontalLayout hVideos;
 	protected Label videos;
+	protected HorizontalLayout hListas;
 	protected Label listaReproduccion;
+	protected HorizontalLayout hSuscripciones;
 	protected Label suscripciones;
+	protected HorizontalLayout hSuscriptores;
 	protected Label suscriptores;
+	protected HorizontalLayout hUsuarios;
 	protected Label registrados;
 	protected VerticalLayout vPanel;
 	protected Panel panel;
 	protected VerticalLayout vPanel1;
-	protected HorizontalLayout hPanel;
 
 	public Perfil_Propio_A_ventana() {
 		Design.read(this);
