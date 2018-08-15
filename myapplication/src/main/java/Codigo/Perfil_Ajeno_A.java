@@ -21,6 +21,7 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 	public Usuario2 _unnamed_Usuario2_;
 	public Video2 _unnamed_Video2_;
 	public Conf_Eliminar_Usuario Conf_Eliminar_Usuario_ = new Conf_Eliminar_Usuario();
+
 	
 	public Perfil_Ajeno_A(int idUser){
 		inicializar();
@@ -84,7 +85,8 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 			public void buttonClick(ClickEvent event) {
 				//Eliminar Videos
 				//Eliminar ListaR
-				admin.eliminarUsuario(7);
+
+				admin.eliminarUsuario(idUser);
 				popup.close();
 				
 			}

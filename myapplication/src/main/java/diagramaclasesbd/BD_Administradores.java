@@ -69,4 +69,21 @@ public class BD_Administradores {
 		}
 		return listado;
 	}
+
+	public void eliminarUsuario(int aID) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		try {
+			diagramaclasesbd.Usuario u = diagramaclasesbd.UsuarioDAO.getUsuarioByORMID(aID);
+
+			/*HAY QUE BORRAR TAMBN LISTAS Y VIDEOS
+			 * 
+			 */
+
+			
+			t.commit();
+		} catch (Exception e) {
+			t.rollback();
+		}
+		
+	}
 }

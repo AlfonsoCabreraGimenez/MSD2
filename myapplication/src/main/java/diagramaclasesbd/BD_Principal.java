@@ -214,7 +214,7 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 
 	public void eliminarUsuario(int aID) {
 		try {
-			registrados.eliminarUsuario(aID);
+			admin.eliminarUsuario(aID);
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
