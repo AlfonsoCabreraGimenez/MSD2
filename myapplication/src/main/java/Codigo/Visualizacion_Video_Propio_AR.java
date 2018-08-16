@@ -132,7 +132,7 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 			Usuario us = (Usuario) coment.getUsuario_comentario();
 			com.apodo.setCaption(us.getApodo());
 			com.avatar.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
-			com.bComentario.setVisible(false);
+			com.bEliminarComentario1.setVisible(true);
 		}
 	}
 }

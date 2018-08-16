@@ -70,7 +70,7 @@ public class BD_Administradores {
 		return listado;
 	}
 
-	public void eliminarUsuario(int aID) throws PersistentException {
+	public Boolean eliminarUsuario(int aID) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
 			diagramaclasesbd.Usuario u = diagramaclasesbd.UsuarioDAO.getUsuarioByORMID(aID);
@@ -83,9 +83,10 @@ public class BD_Administradores {
 			UsuarioDAO.delete(u);
 			
 			t.commit();
+			
 		} catch (Exception e) {
 			t.rollback();
 		}
-		
+		return true;
 	}
 }

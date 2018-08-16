@@ -16,6 +16,7 @@ import com.vaadin.ui.Button.ClickListener;
 import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Categoria;
 import diagramaclasesbd.Comentario;
+import diagramaclasesbd.Registrado;
 import diagramaclasesbd.Usuario;
 
 public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
@@ -130,14 +131,29 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 	public void cargarListaComentarios() {
 		List<Comentario> listC = new ArrayList<Comentario>();
 		vComentario.removeAllComponents();
+		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
 		for(Comentario coment : ur.cargarListaComentarios(identVideo)){
-			Comentario2 com = new Comentario2();
-			vComentario.addComponent(com);
-			com.areaComentario.setValue(coment.getDescripcion());
-			Usuario us = (Usuario) coment.getUsuario_comentario();
-			com.apodo.setCaption(us.getApodo());
-			com.avatar.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
-			com.bComentario.setVisible(false);
+			//Hay que ver si es comentario propio y añadir el boton de eliminar
+			if(registrado.es_escrito.contains(coment) == true)
+			{
+				Comentario2 com = new Comentario2();
+				vComentario.addComponent(com);
+				com.areaComentario.setValue(coment.getDescripcion());
+				Usuario us = (Usuario) coment.getUsuario_comentario();
+				com.apodo.setCaption(us.getApodo());
+				com.avatar.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+				com.bEliminarComentario1.setVisible(true);
+			} 
+			else 
+			{
+				Comentario2 com = new Comentario2();
+				vComentario.addComponent(com);
+				com.areaComentario.setValue(coment.getDescripcion());
+				Usuario us = (Usuario) coment.getUsuario_comentario();
+				com.apodo.setCaption(us.getApodo());
+				com.avatar.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+				com.bEliminarComentario1.setVisible(false);
+			}
 		}
 	}
 }

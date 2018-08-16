@@ -27,7 +27,6 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		} catch (PersistentException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 	public void borrarLista(int aID) {
@@ -212,15 +211,15 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		}
 	}
 
-	public void eliminarUsuario(int aID) {
+	public Boolean eliminarUsuario(int aID) {
 		//Eliminar primero todas las listas aqui y devolver un boolean si se han borrado (true)
 		try {
-			admin.eliminarUsuario(aID);
+			return admin.eliminarUsuario(aID);
 		} catch (PersistentException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
+		return false;
 	}
 
 	public List<diagramaclasesbd.Video> cargar_Videos_Masmegusta() {

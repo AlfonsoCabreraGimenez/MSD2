@@ -16,6 +16,7 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
 import Codigo.Comentario_Video_Ajeno_A_Propio_AR;
+import diagramaclasesbd.Administrador;
 import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Categoria;
 import diagramaclasesbd.Comentario;
@@ -126,14 +127,28 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 	public void cargarListaComentarios() {
 		List<Comentario> listC = new ArrayList<Comentario>();
 		vComentario.removeAllComponents();
+		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 		for(Comentario coment : adm.cargarListaComentarios(identVideo)){
+			if(admon.es_escrito.contains(coment)==true)
+			{
+				Comentario2 com = new Comentario2();
+				vComentario.addComponent(com);
+				com.areaComentario.setValue(coment.getDescripcion());
+				Usuario us = (Usuario) coment.getUsuario_comentario();
+				com.apodo.setCaption(us.getApodo());
+				com.avatar.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+				com.bEliminarComentario1.setVisible(true);
+			} 
+			else 
+			{
 			Comentario2 com = new Comentario2();
 			vComentario.addComponent(com);
 			com.areaComentario.setValue(coment.getDescripcion());
 			Usuario us = (Usuario) coment.getUsuario_comentario();
 			com.apodo.setCaption(us.getApodo());
 			com.avatar.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
-			com.bComentario.setVisible(false);
+			com.bEliminarComentario1.setVisible(false);
+			}
 		}
 	}
 }

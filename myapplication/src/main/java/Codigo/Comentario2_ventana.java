@@ -28,7 +28,7 @@ public class Comentario2_ventana extends VerticalLayout {
 	protected Link apodo;
 	protected HorizontalLayout hComentario;
 	protected TextArea areaComentario;
-	protected Button bComentario;
+	protected Button bEliminarComentario1;
 
 	public Comentario2_ventana() {
 		Design.read(this);
