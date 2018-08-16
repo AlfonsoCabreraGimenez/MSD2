@@ -74,11 +74,13 @@ public class BD_Administradores {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
 			diagramaclasesbd.Usuario u = diagramaclasesbd.UsuarioDAO.getUsuarioByORMID(aID);
-
+			
 			/*HAY QUE BORRAR TAMBN LISTAS Y VIDEOS
 			 * 
 			 */
-
+			//Primer error en lista de reproduccion
+			
+			UsuarioDAO.delete(u);
 			
 			t.commit();
 		} catch (Exception e) {
