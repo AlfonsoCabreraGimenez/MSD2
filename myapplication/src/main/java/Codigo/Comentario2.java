@@ -2,16 +2,19 @@ package Codigo;
 
 import com.vaadin.event.MouseEvents;
 import com.vaadin.ui.UI;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 
 import GY.MyUI;
 import diagramaclasesbd.Administrador;
+import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Registrado;
 
 public class Comentario2 extends Comentario2_ventana {
 	//HERENCIA CAMBIADA
 	//private TextArea _cuerpoTA;
 	public Visualizacion_Video_Comun_Registrado _unnamed_Visualizacion_Video_Comun_Registrado_;
-	
+	iUsuario_Registrado ur = new BD_Principal();
 	public Comentario2() {
 		avatar.addClickListener(new MouseEvents.ClickListener() {
 			
@@ -30,5 +33,8 @@ public class Comentario2 extends Comentario2_ventana {
 				}
 			}
 		});
+		
+	
+
 	}
 }

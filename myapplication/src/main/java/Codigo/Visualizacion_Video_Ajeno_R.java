@@ -132,11 +132,12 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		List<Comentario> listC = new ArrayList<Comentario>();
 		vComentario.removeAllComponents();
 		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+		Comentario2 com = new Comentario2();
 		for(Comentario coment : ur.cargarListaComentarios(identVideo)){
 			//Hay que ver si es comentario propio y añadir el boton de eliminar
 			if(registrado.es_escrito.contains(coment) == true)
 			{
-				Comentario2 com = new Comentario2();
+				//Comentario2 com = new Comentario2();
 				vComentario.addComponent(com);
 				com.areaComentario.setValue(coment.getDescripcion());
 				Usuario us = (Usuario) coment.getUsuario_comentario();
@@ -146,7 +147,7 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 			} 
 			else 
 			{
-				Comentario2 com = new Comentario2();
+				//Comentario2 com = new Comentario2();
 				vComentario.addComponent(com);
 				com.areaComentario.setValue(coment.getDescripcion());
 				Usuario us = (Usuario) coment.getUsuario_comentario();
@@ -155,5 +156,6 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 				com.bEliminarComentario1.setVisible(false);
 			}
 		}
+		
 	}
 }
