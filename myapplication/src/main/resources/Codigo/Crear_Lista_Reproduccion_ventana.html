@@ -6,8 +6,8 @@
   <meta name="vaadin-version" content="8.0.5">
  </head>
  <body>
-  <vaadin-vertical-layout size-full>
-   <vaadin-vertical-layout size-full _id="vCrearLista">
+  <vaadin-vertical-layout size-full margin="false">
+   <vaadin-vertical-layout size-full margin="false" _id="vCrearLista">
     <vaadin-label plain-text :center>
       Crear lista de reproducción 
     </vaadin-label>
@@ -20,15 +20,7 @@
       Seleccione el/los video/s que desea añadir a la lista de reproducción: 
     </vaadin-label>
     <vaadin-panel height="350px" _id="panel">
-     <vaadin-vertical-layout _id="v1">
-      <vaadin-horizontal-layout width-full _id="h1">
-       <vaadin-vertical-layout size-auto margin="false" _id="v2">
-        <vaadin-vertical-layout size-auto margin="false" _id="v3" :center>
-         <vaadin-check-box _id="check"></vaadin-check-box>
-        </vaadin-vertical-layout>
-       </vaadin-vertical-layout>
-      </vaadin-horizontal-layout>
-     </vaadin-vertical-layout>
+     <vaadin-vertical-layout _id="vVideosTodos"></vaadin-vertical-layout>
     </vaadin-panel>
     <vaadin-horizontal-layout width-full>
      <vaadin-button description="Cancelar" style-name="danger" plain-text _id="cancelar">
