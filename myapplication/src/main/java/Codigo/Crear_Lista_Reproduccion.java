@@ -42,19 +42,12 @@ public class Crear_Lista_Reproduccion extends Crear_Lista_Reproduccion_ventana{
 		int cont = 0,i = 0,j = 0;
 		vVideosTodos.removeAllComponents();
 		TipoBusqueda aTipoBusqueda = TipoBusqueda.titulo;
-		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
-		List<Video> listB = new ArrayList<Video>();
-		if(admon == null) {
-			listB = ur.buscar(buscador, aTipoBusqueda);
-		} else {
-			listB = admin.buscar(buscador, aTipoBusqueda);
-		}
 		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
 		HorizontalLayout h = new HorizontalLayout();
 		h.setWidth("100%");
 		h.setHeight("100%");
 		listaH.add(h);
-		for(Video v : listB) {
+		for(Video v : ur.buscar(buscador, aTipoBusqueda)) {
 			Video2 videoR = new Video2(v.getID());
 			videoR.vVerticalVideoGeneral.addComponentAsFirst(new Label(v.getTitulo()));
 			videoR.titulo.setVisible(false);
@@ -68,6 +61,7 @@ public class Crear_Lista_Reproduccion extends Crear_Lista_Reproduccion_ventana{
 			check.add(c);
 			videoR.vVideoGeneral.addComponent(check.get(j));
 			listaH.get(i).addComponent(videoR);
+			vVideosTodos.addComponent(listaH.get(i));
 			cont++;
 			if(cont == 2) {
 				HorizontalLayout h1 = new HorizontalLayout();

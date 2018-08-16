@@ -51,7 +51,7 @@ public class Anadir_a_ListaReproduccion extends Anadir_a_ListaReproduccion_venta
 	
 	public void cargarListaReproduccionPropia() {
 		int cont = 0,i = 0,j = 0;
-		//vListasTodas.removeAllComponents();
+		vListasTodas.removeAllComponents();
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 		Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
 		List<Lista_De_Reproduccion> listPropia = new ArrayList<Lista_De_Reproduccion>();
@@ -82,6 +82,7 @@ public class Anadir_a_ListaReproduccion extends Anadir_a_ListaReproduccion_venta
 			check.add(c);
 			listaR.vListaRep2.addComponent(check.get(j));
 			listaH.get(i).addComponent(listaR.vListaRep);
+			vListasTodas.addComponent(listaH.get(i));
 			cont++;
 			if(cont == 2) {
 				HorizontalLayout h1 = new HorizontalLayout();
