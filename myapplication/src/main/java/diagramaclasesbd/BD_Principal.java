@@ -21,12 +21,14 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	public BD_Registrados registrados = new BD_Registrados();
 	public BD_Administradores admin = new BD_Administradores();
 
-	public void anadirAListaRep(int aID,int idLista) {
+	public boolean anadirAListaRep(int aID,int idLista) {
+		boolean anadido = false;
 		try {
-			listas.anadirAListaRep(aID, idLista);
+			anadido = listas.anadirAListaRep(aID, idLista);
 		} catch (PersistentException e) {
 			e.printStackTrace();
 		}
+		return anadido;
 	}
 
 	public void borrarLista(int aID) {
@@ -123,9 +125,9 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		return null;
 	}
 
-	public void crearListaRep(String aTitulo, List aVideo) {
+	public void crearListaRep(String aTitulo, List<Video> aVideo) {
 		try {
-			listas.crearListaRep(aTitulo, null);
+			listas.crearListaRep(aTitulo, aVideo);
 		} catch (PersistentException e) {
 			e.printStackTrace();
 		}

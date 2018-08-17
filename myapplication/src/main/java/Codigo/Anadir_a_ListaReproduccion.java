@@ -17,6 +17,9 @@ import com.vaadin.ui.Notification;
 import com.vaadin.ui.RadioButtonGroup;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.Notification.Type;
 
 import Codigo.Lista_De_Reproduccion2;
 import diagramaclasesbd.Administrador;
@@ -38,14 +41,31 @@ public class Anadir_a_ListaReproduccion extends Anadir_a_ListaReproduccion_venta
 	public List<CheckBox> check = new ArrayList<CheckBox>();
 	public Anadir_a_ListaReproduccion(int idVideo) {
 		this.identVideo = idVideo;
+		
+		confirmar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				anadirAListaRep();
+			}
+		});
 	}
 
 	public void anadirAListaRep() {
+		int idLista = -1;
+		boolean anadido = false;
 		for(CheckBox c : check) {
 			if(c.getValue() == true) {
-				int idLista = Integer.parseInt(c.getId());
-				ur.anadirAListaRep(this.identVideo, idLista);
+				idLista = Integer.parseInt(c.getId());
 			}
+		}
+		if(idLista == -1) {
+			Notification.show("¡No se ha agregado el video! "
+					+ "Debe seleccionar una lista de reproduccion", Type.WARNING_MESSAGE);
+		} else {
+			ur.anadirAListaRep(this.identVideo, idLista);
+		}
+		if(!anadido) {
+			Notification.show("La lista de reproduccion "
+					+ "seleccionada ya contiene este video", Type.WARNING_MESSAGE);
 		}
 	}
 	

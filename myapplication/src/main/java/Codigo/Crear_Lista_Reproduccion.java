@@ -13,6 +13,7 @@ import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.UI;
 
 import diagramaclasesbd.Administrador;
@@ -35,6 +36,12 @@ public class Crear_Lista_Reproduccion extends Crear_Lista_Reproduccion_ventana{
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
 				buscarVideo(tBuscar.getValue());
+			}
+		});
+		
+		confirmar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				crearListaRep();
 			}
 		});
 	}
@@ -77,7 +84,19 @@ public class Crear_Lista_Reproduccion extends Crear_Lista_Reproduccion_ventana{
 	}
 
 	public void crearListaRep() {
+		List<Video> listaSelec = new ArrayList<Video>();
 		String titulo = tTitulo.getValue();
-		ur.crearListaRep(titulo, null);
+		for(CheckBox c : check) {
+			if(c.getValue()) {
+				Video v = ur.cargarDatosVideo(Integer.parseInt(c.getId()));
+				listaSelec.add(v);
+			}
+		}
+		if(listaSelec.size() == 0) {
+			Notification.show("¡No se ha creado la lista! "
+					+ "Debe buscar y seleccionar almenos un video", Type.WARNING_MESSAGE);
+		} else {
+			ur.crearListaRep(titulo, listaSelec);
+		}
 	}
 }

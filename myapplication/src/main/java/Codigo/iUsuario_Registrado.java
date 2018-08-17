@@ -12,7 +12,7 @@ import diagramaclasesbd.Video;
 public interface iUsuario_Registrado {
 	
 
-	public void anadirAListaRep(int aID, int idLista);
+	public boolean anadirAListaRep(int aID, int idLista);
 
 	public void borrarLista(int aID);
 
@@ -40,7 +40,7 @@ public interface iUsuario_Registrado {
 
 	public List<Comentario> cargarListaComentarios(int aID);
 
-	public void crearListaRep(String aTitulo, List aVideo);
+	public void crearListaRep(String aTitulo, List<Video> aVideo);
 
 	public boolean darQuitarMegusta(int aID);
 

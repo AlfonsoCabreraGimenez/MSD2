@@ -131,7 +131,6 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 		
 		clr.confirmar.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				clr.crearListaRep();
 				popup2.close();
 			}
 		});

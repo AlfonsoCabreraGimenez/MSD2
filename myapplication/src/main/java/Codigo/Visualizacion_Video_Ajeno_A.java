@@ -88,9 +88,7 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 		//ACEPTAR DE AGREGAR A LISTA DE REPRO
 		anl.confirmar.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				anl.anadirAListaRep();
 				popup.close();
-					
 			}
 		});
 		//CANCELAR LISTA REPRO

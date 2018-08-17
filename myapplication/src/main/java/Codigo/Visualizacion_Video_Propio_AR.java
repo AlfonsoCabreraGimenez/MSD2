@@ -95,7 +95,6 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 		//ACEPTAR DE AGREGAR A LISTA DE REPRO
 		anl.confirmar.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				anl.anadirAListaRep();
 				popup.close();
 				
 			}
