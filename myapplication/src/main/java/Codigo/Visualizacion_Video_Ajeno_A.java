@@ -2,6 +2,7 @@ package Codigo;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.EventListener;
 import java.util.List;
 import java.util.Vector;
 
@@ -27,16 +28,22 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 	//private Boton _borrarVideoAjenoB;
 	Window popup = new Window();
 	VerticalLayout subContent = new VerticalLayout();
+	
+	Window popup2 = new Window();
+	VerticalLayout subContent2 = new VerticalLayout();
+	
 	public Video2 _unnamed_Video2_;
 	public Vector<Comentario_Video_Ajeno_A_Propio_AR> _unnamed_Comentario_Video_Ajeno_A_Propio_AR_ = new Vector<Comentario_Video_Ajeno_A_Propio_AR>();
 	Visualizacion_Video_Ajeno visA = new Visualizacion_Video_Ajeno();
 	iAdministrador2 adm = new BD_Principal();
-
+	
 	diagramaclasesbd.Video videoA;
 	int identVideo = -1;
+	
 	public Visualizacion_Video_Ajeno_A(int idVideo){
 		Anadir_a_ListaReproduccion anl = new Anadir_a_ListaReproduccion(idVideo);
 		cargarDatosVideo(idVideo);
+		
 		this.identVideo = idVideo;
 		
 		hCabeceraGeneral2.addComponent(cc.horizontalInicio);
@@ -123,22 +130,35 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 		cargarListaComentarios();
 	}
 	public void cargarListaComentarios() {
+		Conf_Eliminar_Comentario confElimi = new Conf_Eliminar_Comentario();
 		List<Comentario> listC = new ArrayList<Comentario>();
 		vComentario.removeAllComponents();
 		Comentario2 com = new Comentario2();
+		
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+		Usuario administrador = adm.cargarDatosUsuario(admon.getID());
+		
 		for(Comentario coment : adm.cargarListaComentarios(identVideo)){
-			if(admon.es_escrito.contains(coment) == true)
-			{
+			
+			/*	vComentario.addComponent(listaComentarios.get(i));
+				listaComentarios.get(i).areaComentario.setValue(coment.getDescripcion());
+				Usuario us = (Usuario) coment.getUsuario_comentario();
+				listaComentarios.get(i).apodo.setCaption(us.getApodo());
+				listaComentarios.get(i).avatar.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+				listaComentarios.get(i).bEliminarComentario1.setVisible(true);*/
 				//Comentario2 com = new Comentario2();
+			
 				vComentario.addComponent(com);
 				com.areaComentario.setValue(coment.getDescripcion());
 				Usuario us = (Usuario) coment.getUsuario_comentario();
 				com.apodo.setCaption(us.getApodo());
 				com.avatar.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
 				com.bEliminarComentario1.setVisible(true);
-			} 
-			else 
+				//listaComentarios.add(com);
+				
+				
+				
+			/*else 
 			{
 			//Comentario2 com = new Comentario2();
 			vComentario.addComponent(com);
@@ -147,7 +167,91 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 			com.apodo.setCaption(us.getApodo());
 			com.avatar.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
 			com.bEliminarComentario1.setVisible(false);
-			}
+			}*/
+			
 		}
+		
+		com.bEliminarComentario1.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				
+				popup2.setContent(subContent2);
+				subContent2.addComponent(confElimi.vGeneralEliminarComentario);
+				popup2.center();
+				popup2.setWidth("720px");
+				popup2.setModal(true);
+				UI.getCurrent().addWindow(popup2);
+				Notification.show(String.valueOf(com.getId()));
+				
+
+			}
+		});
+		
+		confElimi.aceptar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				//adm.eliminarComentario(coment.getID());
+				popup2.close();
+			}
+		});
+		
+		confElimi.cancelar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup2.close();
+				
+			}
+		});
+		
+		/*com.bEliminarComentario1.addClickListener(new ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+				
+				popup2.setContent(subContent2);
+				subContent2.addComponent(confElimi.vGeneralEliminarComentario);
+				popup2.center();
+				popup2.setWidth("720px");
+				popup2.setModal(true);
+				UI.getCurrent().addWindow(popup2);
+			}
+		});
+		
+		confElimi.aceptar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				//adm.eliminarComentario(aID);
+				
+			}
+		});
+		
+		confElimi.cancelar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup2.close();
+			}
+		});
+		
+		/*		añadirAListaRepro.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				popup.setContent(subContent);
+				subContent.addComponent(anl.vVerticalAnadir);
+				popup.center();
+				popup.setWidth("720px");
+				//popup.setClosable(false);
+				popup.setModal(true);
+				UI.getCurrent().addWindow(popup);
+				anl.cargarListaReproduccionPropia();
+			}
+		});
+		//ACEPTAR DE AGREGAR A LISTA DE REPRO
+		anl.confirmar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup.close();
+			}
+		});
+		//CANCELAR LISTA REPRO
+		anl.cancelar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup.close();
+			}
+		});*/
+		
 	}
 }

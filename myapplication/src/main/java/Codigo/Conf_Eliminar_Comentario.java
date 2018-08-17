@@ -1,6 +1,6 @@
 package Codigo;
 
-public class Conf_Eliminar_Comentario {
+public class Conf_Eliminar_Comentario extends Conf_Eliminar_Comentario_ventana{
 	/*private Label _confirmarL;
 	private Boton _aceptarB;
 	private Boton _cancelarB;*/

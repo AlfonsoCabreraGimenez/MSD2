@@ -131,9 +131,10 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		vComentario.removeAllComponents();
 		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
 		Comentario2 com = new Comentario2();
+		Usuario regis = ur.cargarDatosUsuario(registrado.getID());
 		for(Comentario coment : ur.cargarListaComentarios(identVideo)){
 			//Hay que ver si es comentario propio y añadir el boton de eliminar
-			if(registrado.es_escrito.contains(coment) == true)
+			if(regis.es_escrito.contains(coment) == true)
 			{
 				//Comentario2 com = new Comentario2();
 				vComentario.addComponent(com);

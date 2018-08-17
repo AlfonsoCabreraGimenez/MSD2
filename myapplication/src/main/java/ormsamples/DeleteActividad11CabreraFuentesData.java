@@ -21,6 +21,7 @@ public class DeleteActividad11CabreraFuentesData {
 			diagramaclasesbd.Comentario ldiagramaclasesbdComentario = diagramaclasesbd.ComentarioDAO.loadComentarioByQuery(null, null);
 			// Delete the persistent object
 			diagramaclasesbd.ComentarioDAO.delete(ldiagramaclasesbdComentario);
+
 			diagramaclasesbd.Usuario ldiagramaclasesbdUsuario = diagramaclasesbd.UsuarioDAO.loadUsuarioByQuery(null, null);
 			// Delete the persistent object
 			diagramaclasesbd.UsuarioDAO.delete(ldiagramaclasesbdUsuario);
