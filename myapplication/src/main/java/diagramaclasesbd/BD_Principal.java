@@ -150,7 +150,7 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 
 	public void eliminarComentario(int aID) {
 		try {
-			admin.eliminarUsuario(aID);
+			comentarios.eliminarComentario(aID);
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

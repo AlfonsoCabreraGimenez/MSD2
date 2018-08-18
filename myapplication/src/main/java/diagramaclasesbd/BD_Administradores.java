@@ -89,17 +89,4 @@ public class BD_Administradores {
 		}
 		return true;
 	}
-	
-	public void eliminarComentario(int aID) throws PersistentException
-	{
-		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
-			try
-			{
-				Comentario coment = ComentarioDAO.loadComentarioByORMID(aID);
-				ComentarioDAO.delete(coment);
-				t.commit();
-			} catch (Exception e) {
-				t.rollback();
-			}
-	}
 }

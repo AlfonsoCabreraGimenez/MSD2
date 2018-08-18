@@ -24,6 +24,9 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 	Window popup = new Window();
 	VerticalLayout subContent = new VerticalLayout();
 	
+	Window popup2 = new Window();
+	VerticalLayout subContent2 = new VerticalLayout();
+	
 	public Video2 _unnamed_Video2_;
 	public Modificar_Video _unnamed_Modificar_Video_;
 	public Vector<Comentario_Video_Ajeno_A_Propio_AR> _unnamed_Comentario_Video_Ajeno_A_Propio_AR_ = new Vector<Comentario_Video_Ajeno_A_Propio_AR>();
@@ -60,8 +63,8 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 		cnr.iniciarSesionRegistrarse.setVisible(false);
 		propVideo.setVisible(true);
 		meGusta.setVisible(false);
-		escribirComentario.setVisible(true);
-		comentar.setVisible(true);
+		escribirComentario.setVisible(false);
+		comentar.setVisible(false);
 		htituloComentario.setVisible(true);
 		vComentario.setVisible(true);
 		
@@ -131,7 +134,32 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 			Usuario us = (Usuario) coment.getUsuario_comentario();
 			com.apodo.setCaption(us.getApodo());
 			com.avatar.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+			com.bEliminarComentario1.setId(String.valueOf(coment.getID()));
 			com.bEliminarComentario1.setVisible(true);
+			
+			com.bEliminarComentario1.addClickListener(new ClickListener() {
+				public void buttonClick(ClickEvent event) {
+					Conf_Eliminar_Comentario confElimi = new Conf_Eliminar_Comentario(com.bEliminarComentario1.getId());
+					popup2.setContent(subContent2);
+					subContent2.addComponent(confElimi.vGeneralEliminarComentario);
+					popup2.center();
+					popup2.setWidth("720px");
+					popup2.setModal(true);
+					UI.getCurrent().addWindow(popup2);
+					
+					confElimi.aceptar.addClickListener(new ClickListener() {
+						public void buttonClick(ClickEvent event) {
+							popup2.close();
+							cargarListaComentarios();
+						}
+					});
+					confElimi.cancelar.addClickListener(new ClickListener() {
+						public void buttonClick(ClickEvent event) {
+							popup2.close();
+						}
+					});
+				}
+			});
 		}
 	}
 }

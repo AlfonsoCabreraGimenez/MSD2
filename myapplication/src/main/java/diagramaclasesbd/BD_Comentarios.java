@@ -15,8 +15,19 @@ public class BD_Comentarios {
 	public BD_Principal _bd_prin_coment;
 	public Vector<Comentario> _contiene_coment = new Vector<Comentario>();
 
-	public void eliminarComentario(int aID) {
-		throw new UnsupportedOperationException();
+	public void eliminarComentario(int aID) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		try	{
+			Comentario coment = ComentarioDAO.getComentarioByORMID(aID);
+			Video video = coment.getVideo();
+			Usuario user = coment.getUsuario_comentario();
+			video.comentarios.remove(coment);
+			user.es_escrito.remove(coment);
+			ComentarioDAO.delete(coment);
+			t.commit();
+		} catch (Exception e) {
+			t.rollback();
+		}
 	}
 
 	public List cargarListaComentarios(int aID) throws PersistentException {
