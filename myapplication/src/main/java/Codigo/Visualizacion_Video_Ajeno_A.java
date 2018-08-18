@@ -133,7 +133,7 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 	public void cargarListaComentarios() {
 		vComentario.removeAllComponents();
 		for(Comentario coment : adm.cargarListaComentarios(identVideo)){
-			Comentario2 com = new Comentario2(coment.getID());
+			Comentario2 com = new Comentario2(coment.getID(),identVideo);
 			vComentario.addComponent(com);
 			com.areaComentario.setValue(coment.getDescripcion());
 			Usuario us = (Usuario) coment.getUsuario_comentario();
