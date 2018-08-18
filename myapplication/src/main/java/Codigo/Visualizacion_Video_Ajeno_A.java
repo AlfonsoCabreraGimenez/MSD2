@@ -133,38 +133,13 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 	public void cargarListaComentarios() {
 		vComentario.removeAllComponents();
 		for(Comentario coment : adm.cargarListaComentarios(identVideo)){
-			Comentario2 com = new Comentario2();
+			Comentario2 com = new Comentario2(coment.getID());
 			vComentario.addComponent(com);
 			com.areaComentario.setValue(coment.getDescripcion());
 			Usuario us = (Usuario) coment.getUsuario_comentario();
 			com.apodo.setCaption(us.getApodo());
 			com.avatar.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
-			com.bEliminarComentario1.setId(String.valueOf(coment.getID()));
 			com.bEliminarComentario1.setVisible(true);
-			
-			com.bEliminarComentario1.addClickListener(new ClickListener() {
-				public void buttonClick(ClickEvent event) {
-					Conf_Eliminar_Comentario confElimi = new Conf_Eliminar_Comentario(com.bEliminarComentario1.getId());
-					popup2.setContent(subContent2);
-					subContent2.addComponent(confElimi.vGeneralEliminarComentario);
-					popup2.center();
-					popup2.setWidth("720px");
-					popup2.setModal(true);
-					UI.getCurrent().addWindow(popup2);
-					
-					confElimi.aceptar.addClickListener(new ClickListener() {
-						public void buttonClick(ClickEvent event) {
-							popup2.close();
-							cargarListaComentarios();
-						}
-					});
-					confElimi.cancelar.addClickListener(new ClickListener() {
-						public void buttonClick(ClickEvent event) {
-							popup2.close();
-						}
-					});
-				}
-			});
 		}
 	}
 }

@@ -14,10 +14,11 @@ public class Conf_Eliminar_Comentario extends Conf_Eliminar_Comentario_ventana{
 	public Comentario_Video_Ajeno_A_Propio_AR _unnamed_Comentario_Video_Ajeno_A_Propio_AR_;
 	
 	iUsuario_Registrado ur = new BD_Principal();
-	public Conf_Eliminar_Comentario(String idComent) {
+	
+	public Conf_Eliminar_Comentario(int idComent) {
 		aceptar.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				eliminarComentario(Integer.parseInt(idComent));
+				eliminarComentario(idComent);
 			}
 		});
 	}
