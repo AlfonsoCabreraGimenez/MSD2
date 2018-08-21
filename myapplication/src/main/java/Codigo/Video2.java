@@ -38,23 +38,14 @@ public class Video2 extends Video2_ventana{
 	
 	iUsuario_Registrado ur = new BD_Principal();
 	Modificar_Video mv = new Modificar_Video();
+	Conf_Eliminar_Video ev = new Conf_Eliminar_Video();
 	boolean videoPropio;
 	boolean esVideoPropio;
+	
+	
+	
 	public Video2(int id) {
-		//this.idVideo = id;
-		//IR A VISUALIZACION DE VIDEO
-		//DIFERENCIAR SI ES ADMIN O USER Y SI ES VIDEO PROPIO O NO
-		/*CREADO Metodo para ver si el video es propio o no*/
-		
-		
-		
-		
-		/*if(idVideo != -1)
-		{
-			videoPropio = ur.videoPropio(id);
-			
-		}*/
-		
+	
 		titulo.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				int iduser = -1;
@@ -161,9 +152,41 @@ public class Video2 extends Video2_ventana{
 				
 			}
 		});
+		//boton de eliminar video
+		eliminarVideo.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup.setContent(subContent);
+				subContent.addComponent(ev.vVerticalEliminarVideo);
+				popup.center();
+				popup.setWidth("720px");
+				//popup.setClosable(false);
+				popup.setModal(true);
+				UI.getCurrent().addWindow(popup);
+				
+				ev.aceptar.addClickListener(new ClickListener() {
+					public void buttonClick(ClickEvent event) {
+						ev.borrarVideo();
+						popup.close();
+					}
+				});
+				
+				ev.cancelar.addClickListener(new ClickListener() {
+					public void buttonClick(ClickEvent event) {
+						popup.close();
+						
+					}
+				});
+				
+			}
+		});
+
+		
 	}
 
 	public boolean videoPropio(int id, int iduser) {
 		return videoPropio = ur.videoPropio(id,iduser);
 	}
+	//Hacer aquí el eliminar video
+	
+	
 }
