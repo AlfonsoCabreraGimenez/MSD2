@@ -252,10 +252,82 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	}
 	
 	public void cargarSuscripcionesPropiasR() {
+		Usuario user;
+		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+		if(registrado == null) {
+			Usuario admin = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
+			user = ur.cargarDatosUsuario(admin.getID());
+		} else {
+			user = ur.cargarDatosUsuario(registrado.getID());
+		}
 		vPanel1.removeAllComponents();
+		int cont = 0, i = 0;
+		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
+		HorizontalLayout h = new HorizontalLayout();
+		h.setWidth("100%");
+		h.setHeight("-1px");
+		listaH.add(h);
+		vPanel1.addComponent(listaH.get(i));
+		for(Object u : user.suscripciones.getCollection()) {
+			Usuario us;
+			us = (Usuario) u;
+			Usuario2 usu = new Usuario2(us.getID());
+			usu.usuario.setCaption(us.getApodo());
+			usu.nSuscriptores.setValue("Nº Suscriptores: " + String.valueOf(us.suscriptores.size()));
+			usu.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+			usu.setHeight("-1px");
+			usu.setWidth("100%");
+			listaH.get(i).addComponent(usu);
+			cont++;
+			if(cont == 3) {
+				HorizontalLayout h1 = new HorizontalLayout();
+				h1.setWidth("100%");
+				h1.setHeight("-1px");
+				listaH.add(h1);
+				i++;
+				vPanel1.addComponent(listaH.get(i));
+				cont = 0;
+			}	
+		}
 	}
 	
 	public void cargarSuscriptoresPropiosR() {
+		Usuario user;
+		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+		if(registrado == null) {
+			Usuario admin = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
+			user = ur.cargarDatosUsuario(admin.getID());
+		} else {
+			user = ur.cargarDatosUsuario(registrado.getID());
+		}
 		vPanel1.removeAllComponents();
+		int cont = 0, i = 0;
+		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
+		HorizontalLayout h = new HorizontalLayout();
+		h.setWidth("100%");
+		h.setHeight("-1px");
+		listaH.add(h);
+		vPanel1.addComponent(listaH.get(i));
+		for(Object u : user.suscriptores.getCollection()) {
+			Usuario us;
+			us = (Usuario) u;
+			Usuario2 usu = new Usuario2(us.getID());
+			usu.usuario.setCaption(us.getApodo());
+			usu.nSuscriptores.setValue("Nº Suscriptores: " + String.valueOf(us.suscriptores.size()));
+			usu.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+			usu.setHeight("-1px");
+			usu.setWidth("100%");
+			listaH.get(i).addComponent(usu);
+			cont++;
+			if(cont == 3) {
+				HorizontalLayout h1 = new HorizontalLayout();
+				h1.setWidth("100%");
+				h1.setHeight("-1px");
+				listaH.add(h1);
+				i++;
+				vPanel1.addComponent(listaH.get(i));
+				cont = 0;
+			}	
+		}
 	}
 }

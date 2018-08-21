@@ -45,13 +45,14 @@ public class Buscador_Usuario extends Buscador implements View{
 		int cont = 0;
 		int i = 0;
 		for(diagramaclasesbd.Registrado usuario: unr.buscar(busqueda)) {
-				Usuario2 usu = new Usuario2();
+				Usuario2 usu = new Usuario2(usuario.getID());
 				hor.get(i).setHeight("-1px");
 				hor.get(i).setWidth("100%");
 				verticalBuscadorUs.addComponent(hor.get(i));
 				hor.get(i).addComponent(usu);
 				usu.usuario.setCaption(usuario.getApodo());
-				usu.nSuscriptores.setValue(String.valueOf(usuario.getVisitas()));
+				usu.nSuscriptores.setValue("Nº Suscriptores: " + 
+						String.valueOf(usuario.suscriptores.size()));
 				cont++;
 				if(cont == 4) {
 					hor.add(new HorizontalLayout());

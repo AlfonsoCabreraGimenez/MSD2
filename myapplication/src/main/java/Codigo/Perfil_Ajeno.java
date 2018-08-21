@@ -175,9 +175,67 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 	
 	public void cargarSuscripcionesAjenoNR(int idUser) {
 		vPanel1.removeAllComponents();
+		int cont = 0, i = 0;
+		Usuario user = unr.cargarDatosUsuario(idUser);
+		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
+		HorizontalLayout h = new HorizontalLayout();
+		h.setWidth("100%");
+		h.setHeight("-1px");
+		listaH.add(h);
+		vPanel1.addComponent(listaH.get(i));
+		for(Object u : user.suscripciones.getCollection()) {
+			Usuario us;
+			us = (Usuario) u;
+			Usuario2 usu = new Usuario2(us.getID());
+			usu.usuario.setCaption(us.getApodo());
+			usu.nSuscriptores.setValue("Nº Suscriptores: " + String.valueOf(us.suscriptores.size()));
+			usu.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+			usu.setHeight("-1px");
+			usu.setWidth("100%");
+			listaH.get(i).addComponent(usu);
+			cont++;
+			if(cont == 3) {
+				HorizontalLayout h1 = new HorizontalLayout();
+				h1.setWidth("100%");
+				h1.setHeight("-1px");
+				listaH.add(h1);
+				i++;
+				vPanel1.addComponent(listaH.get(i));
+				cont = 0;
+			}	
+		}
 	}
 	
 	public void cargarSuscriptoresAjenoNR(int idUser) {
 		vPanel1.removeAllComponents();
+		int cont = 0, i = 0;
+		Usuario user = unr.cargarDatosUsuario(idUser);
+		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
+		HorizontalLayout h = new HorizontalLayout();
+		h.setWidth("100%");
+		h.setHeight("-1px");
+		listaH.add(h);
+		vPanel1.addComponent(listaH.get(i));
+		for(Object u : user.suscriptores.getCollection()) {
+			Usuario us;
+			us = (Usuario) u;
+			Usuario2 usu = new Usuario2(us.getID());
+			usu.usuario.setCaption(us.getApodo());
+			usu.nSuscriptores.setValue("Nº Suscriptores: " + String.valueOf(us.suscriptores.size()));
+			usu.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+			usu.setHeight("-1px");
+			usu.setWidth("100%");
+			listaH.get(i).addComponent(usu);
+			cont++;
+			if(cont == 3) {
+				HorizontalLayout h1 = new HorizontalLayout();
+				h1.setWidth("100%");
+				h1.setHeight("-1px");
+				listaH.add(h1);
+				i++;
+				vPanel1.addComponent(listaH.get(i));
+				cont = 0;
+			}	
+		}
 	}
 }

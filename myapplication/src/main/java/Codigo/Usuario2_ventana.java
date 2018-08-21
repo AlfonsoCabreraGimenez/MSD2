@@ -24,6 +24,7 @@ public class Usuario2_ventana extends VerticalLayout {
 	protected HorizontalLayout hdatosUser;
 	protected Image imagen;
 	protected VerticalLayout propUser;
+	protected HorizontalLayout hUsuario;
 	protected Link usuario;
 	protected Label nSuscriptores;
 

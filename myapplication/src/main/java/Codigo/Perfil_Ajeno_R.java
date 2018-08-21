@@ -15,13 +15,15 @@ public class Perfil_Ajeno_R extends Perfil_Ajeno implements View {
 	VerticalLayout subContent = new VerticalLayout();
 	public Video2 _unnamed_Video2_;
 	public Usuario2 _unnamed_Usuario2_;
-	public Conf_Suscribirse Conf_Suscribirse = new Conf_Suscribirse();
+	
 	
 	public Perfil_Ajeno_R() {
 		
 	}
 	
 	public Perfil_Ajeno_R(int idUser){
+		Conf_Suscribirse Conf_Suscribirse = new Conf_Suscribirse(idUser);
+		
 		inicializar();
 		cargarPerfilAjenoNR(idUser);
 		cargarVideosAjenoNR(idUser);
@@ -68,7 +70,23 @@ public class Perfil_Ajeno_R extends Perfil_Ajeno implements View {
 				popup.setModal(true);
 				UI.getCurrent().addWindow(popup);
 			}
-		});	
+		});
+		Conf_Suscribirse.aceptar.addClickListener(new ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				popup.close();
+			}
+		});
+		Conf_Suscribirse.cancelar.addClickListener(new ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				popup.close();
+			}
+		});
 	}
 	
 	public void inicializar(){

@@ -138,8 +138,18 @@ public class BD_Registrados {
 		throw new UnsupportedOperationException();
 	}
 
-	public void suscribirse(int aID) {
-		throw new UnsupportedOperationException();
+	public void suscribirse(int aID) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		try {
+			Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+			Usuario user1 = UsuarioDAO.getUsuarioByORMID(registrado.getID());
+			Usuario user2 = UsuarioDAO.getUsuarioByORMID(aID);
+			user1.suscripciones.add(user2);
+			user2.suscriptores.add(user1);
+			t.commit();
+		} catch (Exception e) {
+			t.rollback();
+		}
 	}
 
 	public void cancelarSuscripcion(int aID) {

@@ -189,7 +189,12 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	}
 
 	public void suscribirse(int aID) {
-		throw new UnsupportedOperationException();
+		try {
+			registrados.suscribirse(aID);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void escribirComentario(String aCadena, int aID) {
