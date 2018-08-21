@@ -38,7 +38,7 @@ public class Video2 extends Video2_ventana{
 	
 	iUsuario_Registrado ur = new BD_Principal();
 	Modificar_Video mv = new Modificar_Video();
-	Conf_Eliminar_Video ev = new Conf_Eliminar_Video();
+	
 	boolean videoPropio;
 	boolean esVideoPropio;
 	
@@ -46,6 +46,8 @@ public class Video2 extends Video2_ventana{
 	
 	public Video2(int id) {
 	
+		Conf_Eliminar_Video ev = new Conf_Eliminar_Video(id);
+		
 		titulo.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				int iduser = -1;

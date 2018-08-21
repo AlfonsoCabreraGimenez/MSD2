@@ -22,6 +22,8 @@ import Codigo.Video2;
 public class BD_Videos {
 	public BD_Principal _bd_prin_videos;
 	public Vector<Video> _contiene_videos = new Vector<Video>();
+	public BD_Comentarios comentario = new BD_Comentarios();
+	//public BD_Listas_De_Reproduccion listasDeReproduccion = new BD_Listas_De_Reproduccion();
 
 	public List<diagramaclasesbd.Video> cargar_Videos_Masmegusta() throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
@@ -272,8 +274,59 @@ public class BD_Videos {
 		throw new UnsupportedOperationException();
 	}
 
-	public void borrarVideo(int aID) {
-		throw new UnsupportedOperationException();
+	public void borrarVideo(int aID) throws PersistentException {
+		//ELIMINAR EL ENLACE CON COMENTARIOS CON VIDEO Y CON USUARIO
+		//ELIMINAR LOS COMENTARIOS DE ESE VIDEO
+		//ELIMINAR ENLACE DE VIDEO CON USER
+		//ELIMINAR ENLACE CON LISTAS
+		//ELIMINAR VIDEO
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		try {
+			Video vid = VideoDAO.loadVideoByORMID(aID);
+			//Eliminamos cualquier contacto con los comentarios
+			for(Object comen : vid.comentarios.getCollection())
+			{
+				Comentario coment = (Comentario) comen;
+				vid.comentarios.remove(coment);
+				comentario.eliminarComentario(coment.getID());
+				vid.comentarios.clear();
+			}
+			//Eliminamos cualquier contacto con las listas
+			for (Object listaR : vid.lista_de_Reproduccion.getCollection())
+			{
+				Lista_De_Reproduccion listaRepro = (Lista_De_Reproduccion) listaR;
+				vid.lista_de_Reproduccion.remove(listaRepro);
+				vid.lista_de_Reproduccion.clear();
+			}
+			//Quitarl as relaciones con categorias
+			for(Categoria cate : CategoriaDAO.listCategoriaByQuery(null, null))
+			{
+				cate.videos.remove(vid);
+			}
+			
+			//Quitar todos los me gusta
+			for(Usuario user : UsuarioDAO.listUsuarioByQuery(null, null))
+			{
+				vid.da_megusta.remove(user);
+				vid.da_megusta.clear();
+			}
+			//Coger id del que lo borra
+			Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+			if(admon == null)
+			{
+				Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+				reg.prop_video_de.remove(vid);
+
+			} else 
+			{
+				admon.prop_video_de.remove(vid);
+			}
+			
+			VideoDAO.delete(vid);
+			t.commit();
+		} catch (Exception e) {
+			t.rollback();
+		}
 	}
 
 	public List buscarVideo(String aTitulo) {
