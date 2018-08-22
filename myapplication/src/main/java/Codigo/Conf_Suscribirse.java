@@ -2,6 +2,9 @@ package Codigo;
 
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+
+import GY.MyUI;
+
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 
@@ -22,6 +25,14 @@ public class Conf_Suscribirse extends Conf_Suscribirse_ventana{
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
 				suscribirse(aID);
+				Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+				if(admon == null) {
+					MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno_R", new Perfil_Ajeno_R(aID));
+					UI.getCurrent().getNavigator().navigateTo("Perfil_Ajeno_R");
+				} else {
+					MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno_A", new Perfil_Ajeno_A(aID));
+					UI.getCurrent().getNavigator().navigateTo("Perfil_Ajeno_A");
+				}
 			}
 		});
 	}
