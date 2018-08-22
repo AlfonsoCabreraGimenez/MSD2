@@ -42,9 +42,36 @@ public class BD_Listas_De_Reproduccion {
 		return anadido;
 	}
 
-	public void borrarLista(int aID) {
-		throw new UnsupportedOperationException();
+	public void borrarLista(int aID) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		Lista_De_Reproduccion listaR = Lista_De_ReproduccionDAO.loadLista_De_ReproduccionByORMID(aID);
+		try {
+			//Quitar todos los enlaces con videos
+			for(Object video : listaR.video.getCollection())
+			{
+				Video v = (Video) video;
+				listaR.video.remove(v);
+			}
+			//Quitar todos los enlaces con usuario
+			Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+			if(admon == null)
+			{
+				Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+				reg.prop_de.remove(listaR);
+
+			} else 
+			{
+				admon.prop_de.remove(listaR);
+			}
+			
+			Lista_De_ReproduccionDAO.delete(listaR);
+			t.commit();
+		} catch (Exception e) {
+			t.rollback();
+		}
 	}
+	
+	
 	public void crearListaRep(String aTitulo, List<Video> aVideo) throws PersistentException{
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {

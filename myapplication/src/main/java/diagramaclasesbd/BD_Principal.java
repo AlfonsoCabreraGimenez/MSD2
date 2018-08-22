@@ -32,7 +32,12 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	}
 
 	public void borrarLista(int aID) {
-		throw new UnsupportedOperationException();
+		try {
+			listas.borrarLista(aID);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void borrarVideo(int aID) {
