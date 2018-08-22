@@ -56,6 +56,7 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 		propVideo.setVisible(true);
 		modificarVideo.setVisible(false);
 		escribirComentario.setVisible(true);
+		escribirComentario.setPlaceholder("Escribir comentario...");
 		comentar.setVisible(true);
 		htituloComentario.setVisible(true);
 		vComentario.setVisible(true);

@@ -52,6 +52,7 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		modificarVideo.setVisible(false);
 		eliminarVideo.setVisible(false);
 		escribirComentario.setVisible(true);
+		escribirComentario.setPlaceholder("Escribir comentario...");
 		comentar.setVisible(true);
 		htituloComentario.setVisible(true);
 		vComentario.setVisible(true);
