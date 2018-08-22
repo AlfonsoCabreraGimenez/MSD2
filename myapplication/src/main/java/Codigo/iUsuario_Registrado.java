@@ -69,4 +69,6 @@ public interface iUsuario_Registrado {
 	public List<Video> cargarVideosPropios(int ID);
 
 	public List<Lista_De_Reproduccion> cargarListaReproduccionPropia(int idUsuario);
+	
+	public boolean comprobarSuscripcion(int ID);
 }

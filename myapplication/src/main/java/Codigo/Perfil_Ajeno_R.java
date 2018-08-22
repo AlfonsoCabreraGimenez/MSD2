@@ -3,6 +3,9 @@ package Codigo;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
+
+import diagramaclasesbd.BD_Principal;
+
 import com.vaadin.event.LayoutEvents.LayoutClickEvent;
 import com.vaadin.event.LayoutEvents.LayoutClickListener;
 import com.vaadin.navigator.View;
@@ -16,6 +19,7 @@ public class Perfil_Ajeno_R extends Perfil_Ajeno implements View {
 	public Video2 _unnamed_Video2_;
 	public Usuario2 _unnamed_Usuario2_;
 	
+	iUsuario_Registrado ur = new BD_Principal();
 	
 	public Perfil_Ajeno_R() {
 		
@@ -25,6 +29,7 @@ public class Perfil_Ajeno_R extends Perfil_Ajeno implements View {
 		Conf_Suscribirse Conf_Suscribirse = new Conf_Suscribirse(idUser);
 		
 		inicializar();
+		comprobarSuscripcion(idUser);
 		cargarPerfilAjenoNR(idUser);
 		cargarVideosAjenoNR(idUser);
 		
@@ -94,6 +99,15 @@ public class Perfil_Ajeno_R extends Perfil_Ajeno implements View {
 		hCabeceraGeneral.addComponent(cr);
 		darDeBaja.setVisible(false);
 	}
+	
+	public void comprobarSuscripcion(int idUser) {
+		boolean suscrito = ur.comprobarSuscripcion(idUser);
+		if(suscrito) {
+			suscribirse.setVisible(false);
+			cancSuscripcion.setVisible(true);
+		}
+	}
+	
 	public void suscribirse() {
 		throw new UnsupportedOperationException();
 	}

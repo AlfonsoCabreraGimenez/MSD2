@@ -27,6 +27,7 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 		Conf_Suscribirse Conf_Suscribirse = new Conf_Suscribirse(idUser);
 		
 		inicializar();
+		comprobarSuscripcion(idUser);
 		cargarPerfilAjenoNR(idUser);
 		cargarVideosAjenoNR(idUser);
 		

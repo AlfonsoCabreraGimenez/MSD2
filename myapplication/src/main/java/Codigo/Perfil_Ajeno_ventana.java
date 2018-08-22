@@ -35,6 +35,7 @@ public class Perfil_Ajeno_ventana extends VerticalLayout {
 	protected HorizontalLayout hSuscribirse;
 	protected Button darDeBaja;
 	protected Button suscribirse;
+	protected Button cancSuscripcion;
 	protected VerticalLayout vDatosPerfil;
 	protected HorizontalLayout hApartados;
 	protected HorizontalLayout hVideos;

@@ -173,4 +173,24 @@ public class BD_Registrados {
 		}
 		return listado;
 	}
+	
+	public boolean comprobarSuscripcion(int ID) throws PersistentException {
+		boolean suscrito = false;
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		try {
+			Usuario user = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
+			if(user == null) {
+				user = (Usuario) UI.getCurrent().getSession().getAttribute("usuario");
+			}
+			Usuario userIniciado = UsuarioDAO.getUsuarioByORMID(user.getID());
+			Usuario userVisitado = UsuarioDAO.getUsuarioByORMID(ID);
+			if(userIniciado.suscripciones.contains(userVisitado)) {
+				suscrito = true;
+			}
+			t.commit();
+		} catch (Exception e) {
+			t.rollback();
+		}
+		return suscrito;
+	}
 }

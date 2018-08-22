@@ -365,4 +365,14 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		return null;
 	}
 
+	public boolean comprobarSuscripcion(int ID) {
+		boolean suscrito = false;
+		try {
+			suscrito = registrados.comprobarSuscripcion(ID);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return suscrito;
+	}
 }
