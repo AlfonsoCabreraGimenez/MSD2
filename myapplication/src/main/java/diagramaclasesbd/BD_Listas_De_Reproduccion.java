@@ -11,6 +11,7 @@ import javax.print.DocFlavor.READER;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 
 import Codigo.Lista_De_Reproduccion2;
@@ -44,27 +45,16 @@ public class BD_Listas_De_Reproduccion {
 
 	public void borrarLista(int aID) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
-		Lista_De_Reproduccion listaR = Lista_De_ReproduccionDAO.loadLista_De_ReproduccionByORMID(aID);
+		Lista_De_Reproduccion listaR = Lista_De_ReproduccionDAO.getLista_De_ReproduccionByORMID(aID);
 		try {
-			//Quitar todos los enlaces con videos
-			for(Object video : listaR.video.getCollection())
-			{
-				Video v = (Video) video;
-				listaR.video.remove(v);
+			Usuario user = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
+			if(user == null) {
+				user = (Usuario) UI.getCurrent().getSession().getAttribute("usuario");
 			}
-			//Quitar todos los enlaces con usuario
-			Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
-			if(admon == null)
-			{
-				Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-				reg.prop_de.remove(listaR);
-
-			} else 
-			{
-				admon.prop_de.remove(listaR);
-			}
-			
-			Lista_De_ReproduccionDAO.delete(listaR);
+			Usuario usuario = UsuarioDAO.getUsuarioByORMID(user.getID());
+			usuario.prop_de.remove(listaR);
+			UsuarioDAO.save(usuario);
+			Lista_De_ReproduccionDAO.deleteAndDissociate(listaR);
 			t.commit();
 		} catch (Exception e) {
 			t.rollback();

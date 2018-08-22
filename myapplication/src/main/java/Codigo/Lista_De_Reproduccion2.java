@@ -24,12 +24,10 @@ public class Lista_De_Reproduccion2 extends Lista_De_Reproduccion2_ventana{
 	public Lista_Videos_De_Reproduccion _unnamed_Lista_Videos_De_Reproduccion_;
 	iUsuario_Registrado ur =new BD_Principal();
 	iAdministrador2 admin = new BD_Principal();
-	public int idLista=-1;
 	
 	
 	public Lista_De_Reproduccion2(int id) {
-		this.idLista = id;
-		Conf_Eliminar_Lista confEliminarLista = new Conf_Eliminar_Lista();
+		Conf_Eliminar_Lista confEliminarLista = new Conf_Eliminar_Lista(id);
 		
 		botonBorrar.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
@@ -43,9 +41,7 @@ public class Lista_De_Reproduccion2 extends Lista_De_Reproduccion2_ventana{
 				
 				confEliminarLista.aceptar.addClickListener(new ClickListener() {
 					public void buttonClick(ClickEvent event) {
-						confEliminarLista.borrarLista(idLista);
-						popup.close();
-						
+						popup.close();			
 					}
 				});
 				

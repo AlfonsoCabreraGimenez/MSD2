@@ -3,7 +3,9 @@ package Codigo;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.UI;
 
+import diagramaclasesbd.Administrador;
 import diagramaclasesbd.BD_Principal;
 
 public class Conf_Suscribirse extends Conf_Suscribirse_ventana{
@@ -13,6 +15,7 @@ public class Conf_Suscribirse extends Conf_Suscribirse_ventana{
 	public Perfil_Ajeno_R _unnamed_Perfil_Ajeno_R_;
 	
 	iUsuario_Registrado ur = new BD_Principal();
+	iAdministrador2 adm = new BD_Principal();
 	public Conf_Suscribirse(int aID) {
 		aceptar.addClickListener(new ClickListener() {
 			@Override
@@ -23,7 +26,12 @@ public class Conf_Suscribirse extends Conf_Suscribirse_ventana{
 		});
 	}
 	public void suscribirse(int aID) {
-		ur.suscribirse(aID);
+		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+		if(admon == null ) {
+			ur.suscribirse(aID);
+		} else {
+			adm.suscribirse(aID);
+		}
 	}
 
 	public void cancelarSuscripcion() {

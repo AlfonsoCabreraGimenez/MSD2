@@ -3,17 +3,19 @@
  <head>
   <meta charset="UTF-8">
   <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
-  <meta name="vaadin-version" content="8.1.5">
+  <meta name="vaadin-version" content="8.0.5">
  </head>
  <body>
   <vaadin-vertical-layout size-auto margin="false">
    <vaadin-vertical-layout spacing="false" size-auto margin="false" _id="vListaRep">
-    <vaadin-label plain-text _id="nombreLista" :center>
-      Nombre de Lista 
-    </vaadin-label>
     <vaadin-vertical-layout spacing="false" size-auto margin="false" _id="vListaRep2">
      <vaadin-horizontal-layout _id="hImagen" :center>
-      <vaadin-image source="https://raw.githubusercontent.com/AlfonsoCabreraGimenez/MSD2/master/myapplication/descarga.jpg" width="150px" height="150px" _id="imagen"></vaadin-image>
+      <vaadin-vertical-layout spacing="false" size-auto margin="false" _id="vImagen">
+       <vaadin-label plain-text _id="nombreLista" :center>
+         Nombre de Lista 
+       </vaadin-label>
+       <vaadin-image source="https://raw.githubusercontent.com/AlfonsoCabreraGimenez/MSD2/master/myapplication/descarga.jpg" width="150px" height="150px" _id="imagen"></vaadin-image>
+      </vaadin-vertical-layout>
       <vaadin-vertical-layout size-auto margin="false" _id="vBorrar" :bottom>
        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" description="Eliminar lista de reproducción" style-name="icon-only" width="25px" height="20px" plain-text _id="botonBorrar"></vaadin-button>
       </vaadin-vertical-layout>

@@ -233,14 +233,11 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			lis = (Lista_De_Reproduccion) l;
 			Lista_De_Reproduccion2 lista = new Lista_De_Reproduccion2(lis.getID());
 			lista.nombreLista.setValue(lis.getTitulo());
-			lista.vBorrar.setVisible(false);
+			lista.vBorrar.setVisible(true);
 			lista.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
 			lista.setWidth("270px");
 			lista.setHeight("270px");
-			lista.botonBorrar.setVisible(true);
-			lista.vListaRep.addComponent(lista.botonBorrar);
-			listaH.get(i).addComponent(lista.vListaRep);
-			
+			listaH.get(i).addComponent(lista);
 			cont++;
 			if(cont == 5) {
 				HorizontalLayout h1 = new HorizontalLayout();

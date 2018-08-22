@@ -3,6 +3,7 @@ package Codigo;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.Notification;
 
 import diagramaclasesbd.Administrador;
 import diagramaclasesbd.BD_Principal;
@@ -16,7 +17,13 @@ public class Conf_Eliminar_Lista extends Conf_Eliminar_Lista_ventana{
 	iUsuario_Registrado ur = new BD_Principal();
 	iAdministrador2 admin = new BD_Principal();
 	
-
+	public Conf_Eliminar_Lista(int id) {
+		aceptar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				borrarLista(id);		
+			}
+		});
+	}
 	
 	public void borrarLista(int id) {
 		//Iteraciones con la bbdd
@@ -25,9 +32,7 @@ public class Conf_Eliminar_Lista extends Conf_Eliminar_Lista_ventana{
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 		if(admon == null ) {
 			ur.borrarLista(id);
-		}
-		else 
-		{
+		} else {
 			admin.borrarLista(id);
 		}
 	}

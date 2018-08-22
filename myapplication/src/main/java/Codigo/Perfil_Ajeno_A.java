@@ -24,6 +24,8 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 
 	
 	public Perfil_Ajeno_A(int idUser){
+		Conf_Suscribirse Conf_Suscribirse = new Conf_Suscribirse(idUser);
+		
 		inicializar();
 		cargarPerfilAjenoNR(idUser);
 		cargarVideosAjenoNR(idUser);
@@ -57,6 +59,34 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 			public void layoutClick(LayoutClickEvent event) {
 				// TODO Auto-generated method stub
 				cargarSuscriptoresAjenoNR(idUser);
+			}
+		});
+		
+		suscribirse.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup.setContent(subContent);
+				subContent.addComponent(Conf_Suscribirse);
+				popup.center();
+				popup.setWidth("720px");
+				//popup.setClosable(false);
+				popup.setModal(true);
+				UI.getCurrent().addWindow(popup);
+			}
+		});
+		Conf_Suscribirse.aceptar.addClickListener(new ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				popup.close();
+			}
+		});
+		Conf_Suscribirse.cancelar.addClickListener(new ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				popup.close();
 			}
 		});
 		

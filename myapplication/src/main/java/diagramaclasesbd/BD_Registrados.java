@@ -141,8 +141,11 @@ public class BD_Registrados {
 	public void suscribirse(int aID) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
-			Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-			Usuario user1 = UsuarioDAO.getUsuarioByORMID(registrado.getID());
+			Usuario user = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
+			if(user == null) {
+				user = (Usuario) UI.getCurrent().getSession().getAttribute("usuario");
+			}
+			Usuario user1 = UsuarioDAO.getUsuarioByORMID(user.getID());
 			Usuario user2 = UsuarioDAO.getUsuarioByORMID(aID);
 			user1.suscripciones.add(user2);
 			user2.suscriptores.add(user1);

@@ -22,9 +22,10 @@ import com.vaadin.ui.declarative.Design;
 @SuppressWarnings("serial")
 public class Lista_De_Reproduccion2_ventana extends VerticalLayout {
 	protected VerticalLayout vListaRep;
-	protected Label nombreLista;
 	protected VerticalLayout vListaRep2;
 	protected HorizontalLayout hImagen;
+	protected VerticalLayout vImagen;
+	protected Label nombreLista;
 	protected Image imagen;
 	protected VerticalLayout vBorrar;
 	protected Button botonBorrar;
