@@ -16,6 +16,10 @@ import com.vaadin.ui.Notification;
 public class Perfil_Ajeno_R extends Perfil_Ajeno implements View {
 	Window popup = new Window();
 	VerticalLayout subContent = new VerticalLayout();
+	
+	Window popup1 = new Window();
+	VerticalLayout subContent1 = new VerticalLayout();
+	
 	public Video2 _unnamed_Video2_;
 	public Usuario2 _unnamed_Usuario2_;
 	
@@ -27,6 +31,7 @@ public class Perfil_Ajeno_R extends Perfil_Ajeno implements View {
 	
 	public Perfil_Ajeno_R(int idUser){
 		Conf_Suscribirse Conf_Suscribirse = new Conf_Suscribirse(idUser);
+		Conf_Cancelar_Suscribirse Conf_Canc_Susc = new Conf_Cancelar_Suscribirse(idUser);
 		
 		inicializar();
 		comprobarSuscripcion(idUser);
@@ -92,6 +97,34 @@ public class Perfil_Ajeno_R extends Perfil_Ajeno implements View {
 				popup.close();
 			}
 		});
+		
+		cancSuscripcion.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup1.setContent(subContent1);
+				subContent1.addComponent(Conf_Canc_Susc);
+				popup1.center();
+				popup1.setWidth("720px");
+				//popup.setClosable(false);
+				popup1.setModal(true);
+				UI.getCurrent().addWindow(popup1);
+			}
+		});
+		
+		Conf_Canc_Susc.aceptar.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				popup1.close();
+			}
+		});
+		
+		Conf_Canc_Susc.cancelar.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				popup1.close();
+			}
+		});
 	}
 	
 	public void inicializar(){
@@ -108,7 +141,7 @@ public class Perfil_Ajeno_R extends Perfil_Ajeno implements View {
 		}
 	}
 	
-	public void suscribirse() {
+	/*public void suscribirse() {
 		throw new UnsupportedOperationException();
-	}
+	}*/
 }

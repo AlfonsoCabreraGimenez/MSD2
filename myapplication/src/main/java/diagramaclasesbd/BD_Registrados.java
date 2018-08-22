@@ -155,8 +155,21 @@ public class BD_Registrados {
 		}
 	}
 
-	public void cancelarSuscripcion(int aID) {
-		throw new UnsupportedOperationException();
+	public void cancelarSuscripcion(int aID) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		try {
+			Usuario user = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
+			if(user == null) {
+				user = (Usuario) UI.getCurrent().getSession().getAttribute("usuario");
+			}
+			Usuario user1 = UsuarioDAO.getUsuarioByORMID(user.getID());
+			Usuario user2 = UsuarioDAO.getUsuarioByORMID(aID);
+			user1.suscripciones.remove(user2);
+			user2.suscriptores.remove(user1);
+			t.commit();
+		} catch (Exception e) {
+			t.rollback();
+		}
 	}
 	
 	public List<Registrado> cargarUsuariosRegis() throws PersistentException {
