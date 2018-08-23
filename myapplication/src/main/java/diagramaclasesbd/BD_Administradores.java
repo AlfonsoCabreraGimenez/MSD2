@@ -70,15 +70,49 @@ public class BD_Administradores {
 		return listado;
 	}
 
-	public Boolean eliminarUsuario(int aID) throws PersistentException {
+	public void eliminarUsuario(int aID) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
 			diagramaclasesbd.Usuario u = diagramaclasesbd.UsuarioDAO.getUsuarioByORMID(aID);
+			Registrado regis = (Registrado) u;
 			
-			/*HAY QUE BORRAR TAMBN LISTAS Y VIDEOS
-			 * 
-			 */
-			//Primer error en lista de reproduccion
+			//Quitamos enlaces con comentarios y borramos
+			for(Object com : regis.es_escrito.getCollection())
+			{
+				Comentario coment = (Comentario) com;
+				Video v = coment.getVideo();
+				v.comentarios.remove(coment);
+				regis.es_escrito.remove(coment);
+				ComentarioDAO.delete(coment);
+			}
+			//Quitamos enlaces con videos y borramos
+			for(Object video : regis.prop_video_de.getCollection())
+			{
+				Video v = (Video) video;
+				v.comentarios.clear();
+				for(Object listaR : v.lista_de_Reproduccion.getCollection())
+				{
+					Lista_De_Reproduccion listaDR = (Lista_De_Reproduccion) listaR;
+					listaDR.video.remove(v);
+				}
+				regis.prop_video_de.remove(v);
+				VideoDAO.delete(v);
+			}
+			
+			//Quitamos enlaces con listas y borramos
+			for(Object lista : regis.prop_de.getCollection())
+			{
+				Lista_De_Reproduccion listaR = (Lista_De_Reproduccion) lista;
+				listaR.video.clear();
+				regis.prop_de.remove(listaR);
+				Lista_De_ReproduccionDAO.delete(listaR);
+			}
+			//Quitar suscripciones y suscriptores
+			regis.suscripciones.clear();
+			regis.suscriptores.clear();
+			
+			RegistradoDAO.delete(regis);
+
 			
 			UsuarioDAO.delete(u);
 			
@@ -87,6 +121,5 @@ public class BD_Administradores {
 		} catch (Exception e) {
 			t.rollback();
 		}
-		return true;
 	}
 }

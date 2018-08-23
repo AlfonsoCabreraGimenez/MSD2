@@ -244,15 +244,16 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		}
 	}
 
-	public Boolean eliminarUsuario(int aID) {
+	public void eliminarUsuario(int aID) {
 		//Eliminar primero todas las listas aqui y devolver un boolean si se han borrado (true)
-		try {
-			return admin.eliminarUsuario(aID);
-		} catch (PersistentException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		return false;
+			try {
+				admin.eliminarUsuario(aID);
+			} catch (PersistentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		
 	}
 
 	public List<diagramaclasesbd.Video> cargar_Videos_Masmegusta() {

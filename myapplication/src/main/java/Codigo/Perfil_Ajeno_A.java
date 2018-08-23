@@ -23,12 +23,13 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 	
 	public Usuario2 _unnamed_Usuario2_;
 	public Video2 _unnamed_Video2_;
-	public Conf_Eliminar_Usuario Conf_Eliminar_Usuario_ = new Conf_Eliminar_Usuario();
+	
 
 	
 	public Perfil_Ajeno_A(int idUser){
 		Conf_Suscribirse Conf_Suscribirse = new Conf_Suscribirse(idUser);
 		Conf_Cancelar_Suscribirse Conf_Canc_Susc = new Conf_Cancelar_Suscribirse(idUser);
+		Conf_Eliminar_Usuario Conf_Eliminar_Usuario_ = new Conf_Eliminar_Usuario();
 		
 		inicializar();
 		comprobarSuscripcion(idUser);
@@ -138,20 +139,14 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 		
 		Conf_Eliminar_Usuario_.cancelar.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-			
 				popup.close();
-				
 			}
 		});
 		
 		Conf_Eliminar_Usuario_.aceptar.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				//Eliminar Videos
-				//Eliminar ListaR
-
-				admin.eliminarUsuario(idUser);
+				Conf_Eliminar_Usuario_.eliminarUsuario(idUser);
 				popup.close();
-				
 			}
 		});
 	}
