@@ -5,9 +5,11 @@ import java.util.List;
 
 import org.orm.PersistentException;
 
+import diagramaclasesbd.Registrado;
+
 public interface iAdministrador2 extends iUsuario_Registrado {
 
-	public List buscarUsuario(String aNombre);
+	public List<Registrado> buscar(String aNombre);
 
 	public void crearCategoria(String aCategoria, int aEdad);
 

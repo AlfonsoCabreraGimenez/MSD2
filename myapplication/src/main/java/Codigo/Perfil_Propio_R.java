@@ -143,7 +143,8 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 		hCabeceraRegistrado.addComponent(cr.botonSubirVideo);
 		hCabeceraRegistrado.addComponent(cr.botonCerrarSesion);
 		crearAdministrador.setVisible(false);
-		categoria.setVisible(false);		
+		categoria.setVisible(false);
+		hBuscador.setVisible(false);
 	}
 	public void borrarVideo() {
 		throw new UnsupportedOperationException();

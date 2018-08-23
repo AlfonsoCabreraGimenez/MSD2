@@ -48,7 +48,7 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 			e.printStackTrace();
 		}
 	}
-	public List<diagramaclasesbd.Registrado> buscar(String buscador) {
+	public List<Registrado> buscar(String buscador) {
 		try {
 			return registrados.buscar(buscador);
 		} catch (PersistentException e) {
@@ -226,7 +226,13 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	}
 
 	public List buscarUsuario(String aNombre) {
-		throw new UnsupportedOperationException();
+		try {
+			return registrados.buscar(aNombre);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public void crearCategoria(String aCategoria, int aEdad) {

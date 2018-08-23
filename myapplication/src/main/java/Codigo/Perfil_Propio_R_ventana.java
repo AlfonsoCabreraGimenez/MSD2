@@ -8,6 +8,7 @@ import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Link;
 import com.vaadin.ui.Panel;
+import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.declarative.Design;
 
@@ -54,6 +55,9 @@ public class Perfil_Propio_R_ventana extends VerticalLayout {
 	protected Label suscriptores;
 	protected HorizontalLayout hUsuarios;
 	protected Label registrados;
+	protected HorizontalLayout hBuscador;
+	protected TextField tBuscar;
+	protected Button botonBuscar;
 	protected VerticalLayout vPanel;
 	protected Panel panel;
 	protected VerticalLayout vPanel1;
