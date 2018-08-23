@@ -73,8 +73,8 @@ public class BD_Administradores {
 	public void eliminarUsuario(int aID) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
-			diagramaclasesbd.Usuario u = diagramaclasesbd.UsuarioDAO.getUsuarioByORMID(aID);
-			Registrado regis = (Registrado) u;
+			diagramaclasesbd.Registrado regis = diagramaclasesbd.RegistradoDAO.getRegistradoByORMID(aID);
+			//Registrado regis = (Registrado) u;
 			
 			//Quitamos enlaces con comentarios y borramos
 			for(Object com : regis.es_escrito.getCollection())
@@ -114,7 +114,7 @@ public class BD_Administradores {
 			RegistradoDAO.delete(regis);
 
 			
-			UsuarioDAO.delete(u);
+			//UsuarioDAO.delete(u);
 			
 			t.commit();
 			

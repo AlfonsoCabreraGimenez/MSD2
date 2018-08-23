@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.orm.PersistentException;
 
+import com.vaadin.event.MouseEvents;
 import com.vaadin.event.LayoutEvents.LayoutClickEvent;
 import com.vaadin.event.LayoutEvents.LayoutClickListener;
 import com.vaadin.navigator.View;
@@ -239,6 +240,13 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			lista.setWidth("270px");
 			lista.setHeight("270px");
 			listaH.get(i).addComponent(lista);
+			//Meterle un clicklistener al componente lista 
+			lista.imagen.addClickListener(new MouseEvents.ClickListener() {
+				public void click(com.vaadin.event.MouseEvents.ClickEvent event) {
+					//Limpiar el panel y introducir los componentes de video
+					
+				}
+			});
 			cont++;
 			if(cont == 5) {
 				HorizontalLayout h1 = new HorizontalLayout();
