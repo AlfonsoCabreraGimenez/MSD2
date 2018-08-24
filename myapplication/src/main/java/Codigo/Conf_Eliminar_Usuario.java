@@ -21,17 +21,14 @@ public class Conf_Eliminar_Usuario extends Conf_Eliminar_Usuario_ventana {
 	
 	
 	public Conf_Eliminar_Usuario(int idUser) {
-	//Meter la creacion del popup
 		aceptar.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				eliminarUsuario(idUser);
-				
 			}
 		});
 	}
 	
 	public void eliminarUsuario(int id) {
-		Notification.show("HOLA");
 		admin.eliminarUsuario(id);
 	}
 }

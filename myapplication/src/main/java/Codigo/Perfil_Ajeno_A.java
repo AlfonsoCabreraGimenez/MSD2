@@ -136,6 +136,13 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 				
 			}
 		});
+		Conf_Eliminar_Usuario_.aceptar.addClickListener(new ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+				popup.close();
+			}
+		});
 		
 		Conf_Eliminar_Usuario_.cancelar.addClickListener(new ClickListener() {
 			

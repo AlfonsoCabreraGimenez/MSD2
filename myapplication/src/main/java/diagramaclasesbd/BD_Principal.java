@@ -247,7 +247,7 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	public void eliminarUsuario(int aID) {
 		//Eliminar primero todas las listas aqui y devolver un boolean si se han borrado (true)
 			try {
-				admin.eliminarUsuario(aID);
+				registrados.eliminarUsuario(aID);
 			} catch (PersistentException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

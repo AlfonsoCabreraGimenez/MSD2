@@ -1,6 +1,7 @@
 package diagramaclasesbd;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
@@ -8,6 +9,7 @@ import java.util.Vector;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
+import com.mysql.fabric.xmlrpc.base.Array;
 import com.vaadin.ui.UI;
 
 import diagramaclasesbd.Registrado;
@@ -90,19 +92,61 @@ public class BD_Registrados {
 	public void eliminarUsuario(int aID) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
-			diagramaclasesbd.Registrado r = diagramaclasesbd.RegistradoDAO.getRegistradoByORMID(aID);
-			/*HAY QUE BORRAR TAMBN LISTAS Y VIDEOS
-			 * 
-			 */
-			r.prop_video_de.clear();
-			r.prop_de.clear();
-			RegistradoDAO.delete(r);
+			Usuario regis = UsuarioDAO.getUsuarioByORMID(aID);
+			//Quitamos enlaces con comentarios y borramos
+			for(Object com : regis.es_escrito.getCollection()) {
+				Comentario coment = (Comentario) com;
+				Video v = coment.getVideo();
+				v.comentarios.remove(coment);
+				regis.es_escrito.remove(coment);
+				ComentarioDAO.delete(coment);
+			}
+			//Quitamos enlaces con videos y borramos
+			for(Object video : regis.prop_video_de.getCollection())	{
+				Video v = (Video) video;
+				for(Object comentario : v.comentarios.getCollection()) {
+					Comentario c = (Comentario) comentario;
+					v.comentarios.remove(c);
+				}
+				for(Object listaR : v.lista_de_Reproduccion.getCollection())
+				{
+					Lista_De_Reproduccion listaDR = (Lista_De_Reproduccion) listaR;
+					listaDR.video.remove(v);
+				}
+				regis.prop_video_de.remove(v);
+				VideoDAO.delete(v);
+			}
+			
+			//Quitamos enlaces con listas y borramos
+			for(Object lista : regis.prop_de.getCollection())
+			{
+				Lista_De_Reproduccion listaR = (Lista_De_Reproduccion) lista;
+				for(Object videoLista : listaR.video.getCollection()) {
+					Video vl = (Video) videoLista;
+					listaR.video.remove(vl);
+				}
+				regis.prop_de.remove(listaR);
+				Lista_De_ReproduccionDAO.delete(listaR);
+			}
+			//Quitar suscripciones y suscriptores
+			List<Usuario> usuarios = Arrays.asList(UsuarioDAO.listUsuarioByQuery(null, null));
+			for(Usuario usuario: usuarios){
+				if(usuario.suscripciones.contains(regis)) {
+					usuario.suscripciones.remove(regis);
+				}
+				if(usuario.suscriptores.contains(regis)) {
+					usuario.suscriptores.contains(regis);
+				}
+			}
+			UsuarioDAO.delete(regis);
+
+			
+			//UsuarioDAO.delete(u);
 			
 			t.commit();
 		} catch (Exception e) {
 			t.rollback();
 		}
-		
 	}
 
 	public List cargar_Lista_Suscriptores(int aID) {
