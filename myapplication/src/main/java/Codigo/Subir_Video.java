@@ -64,8 +64,7 @@ public class Subir_Video extends Modificar_Video_ventana {
 		java.util.Date utilDate = new java.util.Date();
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 		int idUser = -1;
-		if(admon == null)
-		{
+		if(admon == null) {
 			Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
 			idUser = registrado.getID();
 			ur.subirVideo(idUser, mini, titu, cate, etique, des, urls, utilDate);

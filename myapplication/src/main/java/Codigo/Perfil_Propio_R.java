@@ -1,6 +1,7 @@
 package Codigo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -183,7 +184,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 		int cont = 0, i = 0;
 		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
 		HorizontalLayout h = new HorizontalLayout();
-		h.setWidth("100%");
+		h.setWidth("-1px");
 		h.setHeight("-1px");
 		listaH.add(h);
 		vPanel1.addComponent(listaH.get(i));
@@ -202,7 +203,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			cont++;
 			if(cont == 4) {
 				HorizontalLayout h1 = new HorizontalLayout();
-				h1.setWidth("100%");
+				h1.setWidth("-1px");
 				h1.setHeight("-1px");
 				listaH.add(h1);
 				i++;
@@ -239,18 +240,49 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			lista.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
 			lista.setWidth("270px");
 			lista.setHeight("270px");
-			listaH.get(i).addComponent(lista);
-			//Meterle un clicklistener al componente lista 
-			lista.imagen.addClickListener(new MouseEvents.ClickListener() {
-				public void click(com.vaadin.event.MouseEvents.ClickEvent event) {
-					//Limpiar el panel y introducir los componentes de video
-					
+			lista.vImagen.addLayoutClickListener(new LayoutClickListener() {
+				@Override
+				public void layoutClick(LayoutClickEvent event) {
+					// TODO Auto-generated method stub
+					cargarVideosLista(lis.getID());
 				}
 			});
+			listaH.get(i).addComponent(lista);
 			cont++;
 			if(cont == 5) {
 				HorizontalLayout h1 = new HorizontalLayout();
 				h1.setWidth("100%");
+				h1.setHeight("-1px");
+				listaH.add(h1);
+				i++;
+				vPanel1.addComponent(listaH.get(i));
+				cont = 0;
+			}	
+		}
+	}
+	
+	public void cargarVideosLista(int idLista) {
+		vPanel1.removeAllComponents();
+		int cont = 0, i = 0;
+		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
+		HorizontalLayout h = new HorizontalLayout();
+		h.setWidth("-1px");
+		h.setHeight("-1px");
+		listaH.add(h);
+		vPanel1.addComponent(listaH.get(i));
+		for(Video vid : ur.cargar_Videos_ListaReproduccion(idLista)) {
+			Video2 video = new Video2(vid.getID());
+			video.categoria.setValue(String.valueOf(vid.getCategoria()));
+			video.titulo.setCaption(vid.getTitulo());
+			Date fecha = vid.getFechaCreacion();
+			video.fechasubida.setValue(fecha.toString());
+			video.usuario.setCaption(vid.getUsuario_video().getNombre());
+			video.etiqueta.setValue(vid.getEtiqueta());
+			listaH.get(i).addComponent(video);
+			cont++;
+			if(cont == 4) {
+				HorizontalLayout h1 = new HorizontalLayout();
+				h1.setWidth("-1px");
 				h1.setHeight("-1px");
 				listaH.add(h1);
 				i++;

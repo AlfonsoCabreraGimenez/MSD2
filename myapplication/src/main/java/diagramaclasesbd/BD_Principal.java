@@ -305,8 +305,14 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		throw new UnsupportedOperationException();
 	}
 
-	public List cargar_Videos_ListaReproduccion(int aID) {
-		throw new UnsupportedOperationException();
+	public List<Video> cargar_Videos_ListaReproduccion(int aID) {
+		try {
+			return videos.cargar_Videos_ListaReproduccion(aID);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public List cargar_Lista_Suscriptores(int aID) {

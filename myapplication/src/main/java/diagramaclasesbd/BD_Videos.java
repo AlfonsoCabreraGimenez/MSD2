@@ -186,8 +186,20 @@ public class BD_Videos {
 		throw new UnsupportedOperationException();
 	}
 
-	public List cargar_Videos_ListaReproduccion(int aID) {
-		throw new UnsupportedOperationException();
+	public List<Video> cargar_Videos_ListaReproduccion(int aID) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		List<Video> videos = new ArrayList<Video>();
+		try {
+			Lista_De_Reproduccion lista = Lista_De_ReproduccionDAO.getLista_De_ReproduccionByORMID(aID);
+			for(Object v : lista.video.getCollection()) {
+				Video vid = (Video) v;
+				videos.add(vid);
+			}
+			t.commit();		
+		} catch (Exception e) {
+			t.rollback();
+		}
+		return videos;
 	}
 
 	public diagramaclasesbd.Video cargarDatosVideo(int aID) throws PersistentException {

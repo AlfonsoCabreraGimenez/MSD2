@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import diagramaclasesbd.Usuario;
+import diagramaclasesbd.Video;
 public interface iUsuario_No_Registrado {
 
 	public List<diagramaclasesbd.Video> cargar_Videos_Masmegusta();
@@ -30,7 +31,7 @@ public interface iUsuario_No_Registrado {
 
 	public List cargar_Lista_Reproduccion(int aID);
 
-	public List cargar_Videos_ListaReproduccion(int aID);
+	public List<Video> cargar_Videos_ListaReproduccion(int aID);
 
 	public List cargar_Lista_Suscriptores(int aID);
 
