@@ -166,7 +166,7 @@ public class Perfil_Propio_A extends Perfil_Propio_R implements View {
 		int cont = 0, i = 0;
 		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
 		HorizontalLayout h = new HorizontalLayout();
-		h.setWidth("100%");
+		h.setWidth("-1px");
 		h.setHeight("-1px");
 		listaH.add(h);
 		vPanel1.addComponent(listaH.get(i));
@@ -181,7 +181,7 @@ public class Perfil_Propio_A extends Perfil_Propio_R implements View {
 			cont++;
 			if(cont == 3) {
 				HorizontalLayout h1 = new HorizontalLayout();
-				h1.setWidth("100%");
+				h1.setWidth("-1px");
 				h1.setHeight("-1px");
 				listaH.add(h1);
 				i++;
