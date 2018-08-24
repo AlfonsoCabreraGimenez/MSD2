@@ -181,9 +181,9 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		}
 	}
 
-	public void modificarDatosVideo(String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aMiniatura) {
+	public void modificarDatosVideo(int idVideo, String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aMiniatura) {
 		try {
-			videos.modificarDatosVideo(aTitulo, aCategoria, aEtiqueta, aDescripcion, aMiniatura);
+			videos.modificarDatosVideo(idVideo, aTitulo, aCategoria, aEtiqueta, aDescripcion, aMiniatura);
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -192,9 +192,9 @@ public class BD_Videos {
 
 	public diagramaclasesbd.Video cargarDatosVideo(int aID) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
-		diagramaclasesbd.Video video = null;
+		Video video = null;
 		try {
-			video = diagramaclasesbd.VideoDAO.getVideoByORMID(aID);			
+			video = VideoDAO.getVideoByORMID(aID);			
 			t.commit();		
 		} catch (Exception e) {
 			t.rollback();
@@ -202,13 +202,13 @@ public class BD_Videos {
 		return video;
 	}
 
-	public void modificarDatosVideo(String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aMiniatura) throws PersistentException {
+	public void modificarDatosVideo(int idVideo, String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aMiniatura) throws PersistentException {
 	
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
-			diagramaclasesbd.Video video = diagramaclasesbd.VideoDAO.getVideoByORMID(1);
-			diagramaclasesbd.Categoria cate=null;	
-			for(diagramaclasesbd.Categoria cat : CategoriaDAO.listCategoriaByQuery(null, null)) {
+			Video video = VideoDAO.getVideoByORMID(idVideo);
+			Categoria cate=null;	
+			for(Categoria cat : CategoriaDAO.listCategoriaByQuery(null, null)) {
 				if(cat.getNombre().equals(aCategoria)) {
 					cate = cat;
 				}
@@ -218,8 +218,7 @@ public class BD_Videos {
 			video.setTitulo(aTitulo);
 			video.setEtiqueta(aEtiqueta);
 			video.setDescripcion(aDescripcion);
-			diagramaclasesbd.VideoDAO.save(video);	
-			
+			VideoDAO.save(video);	
 			t.commit();		
 		} catch (Exception e) {
 			t.rollback();

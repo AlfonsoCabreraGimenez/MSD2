@@ -27,9 +27,8 @@ public class Cabecera_R extends Cabecera_R_ventana{
 	public Perfil_Propio_R _unnamed_Perfil_Propio_R_;
 	public Perfil_Propio_A _unnamed_Perfil_Propio_A_;
 	
-	Subir_Video sv = new Subir_Video();
-	
 	public Cabecera_R() {
+		Subir_Video sv = new Subir_Video();
 		botonSubirVideo.addClickListener(new ClickListener() {
 			@Override
 			public void buttonClick(ClickEvent event) {
@@ -41,21 +40,18 @@ public class Cabecera_R extends Cabecera_R_ventana{
 				//popup.setClosable(false);
 				popup.setModal(true);
 				UI.getCurrent().addWindow(popup);
-				
-				//Subir video con el boton aceptar
-				sv.confirmar.addClickListener(new ClickListener() {
-					public void buttonClick(ClickEvent event) {
-							sv.subirVideo();
-				
-						popup.close();
-					}
-				});
-				//Cerrrar el popup cuando se da a cancelar
-				sv.cancelar.addClickListener(new ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						popup.close();
-					}
-				});
+			}
+		});
+		//Cerrar el popup cuando se da a confirmar
+		sv.confirmar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup.close();
+			}
+		});
+		//Cerrar el popup cuando se da a cancelar
+		sv.cancelar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup.close();
 			}
 		});
 		avatar.addClickListener(new MouseEvents.ClickListener() {

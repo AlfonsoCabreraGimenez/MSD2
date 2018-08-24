@@ -37,7 +37,7 @@ public class Video2 extends Video2_ventana{
 	public Visualizacion_Video_Ajeno_R _unnamed_Visualizacion_Video_Ajeno_R_;*/
 	
 	iUsuario_Registrado ur = new BD_Principal();
-	Modificar_Video mv = new Modificar_Video();
+
 	
 	boolean videoPropio;
 	boolean esVideoPropio;
@@ -47,6 +47,9 @@ public class Video2 extends Video2_ventana{
 	public Video2(int id) {
 	
 		Conf_Eliminar_Video ev = new Conf_Eliminar_Video(id);
+		/*Pasamos string con la pagina desde donde se abre el modificar video para poder recargar
+		despues de modificar un video y saber en que pagina estabamos*/ 
+		Modificar_Video mv = new Modificar_Video(id, "PagPerfil");
 		
 		titulo.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
@@ -127,8 +130,8 @@ public class Video2 extends Video2_ventana{
 				}
 			}
 		});
+		//MODIFICAR VIDEO
 		modificarVideo.addClickListener(new ClickListener() {
-			
 			public void buttonClick(ClickEvent event) {
 				popup.setContent(subContent);
 				subContent.addComponent(mv);
@@ -136,24 +139,22 @@ public class Video2 extends Video2_ventana{
 				popup.setWidth("720px");
 				//popup.setClosable(false);
 				popup.setModal(true);
-				UI.getCurrent().addWindow(popup);
-				
-				mv.confirmar.addClickListener(new ClickListener() {
-					public void buttonClick(ClickEvent event) {
-							mv.modificarDatosVideo();
-				
-						popup.close();
-					}
-				});
-				//Cerrrar el popup cuando se da a cancelar
-				mv.cancelar.addClickListener(new ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						popup.close();
+				UI.getCurrent().addWindow(popup);				
 			}
 		});
-				
+		//Cerrar popup al pulsar confirmar
+		mv.confirmar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup.close();
 			}
 		});
+		//Cerrrar el popup cuando se da a cancelar
+		mv.cancelar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup.close();
+			}
+		});
+		
 		//boton de eliminar video
 		eliminarVideo.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
@@ -163,32 +164,25 @@ public class Video2 extends Video2_ventana{
 				popup.setWidth("720px");
 				//popup.setClosable(false);
 				popup.setModal(true);
-				UI.getCurrent().addWindow(popup);
-				
-				ev.aceptar.addClickListener(new ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						ev.borrarVideo();
-						popup.close();
-					}
-				});
-				
-				ev.cancelar.addClickListener(new ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						popup.close();
-						
-					}
-				});
-				
+				UI.getCurrent().addWindow(popup);				
 			}
 		});
-
+		ev.aceptar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				ev.borrarVideo();
+				popup.close();
+			}
+		});
+		
+		ev.cancelar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup.close();	
+			}
+		});
 		
 	}
 
 	public boolean videoPropio(int id, int iduser) {
 		return videoPropio = ur.videoPropio(id,iduser);
 	}
-	//Hacer aquí el eliminar video
-	
-	
 }

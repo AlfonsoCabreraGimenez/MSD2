@@ -31,7 +31,7 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 	public Modificar_Video _unnamed_Modificar_Video_;
 	public Vector<Comentario_Video_Ajeno_A_Propio_AR> _unnamed_Comentario_Video_Ajeno_A_Propio_AR_ = new Vector<Comentario_Video_Ajeno_A_Propio_AR>();
 	public Conf_Eliminar_Video _unnamed_Conf_Eliminar_Video_;
-	Modificar_Video mv = new Modificar_Video();
+
 	Visualizacion_Video_Ajeno visA = new Visualizacion_Video_Ajeno();
 	diagramaclasesbd.Video videoA;
 	iUsuario_Registrado ur = new BD_Principal();
@@ -39,6 +39,9 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 	int identVideo = -1;
 	public Visualizacion_Video_Propio_AR(int idVideo) {
 		Anadir_a_ListaReproduccion anl = new Anadir_a_ListaReproduccion(idVideo);
+		/*Pasamos string con la pagina desde donde se abre el modificar video para poder recargar
+		despues de modificar un video y saber en que pagina estabamos*/ 
+		Modificar_Video mv = new Modificar_Video(idVideo, "PagVis");
 		cargarDatosVideo(idVideo);
 		this.identVideo = idVideo;
 	
@@ -54,7 +57,20 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 				UI.getCurrent().addWindow(popup);
 			}
 		});
-		
+		mv.confirmar.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				popup.close();
+			}
+		});
+		mv.cancelar.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				popup.close();
+			}
+		});
 		hCabeceraGeneral2.addComponent(cc.horizontalInicio);
 		hCabeceraGeneral2.addComponent(bus.vBuscador);
 		bus.vBuscador.setVisible(false);
