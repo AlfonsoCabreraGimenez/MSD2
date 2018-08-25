@@ -278,6 +278,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			video.fechasubida.setValue(fecha.toString());
 			video.usuario.setCaption(vid.getUsuario_video().getNombre());
 			video.etiqueta.setValue(vid.getEtiqueta());
+			video.modificarVideo.setVisible(false);
 			listaH.get(i).addComponent(video);
 			cont++;
 			if(cont == 4) {
