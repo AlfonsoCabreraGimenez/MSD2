@@ -393,4 +393,22 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		}
 		return suscrito;
 	}
+	
+	public void aumentarVisitas(int idUser) {
+		try {
+			registrados.aumentarVisitas(idUser);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void aumentarVisualizaciones(int idVideo) {
+		try {
+			videos.aumentarVisualizaciones(idVideo);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

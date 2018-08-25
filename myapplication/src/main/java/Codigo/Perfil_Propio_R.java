@@ -168,7 +168,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 		email.setValue(user.getEmail());
 		fNacimiento.setValue(String.valueOf(user.getFechaN()));
 		imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
-		
+		nSuscriptores.setValue("Nº Suscriptores: " + String.valueOf(user.suscriptores.size()));
 	} 	
 	
 	public void cargarVideosPropiosR() {

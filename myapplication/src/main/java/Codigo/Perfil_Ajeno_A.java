@@ -32,6 +32,7 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 		Conf_Eliminar_Usuario Conf_Eliminar_Usuario_ = new Conf_Eliminar_Usuario(idUser);
 		
 		inicializar();
+		aumentarVisitas(idUser);
 		comprobarSuscripcion(idUser);
 		cargarPerfilAjenoNR(idUser);
 		cargarVideosAjenoNR(idUser);

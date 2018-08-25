@@ -392,4 +392,15 @@ public class BD_Videos {
 		return videoProp;
 	}
 
+	public void aumentarVisualizaciones(int idVideo) throws PersistentException{
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		try {
+			Video vid = VideoDAO.getVideoByORMID(idVideo);
+			vid.setVisualizaciones(vid.getVisualizaciones()+1);
+			VideoDAO.save(vid);
+			t.commit();
+		} catch (Exception e) {
+			t.rollback();
+		}
+	}
 }

@@ -73,4 +73,6 @@ public interface iUsuario_Registrado {
 	public List<Video> cargar_Videos_ListaReproduccion(int aID);
 	
 	public boolean comprobarSuscripcion(int ID);
+	
+	public void aumentarVisualizaciones(int idVideo);
 }

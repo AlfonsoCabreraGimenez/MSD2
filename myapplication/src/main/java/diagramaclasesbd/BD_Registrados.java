@@ -250,4 +250,16 @@ public class BD_Registrados {
 		}
 		return suscrito;
 	}
+	
+	public void aumentarVisitas(int idUser) throws PersistentException{
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		try {
+			Usuario user = UsuarioDAO.getUsuarioByORMID(idUser);
+			user.setVisitas(user.getVisitas()+1);
+			UsuarioDAO.save(user);
+			t.commit();
+		} catch (Exception e) {
+			t.rollback();
+		}
+	}
 }

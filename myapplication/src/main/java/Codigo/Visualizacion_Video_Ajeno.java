@@ -26,6 +26,7 @@ public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana
 		
 	}
 	public Visualizacion_Video_Ajeno(int idVideo) {
+		aumentarVisualizaciones(idVideo);
 		cargarDatosVideo(idVideo);
 		inicializar();
 	}
@@ -54,6 +55,11 @@ public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana
 		Date fecha = videoA.getFechaCreacion();
 		fechaSubida.setValue(fecha.toString());
 	}
+	
+	public void aumentarVisualizaciones(int idVideo) {
+		unr.aumentarVisualizaciones(idVideo);
+	}
+	
 	public void cargarDatosVideo(int idVideo) {
 		videoA = unr.cargarDatosVideo(idVideo);
 	}	

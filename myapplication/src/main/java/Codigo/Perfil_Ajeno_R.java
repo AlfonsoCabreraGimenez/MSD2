@@ -34,6 +34,7 @@ public class Perfil_Ajeno_R extends Perfil_Ajeno implements View {
 		Conf_Cancelar_Suscribirse Conf_Canc_Susc = new Conf_Cancelar_Suscribirse(idUser);
 		
 		inicializar();
+		aumentarVisitas(idUser);
 		comprobarSuscripcion(idUser);
 		cargarPerfilAjenoNR(idUser);
 		cargarVideosAjenoNR(idUser);

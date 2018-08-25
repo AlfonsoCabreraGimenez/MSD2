@@ -39,6 +39,7 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 	
 	public Visualizacion_Video_Ajeno_R(int idVideo) {
 		Anadir_a_ListaReproduccion anl = new Anadir_a_ListaReproduccion(idVideo);
+		aumentarVisualizaciones(idVideo);
 		cargarDatosVideo(idVideo);
 		this.identVideo = idVideo;
 		
@@ -116,6 +117,11 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		ur.escribirComentario(texto, identVideo);
 		cargarListaComentarios();
 	}
+	
+	public void aumentarVisualizaciones(int idVideo) {
+		ur.aumentarVisualizaciones(idVideo);
+	}
+	
 	public void cargarDatosVideo(int idVideo) {
 		videoA = ur.cargarDatosVideo(idVideo);
 		

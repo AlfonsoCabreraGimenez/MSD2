@@ -49,6 +49,7 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 	
 	public Perfil_Ajeno(int idUser){
 		inicializar();
+		aumentarVisitas(idUser);
 		cargarPerfilAjenoNR(idUser);
 		cargarVideosAjenoNR(idUser);
 		
@@ -97,10 +98,15 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 		darDeBaja.setVisible(false);
 	}
 	
+	public void aumentarVisitas(int idUser) {
+		unr.aumentarVisitas(idUser);
+	}
+	
 	public void cargarPerfilAjenoNR(int idUser) {
 		Usuario user = unr.cargarDatosUsuario(idUser);
+		nSuscriptores.setValue("Nº Suscriptores: " + String.valueOf(user.suscriptores.size()));
 		apodo.setCaption(user.getApodo());
-		nVisitas.setValue(String.valueOf(user.getVisitas()));
+		nVisitas.setValue("Visitas: "+ String.valueOf(user.getVisitas()));
 		imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
 	}
 	

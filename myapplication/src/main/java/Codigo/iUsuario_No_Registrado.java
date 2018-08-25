@@ -36,4 +36,8 @@ public interface iUsuario_No_Registrado {
 	public List cargar_Lista_Suscriptores(int aID);
 
 	public List cargar_Lista_Suscripciones(int aID);
+	
+	public void aumentarVisitas(int idUser);
+	
+	public void aumentarVisualizaciones(int idVideo);
 }

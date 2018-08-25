@@ -43,6 +43,7 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 	
 	public Visualizacion_Video_Ajeno_A(int idVideo){
 		Anadir_a_ListaReproduccion anl = new Anadir_a_ListaReproduccion(idVideo);
+		aumentarVisualizaciones(idVideo);
 		cargarDatosVideo(idVideo);
 		
 		this.identVideo = idVideo;
@@ -120,6 +121,11 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 	public void cargarDatosVideo(int idVideo) {
 		videoA = adm.cargarDatosVideo(idVideo);
 	}	
+	
+	public void aumentarVisualizaciones(int idVideo) {
+		adm.aumentarVisualizaciones(idVideo);
+	}
+	
 	public void darQuitarMegusta() {
 		if(adm.darQuitarMegusta(videoA.getID())) {
 			Notification.show("¡Te ha gustado el video!");
