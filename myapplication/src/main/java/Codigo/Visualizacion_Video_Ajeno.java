@@ -7,6 +7,7 @@ import org.hibernate.engine.HibernateIterator;
 import com.vaadin.navigator.View;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Embedded;
 import com.vaadin.ui.Notification;
 
 import diagramaclasesbd.BD_Principal;
@@ -54,6 +55,15 @@ public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana
 		nGusta.setValue(String.valueOf(videoA.getMegusta() + " me gusta"));
 		Date fecha = videoA.getFechaCreacion();
 		fechaSubida.setValue(fecha.toString());
+		//VISUALIZAR VIDEO
+				Embedded v = new Embedded(null, new ExternalResource(videoA.getUrl()));
+				 v.setMimeType("application/x-shockwave-flash");
+				 v.setParameter("allowFullScreen", "true");
+				 v.setWidth("1000px");
+				 v.setHeight("450px");
+				vvideo.removeComponent(video);
+				vvideo.addComponentAsFirst(v);
+		
 	}
 	
 	public void aumentarVisualizaciones(int idVideo) {
