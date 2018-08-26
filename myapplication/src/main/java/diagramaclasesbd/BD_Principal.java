@@ -280,13 +280,15 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		throw new UnsupportedOperationException();
 	}
 
-	public void registrarse(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aPass, String aRepPass, String aEmail, String aAvatar) {
+	public int registrarse(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aPass, String aRepPass, String aEmail, String aAvatar) {
+		int resReg = 0;
 		try {
-			registrados.registrarse(aNombre, aApellido1, aApellido2, aFechaN, aApodo, aPass, aRepPass, aEmail, aAvatar);
+			resReg = registrados.registrarse(aNombre, aApellido1, aApellido2, aFechaN, aApodo, aPass, aRepPass, aEmail, aAvatar);
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return resReg;
 	}
 
 	public void nuevaPass(String aPass, String aRepPass) {

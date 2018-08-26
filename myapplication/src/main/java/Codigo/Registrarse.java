@@ -1,5 +1,7 @@
 package Codigo;
 
+import com.vaadin.server.ExternalResource;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 
 import diagramaclasesbd.BD_Principal;
@@ -11,6 +13,7 @@ import org.w3c.flute.parser.ParseException;
 
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.Notification.Type;
 public class Registrarse extends Registrarse_ventana {
 	
 	iUsuario_No_Registrado unr = new BD_Principal();
@@ -20,7 +23,7 @@ public class Registrarse extends Registrarse_ventana {
 
 	public Registrarse() {
 		modificarDatosUser.setVisible(false);
-		
+		tUrl.setPlaceholder("Url del avatar...");
 		botonRegistrarse.addClickListener(new ClickListener() {
 			@Override
 			public void buttonClick(ClickEvent event) {
@@ -30,9 +33,19 @@ public class Registrarse extends Registrarse_ventana {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					//UI.getCurrent().getNavigator().navigateTo("PagIR");
-					
 				}	
+		});
+		bImagen.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				if(tUrl.getValue() == "") {
+					imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez"
+							+ "/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+				} else {
+					imagen.setSource(new ExternalResource(tUrl.getValue()));
+				}
+			}
 		});
 	}
 	public void registrarse() throws java.text.ParseException  {
@@ -51,13 +64,45 @@ public class Registrarse extends Registrarse_ventana {
 			fechaFinal = formatoDelTexto.parse(fechaAlta);
 		} catch (ParseException ex) {
 			ex.printStackTrace();
+
 		}
-		
 		String aApodo = tApodo.getValue();
 		String aPass = tPass.getValue();
 		String aRepPass = tRepPass.getValue();
 		String aEmail = tEmail.getValue();
-		String aAvatar = "https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true";
-		unr.registrarse(aNombre, aApellido1, aApellido2, fechaFinal, aApodo, aPass, aRepPass, aEmail, aAvatar);
+		String aAvatar = tUrl.getValue();
+		if(aNombre == "" || aApellido1 == "" || aApellido2 == "" || aApodo == "" ||
+				aPass == "" || aRepPass == "" || aEmail == "") {
+			Notification.show("¡Debe rellenar todos los campos!", Type.WARNING_MESSAGE);
+			return;
+		}
+		if(!aPass.equals(aRepPass)) {
+			Notification.show("¡Los campos contraseña y repetición de contraseña"
+					+ " deben ser iguales!", Type.WARNING_MESSAGE);
+			return;
+		}
+		if(aPass.length() < 8) {
+			Notification.show("¡La contraseña debe ser "
+					+ "almenos de 8 caracteres!", Type.WARNING_MESSAGE);
+			return;
+		}
+		if(!aEmail.contains("@")) {
+			Notification.show("¡Introduce un email válido!", Type.WARNING_MESSAGE);
+			return;
+		}
+		if(aAvatar == "") {
+			aAvatar = "https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true";
+		}
+		
+		int resReg = unr.registrarse(aNombre, aApellido1, aApellido2, fechaFinal, aApodo, aPass, aRepPass, aEmail, aAvatar);		
+		if(resReg == -1) {
+			Notification.show("¡Ya existe un usuario con ese apodo!", Type.WARNING_MESSAGE);
+		}
+		if(resReg == 0) {
+			Notification.show("¡Ya existe un usuario con ese email!", Type.WARNING_MESSAGE);
+		}
+		if(resReg == 1) {
+			Notification.show("¡Registro correcto!", Type.WARNING_MESSAGE);
+		}
 	}
 }

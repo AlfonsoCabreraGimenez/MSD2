@@ -13,7 +13,7 @@ public interface iUsuario_No_Registrado {
 
 	public boolean iniciarSesion(String aUser, String aPass);
 
-	public void registrarse(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aPass, String aRepPass, String aEmail, String aAvatar);
+	public int registrarse(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aPass, String aRepPass, String aEmail, String aAvatar);
 
 	public void nuevaPass(String aPass, String aRepPass);
 

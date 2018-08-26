@@ -41,9 +41,12 @@
       <vaadin-label plain-text _id="lAvatar" :center>
         Avatar 
       </vaadin-label>
-      <vaadin-horizontal-layout width-full _id="hAvatar">
+      <vaadin-horizontal-layout _id="hAvatar">
+       <vaadin-text-field width-full _id="tUrl" :bottom :right></vaadin-text-field>
+       <vaadin-button description="Ver vista previa del avatar" plain-text _id="bImagen" :bottom :right>
+         Vista Previa 
+       </vaadin-button>
        <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="100px" height="100px" _id="imagen" :right></vaadin-image>
-       <vaadin-upload button-caption="..." _id="botonSubir" :bottom></vaadin-upload>
       </vaadin-horizontal-layout>
      </vaadin-vertical-layout>
     </vaadin-horizontal-layout>

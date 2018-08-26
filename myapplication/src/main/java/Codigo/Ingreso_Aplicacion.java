@@ -23,13 +23,5 @@ public class Ingreso_Aplicacion extends Ingreso_Aplicacion_ventana implements Vi
 		hInicio.addComponent(cc.inicio);
 		hingreso.addComponent(reg.vRegistrarse);
 		hingreso.addComponent(ini.vIniciar);
-		
-		cc.inicio.addClickListener(new ClickListener() {
-			public void buttonClick(ClickEvent event) {
-				// TODO Auto-generated method stub
-				MyUI.getCurrent().getNavigator().addView("Pag_Inicio_NR", new Pag_Inicio_NR());
-				UI.getCurrent().getNavigator().navigateTo("Pag_Inicio_NR");
-			}
-		});
 	}
 }

@@ -9,7 +9,6 @@ import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
-import com.vaadin.ui.Upload;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.declarative.Design;
 
@@ -47,8 +46,9 @@ public class Registrarse_ventana extends VerticalLayout {
 	protected VerticalLayout vAvatar;
 	protected Label lAvatar;
 	protected HorizontalLayout hAvatar;
+	protected TextField tUrl;
+	protected Button bImagen;
 	protected Image imagen;
-	protected Upload botonSubir;
 	protected HorizontalLayout hVacio1;
 	protected HorizontalLayout hRegisModi;
 	protected Button botonRegistrarse;
