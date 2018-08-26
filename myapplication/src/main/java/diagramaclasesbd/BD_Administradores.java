@@ -1,5 +1,6 @@
 package diagramaclasesbd;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
@@ -7,16 +8,35 @@ import java.util.Vector;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
+import com.vaadin.ui.UI;
+
 import diagramaclasesbd.Administrador;
+import Codigo.Pag_Inicio_R;
 import Codigo.Usuario2;
 import Codigo.Video2;
+import GY.MyUI;
 
 public class BD_Administradores {
 	public BD_Principal _bd_prin_admin;
 	public Vector<Administrador> _contiene_admin = new Vector<Administrador>();
 
-	public boolean iniciarSesion(String aUser, String aPass) {
-		throw new UnsupportedOperationException();
+	public int iniciarSesion(String aUser, String aPass) throws PersistentException{
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		int inicioOk = -1;
+		try {
+			for(Administrador adm : Arrays.asList(AdministradorDAO.listAdministradorByQuery(null, null))) {
+				if((adm.getApodo().equals(aUser) || adm.getEmail().equals(aUser))
+						&& (adm.getPassword().equals(aPass))) {
+					inicioOk = 1;
+					UI.getCurrent().getSession().setAttribute("admin", adm);
+				}
+			}
+			t.commit();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			t.rollback();
+		}
+		return inicioOk;
 	}
 
 	public Usuario cargarDatosUsuario(int aID) throws PersistentException {

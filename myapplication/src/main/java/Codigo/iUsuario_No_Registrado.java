@@ -11,7 +11,7 @@ public interface iUsuario_No_Registrado {
 
 	public List<diagramaclasesbd.Video> cargar_Videos_Ultimos();
 
-	public boolean iniciarSesion(String aUser, String aPass);
+	public int iniciarSesion(String aUser, String aPass);
 
 	public int registrarse(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aPass, String aRepPass, String aEmail, String aAvatar);
 

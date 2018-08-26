@@ -276,8 +276,18 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		return null;
 	}
 
-	public boolean iniciarSesion(String aUser, String aPass) {
-		throw new UnsupportedOperationException();
+	public int iniciarSesion(String aUser, String aPass) {
+		int inicioOk = -1;
+		try {
+			inicioOk = registrados.iniciarSesion(aUser, aPass);
+			if(inicioOk == -1) {
+				inicioOk = admin.iniciarSesion(aUser, aPass);
+			}
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return inicioOk;
 	}
 
 	public int registrarse(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aPass, String aRepPass, String aEmail, String aAvatar) {

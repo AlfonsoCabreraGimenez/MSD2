@@ -13,15 +13,32 @@ import com.mysql.fabric.xmlrpc.base.Array;
 import com.vaadin.ui.UI;
 
 import diagramaclasesbd.Registrado;
+import Codigo.Pag_Inicio_R;
 import Codigo.TipoBusqueda;
 import Codigo.Usuario2;
+import GY.MyUI;
 
 public class BD_Registrados {
 	public BD_Principal _bd_prin_regis;
 	public Vector<Registrado> _contiene_regis = new Vector<Registrado>();
 
-	public boolean iniciarSesion(String aUser, String aPass) {
-		throw new UnsupportedOperationException();
+	public int iniciarSesion(String aUser, String aPass) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		int inicioOk = -1;
+		try {
+			for(Registrado reg : Arrays.asList(RegistradoDAO.listRegistradoByQuery(null, null))) {
+				if((reg.getApodo().equals(aUser) || reg.getEmail().equals(aUser))
+						&& (reg.getPassword().equals(aPass))) {
+					inicioOk = 0;
+					UI.getCurrent().getSession().setAttribute("usuario", reg);
+				}
+			}
+			t.commit();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			t.rollback();
+		}
+		return inicioOk;
 	}
 
 	public int registrarse(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aPass, String aRepPass, String aEmail, String aAvatar) throws PersistentException{
