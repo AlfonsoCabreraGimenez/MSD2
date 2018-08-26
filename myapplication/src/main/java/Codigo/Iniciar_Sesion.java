@@ -47,5 +47,6 @@ public class Iniciar_Sesion extends Iniciar_Sesion_ventana implements View{
 		if(inicioOk == -1) {
 			Notification.show("¡Usuario y contraseña incorrectos!", Type.WARNING_MESSAGE);
 		}
+		//
 	}
 }
