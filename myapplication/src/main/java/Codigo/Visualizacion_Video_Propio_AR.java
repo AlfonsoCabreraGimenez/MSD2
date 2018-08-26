@@ -7,6 +7,7 @@ import java.util.Vector;
 
 import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Embedded;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -96,6 +97,14 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 		nGusta.setValue(String.valueOf(videoA.getMegusta() + " me gusta"));
 		Date fecha = videoA.getFechaCreacion();
 		fechaSubida.setValue(fecha.toString());
+		//VISUALIZAR VIDEO
+				Embedded v = new Embedded(null, new ExternalResource(videoA.getUrl()));
+				 v.setMimeType("application/x-shockwave-flash");
+				 v.setParameter("allowFullScreen", "true");
+				 v.setWidth("1000px");
+				 v.setHeight("450px");
+				vvideo.removeComponent(video);
+				vvideo.addComponentAsFirst(v);
 		
 		/////////////METER AÑADIR A LISTA DE REPRODUCCION
 		añadirAListaRepro.addClickListener(new ClickListener() {

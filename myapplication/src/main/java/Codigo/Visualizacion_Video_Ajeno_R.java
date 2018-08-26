@@ -12,6 +12,7 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.Embedded;
 
 import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Categoria;
@@ -136,6 +137,14 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		nGusta.setValue(String.valueOf(videoA.getMegusta() + " me gusta"));
 		Date fecha = videoA.getFechaCreacion();
 		fechaSubida.setValue(fecha.toString());
+		//VISUALIZAR VIDEO
+		Embedded v = new Embedded(null, new ExternalResource(videoA.getUrl()));
+		 v.setMimeType("application/x-shockwave-flash");
+		 v.setParameter("allowFullScreen", "true");
+		 v.setWidth("1000px");
+		 v.setHeight("450px");
+		vvideo.removeComponent(video);
+		vvideo.addComponentAsFirst(v);
 	}	
 	public void cargarListaComentarios() {
 		vComentario.removeAllComponents();
