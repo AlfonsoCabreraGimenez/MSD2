@@ -189,25 +189,37 @@ public class BD_Registrados {
 		throw new UnsupportedOperationException();
 	}
 
-	public void modificarDatos(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aEmail, String aPass, String aNuevaPass, String aRepPass, String aAvatar) throws PersistentException {
+	public int modificarDatos(int idUser, String aNombre, String aApellido1, String aApellido2, String aApodo, String aEmail, String aAvatar) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
-		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-		Registrado r = diagramaclasesbd.RegistradoDAO.getRegistradoByORMID(registrado.getID());
+		int resMod = 1;
 		try {
-			//Registrado r = diagramaclasesbd.RegistradoDAO.getRegistradoByORMID(registrado.getID());
-			r.setNombre(aNombre);
-			r.setApellido1(aApellido1);
-			r.setApellido2(aApellido2);
-			r.setApodo(aApodo);
-			r.setAvatar(null);
-			r.setEmail(aEmail);
-			r.setPassword(aNuevaPass);
-			
-			diagramaclasesbd.RegistradoDAO.save(r);
-			t.commit();
-		} catch (PersistentException e) {
+			List<Usuario> usuarios = Arrays.asList(UsuarioDAO.listUsuarioByQuery(null, null));
+			for(Usuario user : usuarios) {
+				if(user.getApodo().equals(aApodo) && (user.getID() != idUser)) {
+					resMod = -1;
+					break;
+				}
+				if(user.getEmail().equals(aEmail) && (user.getID() != idUser)) {
+					resMod = 0;
+					break;
+				}
+			}
+			if(resMod == 1) {
+				Usuario u = UsuarioDAO.getUsuarioByORMID(idUser);
+				u.setNombre(aNombre);
+				u.setApellido1(aApellido1);
+				u.setApellido2(aApellido2);
+				u.setApodo(aApodo);
+				u.setAvatar(aAvatar);
+				u.setEmail(aEmail);
+				UsuarioDAO.save(u);
+				t.commit();
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			t.rollback();
 		}
+		return resMod;
 	}
 
 	public List buscarUsuario(String aNombre) {

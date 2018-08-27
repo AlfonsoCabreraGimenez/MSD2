@@ -172,13 +172,15 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		}
 	}
 
-	public void modificarDatos(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aEmail, String aPass, String aNuevaPass, String aRepPass, String aAvatar) {
+	public int modificarDatos(int idUser, String aNombre, String aApellido1, String aApellido2, String aApodo, String aEmail, String aAvatar) {
+		int resMod = -1;
 		try {
-			registrados.modificarDatos(aNombre, aApellido1, aApellido2, null, aApodo, aEmail, null, aNuevaPass, aRepPass, null);
+			resMod = registrados.modificarDatos(idUser, aNombre, aApellido1, aApellido2, aApodo, aEmail, aAvatar);
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return resMod;
 	}
 
 	public void modificarDatosVideo(int idVideo, String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aMiniatura) {
