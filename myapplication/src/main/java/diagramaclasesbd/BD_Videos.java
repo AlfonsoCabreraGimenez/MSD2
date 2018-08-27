@@ -293,7 +293,7 @@ public class BD_Videos {
 		//ELIMINAR VIDEO
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
-			Video vid = VideoDAO.loadVideoByORMID(aID);
+			Video vid = VideoDAO.getVideoByORMID(aID);
 			//Eliminamos cualquier contacto con los comentarios
 			for(Object comen : vid.comentarios.getCollection())
 			{
