@@ -336,12 +336,19 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	public List cargar_Lista_Suscripciones(int aID) {
 		throw new UnsupportedOperationException();
 	}
-	public void registrarAdministrador(String aNombre, String aApellido1, String aApellido2, Date fechaFinal, String aApodo,
-			String aPass, String aRepPass, String aEmail, String aAvatar) throws PersistentException {
-			admin.registrarAdministrador(aNombre, aApellido1, aApellido2, fechaFinal, aApodo, aPass, aRepPass, aEmail, aAvatar);
+	public int registrarAdministrador(String aNombre, String aApellido1, 
+			String aApellido2, Date fechaFinal, String aApodo,String aPass, String aRepPass, String aEmail, String aAvatar) {
+		int resCrearAd = 0;
+		try {
+			resCrearAd = admin.registrarAdministrador(aNombre, aApellido1, aApellido2, fechaFinal, aApodo, aPass, aRepPass, aEmail, aAvatar);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return resCrearAd;
 	}
 	
-	public List cargarUsuarioAdmin(){
+	public List<Administrador> cargarUsuarioAdmin(){
 		
 		try {
 			return admin.cargarUsuarioAdmin();

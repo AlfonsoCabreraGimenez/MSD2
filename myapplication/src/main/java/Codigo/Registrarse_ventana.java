@@ -53,6 +53,7 @@ public class Registrarse_ventana extends VerticalLayout {
 	protected HorizontalLayout hRegisModi;
 	protected Button cancelar;
 	protected Button botonRegistrarse;
+	protected Button darAlta;
 	protected Button modificarDatosUser;
 
 	public Registrarse_ventana() {

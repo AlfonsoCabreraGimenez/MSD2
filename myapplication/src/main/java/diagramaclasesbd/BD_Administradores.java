@@ -54,35 +54,50 @@ public class BD_Administradores {
 	public Video2 cargarDatosVideo(int aID) {
 		throw new UnsupportedOperationException();
 	}
-	public void registrarAdministrador(String aNombre, String aApellido1, String aApellido2, Date fechaFinal, String aApodo,
+	public int registrarAdministrador(String aNombre, String aApellido1, String aApellido2, Date fechaFinal, String aApodo,
 			String aPass, String aRepPass, String aEmail, String aAvatar) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		int resCrearAd = 1;
 		try {
-			diagramaclasesbd.Administrador ad = diagramaclasesbd.AdministradorDAO.createAdministrador();
-			ad.setNombre(aNombre);
-			ad.setApellido1(aApellido1);
-			ad.setApellido2(aApellido2);
-			ad.setFechaN(fechaFinal);
-			ad.setApodo(aApodo);
-			ad.setAvatar(aAvatar);
-			ad.setEmail(aEmail);
-			ad.setPassword(aPass);
-			ad.setIsAdmin(true);
-			
-			diagramaclasesbd.AdministradorDAO.save(ad);
-			t.commit();
-		}catch (Exception e) {
-				t.rollback();
+			List<Administrador> admins = Arrays.asList(AdministradorDAO.listAdministradorByQuery(null, null));
+			List<Usuario> usuarios = Arrays.asList(UsuarioDAO.listUsuarioByQuery(null, null));
+			for(Usuario user : usuarios) {
+				if(user.getApodo().equals(aApodo)) {
+					resCrearAd = -1;
+					break;
+				}
+				if(user.getEmail().equals(aEmail)) {
+					resCrearAd = 0;
+					break;
+				}
 			}
+			if(resCrearAd == 1) {
+				Administrador a = AdministradorDAO.createAdministrador();
+				a.setNombre(aNombre);
+				a.setApellido1(aApellido1);
+				a.setApellido2(aApellido2);
+				a.setFechaN(fechaFinal);
+				a.setApodo(aApodo);
+				a.setAvatar(aAvatar);
+				a.setEmail(aEmail);
+				a.setPassword(aPass);
+				a.setIsAdmin(true);
+				AdministradorDAO.save(a);
+				t.commit();
+			}	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			t.rollback();
 		}
-		
+		return resCrearAd;
+	}	
 	
-	public List cargarUsuarioAdmin() throws PersistentException {
-		List listado = null;
+	public List<Administrador> cargarUsuarioAdmin() throws PersistentException {
+		List<Administrador> listado = null;
 		//Metodo para cargar todos los administradores
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
-			listado = AdministradorDAO.queryAdministrador(null, null);
+			listado = Arrays.asList(AdministradorDAO.listAdministradorByQuery(null, null));
 			t.commit();
 		} catch (Exception e) {
 			t.rollback();
