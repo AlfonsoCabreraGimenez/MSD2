@@ -167,7 +167,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 		apellidos.setValue(user.getApellido1()+" "+user.getApellido2());
 		email.setValue(user.getEmail());
 		fNacimiento.setValue(String.valueOf(user.getFechaN()));
-		imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+		imagen.setSource(new ExternalResource(user.getAvatar()));
 		nSuscriptores.setValue("Nº Suscriptores: " + String.valueOf(user.suscriptores.size()));
 	} 	
 	
@@ -316,7 +316,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			Usuario2 usu = new Usuario2(us.getID());
 			usu.usuario.setCaption(us.getApodo());
 			usu.nSuscriptores.setValue("Nº Suscriptores: " + String.valueOf(us.suscriptores.size()));
-			usu.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+			usu.imagen.setSource(new ExternalResource(us.getAvatar()));
 			usu.setHeight("-1px");
 			usu.setWidth("100%");
 			listaH.get(i).addComponent(usu);
@@ -356,7 +356,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			Usuario2 usu = new Usuario2(us.getID());
 			usu.usuario.setCaption(us.getApodo());
 			usu.nSuscriptores.setValue("Nº Suscriptores: " + String.valueOf(us.suscriptores.size()));
-			usu.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+			usu.imagen.setSource(new ExternalResource(us.getAvatar()));
 			usu.setHeight("-1px");
 			usu.setWidth("-1px");
 			listaH.get(i).addComponent(usu);

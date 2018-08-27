@@ -23,6 +23,7 @@ public class Perfil_Ajeno_R extends Perfil_Ajeno implements View {
 	public Video2 _unnamed_Video2_;
 	public Usuario2 _unnamed_Usuario2_;
 	
+	Cabecera_R cr = new Cabecera_R();
 	iUsuario_Registrado ur = new BD_Principal();
 	
 	public Perfil_Ajeno_R() {

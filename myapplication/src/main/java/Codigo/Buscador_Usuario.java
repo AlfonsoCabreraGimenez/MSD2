@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Vector;
 
 import com.vaadin.navigator.View;
+import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
@@ -23,7 +24,7 @@ public class Buscador_Usuario extends Buscador implements View{
 	iUsuario_No_Registrado unr = new BD_Principal();
 	Cabecera_NR cnr = new Cabecera_NR();
 	Cabecera_Comun cc = new Cabecera_Comun();
-	Cabecera_R cr = new Cabecera_R();
+	
 	public Buscador_Usuario(String busqueda) {
 		panelBuscador.setVisible(false);
 		panelBuscadorUs.setVisible(true);
@@ -34,6 +35,7 @@ public class Buscador_Usuario extends Buscador implements View{
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
 		if(admon != null || registrado != null) {
+			Cabecera_R cr = new Cabecera_R();
 			cnr.hIniciarSesionRegistrarse.setVisible(false);
 			hCabeceraInicioBus.addComponent(cr.hCabeceraR);
 		}
@@ -53,6 +55,7 @@ public class Buscador_Usuario extends Buscador implements View{
 				usu.usuario.setCaption(usuario.getApodo());
 				usu.nSuscriptores.setValue("Nº Suscriptores: " + 
 						String.valueOf(usuario.suscriptores.size()));
+				usu.imagen.setSource(new ExternalResource(usuario.getAvatar()));
 				cont++;
 				if(cont == 4) {
 					hor.add(new HorizontalLayout());

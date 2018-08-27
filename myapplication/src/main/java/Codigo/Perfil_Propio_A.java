@@ -176,7 +176,7 @@ public class Perfil_Propio_A extends Perfil_Propio_R implements View {
 			Usuario2 usu = new Usuario2(us.getID());
 			usu.usuario.setCaption(us.getApodo());
 			usu.nSuscriptores.setValue("Nº Suscriptores: " + String.valueOf(us.suscriptores.size()));
-			usu.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+			usu.imagen.setSource(new ExternalResource(us.getAvatar()));
 			listaH.get(i).addComponent(usu);
 			cont++;
 			if(cont == 3) {

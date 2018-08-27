@@ -40,7 +40,7 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 
 	Cabecera_Comun cc = new Cabecera_Comun();
 	Cabecera_NR cnr = new Cabecera_NR();
-	Cabecera_R cr = new Cabecera_R();
+	
 	iUsuario_No_Registrado unr = new BD_Principal();
 	
 	public Perfil_Ajeno() {
@@ -107,7 +107,7 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 		nSuscriptores.setValue("Nº Suscriptores: " + String.valueOf(user.suscriptores.size()));
 		apodo.setCaption(user.getApodo());
 		nVisitas.setValue("Visitas: "+ String.valueOf(user.getVisitas()));
-		imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+		imagen.setSource(new ExternalResource(user.getAvatar()));
 	}
 	
 	public void cargarVideosAjenoNR(int idUser) {
@@ -240,7 +240,7 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 			Usuario2 usu = new Usuario2(us.getID());
 			usu.usuario.setCaption(us.getApodo());
 			usu.nSuscriptores.setValue("Nº Suscriptores: " + String.valueOf(us.suscriptores.size()));
-			usu.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+			usu.imagen.setSource(new ExternalResource(us.getAvatar()));
 			usu.setHeight("-1px");
 			usu.setWidth("100%");
 			listaH.get(i).addComponent(usu);
@@ -273,7 +273,7 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 			Usuario2 usu = new Usuario2(us.getID());
 			usu.usuario.setCaption(us.getApodo());
 			usu.nSuscriptores.setValue("Nº Suscriptores: " + String.valueOf(us.suscriptores.size()));
-			usu.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+			usu.imagen.setSource(new ExternalResource(us.getAvatar()));
 			usu.setHeight("-1px");
 			usu.setWidth("100%");
 			listaH.get(i).addComponent(usu);
