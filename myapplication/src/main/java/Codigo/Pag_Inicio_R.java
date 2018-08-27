@@ -33,13 +33,13 @@ public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 	
 	//Pag_Inicio_R_ventana pgr = new Pag_Inicio_R_ventana();
 	//Cabecera_Comun cc = new Cabecera_Comun();
-	//Cabecera_R cr = new Cabecera_R();
+	Cabecera_R cr = new Cabecera_R();
 	Buscador bus = new Buscador();
 	Pag_Inicio_NR pnr = new Pag_Inicio_NR();
 	Navigator navigator;
 	 	
 	public Pag_Inicio_R(){
-		hCabeceraInicioBus.addComponent(pnr.cr.hCabeceraR);
+		hCabeceraInicioBus.addComponent(cr.hCabeceraR);
 		cnr.iniciarSesionRegistrarse.setVisible(false);
 		addComponent(prv.videosRelacionados);
 		addComponent(prv.panelVR);//aqui añadimos los videos que cargamos

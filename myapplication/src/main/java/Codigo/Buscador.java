@@ -17,7 +17,7 @@ public class Buscador extends Buscador_ventana{
 	private RadioButton _apodoRB;
 	private TextField _buscarTF;*/
 	Cabecera_NR cnr = new Cabecera_NR();
-	Cabecera_R cr = new Cabecera_R();
+	//Cabecera_R cr = new Cabecera_R();
 	public Pag_Inicio_NR _unnamed_Pag_Inicio_NR_;
 	public Buscador() {
 		botonBuscar.addClickListener(new ClickListener() {	

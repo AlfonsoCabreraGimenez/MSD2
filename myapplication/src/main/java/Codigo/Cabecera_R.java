@@ -10,6 +10,7 @@ import com.vaadin.ui.Button.ClickListener;
 import GY.MyUI;
 import diagramaclasesbd.Administrador;
 import diagramaclasesbd.Registrado;
+import diagramaclasesbd.Usuario;
 
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.PopupView;
@@ -28,6 +29,7 @@ public class Cabecera_R extends Cabecera_R_ventana{
 	public Perfil_Propio_A _unnamed_Perfil_Propio_A_;
 	
 	public Cabecera_R() {
+		cargarAvatar();
 		Subir_Video sv = new Subir_Video();
 		botonSubirVideo.addClickListener(new ClickListener() {
 			@Override
@@ -55,14 +57,11 @@ public class Cabecera_R extends Cabecera_R_ventana{
 			}
 		});
 		avatar.addClickListener(new MouseEvents.ClickListener() {
-			
 			@Override
 			public void click(com.vaadin.event.MouseEvents.ClickEvent event) {
 				//Si es admin o registrado a un lado u otro.
 				Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
-				if(admon == null)
-				{
-					Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+				if(admon == null) {
 					MyUI.getCurrent().getNavigator().addView("Perfil_Propio_R", new Perfil_Propio_R());
 					UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_R");
 				}else {
@@ -81,5 +80,12 @@ public class Cabecera_R extends Cabecera_R_ventana{
 			}
 		});
 
+	}
+	public void cargarAvatar() {
+		Usuario user = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
+		if(user == null) {
+			user = (Usuario) UI.getCurrent().getSession().getAttribute("usuario");
+		}
+		avatar.setSource(new ExternalResource(user.getAvatar()));
 	}
 }
