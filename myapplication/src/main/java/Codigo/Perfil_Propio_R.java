@@ -47,7 +47,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	Registrarse registro = new Registrarse();*/
 	Cabecera_Comun cc = new Cabecera_Comun();
 	Cabecera_R cr = new Cabecera_R();
-	Video2 v2 = new Video2(1);
+	
 	Modificar_Datos_Usuario mdu = new Modificar_Datos_Usuario();
 	Crear_Lista_Reproduccion clr = new Crear_Lista_Reproduccion();
 	iUsuario_Registrado ur = new BD_Principal();	
@@ -97,16 +97,21 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 				popup.setContent(subContent);
 				subContent.addComponent(mdu);
 				popup.center();
-				popup.setWidth("720px");
+				popup.setWidth("900px");
 				//popup.setClosable(false);
 				popup.setModal(true);
 				UI.getCurrent().addWindow(popup);
 			}
 		});
 		
-		mdu.nuevo.addClickListener(new ClickListener() {
+		mdu.modificarDatosUser.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				mdu.modificarDatos();
+				popup.close();
+			}
+		});
+		
+		mdu.cancelar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
 				popup.close();
 			}
 		});

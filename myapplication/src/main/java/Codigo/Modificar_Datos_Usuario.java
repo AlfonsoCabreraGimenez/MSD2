@@ -1,20 +1,27 @@
 package Codigo;
 
+import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.UI;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 
 import diagramaclasesbd.BD_Principal;
+import diagramaclasesbd.Usuario;
 
 public class Modificar_Datos_Usuario extends Registrarse {
 	public Perfil_Propio_R _unnamed_Perfil_Propio_R_;
 	iUsuario_Registrado ur = new BD_Principal();
-	Button nuevo = new Button();
 	public Modificar_Datos_Usuario () {
-		nuevo.setCaption("Modificar Datos Usuario");
-		//botonRegistrarse.setVisible(false);
+		modificarDatosUser.setVisible(true);
+		cancelar.setVisible(true);
 		botonRegistrarse.setVisible(false);
-		hRegisModi.addComponent(nuevo);
-		//modificarDatosUser.setVisible(true);
-		//modificarDatos();
+		cargarDatosUsuario();
+		modificarDatosUser.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				modificarDatos();
+			}
+		});
 	}
 	
 	public void modificarDatos() {
@@ -27,5 +34,19 @@ public class Modificar_Datos_Usuario extends Registrarse {
 		String rePass = tRepPass.getValue();
 		ur.modificarDatos(nombre, ap1, ap2, null, apod, email, null, pass, rePass, null);
 
+	}
+	public void cargarDatosUsuario() {
+		Usuario user = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
+		if(user == null) {
+			user = (Usuario) UI.getCurrent().getSession().getAttribute("usuario");
+		}
+		Usuario iniciado = ur.cargarDatosUsuario(user.getID());
+		tNombre.setValue(iniciado.getNombre());
+		tApellido1.setValue(iniciado.getApellido1());
+		tApellido2.setValue(iniciado.getApellido2());
+		tApodo.setValue(iniciado.getApodo());
+		tEmail.setValue(iniciado.getEmail());
+		tUrl.setValue(iniciado.getAvatar());
+		imagen.setSource(new ExternalResource(iniciado.getAvatar()));
 	}
 }
