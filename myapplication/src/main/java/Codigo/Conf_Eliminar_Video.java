@@ -32,6 +32,12 @@ public class Conf_Eliminar_Video extends Conf_Eliminar_Video_ventana{
 	}
 	
 	public void borrarVideo(int id) {
-		ur.borrarVideo(id);
+		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+		if(admon == null) {
+			ur.borrarVideo(id);
+		} else {
+			admin.borrarVideo(id);
+		}
+
 	}
 }

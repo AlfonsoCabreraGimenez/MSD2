@@ -28,6 +28,9 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 	Window popup2 = new Window();
 	VerticalLayout subContent2 = new VerticalLayout();
 	
+	Window popup3 = new Window();
+	VerticalLayout subContent3 = new VerticalLayout();
+	
 	public Video2 _unnamed_Video2_;
 	public Modificar_Video _unnamed_Modificar_Video_;
 	public Vector<Comentario_Video_Ajeno_A_Propio_AR> _unnamed_Comentario_Video_Ajeno_A_Propio_AR_ = new Vector<Comentario_Video_Ajeno_A_Propio_AR>();
@@ -41,6 +44,7 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 	int identVideo = -1;
 	public Visualizacion_Video_Propio_AR(int idVideo) {
 		Anadir_a_ListaReproduccion anl = new Anadir_a_ListaReproduccion(idVideo);
+		Conf_Eliminar_Video ev = new Conf_Eliminar_Video(idVideo);
 		/*Pasamos string con la pagina desde donde se abre el modificar video para poder recargar
 		despues de modificar un video y saber en que pagina estabamos*/ 
 		Modificar_Video mv = new Modificar_Video(idVideo, "PagVis");
@@ -106,6 +110,32 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 				 v.setHeight("450px");
 				vvideo.removeComponent(video);
 				vvideo.addComponentAsFirst(v);
+		
+		//ELIMINAR VIDEO
+		eliminarVideo.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				popup3.setContent(subContent3);
+				subContent3.addComponent(ev.vVerticalEliminarVideo);
+				popup3.center();
+				popup3.setWidth("720px");
+				//popup.setClosable(false);
+				popup3.setModal(true);
+				UI.getCurrent().addWindow(popup3);
+			}
+		});
+		//ACEPTAR DE ELIMINAR VIDEO CIERRA EL POPUP
+		ev.aceptar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup3.close();
+			}
+		});
+		//CANCELAR DE ELIMINAR VIDEO CIERRA EL POPUP
+		ev.cancelar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup3.close();
+			}
+		});				
 		
 		/////////////METER AÑADIR A LISTA DE REPRODUCCION
 		añadirAListaRepro.addClickListener(new ClickListener() {

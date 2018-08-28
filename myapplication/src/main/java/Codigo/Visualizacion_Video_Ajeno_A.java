@@ -34,6 +34,9 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 	Window popup2 = new Window();
 	VerticalLayout subContent2 = new VerticalLayout();
 	
+	Window popup3 = new Window();
+	VerticalLayout subContent3 = new VerticalLayout();
+	
 	public Video2 _unnamed_Video2_;
 	public Vector<Comentario_Video_Ajeno_A_Propio_AR> _unnamed_Comentario_Video_Ajeno_A_Propio_AR_ = new Vector<Comentario_Video_Ajeno_A_Propio_AR>();
 	//Visualizacion_Video_Ajeno visA = new Visualizacion_Video_Ajeno();
@@ -45,6 +48,7 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 	
 	public Visualizacion_Video_Ajeno_A(int idVideo){
 		Anadir_a_ListaReproduccion anl = new Anadir_a_ListaReproduccion(idVideo);
+		Conf_Eliminar_Video ev = new Conf_Eliminar_Video(idVideo);
 		aumentarVisualizaciones(idVideo);
 		cargarDatosVideo(idVideo);
 		
@@ -88,6 +92,31 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 		meGusta.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				darQuitarMegusta();
+			}
+		});
+		//ELIMINAR VIDEO
+		eliminarVideo.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				popup3.setContent(subContent3);
+				subContent3.addComponent(ev.vVerticalEliminarVideo);
+				popup3.center();
+				popup3.setWidth("720px");
+				//popup.setClosable(false);
+				popup3.setModal(true);
+				UI.getCurrent().addWindow(popup3);
+			}
+		});
+		//ACEPTAR DE ELIMINAR VIDEO CIERRA EL POPUP
+		ev.aceptar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup3.close();
+			}
+		});
+		//CANCELAR DE ELIMINAR VIDEO CIERRA EL POPUP
+		ev.cancelar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup3.close();
 			}
 		});
 		
