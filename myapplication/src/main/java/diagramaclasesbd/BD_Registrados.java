@@ -173,68 +173,21 @@ public class BD_Registrados {
 					ComentarioDAO.delete(coment);
 				}
 			}
-			for(Lista_De_Reproduccion lista : Lista_De_ReproduccionDAO.listLista_De_ReproduccionByQuery(null, null)) {
-				if(lista.getEs_prop_lista().equals(user)) {
-					//List<Video> listaVideosLista = Arrays.asList(lista.video.toArray());
-					for(Video video : Arrays.asList(lista.video.toArray())) {
-						lista.video.remove(video);
+			for (Lista_De_Reproduccion lista : Lista_De_ReproduccionDAO.listLista_De_ReproduccionByQuery(null, null)) {
+				if (lista.getEs_prop_lista().getID() == (user.getID())) {
+					for (Video video : VideoDAO.listVideoByQuery(null, null)) {
+						if (video.lista_de_Reproduccion.contains(lista)) {
+							video.lista_de_Reproduccion.remove(lista);
+							VideoDAO.save(video);
+						}
 					}
 				}
+				Lista_De_ReproduccionDAO.deleteAndDissociate(lista);
 				Lista_De_ReproduccionDAO.delete(lista);
 			}
-			//UsuarioDAO.delete(user);
-			/*
-			 * Usuario regis = UsuarioDAO.getUsuarioByORMID(aID);
-			//Quitamos enlaces con comentarios y borramos
-			for(Object com : regis.es_escrito.getCollection()) {
-				Comentario coment = (Comentario) com;
-				Video v = coment.getVideo();
-				v.comentarios.remove(coment);
-				regis.es_escrito.remove(coment);
-				ComentarioDAO.delete(coment);
-			}
-			//Quitamos enlaces con videos y borramos
-			for(Object video : regis.prop_video_de.getCollection())	{
-				Video v = (Video) video;
-				for(Object comentario : v.comentarios.getCollection()) {
-					Comentario c = (Comentario) comentario;
-					v.comentarios.remove(c);
-				}
-				for(Object listaR : v.lista_de_Reproduccion.getCollection())
-				{
-					Lista_De_Reproduccion listaDR = (Lista_De_Reproduccion) listaR;
-					listaDR.video.remove(v);
-				}
-				regis.prop_video_de.remove(v);
-				VideoDAO.delete(v);
-			}
 			
-			//Quitamos enlaces con listas y borramos
-			for(Object lista : regis.prop_de.getCollection())
-			{
-				Lista_De_Reproduccion listaR = (Lista_De_Reproduccion) lista;
-				for(Object videoLista : listaR.video.getCollection()) {
-					Video vl = (Video) videoLista;
-					listaR.video.remove(vl);
-				}
-				regis.prop_de.remove(listaR);
-				Lista_De_ReproduccionDAO.delete(listaR);
-			}
-			//Quitar suscripciones y suscriptores
-			List<Usuario> usuarios = Arrays.asList(UsuarioDAO.listUsuarioByQuery(null, null));
-			for(Usuario usuario: usuarios){
-				if(usuario.suscripciones.contains(regis)) {
-					usuario.suscripciones.remove(regis);
-				}
-				if(usuario.suscriptores.contains(regis)) {
-					usuario.suscriptores.contains(regis);
-				}
-			}
-			UsuarioDAO.delete(regis);
-
-			
-			//UsuarioDAO.delete(u);
-			 * */
+			UsuarioDAO.deleteAndDissociate(user);
+			UsuarioDAO.delete(user);
 			t.commit();
 		} catch (Exception e) {
 			t.rollback();

@@ -27,8 +27,8 @@ public class Conf_Eliminar_Usuario extends Conf_Eliminar_Usuario_ventana {
 		aceptar.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				eliminarUsuario(idUser);
-				/*MyUI.getCurrent().getNavigator().addView("Pag_Inicio_R", new Pag_Inicio_R());
-				UI.getCurrent().getNavigator().navigateTo("Pag_Inicio_R");*/
+				MyUI.getCurrent().getNavigator().addView("Pag_Inicio_R", new Pag_Inicio_R());
+				UI.getCurrent().getNavigator().navigateTo("Pag_Inicio_R");
 			}
 		});
 	}
