@@ -27,6 +27,7 @@ public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana
 	diagramaclasesbd.Video videoA;
 	public Visualizacion_Video_Ajeno() {
 		
+		
 	}
 	public Visualizacion_Video_Ajeno(int idVideo) {
 		aumentarVisualizaciones(idVideo);
