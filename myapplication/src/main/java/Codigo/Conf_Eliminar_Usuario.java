@@ -2,6 +2,9 @@ package Codigo;
 
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+
+import GY.MyUI;
+
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -24,6 +27,8 @@ public class Conf_Eliminar_Usuario extends Conf_Eliminar_Usuario_ventana {
 		aceptar.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				eliminarUsuario(idUser);
+				/*MyUI.getCurrent().getNavigator().addView("Pag_Inicio_R", new Pag_Inicio_R());
+				UI.getCurrent().getNavigator().navigateTo("Pag_Inicio_R");*/
 			}
 		});
 	}

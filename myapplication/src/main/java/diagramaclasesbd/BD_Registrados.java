@@ -124,7 +124,67 @@ public class BD_Registrados {
 	public void eliminarUsuario(int aID) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
-			Usuario regis = UsuarioDAO.getUsuarioByORMID(aID);
+			Usuario user = UsuarioDAO.getUsuarioByORMID(aID);
+			for(Video vid : user.prop_video_de.toArray()) {
+				Video video= VideoDAO.getVideoByORMID(vid.getORMID());
+				List<Lista_De_Reproduccion> listas = Arrays.asList(Lista_De_ReproduccionDAO.listLista_De_ReproduccionByQuery(null, null));
+				List<Usuario> usuarios = Arrays.asList(UsuarioDAO.listUsuarioByQuery(null, null));
+				List<Comentario> comentarios = Arrays.asList(ComentarioDAO.listComentarioByQuery(null, null));
+				for(Lista_De_Reproduccion lista : listas) {
+					if(lista.video.contains(video)) {
+						lista.video.remove(video);
+					}
+					Lista_De_ReproduccionDAO.save(lista);
+				}
+				for(Usuario usuario : usuarios) {
+					if(usuario.me_gusta.contains(video)) {
+						usuario.me_gusta.remove(video);
+					}
+					if(usuario.prop_video_de.contains(video)) {
+						usuario.prop_video_de.remove(video);
+					}
+					UsuarioDAO.save(usuario);
+				}
+				for(Comentario coment : comentarios) {
+					if(coment.getVideo().equals(video)) {
+						ComentarioDAO.delete(coment);
+					}
+				}
+				VideoDAO.delete(video);
+			}
+			for(Usuario u : UsuarioDAO.listUsuarioByQuery(null, null)) {
+				if(u.suscripciones.contains(user)) {
+					u.suscripciones.remove(user);
+				}
+				if(u.suscriptores.contains(user)) {
+					u.suscriptores.remove(user);
+				}
+				UsuarioDAO.save(u);
+			}
+			for(Comentario coment : ComentarioDAO.listComentarioByQuery(null, null)) {
+				if(coment.getUsuario_comentario().equals(user)) {
+					for(Video video:VideoDAO.listVideoByQuery(null, null)) {
+						if(video.comentarios.contains(coment)) {
+							video.comentarios.remove(coment);
+							VideoDAO.save(video);
+						}
+							
+					}
+					ComentarioDAO.delete(coment);
+				}
+			}
+			for(Lista_De_Reproduccion lista : Lista_De_ReproduccionDAO.listLista_De_ReproduccionByQuery(null, null)) {
+				if(lista.getEs_prop_lista().equals(user)) {
+					//List<Video> listaVideosLista = Arrays.asList(lista.video.toArray());
+					for(Video video : Arrays.asList(lista.video.toArray())) {
+						lista.video.remove(video);
+					}
+				}
+				Lista_De_ReproduccionDAO.delete(lista);
+			}
+			//UsuarioDAO.delete(user);
+			/*
+			 * Usuario regis = UsuarioDAO.getUsuarioByORMID(aID);
 			//Quitamos enlaces con comentarios y borramos
 			for(Object com : regis.es_escrito.getCollection()) {
 				Comentario coment = (Comentario) com;
@@ -174,7 +234,7 @@ public class BD_Registrados {
 
 			
 			//UsuarioDAO.delete(u);
-			
+			 * */
 			t.commit();
 		} catch (Exception e) {
 			t.rollback();
