@@ -48,7 +48,7 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 	
 	public Visualizacion_Video_Ajeno_A(int idVideo){
 		Anadir_a_ListaReproduccion anl = new Anadir_a_ListaReproduccion(idVideo);
-		Conf_Eliminar_Video ev = new Conf_Eliminar_Video(idVideo);
+		Conf_Eliminar_Video ev = new Conf_Eliminar_Video(idVideo,"PagVis");
 		aumentarVisualizaciones(idVideo);
 		cargarDatosVideo(idVideo);
 		

@@ -4,6 +4,7 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
+import GY.MyUI;
 import diagramaclasesbd.Administrador;
 import diagramaclasesbd.BD_Administradores;
 import diagramaclasesbd.BD_Principal;
@@ -20,12 +21,17 @@ public class Conf_Eliminar_Video extends Conf_Eliminar_Video_ventana{
 	
 	private int idVideo=-1;
 	
-	public Conf_Eliminar_Video(int id) {
+	public Conf_Eliminar_Video(int id, String pag) {
 		this.idVideo = id;
 		//METER AQUI LAS FUNCIONES DEL ACEPTAR Y CANCELAR
 		aceptar.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				borrarVideo(id);
+				//Estabamos en la pagina de visualizacion y volvemos a inicio ya que ese video ya no existe
+				if(pag == "PagVis" ) {
+					MyUI.getCurrent().getNavigator().addView("Pag_Inicio_R", new Pag_Inicio_R());
+					UI.getCurrent().getNavigator().navigateTo("Pag_Inicio_R");
+				}
 			}
 		});
 		

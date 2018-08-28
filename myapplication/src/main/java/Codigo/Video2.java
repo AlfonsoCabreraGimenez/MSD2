@@ -46,7 +46,7 @@ public class Video2 extends Video2_ventana{
 	
 	public Video2(int id) {
 	
-		Conf_Eliminar_Video ev = new Conf_Eliminar_Video(id);
+		Conf_Eliminar_Video ev = new Conf_Eliminar_Video(id,"PagPerfil");
 		/*Pasamos string con la pagina desde donde se abre el modificar video para poder recargar
 		despues de modificar un video y saber en que pagina estabamos*/ 
 		Modificar_Video mv = new Modificar_Video(id, "PagPerfil");

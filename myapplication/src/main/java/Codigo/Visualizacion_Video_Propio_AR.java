@@ -44,7 +44,7 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 	int identVideo = -1;
 	public Visualizacion_Video_Propio_AR(int idVideo) {
 		Anadir_a_ListaReproduccion anl = new Anadir_a_ListaReproduccion(idVideo);
-		Conf_Eliminar_Video ev = new Conf_Eliminar_Video(idVideo);
+		Conf_Eliminar_Video ev = new Conf_Eliminar_Video(idVideo, "PagVis");
 		/*Pasamos string con la pagina desde donde se abre el modificar video para poder recargar
 		despues de modificar un video y saber en que pagina estabamos*/ 
 		Modificar_Video mv = new Modificar_Video(idVideo, "PagVis");
