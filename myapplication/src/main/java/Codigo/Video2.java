@@ -136,7 +136,7 @@ public class Video2 extends Video2_ventana{
 				popup.setContent(subContent);
 				subContent.addComponent(mv);
 				popup.center();
-				popup.setWidth("720px");
+				popup.setWidth("900px");
 				//popup.setClosable(false);
 				popup.setModal(true);
 				UI.getCurrent().addWindow(popup);				

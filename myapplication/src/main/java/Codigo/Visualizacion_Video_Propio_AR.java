@@ -57,7 +57,7 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 				popup.setContent(subContent);
 				subContent.addComponent(mv);
 				popup.center();
-				popup.setWidth("720px");
+				popup.setWidth("900px");
 				//popup.setClosable(false);
 				popup.setModal(true);
 				UI.getCurrent().addWindow(popup);

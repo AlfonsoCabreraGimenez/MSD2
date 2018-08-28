@@ -14,10 +14,7 @@
     </vaadin-label>
     <vaadin-horizontal-layout width-full _id="hDatosVideo">
      <vaadin-vertical-layout margin="false" _id="vPropVideo">
-      <vaadin-horizontal-layout width-full _id="hURL">
-       <vaadin-text-field caption="Url" _id="url"></vaadin-text-field>
-       <vaadin-upload button-caption=". . ." description="Examinar" _id="upload1" :bottom :right></vaadin-upload>
-      </vaadin-horizontal-layout>
+      <vaadin-text-field caption="Url" width-full _id="url"></vaadin-text-field>
       <vaadin-text-field caption="Título" width-full _id="titulo"></vaadin-text-field>
       <vaadin-combo-box caption="Categoría" data-item-type="java.lang.String" _id="categoria">
        <option item="Option1">Option 1</option>
@@ -30,9 +27,12 @@
       <vaadin-label plain-text _id="miniatura" :center>
         Miniatura 
       </vaadin-label>
-      <vaadin-horizontal-layout _id="hImagen" :center>
-       <vaadin-image source="C:/Users/usuario/Documents/Apuntes/3/2 Cuatrimestre/MDS2/MDS2/myapplication/descarga.jpg" width="125px" height="125px" _id="imagen"></vaadin-image>
-       <vaadin-upload button-caption=". . ." description="Examinar" _id="upload" :bottom :right></vaadin-upload>
+      <vaadin-horizontal-layout _id="hMiniatura" :center>
+       <vaadin-text-field width-full _id="tUrlMin" :bottom :right></vaadin-text-field>
+       <vaadin-button description="Ver vista previa de la miniatura" plain-text _id="bMiniatura" :bottom :right>
+         Vista Previa 
+       </vaadin-button>
+       <vaadin-image width="100px" height="100px" _id="imagen" :right></vaadin-image>
       </vaadin-horizontal-layout>
      </vaadin-vertical-layout>
     </vaadin-horizontal-layout>

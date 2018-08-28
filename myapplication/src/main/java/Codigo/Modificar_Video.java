@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
@@ -22,9 +23,25 @@ public class Modificar_Video extends Modificar_Video_ventana{
 	iUsuario_Registrado ur = new BD_Principal();
 	iAdministrador2 adm = new BD_Principal();
 	
+	public Modificar_Video() {
+		
+	}
+	
 	public Modificar_Video(int idVideo, String pag) {
 		inicializar();
 		cargarModificarVideo(idVideo);
+		
+		bMiniatura.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				if(tUrlMin.getValue() == "") {
+					imagen.setSource(new ExternalResource("http://www.webdelcule.com/15-16/resutem15.jpg"));
+				} else {
+					imagen.setSource(new ExternalResource(tUrlMin.getValue()));
+				}
+			}
+		});
 		
 		confirmar.addClickListener(new ClickListener() {
 			@Override
@@ -51,10 +68,14 @@ public class Modificar_Video extends Modificar_Video_ventana{
 		});
 	}
 	public void inicializar() {
-		hURL.setVisible(false);
+		url.setVisible(false);
+		tUrlMin.setPlaceholder("Url de la miniatura...");
 	}
 	public void modificarDatosVideo(int idVideo) {
-		String mini = miniatura.getValue();
+		String mini = tUrlMin.getValue();
+		if(mini == "") {
+			mini = "http://www.webdelcule.com/15-16/resutem15.jpg";
+		}
 		String titu = titulo.getValue();
 		Optional<String> seleccion = categoria.getSelectedItem();
 		String cate = seleccion.get();
@@ -81,6 +102,8 @@ public class Modificar_Video extends Modificar_Video_ventana{
 		for(diagramaclasesbd.Categoria cat :  ur.cargarCategorias()) {
 			nombresCat.add(cat.getNombre());
 		}
+		tUrlMin.setValue(video.getMiniatura());
+		imagen.setSource(new ExternalResource(video.getMiniatura()));
 		categoria.setItems(nombresCat);
 		categoria.setSelectedItem(video.getCategoria().getNombre());
 		etiqueta.setValue(video.getEtiqueta());

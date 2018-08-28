@@ -9,7 +9,6 @@ import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
-import com.vaadin.ui.Upload;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.declarative.Design;
 
@@ -29,17 +28,16 @@ public class Modificar_Video_ventana extends VerticalLayout {
 	protected Label modificarInformacion;
 	protected HorizontalLayout hDatosVideo;
 	protected VerticalLayout vPropVideo;
-	protected HorizontalLayout hURL;
 	protected TextField url;
-	protected Upload upload1;
 	protected TextField titulo;
 	protected ComboBox<java.lang.String> categoria;
 	protected TextField etiqueta;
 	protected VerticalLayout vImagen;
 	protected Label miniatura;
-	protected HorizontalLayout hImagen;
+	protected HorizontalLayout hMiniatura;
+	protected TextField tUrlMin;
+	protected Button bMiniatura;
 	protected Image imagen;
-	protected Upload upload;
 	protected TextArea descripcion;
 	protected HorizontalLayout hAccion;
 	protected Button cancelar;

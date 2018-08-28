@@ -38,7 +38,7 @@ public class Cabecera_R extends Cabecera_R_ventana{
 				popup.setContent(subContent);
 				subContent.addComponent(sv.vModificarDatosVideo);
 				popup.center();
-				popup.setWidth("720px");
+				popup.setWidth("900px");
 				//popup.setClosable(false);
 				popup.setModal(true);
 				UI.getCurrent().addWindow(popup);
@@ -74,7 +74,7 @@ public class Cabecera_R extends Cabecera_R_ventana{
 		botonCerrarSesion.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				UI.getCurrent().getSession().close();
-				MyUI.getCurrent().getNavigator().addView("", new Ingreso_Aplicacion());
+				MyUI.getCurrent().getNavigator().addView("", new Pag_Inicio_NR());
 				UI.getCurrent().getNavigator().navigateTo("");
 				
 			}
