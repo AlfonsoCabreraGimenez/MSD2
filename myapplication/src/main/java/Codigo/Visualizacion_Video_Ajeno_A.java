@@ -36,7 +36,8 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 	
 	public Video2 _unnamed_Video2_;
 	public Vector<Comentario_Video_Ajeno_A_Propio_AR> _unnamed_Comentario_Video_Ajeno_A_Propio_AR_ = new Vector<Comentario_Video_Ajeno_A_Propio_AR>();
-	Visualizacion_Video_Ajeno visA = new Visualizacion_Video_Ajeno();
+	//Visualizacion_Video_Ajeno visA = new Visualizacion_Video_Ajeno();
+	Cabecera_R cr = new Cabecera_R();
 	iAdministrador2 adm = new BD_Principal();
 	
 	diagramaclasesbd.Video videoA;
@@ -52,8 +53,8 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 		hCabeceraGeneral2.addComponent(cc.horizontalInicio);
 		hCabeceraGeneral2.addComponent(bus.vBuscador);
 		bus.vBuscador.setVisible(false);
-		hCabeceraGeneral2.addComponent(visA.cr.hCabeceraR);
-		hCabeceraGeneral2.setComponentAlignment(visA.cr.hCabeceraR, Alignment.TOP_RIGHT);
+		hCabeceraGeneral2.addComponent(cr.hCabeceraR);
+		hCabeceraGeneral2.setComponentAlignment(cr.hCabeceraR, Alignment.TOP_RIGHT);
 		cnr.iniciarSesionRegistrarse.setVisible(false);
 		propVideo.setVisible(true);
 		modificarVideo.setVisible(false);

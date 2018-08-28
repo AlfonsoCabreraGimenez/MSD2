@@ -43,7 +43,7 @@ public class Pag_Inicio_NR extends Pag_Inicio_NR_ventana implements View{
 				hPanelVideosMasMeGusta.addComponent(vid);
 				vid.titulo.setCaption(video.getTitulo());
 				Usuario us = (Usuario) video.getUsuario_video();
-				vid.usuario.setCaption(us.getNombre());
+				vid.usuario.setCaption(us.getApodo());
 				Categoria cat = video.getCategoria();
 				vid.categoria.setValue(cat.getNombre());
 				vid.etiqueta.setValue(video.getEtiqueta());
@@ -62,7 +62,7 @@ public class Pag_Inicio_NR extends Pag_Inicio_NR_ventana implements View{
 				hPanelUltimosVideosSubidos.addComponent(vid);
 				vid.titulo.setCaption(video.getTitulo());
 				Usuario us = (Usuario) video.getUsuario_video();
-				vid.usuario.setCaption(us.getNombre());
+				vid.usuario.setCaption(us.getApodo());
 				Categoria cat = video.getCategoria();
 				vid.categoria.setValue(cat.getNombre());
 				vid.etiqueta.setValue(video.getEtiqueta());

@@ -19,7 +19,7 @@ public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana
 	public Video2 _unnamed_Video2_;
 	Cabecera_NR cnr = new Cabecera_NR();
 	Cabecera_Comun cc = new Cabecera_Comun();
-	Cabecera_R cr = new Cabecera_R();
+	//Cabecera_R cr = new Cabecera_R();
 	Buscador bus = new Buscador();
 	iUsuario_No_Registrado unr = new BD_Principal();
 	diagramaclasesbd.Video videoA;

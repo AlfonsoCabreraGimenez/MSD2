@@ -54,7 +54,7 @@ public class Buscador_Video extends Buscador implements View {
 				hor.get(i).addComponent(vid);
 				vid.titulo.setCaption(video.getTitulo());
 				Usuario us = (Usuario) video.getUsuario_video();
-				vid.usuario.setCaption(us.getNombre());
+				vid.usuario.setCaption(us.getApodo());
 				Categoria cat = video.getCategoria();
 				vid.categoria.setValue(cat.getNombre());
 				vid.etiqueta.setValue(video.getEtiqueta());

@@ -33,7 +33,8 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 	public Vector<Comentario_Video_Ajeno_A_Propio_AR> _unnamed_Comentario_Video_Ajeno_A_Propio_AR_ = new Vector<Comentario_Video_Ajeno_A_Propio_AR>();
 	public Conf_Eliminar_Video _unnamed_Conf_Eliminar_Video_;
 
-	Visualizacion_Video_Ajeno visA = new Visualizacion_Video_Ajeno();
+	//Visualizacion_Video_Ajeno visA = new Visualizacion_Video_Ajeno();
+	Cabecera_R cr = new Cabecera_R();
 	diagramaclasesbd.Video videoA;
 	iUsuario_Registrado ur = new BD_Principal();
 	iAdministrador2 adm = new BD_Principal();
@@ -75,8 +76,8 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 		hCabeceraGeneral2.addComponent(cc.horizontalInicio);
 		hCabeceraGeneral2.addComponent(bus.vBuscador);
 		bus.vBuscador.setVisible(false);
-		hCabeceraGeneral2.addComponent(visA.cr.hCabeceraR);
-		hCabeceraGeneral2.setComponentAlignment(visA.cr.hCabeceraR, Alignment.TOP_RIGHT);
+		hCabeceraGeneral2.addComponent(cr.hCabeceraR);
+		hCabeceraGeneral2.setComponentAlignment(cr.hCabeceraR, Alignment.TOP_RIGHT);
 		cnr.iniciarSesionRegistrarse.setVisible(false);
 		propVideo.setVisible(true);
 		meGusta.setVisible(false);

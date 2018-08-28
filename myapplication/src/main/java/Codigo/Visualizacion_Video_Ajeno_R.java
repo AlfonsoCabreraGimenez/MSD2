@@ -34,8 +34,9 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 	
 	iUsuario_Registrado ur = new BD_Principal();
 	
-	Visualizacion_Video_Ajeno visA = new Visualizacion_Video_Ajeno();
+	//Visualizacion_Video_Ajeno visA = new Visualizacion_Video_Ajeno();
 	diagramaclasesbd.Video videoA;
+	Cabecera_R cr = new Cabecera_R();
 	int identVideo = -1;
 	
 	public Visualizacion_Video_Ajeno_R(int idVideo) {
@@ -47,8 +48,8 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		hCabeceraGeneral2.addComponent(cc.horizontalInicio);
 		hCabeceraGeneral2.addComponent(bus.vBuscador);
 		bus.vBuscador.setVisible(false);
-		hCabeceraGeneral2.addComponent(visA.cr.hCabeceraR);
-		hCabeceraGeneral2.setComponentAlignment(visA.cr.hCabeceraR, Alignment.TOP_RIGHT);
+		hCabeceraGeneral2.addComponent(cr.hCabeceraR);
+		hCabeceraGeneral2.setComponentAlignment(cr.hCabeceraR, Alignment.TOP_RIGHT);
 		cnr.iniciarSesionRegistrarse.setVisible(false);
 		propVideo.setVisible(true);
 		modificarVideo.setVisible(false);
