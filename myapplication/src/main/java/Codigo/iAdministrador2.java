@@ -12,7 +12,7 @@ public interface iAdministrador2 extends iUsuario_Registrado {
 
 	public List<Registrado> buscar(String aNombre);
 
-	public void crearCategoria(String aCategoria, int aEdad);
+	public boolean crearCategoria(String aCategoria, int aEdad);
 
 	public void eliminarUsuario(int aID);
 

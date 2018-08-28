@@ -1,5 +1,6 @@
 package diagramaclasesbd;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
@@ -25,9 +26,14 @@ public class BD_Categorias {
 		return listaCategorias;
 	}
 
-	public void crearCategoria(String aCategoria, int aEdad) throws PersistentException {
+	public boolean crearCategoria(String aCategoria, int aEdad) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
+			for(Categoria c : Arrays.asList(CategoriaDAO.listCategoriaByQuery(null, null))) {
+				if(c.getNombre().equals(aCategoria)) {
+					return false;
+				}
+			}
 			diagramaclasesbd.Categoria c = diagramaclasesbd.CategoriaDAO.createCategoria();
 			c.setNombre(aCategoria);
 			c.setEdad(aEdad);
@@ -37,5 +43,6 @@ public class BD_Categorias {
 			// TODO Auto-generated catch block
 			t.rollback();
 		}
+		return true;
 	}
 }

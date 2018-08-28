@@ -81,8 +81,6 @@ public class Perfil_Propio_A extends Perfil_Propio_R implements View {
 				
 				Crear_Categoria.confirmar.addClickListener(new ClickListener() {
 					public void buttonClick(ClickEvent event) {
-						
-						Crear_Categoria.crearCategoria();
 						popup.close();
 					}
 				});

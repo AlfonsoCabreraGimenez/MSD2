@@ -237,13 +237,15 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		return null;
 	}
 
-	public void crearCategoria(String aCategoria, int aEdad) {
+	public boolean crearCategoria(String aCategoria, int aEdad) {
+		boolean catCreada = false;
 		try {
-			categoria.crearCategoria(aCategoria, aEdad);
+			catCreada = categoria.crearCategoria(aCategoria, aEdad);
 		}catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return catCreada;
 	}
 
 	public void eliminarUsuario(int aID) {
