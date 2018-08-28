@@ -169,7 +169,6 @@ public class Video2 extends Video2_ventana{
 		});
 		ev.aceptar.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				ev.borrarVideo();
 				popup.close();
 			}
 		});

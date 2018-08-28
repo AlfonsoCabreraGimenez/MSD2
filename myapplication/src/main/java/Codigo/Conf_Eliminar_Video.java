@@ -23,25 +23,15 @@ public class Conf_Eliminar_Video extends Conf_Eliminar_Video_ventana{
 	public Conf_Eliminar_Video(int id) {
 		this.idVideo = id;
 		//METER AQUI LAS FUNCIONES DEL ACEPTAR Y CANCELAR
-		
+		aceptar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				borrarVideo(id);
+			}
+		});
 		
 	}
 	
-	public void borrarVideo() {
-		//Hay que ver si es admin o registrado
-		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
-		if(admon == null)
-		{
-			Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-			//Si el video es propio si puede borrar si no, no
-			if(ur.videoPropio(idVideo, reg.getID()) == true)
-			{
-				ur.borrarVideo(idVideo);
-			}
-		} else 
-		{
-			admin.borrarVideo(idVideo);
-		}
-		
+	public void borrarVideo(int id) {
+		ur.borrarVideo(id);
 	}
 }

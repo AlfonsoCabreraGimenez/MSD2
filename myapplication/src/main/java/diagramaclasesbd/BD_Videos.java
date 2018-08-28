@@ -3,6 +3,7 @@ package diagramaclasesbd;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -293,46 +294,30 @@ public class BD_Videos {
 		//ELIMINAR VIDEO
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
-			Video vid = VideoDAO.loadVideoByORMID(aID);
-			//Eliminamos cualquier contacto con los comentarios
-			for(Object comen : vid.comentarios.getCollection())
-			{
-				Comentario coment = (Comentario) comen;
-				vid.comentarios.remove(coment);
-				comentario.eliminarComentario(coment.getID());
-				vid.comentarios.clear();
+			Video vid = VideoDAO.getVideoByORMID(aID);
+			List<Lista_De_Reproduccion> listas = Arrays.asList(Lista_De_ReproduccionDAO.listLista_De_ReproduccionByQuery(null, null));
+			List<Usuario> usuarios = Arrays.asList(UsuarioDAO.listUsuarioByQuery(null, null));
+			List<Comentario> comentarios = Arrays.asList(ComentarioDAO.listComentarioByQuery(null, null));
+			for(Lista_De_Reproduccion lista : listas) {
+				if(lista.video.contains(vid)) {
+					lista.video.remove(vid);
+				}
+				Lista_De_ReproduccionDAO.save(lista);
 			}
-			//Eliminamos cualquier contacto con las listas
-			for (Object listaR : vid.lista_de_Reproduccion.getCollection())
-			{
-				Lista_De_Reproduccion listaRepro = (Lista_De_Reproduccion) listaR;
-				vid.lista_de_Reproduccion.remove(listaRepro);
-				vid.lista_de_Reproduccion.clear();
+			for(Usuario usuario : usuarios) {
+				if(usuario.me_gusta.contains(vid)) {
+					usuario.me_gusta.remove(vid);
+				}
+				if(usuario.prop_video_de.contains(vid)) {
+					usuario.prop_video_de.remove(vid);
+				}
+				UsuarioDAO.save(usuario);
 			}
-			//Quitarl as relaciones con categorias
-			for(Categoria cate : CategoriaDAO.listCategoriaByQuery(null, null))
-			{
-				cate.videos.remove(vid);
+			for(Comentario comentario : comentarios) {
+				if(comentario.getVideo().equals(vid)) {
+					ComentarioDAO.delete(comentario);
+				}
 			}
-			
-			//Quitar todos los me gusta
-			for(Usuario user : UsuarioDAO.listUsuarioByQuery(null, null))
-			{
-				vid.da_megusta.remove(user);
-				vid.da_megusta.clear();
-			}
-			//Coger id del que lo borra
-			Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
-			if(admon == null)
-			{
-				Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-				reg.prop_video_de.remove(vid);
-
-			} else 
-			{
-				admon.prop_video_de.remove(vid);
-			}
-			
 			VideoDAO.delete(vid);
 			t.commit();
 		} catch (Exception e) {
