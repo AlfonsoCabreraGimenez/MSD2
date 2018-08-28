@@ -9,6 +9,8 @@ import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Embedded;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 
 import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Categoria;
@@ -30,6 +32,7 @@ public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana
 		aumentarVisualizaciones(idVideo);
 		cargarDatosVideo(idVideo);
 		inicializar();
+
 	}
 	void inicializar() {
 		hCabeceraGeneral2.addComponent(cc.horizontalInicio);

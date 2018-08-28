@@ -61,8 +61,6 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		vComentario.setVisible(true);
 		
 		
-		
-		
 		meGusta.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				darQuitarMegusta();

@@ -3,6 +3,7 @@ package Codigo;
 import java.util.Date;
 import java.util.List;
 
+import diagramaclasesbd.Comentario;
 import diagramaclasesbd.Usuario;
 import diagramaclasesbd.Video;
 public interface iUsuario_No_Registrado {
@@ -40,4 +41,5 @@ public interface iUsuario_No_Registrado {
 	public void aumentarVisitas(int idUser);
 	
 	public void aumentarVisualizaciones(int idVideo);
+
 }

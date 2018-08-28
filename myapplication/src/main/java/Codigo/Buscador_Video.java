@@ -24,7 +24,7 @@ public class Buscador_Video extends Buscador implements View {
 	iUsuario_No_Registrado unr = new BD_Principal();
 	Cabecera_NR cnr = new Cabecera_NR();
 	Cabecera_Comun cc = new Cabecera_Comun();
-	Cabecera_R cr = new Cabecera_R();
+
 	
 	public Buscador_Video (String buscador, TipoBusqueda aTipoBusqueda) {
 		panelBuscador.setVisible(true);
@@ -36,6 +36,7 @@ public class Buscador_Video extends Buscador implements View {
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
 		if(admon != null || registrado != null) {
+			Cabecera_R cr = new Cabecera_R();
 			cnr.hIniciarSesionRegistrarse.setVisible(false);
 			hCabeceraInicioBus.addComponent(cr.hCabeceraR);
 		}

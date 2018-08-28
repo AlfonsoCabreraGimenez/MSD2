@@ -49,15 +49,16 @@ public class Buscador_Usuario extends Buscador implements View{
 		for(diagramaclasesbd.Registrado usuario: unr.buscar(busqueda)) {
 				Usuario2 usu = new Usuario2(usuario.getID());
 				hor.get(i).setHeight("-1px");
-				hor.get(i).setWidth("100%");
+				hor.get(i).setWidth("-1px");
 				verticalBuscadorUs.addComponent(hor.get(i));
 				hor.get(i).addComponent(usu);
 				usu.usuario.setCaption(usuario.getApodo());
 				usu.nSuscriptores.setValue("Nº Suscriptores: " + 
 						String.valueOf(usuario.suscriptores.size()));
 				usu.imagen.setSource(new ExternalResource(usuario.getAvatar()));
+				usu.setWidth("550px");
 				cont++;
-				if(cont == 4) {
+				if(cont == 3) {
 					hor.add(new HorizontalLayout());
 					i++;
 					cont = 0;

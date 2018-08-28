@@ -1,12 +1,14 @@
 package diagramaclasesbd;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 
 import diagramaclasesbd.Comentario;
@@ -32,12 +34,27 @@ public class BD_Comentarios {
 
 	public List cargarListaComentarios(int aID) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
-		List<Comentario> listC = new ArrayList<Comentario>();
+		List<Comentario> listC = null;
+		ArrayList<Integer> ids = new ArrayList<Integer>();
+		ArrayList<Comentario> resultado = new ArrayList<Comentario>();
 		try {
-			for(Object c : VideoDAO.getVideoByORMID(aID).comentarios.getCollection()) {
-				Comentario coment;
-				coment = (Comentario) c;
-				listC.add(coment);
+			listC = new ArrayList<Comentario>(Arrays.asList(VideoDAO.getVideoByORMID(aID).comentarios.toArray()));
+			for(Comentario c : listC){
+				ids.add(c.getID());
+			}
+			while(!ids.isEmpty()) {
+				int  min = 1000;
+				int pos = -1;
+				for(int i = 0 ; i < ids.size();i++) {
+					int actual=ids.get(i);
+					if(actual < min) {
+						min = actual;
+						pos=i;
+					}
+				}
+				resultado.add(listC.get(pos));
+				listC.remove(pos);
+				ids.remove(pos);
 			}
 			t.commit();
 			
@@ -45,7 +62,7 @@ public class BD_Comentarios {
 			// TODO Auto-generated catch block
 			t.rollback();
 		}
-		return listC;
+		return resultado;
 	}
 
 	public void escribirComentario(String aCadena, int aID) throws PersistentException {
