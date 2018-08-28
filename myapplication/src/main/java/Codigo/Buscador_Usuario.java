@@ -16,6 +16,7 @@ import diagramaclasesbd.Administrador;
 import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Categoria;
 import diagramaclasesbd.Registrado;
+import diagramaclasesbd.Usuario;
 
 public class Buscador_Usuario extends Buscador implements View{
 	/*private Label _resultadoBusL;
@@ -46,7 +47,7 @@ public class Buscador_Usuario extends Buscador implements View{
 		hor.add(new HorizontalLayout());
 		int cont = 0;
 		int i = 0;
-		for(diagramaclasesbd.Registrado usuario: unr.buscar(busqueda)) {
+		for(Usuario usuario: unr.buscar(busqueda)) {
 				Usuario2 usu = new Usuario2(usuario.getID());
 				hor.get(i).setHeight("-1px");
 				hor.get(i).setWidth("-1px");

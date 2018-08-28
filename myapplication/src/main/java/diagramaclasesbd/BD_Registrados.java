@@ -79,13 +79,13 @@ public class BD_Registrados {
 	public void nuevaPass(String aPass, String aRepPass) {
 		throw new UnsupportedOperationException();
 	}
-	public List<diagramaclasesbd.Registrado> buscar(String buscador) throws PersistentException {
+	public List<Usuario> buscar(String buscador) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
-		List<diagramaclasesbd.Registrado> lista = null;
-		ArrayList<diagramaclasesbd.Registrado> resultado = new ArrayList<diagramaclasesbd.Registrado>();
+		List<Usuario> lista = null;
+		ArrayList<Usuario> resultado = new ArrayList<Usuario>();
 		try {
-			lista = RegistradoDAO.queryRegistrado(null, null);
-			for(diagramaclasesbd.Registrado u : lista){
+			lista = UsuarioDAO.queryUsuario(null, null);
+			for(Usuario u : lista){
 				if(u.getApodo().contains(buscador)) {
 					resultado.add(u);
 				}

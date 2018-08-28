@@ -20,7 +20,7 @@ public interface iUsuario_No_Registrado {
 
 	public List<diagramaclasesbd.Video> buscar(String buscador, TipoBusqueda aTipoBusqueda);
 	
-	public List<diagramaclasesbd.Registrado> buscar(String buscador);
+	public List<Usuario> buscar(String buscador);
 
 	public void regeneracionPass(String aEmail);
 

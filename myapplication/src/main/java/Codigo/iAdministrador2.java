@@ -7,10 +7,11 @@ import org.orm.PersistentException;
 
 import diagramaclasesbd.Administrador;
 import diagramaclasesbd.Registrado;
+import diagramaclasesbd.Usuario;
 
 public interface iAdministrador2 extends iUsuario_Registrado {
 
-	public List<Registrado> buscar(String aNombre);
+	public List<Usuario> buscar(String aNombre);
 
 	public boolean crearCategoria(String aCategoria, int aEdad);
 

@@ -198,8 +198,8 @@ public class Perfil_Propio_A extends Perfil_Propio_R implements View {
 		listaH.add(h);
 		vPanel1.addComponent(listaH.get(i));
 		for(Object u : adm.buscar(apodo)) {
-			Registrado us;
-			us = (Registrado) u;
+			Usuario us;
+			us = (Usuario) u;
 			Usuario2 usu = new Usuario2(us.getID());
 			usu.usuario.setCaption(us.getApodo());
 			usu.nSuscriptores.setValue("Nº Suscriptores: " + String.valueOf(us.suscriptores.size()));

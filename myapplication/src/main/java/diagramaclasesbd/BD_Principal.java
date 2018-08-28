@@ -48,7 +48,7 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 			e.printStackTrace();
 		}
 	}
-	public List<Registrado> buscar(String buscador) {
+	public List<Usuario> buscar(String buscador) {
 		try {
 			return registrados.buscar(buscador);
 		} catch (PersistentException e) {
