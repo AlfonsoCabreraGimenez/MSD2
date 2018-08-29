@@ -142,7 +142,6 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		 v.setParameter("allowFullScreen", "true");
 		 v.setWidth("1000px");
 		 v.setHeight("450px");
-		vvideo.removeComponent(video);
 		vvideo.addComponentAsFirst(v);
 	}	
 	public void cargarListaComentarios() {

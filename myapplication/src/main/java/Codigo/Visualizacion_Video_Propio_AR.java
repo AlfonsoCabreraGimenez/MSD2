@@ -108,7 +108,6 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 				 v.setParameter("allowFullScreen", "true");
 				 v.setWidth("1000px");
 				 v.setHeight("450px");
-				vvideo.removeComponent(video);
 				vvideo.addComponentAsFirst(v);
 		
 		//ELIMINAR VIDEO

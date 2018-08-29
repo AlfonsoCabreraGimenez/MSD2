@@ -86,7 +86,6 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 				 v.setParameter("allowFullScreen", "true");
 				 v.setWidth("1000px");
 				 v.setHeight("450px");
-				vvideo.removeComponent(video);
 				vvideo.addComponentAsFirst(v);
 		
 		meGusta.addClickListener(new ClickListener() {

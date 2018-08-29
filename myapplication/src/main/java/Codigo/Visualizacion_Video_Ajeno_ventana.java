@@ -9,7 +9,6 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Link;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Video;
 import com.vaadin.ui.declarative.Design;
 
 /** 
@@ -38,7 +37,6 @@ public class Visualizacion_Video_Ajeno_ventana extends VerticalLayout {
 	protected Label tituloVideo;
 	protected Label categoriaEtiqueta;
 	protected VerticalLayout vvideo;
-	protected Video video;
 	protected TextArea descripcion;
 	protected TextArea escribirComentario;
 	protected Button comentar;

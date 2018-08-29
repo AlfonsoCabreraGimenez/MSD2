@@ -57,6 +57,7 @@ public class Crear_Lista_Reproduccion extends Crear_Lista_Reproduccion_ventana{
 		for(Video v : ur.buscar(buscador, aTipoBusqueda)) {
 			Video2 videoR = new Video2(v.getID());
 			videoR.vVerticalVideoGeneral.addComponentAsFirst(new Label(v.getTitulo()));
+			videoR.miniatura.setSource(new ExternalResource(v.getMiniatura()));
 			videoR.titulo.setVisible(false);
 			videoR.categoria.setVisible(false);
 			videoR.vAccionesVideo.setVisible(false);

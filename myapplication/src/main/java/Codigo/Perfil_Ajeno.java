@@ -131,6 +131,7 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 			video.fechasubida.setValue(fecha.toString());
 			video.usuario.setCaption(user.getNombre());
 			video.etiqueta.setValue(vid.getEtiqueta());
+			video.miniatura.setSource(new ExternalResource(vid.getMiniatura()));
 			Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
 			if(admon == null) {
 				video.vAccionesVideo.setVisible(false);
@@ -209,6 +210,7 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 			video.fechasubida.setValue(fecha.toString());
 			video.usuario.setCaption(vid.getUsuario_video().getNombre());
 			video.etiqueta.setValue(vid.getEtiqueta());
+			video.miniatura.setSource(new ExternalResource(vid.getMiniatura()));
 			video.vAccionesVideo.setVisible(false);
 			listaH.get(i).addComponent(video);
 			cont++;

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
+import com.vaadin.server.ExternalResource;
 
 import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Categoria;
@@ -46,9 +47,11 @@ public class Pag_Inicio_NR extends Pag_Inicio_NR_ventana implements View{
 				vid.usuario.setCaption(us.getApodo());
 				Categoria cat = video.getCategoria();
 				vid.categoria.setValue(cat.getNombre());
+				vid.miniatura.setSource(new ExternalResource(video.getMiniatura()));
 				vid.etiqueta.setValue(video.getEtiqueta());
 				Date fecha = video.getFechaCreacion();
 				vid.fechasubida.setValue(fecha.toString());
+				vid.vAccionesVideo.setVisible(false);
 				cont++;
 				if(cont == 10) {
 					break;
@@ -65,9 +68,11 @@ public class Pag_Inicio_NR extends Pag_Inicio_NR_ventana implements View{
 				vid.usuario.setCaption(us.getApodo());
 				Categoria cat = video.getCategoria();
 				vid.categoria.setValue(cat.getNombre());
+				vid.miniatura.setSource(new ExternalResource(video.getMiniatura()));
 				vid.etiqueta.setValue(video.getEtiqueta());
 				Date fecha = video.getFechaCreacion();
 				vid.fechasubida.setValue(fecha.toString());
+				vid.vAccionesVideo.setVisible(false);
 				cont++;
 				if(cont == 10) {
 					break;
