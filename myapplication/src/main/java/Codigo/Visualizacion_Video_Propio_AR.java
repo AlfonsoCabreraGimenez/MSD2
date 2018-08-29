@@ -22,7 +22,7 @@ import diagramaclasesbd.Categoria;
 import diagramaclasesbd.Comentario;
 import diagramaclasesbd.Usuario;
 
-public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Registrado {
+public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Ajeno {
 	Window popup = new Window();
 	VerticalLayout subContent = new VerticalLayout();
 	
@@ -51,6 +51,19 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 		Modificar_Video mv = new Modificar_Video(idVideo, "PagVis");
 		cargarDatosVideo(idVideo);
 		this.identVideo = idVideo;
+		
+		hCabeceraGeneral2.addComponent(cc.horizontalInicio);
+		hCabeceraGeneral2.addComponent(bus.vBuscador);
+		bus.vBuscador.setVisible(false);
+		hCabeceraGeneral2.addComponent(cr.hCabeceraR);
+		hCabeceraGeneral2.setComponentAlignment(cr.hCabeceraR, Alignment.TOP_RIGHT);
+		cnr.iniciarSesionRegistrarse.setVisible(false);
+		propVideo.setVisible(true);
+		meGusta.setVisible(false);
+		escribirComentario.setVisible(false);
+		comentar.setVisible(false);
+		htituloComentario.setVisible(true);
+		vComentario.setVisible(true);
 	
 		modificarVideo.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
@@ -78,18 +91,6 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 				popup.close();
 			}
 		});
-		hCabeceraGeneral2.addComponent(cc.horizontalInicio);
-		hCabeceraGeneral2.addComponent(bus.vBuscador);
-		bus.vBuscador.setVisible(false);
-		hCabeceraGeneral2.addComponent(cr.hCabeceraR);
-		hCabeceraGeneral2.setComponentAlignment(cr.hCabeceraR, Alignment.TOP_RIGHT);
-		cnr.iniciarSesionRegistrarse.setVisible(false);
-		propVideo.setVisible(true);
-		meGusta.setVisible(false);
-		escribirComentario.setVisible(false);
-		comentar.setVisible(false);
-		htituloComentario.setVisible(true);
-		vComentario.setVisible(true);
 		
 		//DESCARGAR VIDEO
 		descargar.addClickListener(new ClickListener() {
@@ -152,24 +153,36 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 				popup.close();
 			}
 		});
-
+		//HABILITAR/DESHABILITAR COMENTARIOS
+		bloquearComentario.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				if(vComentario.isVisible()) {
+					vComentario.setVisible(false);
+				} else {
+					vComentario.setVisible(true);
+				}
+			}
+		});
 		//CARGAR COMENTARIOS
 		cargarListaComentarios();
 	}
 	
-	public void habilitarComentario() {
+	/*public void habilitarComentario() {
 		throw new UnsupportedOperationException();
 	}
 
 	public void deshabilitarComentario() {
 		throw new UnsupportedOperationException();
-	}
+	}*/
 
 	public void cargarDatosVideo(int idVideo) {
 		videoA = unr.cargarDatosVideo(idVideo);
-		tituloVideo.setValue(videoA.getTitulo());
+		
+		tituloVideo.setValue("Titulo: " + videoA.getTitulo());
 		Categoria cat = videoA.getCategoria();
-		categoriaEtiqueta.setValue(cat.getNombre());
+		categoriaEtiqueta.setValue("Categoria: " + cat.getNombre());
 		descripcion.setValue("Descripcion: " + videoA.getDescripcion() + "\n\nEtiquetas: " + videoA.getEtiqueta() 
 		+ "\n\nUrl: "+ videoA.getUrl());
 		Usuario us = videoA.getUsuario_video();
@@ -178,7 +191,7 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Comun_Reg
 		nVisualizaciones.setValue(String.valueOf(videoA.getVisualizaciones() + " visualizaciones"));
 		nGusta.setValue(String.valueOf(videoA.getMegusta() + " me gusta"));
 		Date fecha = videoA.getFechaCreacion();
-		fechaSubida.setValue(fecha.toString());
+		fechaSubida.setValue("Fecha subida: " + fecha.toString());
 		//VISUALIZAR VIDEO
 				Embedded v = new Embedded(null, new ExternalResource(videoA.getUrl()));
 				 v.setMimeType("application/x-shockwave-flash");

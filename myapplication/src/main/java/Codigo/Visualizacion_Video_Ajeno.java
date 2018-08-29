@@ -56,9 +56,10 @@ public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana
 	
 	public void cargarDatosVideo(int idVideo) {
 		videoA = unr.cargarDatosVideo(idVideo);
-		tituloVideo.setValue(videoA.getTitulo());
+		
+		tituloVideo.setValue("Titulo: " + videoA.getTitulo());
 		Categoria cat = videoA.getCategoria();
-		categoriaEtiqueta.setValue(cat.getNombre());
+		categoriaEtiqueta.setValue("Categoria: " + cat.getNombre());
 		descripcion.setValue("Descripcion: " + videoA.getDescripcion() + "\n\nEtiquetas: " + videoA.getEtiqueta() 
 		+ "\n\nUrl: "+ videoA.getUrl());
 		Usuario us = videoA.getUsuario_video();
@@ -67,7 +68,7 @@ public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana
 		nVisualizaciones.setValue(String.valueOf(videoA.getVisualizaciones() + " visualizaciones"));
 		nGusta.setValue(String.valueOf(videoA.getMegusta() + " me gusta"));
 		Date fecha = videoA.getFechaCreacion();
-		fechaSubida.setValue(fecha.toString());
+		fechaSubida.setValue("Fecha subida: " + fecha.toString());
 		//VISUALIZAR VIDEO
 		Embedded v = new Embedded(null, new ExternalResource(videoA.getUrl()));
 		v.setMimeType("application/x-shockwave-flash");

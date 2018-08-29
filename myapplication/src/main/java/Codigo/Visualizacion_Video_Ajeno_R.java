@@ -58,7 +58,7 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		escribirComentario.setVisible(true);
 		escribirComentario.setPlaceholder("Escribir comentario...");
 		comentar.setVisible(true);
-		htituloComentario.setVisible(true);
+		bloquearComentario.setVisible(false);
 		vComentario.setVisible(true);
 		
 		descargar.addClickListener(new ClickListener() {
@@ -133,9 +133,9 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 	public void cargarDatosVideo(int idVideo) {
 		videoA = ur.cargarDatosVideo(idVideo);
 		
-		tituloVideo.setValue(videoA.getTitulo());
+		tituloVideo.setValue("Titulo: " + videoA.getTitulo());
 		Categoria cat = videoA.getCategoria();
-		categoriaEtiqueta.setValue(cat.getNombre());
+		categoriaEtiqueta.setValue("Categoria: " + cat.getNombre());
 		descripcion.setValue("Descripcion: " + videoA.getDescripcion() + "\n\nEtiquetas: " + videoA.getEtiqueta() 
 		+ "\n\nUrl: "+ videoA.getUrl());
 		Usuario us = videoA.getUsuario_video();
@@ -144,7 +144,7 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		nVisualizaciones.setValue(String.valueOf(videoA.getVisualizaciones() + " visualizaciones"));
 		nGusta.setValue(String.valueOf(videoA.getMegusta() + " me gusta"));
 		Date fecha = videoA.getFechaCreacion();
-		fechaSubida.setValue(fecha.toString());
+		fechaSubida.setValue("Fecha subida: " + fecha.toString());
 		//VISUALIZAR VIDEO
 		Embedded v = new Embedded(null, new ExternalResource(videoA.getUrl()));
 		 v.setMimeType("application/x-shockwave-flash");
