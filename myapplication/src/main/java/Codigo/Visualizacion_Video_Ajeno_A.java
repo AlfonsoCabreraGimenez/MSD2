@@ -8,6 +8,7 @@ import java.util.Vector;
 
 import com.vaadin.navigator.View;
 import com.vaadin.server.ExternalResource;
+import com.vaadin.server.Page;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Embedded;
 import com.vaadin.ui.Notification;
@@ -66,27 +67,15 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 		escribirComentario.setPlaceholder("Escribir comentario...");
 		comentar.setVisible(true);
 		htituloComentario.setVisible(true);
-		vComentario.setVisible(true);
-		
-		
-		tituloVideo.setValue(videoA.getTitulo());
-		Categoria cat = videoA.getCategoria();
-		categoriaEtiqueta.setValue(cat.getNombre());
-		descripcion.setValue(videoA.getDescripcion());
-		Usuario us = videoA.getUsuario_video();
-		fotoUser.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
-		apodo.setCaption(us.getApodo());
-		nVisualizaciones.setValue(String.valueOf(videoA.getVisualizaciones() + " visualizaciones"));
-		nGusta.setValue(String.valueOf(videoA.getMegusta() + " me gusta"));
-		Date fecha = videoA.getFechaCreacion();
-		fechaSubida.setValue(fecha.toString());
-		//VISUALIZAR VIDEO
-				Embedded v = new Embedded(null, new ExternalResource(videoA.getUrl()));
-				 v.setMimeType("application/x-shockwave-flash");
-				 v.setParameter("allowFullScreen", "true");
-				 v.setWidth("1000px");
-				 v.setHeight("450px");
-				vvideo.addComponentAsFirst(v);
+		vComentario.setVisible(true);				
+				
+		descargar.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+						// TODO Auto-generated method stub
+				descargarVideo();
+			}
+		});
 		
 		meGusta.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
@@ -158,6 +147,25 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 }
 	public void cargarDatosVideo(int idVideo) {
 		videoA = adm.cargarDatosVideo(idVideo);
+		tituloVideo.setValue(videoA.getTitulo());
+		Categoria cat = videoA.getCategoria();
+		categoriaEtiqueta.setValue(cat.getNombre());
+		descripcion.setValue("Descripcion: " + videoA.getDescripcion() + "\n\nEtiquetas: " + videoA.getEtiqueta() 
+		+ "\n\nUrl: "+ videoA.getUrl());
+		Usuario us = videoA.getUsuario_video();
+		fotoUser.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+		apodo.setCaption(us.getApodo());
+		nVisualizaciones.setValue(String.valueOf(videoA.getVisualizaciones() + " visualizaciones"));
+		nGusta.setValue(String.valueOf(videoA.getMegusta() + " me gusta"));
+		Date fecha = videoA.getFechaCreacion();
+		fechaSubida.setValue(fecha.toString());
+		//VISUALIZAR VIDEO
+		Embedded v = new Embedded(null, new ExternalResource(videoA.getUrl()));
+		v.setMimeType("application/x-shockwave-flash");
+		v.setParameter("allowFullScreen", "true");
+		v.setWidth("1000px");
+		v.setHeight("450px");
+		vvideo.addComponentAsFirst(v);
 	}	
 	
 	public void aumentarVisualizaciones(int idVideo) {
@@ -186,5 +194,12 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 			com.avatar.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
 			com.bEliminarComentario1.setVisible(true);
 		}
+	}
+	public void descargarVideo() {
+		Notification not = new Notification("Copia el enlace que hay en la descripción y "
+				+ "pégalo en la página que se ha abierto", Notification.Type.WARNING_MESSAGE);
+		not.setDelayMsec(5000);
+		not.show(Page.getCurrent());
+		getUI().getPage().open("http://google.com", "_blank");
 	}
 }

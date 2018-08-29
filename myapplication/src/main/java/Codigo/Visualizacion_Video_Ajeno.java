@@ -48,25 +48,6 @@ public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana
 		vComentario.setVisible(false);
 		propVideo.setVisible(false);
 		
-		tituloVideo.setValue(videoA.getTitulo());
-		Categoria cat = videoA.getCategoria();
-		categoriaEtiqueta.setValue(cat.getNombre());
-		descripcion.setValue(videoA.getDescripcion());
-		Usuario us = videoA.getUsuario_video();
-		fotoUser.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
-		apodo.setCaption(us.getApodo());
-		nVisualizaciones.setValue(String.valueOf(videoA.getVisualizaciones() + " visualizaciones"));
-		nGusta.setValue(String.valueOf(videoA.getMegusta() + " me gusta"));
-		Date fecha = videoA.getFechaCreacion();
-		fechaSubida.setValue(fecha.toString());
-		//VISUALIZAR VIDEO
-				Embedded v = new Embedded(null, new ExternalResource(videoA.getUrl()));
-				 v.setMimeType("application/x-shockwave-flash");
-				 v.setParameter("allowFullScreen", "true");
-				 v.setWidth("1000px");
-				 v.setHeight("450px");
-				vvideo.addComponentAsFirst(v);
-		
 	}
 	
 	public void aumentarVisualizaciones(int idVideo) {
@@ -75,5 +56,24 @@ public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana
 	
 	public void cargarDatosVideo(int idVideo) {
 		videoA = unr.cargarDatosVideo(idVideo);
+		tituloVideo.setValue(videoA.getTitulo());
+		Categoria cat = videoA.getCategoria();
+		categoriaEtiqueta.setValue(cat.getNombre());
+		descripcion.setValue("Descripcion: " + videoA.getDescripcion() + "\n\nEtiquetas: " + videoA.getEtiqueta() 
+		+ "\n\nUrl: "+ videoA.getUrl());
+		Usuario us = videoA.getUsuario_video();
+		fotoUser.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+		apodo.setCaption(us.getApodo());
+		nVisualizaciones.setValue(String.valueOf(videoA.getVisualizaciones() + " visualizaciones"));
+		nGusta.setValue(String.valueOf(videoA.getMegusta() + " me gusta"));
+		Date fecha = videoA.getFechaCreacion();
+		fechaSubida.setValue(fecha.toString());
+		//VISUALIZAR VIDEO
+		Embedded v = new Embedded(null, new ExternalResource(videoA.getUrl()));
+		v.setMimeType("application/x-shockwave-flash");
+		v.setParameter("allowFullScreen", "true");
+		v.setWidth("1000px");
+		v.setHeight("450px");
+		vvideo.addComponentAsFirst(v);
 	}	
 }

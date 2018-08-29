@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.vaadin.server.ExternalResource;
+import com.vaadin.server.Page;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
@@ -13,7 +14,7 @@ import com.vaadin.ui.Window;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Embedded;
-
+import java.lang.Thread;
 import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Categoria;
 import diagramaclasesbd.Comentario;
@@ -60,6 +61,13 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		htituloComentario.setVisible(true);
 		vComentario.setVisible(true);
 		
+		descargar.addClickListener(new ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				descargarVideo();
+			}
+		});
 		
 		meGusta.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
@@ -128,7 +136,8 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		tituloVideo.setValue(videoA.getTitulo());
 		Categoria cat = videoA.getCategoria();
 		categoriaEtiqueta.setValue(cat.getNombre());
-		descripcion.setValue(videoA.getDescripcion());
+		descripcion.setValue("Descripcion: " + videoA.getDescripcion() + "\n\nEtiquetas: " + videoA.getEtiqueta() 
+		+ "\n\nUrl: "+ videoA.getUrl());
 		Usuario us = videoA.getUsuario_video();
 		fotoUser.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
 		apodo.setCaption(us.getApodo());
@@ -161,5 +170,12 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 				com.bEliminarComentario1.setVisible(false);
 			}
 		}
+	}
+	public void descargarVideo() {
+		Notification not = new Notification("Copia el enlace que hay en la descripción y "
+				+ "pégalo en la página que se ha abierto", Notification.Type.WARNING_MESSAGE);
+		not.setDelayMsec(5000);
+		not.show(Page.getCurrent());
+		getUI().getPage().open("http://google.com", "_blank");
 	}
 }
