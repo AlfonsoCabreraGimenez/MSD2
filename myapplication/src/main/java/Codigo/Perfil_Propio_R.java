@@ -244,7 +244,9 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			Lista_De_Reproduccion2 lista = new Lista_De_Reproduccion2(lis.getID());
 			lista.nombreLista.setValue(lis.getTitulo());
 			lista.vBorrar.setVisible(true);
-			lista.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+			//lista.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+			List<Video> v = Arrays.asList(lis.video.toArray());
+			lista.imagen.setSource(new ExternalResource(v.get(0).getMiniatura()));
 			lista.setWidth("270px");
 			lista.setHeight("270px");
 			lista.vImagen.addLayoutClickListener(new LayoutClickListener() {
