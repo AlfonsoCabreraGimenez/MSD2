@@ -393,6 +393,9 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	}
 	public void eliminarVideoListaReproduccion(int idLista, int idVideo) {
 		if(ur.eliminarVideoListaReproduccion(idLista, idVideo)) {
+			Notification.show("¡Video eliminado de la lista de reproduccion!\n"
+					+ "¡Lista ya no contiene videos, se ha eliminado!", Type.WARNING_MESSAGE);
+		} else {
 			Notification.show("¡Video eliminado de la lista de reproduccion!", Type.WARNING_MESSAGE);
 		}
 		
