@@ -101,6 +101,20 @@ public class BD_Listas_De_Reproduccion {
 		}
 		return listaRes;
 	}
-	
+	public boolean eliminarVideoListaReproduccion(int idLista, int idVideo) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		boolean borrado = false;
+		try {
+			Lista_De_Reproduccion lista = Lista_De_ReproduccionDAO.getLista_De_ReproduccionByORMID(idLista);
+			Video video = VideoDAO.getVideoByORMID(idVideo);
+			lista.video.remove(video);
+			Lista_De_ReproduccionDAO.save(lista);
+			borrado = true;
+			t.commit();
+		} catch(Exception e) {
+			t.rollback();
+		}
+		return borrado;
+	}
 
 }

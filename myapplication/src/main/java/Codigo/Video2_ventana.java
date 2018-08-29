@@ -29,6 +29,7 @@ public class Video2_ventana extends VerticalLayout {
 	protected VerticalLayout vAccionesVideo;
 	protected Button modificarVideo;
 	protected Button eliminarVideo;
+	protected Button borrarDeLista;
 	protected Button usuario;
 	protected Label categoria;
 	protected Label etiqueta;

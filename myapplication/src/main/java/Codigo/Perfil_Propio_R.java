@@ -30,6 +30,7 @@ import diagramaclasesbd.Video;
 
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.Notification.Type;
 
 public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	Window popup = new Window();
@@ -286,6 +287,15 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			video.etiqueta.setValue(vid.getEtiqueta());
 			video.miniatura.setSource(new ExternalResource(vid.getMiniatura()));
 			video.modificarVideo.setVisible(false);
+			video.eliminarVideo.setVisible(false);
+			video.borrarDeLista.setVisible(true);
+			video.borrarDeLista.addClickListener(new ClickListener() {
+				@Override
+				public void buttonClick(ClickEvent event) {
+					// TODO Auto-generated method stub
+					eliminarVideoListaReproduccion(idLista, vid.getID());
+				}
+			});
 			listaH.get(i).addComponent(video);
 			cont++;
 			if(cont == 4) {
@@ -378,5 +388,11 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 				cont = 0;
 			}	
 		}
+	}
+	public void eliminarVideoListaReproduccion(int idLista, int idVideo) {
+		if(ur.eliminarVideoListaReproduccion(idLista, idVideo)) {
+			Notification.show("¡Video eliminado de la lista de reproduccion!", Type.WARNING_MESSAGE);
+		}
+		
 	}
 }

@@ -337,10 +337,6 @@ public class BD_Videos {
 		throw new UnsupportedOperationException();
 	}
 
-	public void eliminarVideoListaReproduccion(int aID) {
-		throw new UnsupportedOperationException();
-	}
-
 	public boolean videoPropio(int id,int iduser) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		//VER SI EL QUE HA INICIADO SESION ES ADMIN O NO

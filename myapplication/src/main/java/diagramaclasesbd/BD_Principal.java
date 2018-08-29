@@ -223,8 +223,15 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		}
 	}
 
-	public void eliminarVideoListaReproduccion(int aID) {
-		throw new UnsupportedOperationException();
+	public boolean eliminarVideoListaReproduccion(int idLista , int idVideo) {
+		boolean borrado = false;
+		try {
+			borrado = listas.eliminarVideoListaReproduccion(idLista, idVideo);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return borrado;
 	}
 
 	public List buscarUsuario(String aNombre) {
@@ -249,15 +256,12 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	}
 
 	public void eliminarUsuario(int aID) {
-		//Eliminar primero todas las listas aqui y devolver un boolean si se han borrado (true)
-			try {
-				registrados.eliminarUsuario(aID);
-			} catch (PersistentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-		
+		try {
+			registrados.eliminarUsuario(aID);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public List<diagramaclasesbd.Video> cargar_Videos_Masmegusta() {

@@ -60,7 +60,7 @@ public interface iUsuario_Registrado {
 
 	public void escribirComentario(String aCadena, int aID);
 
-	public void eliminarVideoListaReproduccion(int aID);
+	public boolean eliminarVideoListaReproduccion(int idLista , int idVideo);
 
 	public List<Registrado> cargarUsuariosRegis();
 
