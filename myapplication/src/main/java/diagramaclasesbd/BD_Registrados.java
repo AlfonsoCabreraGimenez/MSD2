@@ -45,7 +45,7 @@ public class BD_Registrados {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		int resReg = 1;
 		try {
-			List<Usuario> usuarios = UsuarioDAO.queryUsuario(null, null);
+			List<Usuario> usuarios = Arrays.asList(UsuarioDAO.listUsuarioByQuery(null, null));
 			for(Usuario user : usuarios) {
 				if(user.getApodo().equals(aApodo)) {
 					resReg = -1;
@@ -57,7 +57,7 @@ public class BD_Registrados {
 				}
 			}
 			if(resReg == 1) {
-				diagramaclasesbd.Registrado r = diagramaclasesbd.RegistradoDAO.createRegistrado();
+				Registrado r = RegistradoDAO.createRegistrado();
 				r.setNombre(aNombre);
 				r.setApellido1(aApellido1);
 				r.setApellido2(aApellido2);

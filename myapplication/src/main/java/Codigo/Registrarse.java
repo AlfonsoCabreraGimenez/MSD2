@@ -39,7 +39,7 @@ public class Registrarse extends Registrarse_ventana {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-				if(tUrl.getValue() == "") {
+				if(tUrl.isEmpty()) {
 					imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez"
 							+ "/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
 				} else {
@@ -71,8 +71,8 @@ public class Registrarse extends Registrarse_ventana {
 		String aRepPass = tRepPass.getValue();
 		String aEmail = tEmail.getValue();
 		String aAvatar = tUrl.getValue();
-		if(aNombre == "" || aApellido1 == "" || aApellido2 == "" || aApodo == "" ||
-				aPass == "" || aRepPass == "" || aEmail == "") {
+		if(aNombre.isEmpty() || aApellido1.isEmpty() || aApellido2.isEmpty() || aApodo.isEmpty() ||
+				aPass.isEmpty() || aRepPass.isEmpty() || aEmail.isEmpty()) {
 			Notification.show("¡Debe rellenar todos los campos!", Type.WARNING_MESSAGE);
 			return;
 		}
@@ -90,10 +90,9 @@ public class Registrarse extends Registrarse_ventana {
 			Notification.show("¡Introduce un email válido!", Type.WARNING_MESSAGE);
 			return;
 		}
-		if(aAvatar == "") {
+		if(aAvatar.isEmpty()) {
 			aAvatar = "https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true";
 		}
-		
 		int resReg = unr.registrarse(aNombre, aApellido1, aApellido2, fechaFinal, aApodo, aPass, aRepPass, aEmail, aAvatar);		
 		if(resReg == -1) {
 			Notification.show("¡Ya existe un usuario con ese apodo!", Type.WARNING_MESSAGE);

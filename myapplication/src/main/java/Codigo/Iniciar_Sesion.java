@@ -30,7 +30,7 @@ public class Iniciar_Sesion extends Iniciar_Sesion_ventana implements View{
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-				if(tUsuario.getValue() == "" || tPass.getValue() == "") {
+				if(tUsuario.isEmpty() || tPass.isEmpty()) {
 					Notification.show("¡Introduzca usuario y contraseña!", Type.WARNING_MESSAGE);
 				} else {
 					iniciarSesion(tUsuario.getValue(),tPass.getValue());

@@ -299,7 +299,7 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	}
 
 	public int registrarse(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aPass, String aRepPass, String aEmail, String aAvatar) {
-		int resReg = 0;
+		int resReg = -1;
 		try {
 			resReg = registrados.registrarse(aNombre, aApellido1, aApellido2, aFechaN, aApodo, aPass, aRepPass, aEmail, aAvatar);
 		} catch (PersistentException e) {
