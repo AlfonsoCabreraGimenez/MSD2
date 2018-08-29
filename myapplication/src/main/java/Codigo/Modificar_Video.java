@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Optional;
 
 import com.vaadin.server.ExternalResource;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.Notification.Type;
 
 import GY.MyUI;
 import diagramaclasesbd.Administrador;
@@ -35,7 +37,7 @@ public class Modificar_Video extends Modificar_Video_ventana{
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-				if(tUrlMin.getValue() == "") {
+				if(tUrlMin.isEmpty()) {
 					imagen.setSource(new ExternalResource("http://www.webdelcule.com/15-16/resutem15.jpg"));
 				} else {
 					imagen.setSource(new ExternalResource(tUrlMin.getValue()));
@@ -72,20 +74,32 @@ public class Modificar_Video extends Modificar_Video_ventana{
 		tUrlMin.setPlaceholder("Url de la miniatura...");
 	}
 	public void modificarDatosVideo(int idVideo) {
+		boolean datosOk = true;
+		if(categoria.isSelected(null)) {
+			Notification.show("¡Debe seleccionar una categoria!", Type.WARNING_MESSAGE);
+			datosOk = false;
+		}
 		String mini = tUrlMin.getValue();
-		if(mini == "") {
+		if(mini.isEmpty()) {
 			mini = "http://www.webdelcule.com/15-16/resutem15.jpg";
 		}
 		String titu = titulo.getValue();
-		Optional<String> seleccion = categoria.getSelectedItem();
-		String cate = seleccion.get();
 		String etique = etiqueta.getValue();
 		String des = descripcion.getValue();
-		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
-		if(admon == null) {
-			ur.modificarDatosVideo(idVideo, titu, cate, etique, des, mini);
-		} else {
-			adm.modificarDatosVideo(idVideo, titu, cate, etique, des, mini);
+
+		if(titu.isEmpty() || etique.isEmpty() || des.isEmpty()) {
+			Notification.show("¡Debe completar todos los campos!", Type.WARNING_MESSAGE);
+			datosOk = false;
+		}
+		if(datosOk) {
+			Optional<String> seleccion = categoria.getSelectedItem();
+			String cate = seleccion.get();
+			Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+			if(admon == null) {
+				ur.modificarDatosVideo(idVideo, titu, cate, etique, des, mini);
+			} else {
+				adm.modificarDatosVideo(idVideo, titu, cate, etique, des, mini);
+			}
 		}
 	}
 

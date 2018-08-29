@@ -34,7 +34,7 @@ public class Subir_Video extends Modificar_Video {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-				if(tUrlMin.getValue() == "") {
+				if(tUrlMin.isEmpty()) {
 					imagen.setSource(new ExternalResource("http://www.webdelcule.com/15-16/resutem15.jpg"));
 				} else {
 					imagen.setSource(new ExternalResource(tUrlMin.getValue()));
@@ -69,14 +69,14 @@ public class Subir_Video extends Modificar_Video {
 			datosOk = false;
 		}
 		String mini = tUrlMin.getValue();
-		if(mini == "") {
+		if(mini.isEmpty()) {
 			mini = "http://www.webdelcule.com/15-16/resutem15.jpg";
 		}
 		String titu = titulo.getValue();
 		String etique = etiqueta.getValue();
 		String des = descripcion.getValue();
 		String urls = url.getValue();
-		if(titu == "" || etique == "" || des == "" || urls == "") {
+		if(titu.isEmpty() || etique.isEmpty() || des.isEmpty() || urls.isEmpty()) {
 			Notification.show("¡Debe completar todos los campos!", Type.WARNING_MESSAGE);
 			datosOk = false;
 		}
