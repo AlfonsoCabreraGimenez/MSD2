@@ -139,7 +139,7 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		descripcion.setValue("Descripcion: " + videoA.getDescripcion() + "\n\nEtiquetas: " + videoA.getEtiqueta() 
 		+ "\n\nUrl: "+ videoA.getUrl());
 		Usuario us = videoA.getUsuario_video();
-		fotoUser.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+		fotoUser.setSource(new ExternalResource(us.getAvatar()));
 		apodo.setCaption(us.getApodo());
 		nVisualizaciones.setValue(String.valueOf(videoA.getVisualizaciones() + " visualizaciones"));
 		nGusta.setValue(String.valueOf(videoA.getMegusta() + " me gusta"));
@@ -163,7 +163,7 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 			com.areaComentario.setValue(coment.getDescripcion());
 			Usuario us = (Usuario) coment.getUsuario_comentario();
 			com.apodo.setCaption(us.getApodo());
-			com.avatar.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+			com.avatar.setSource(new ExternalResource(us.getAvatar()));
 			if(regis.es_escrito.contains(coment)){
 				com.bEliminarComentario1.setVisible(true);
 			} else {

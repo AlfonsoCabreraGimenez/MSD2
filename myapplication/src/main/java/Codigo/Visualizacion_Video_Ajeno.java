@@ -27,7 +27,6 @@ public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana
 	diagramaclasesbd.Video videoA;
 	public Visualizacion_Video_Ajeno() {
 		
-		
 	}
 	public Visualizacion_Video_Ajeno(int idVideo) {
 		aumentarVisualizaciones(idVideo);
@@ -63,7 +62,7 @@ public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana
 		descripcion.setValue("Descripcion: " + videoA.getDescripcion() + "\n\nEtiquetas: " + videoA.getEtiqueta() 
 		+ "\n\nUrl: "+ videoA.getUrl());
 		Usuario us = videoA.getUsuario_video();
-		fotoUser.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+		fotoUser.setSource(new ExternalResource(us.getAvatar()));
 		apodo.setCaption(us.getApodo());
 		nVisualizaciones.setValue(String.valueOf(videoA.getVisualizaciones() + " visualizaciones"));
 		nGusta.setValue(String.valueOf(videoA.getMegusta() + " me gusta"));
