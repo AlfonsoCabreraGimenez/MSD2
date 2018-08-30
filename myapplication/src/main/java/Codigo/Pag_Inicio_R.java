@@ -59,7 +59,6 @@ public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 		cargar_Videos_Suscriptores();
 	}
 	public void cargar_Videos_Suscriptores() {
-		Notification.show(String.valueOf(idUser));
 		int cont = 0;
 		for(Video video: ur.cargar_Videos_Suscriptores(idUser)) {
 				Video2 vid = new Video2(video.getID());

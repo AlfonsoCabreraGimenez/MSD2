@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.HtmlEmail;
+
 import com.vaadin.event.LayoutEvents.LayoutClickEvent;
 import com.vaadin.event.LayoutEvents.LayoutClickListener;
 import com.vaadin.server.ExternalResource;
@@ -193,5 +196,24 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		not.setDelayMsec(5000);
 		not.show(Page.getCurrent());
 		getUI().getPage().open("http://google.com", "_blank");
+		/*try {			
+			HtmlEmail email = new HtmlEmail();
+			email.setHostName("smtp.gmail.com");
+			email.setSmtpPort(200);
+			email.setSSLOnConnect(true);			
+			email.setAuthentication("modeladopruebaemail@gmail.com", "fcbarcelona92");
+			email.setFrom("modeladopruebaemail@gmail.com");
+			email.addTo(videoA.getUsuario_video().getEmail());				
+			email.setSubject("Eliminacion de video");
+			String mensaje="";
+			mensaje+="El usuario";			
+			email.setHtmlMsg(mensaje);				
+			email.send();		
+			
+			
+		}catch (EmailException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
 	}
 }

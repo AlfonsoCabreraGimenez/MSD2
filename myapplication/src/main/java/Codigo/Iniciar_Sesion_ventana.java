@@ -25,6 +25,7 @@ public class Iniciar_Sesion_ventana extends VerticalLayout {
 	protected VerticalLayout vIniciar;
 	protected TextField tUsuario;
 	protected PasswordField tPass;
+	protected HorizontalLayout hRec;
 	protected Link lPass;
 	protected HorizontalLayout hVacio;
 	protected Button botonIniciar;
