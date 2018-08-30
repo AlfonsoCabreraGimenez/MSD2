@@ -28,6 +28,16 @@ public class Pag_Inicio_NR_ventana extends VerticalLayout {
 	protected Label ultimosVideosSubidos;
 	protected Panel panelUltimosVideosSubidos;
 	protected HorizontalLayout hPanelUltimosVideosSubidos;
+	protected VerticalLayout vListasR;
+	protected Label videosRelacionados;
+	protected Panel panelVR;
+	protected HorizontalLayout hPanelVR;
+	protected Label videosOtrosUser;
+	protected Panel panelVideosOtrosUser;
+	protected HorizontalLayout hPanelVideosOtrosUser;
+	protected Label videosVreciente;
+	protected Panel panelVideosVreciente;
+	protected HorizontalLayout hPanelVideosVreciente;
 
 	public Pag_Inicio_NR_ventana() {
 		Design.read(this);

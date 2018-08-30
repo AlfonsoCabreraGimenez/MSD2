@@ -24,16 +24,12 @@ public class BD_Videos {
 	public BD_Principal _bd_prin_videos;
 	public Vector<Video> _contiene_videos = new Vector<Video>();
 	public BD_Comentarios comentario = new BD_Comentarios();
-	//public BD_Listas_De_Reproduccion listasDeReproduccion = new BD_Listas_De_Reproduccion();
 
 	public List<diagramaclasesbd.Video> cargar_Videos_Masmegusta() throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		List<diagramaclasesbd.Video> lVideosMgusta = null;
 		ArrayList<Integer> megusta = new ArrayList<Integer>();
 		ArrayList<diagramaclasesbd.Video> resultado = new ArrayList<diagramaclasesbd.Video>();
-		//int max = -1;
-		//int pos = -1;
-		//int cont = 0;
 		try {
 			lVideosMgusta = VideoDAO.queryVideo(null, null);
 			for(diagramaclasesbd.Video v : lVideosMgusta){
@@ -66,9 +62,6 @@ public class BD_Videos {
 		List<diagramaclasesbd.Video> lVideosUltimos = null;
 		ArrayList<Date> ultimos = new ArrayList<Date>();
 		ArrayList<diagramaclasesbd.Video> resultado = new ArrayList<diagramaclasesbd.Video>();
-		//int max = -1;
-		//int pos = -1;
-		//int cont = 0;
 		try {
 			lVideosUltimos = VideoDAO.queryVideo(null, null);
 			for(diagramaclasesbd.Video v : lVideosUltimos){
@@ -147,25 +140,42 @@ public class BD_Videos {
 		throw new UnsupportedOperationException();
 	}
 
-	public List cargar_Videos_Suscriptores(int aID) {
-		throw new UnsupportedOperationException();
+	public List<Video> cargar_Videos_Suscriptores(int aID) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		List<Video> lista = new ArrayList<Video>();
+		try {
+			Usuario user = UsuarioDAO.getUsuarioByORMID(aID);
+			//Devuelve los dos ultimos videos de los usuarios que esta suscrito
+			for(Usuario susc : user.suscripciones.toArray()) {		
+				try {			
+					int ultimo = susc.prop_video_de.toArray().length -1;
+					lista.add(susc.prop_video_de.toArray()[ultimo]);	
+					lista.add(susc.prop_video_de.toArray()[ultimo-1]);		
+				}catch(Exception e) {	
+					
+				}
+		}			
+			t.commit();
+		}catch(Exception e) {
+			t.rollback();
+		}
+		return lista;
 	}
 
 	public void subirVideo(int aID, String aMiniatura, String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aUrl, Date aFechaCreacion) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
-		diagramaclasesbd.Usuario r = diagramaclasesbd.UsuarioDAO.getUsuarioByORMID(aID);
+
 		try {
-			//diagramaclasesbd.Usuario r = diagramaclasesbd.UsuarioDAO.getUsuarioByORMID(aID);
-			diagramaclasesbd.Video video = diagramaclasesbd.VideoDAO.createVideo();
-			
+			Usuario r = UsuarioDAO.getUsuarioByORMID(aID);
+			Video video = VideoDAO.createVideo();
 			video.setMiniatura(aMiniatura);
 			video.setTitulo(aTitulo);
 			video.setEtiqueta(aEtiqueta);
 			video.setDescripcion(aDescripcion);
 			video.setUrl(aUrl);
 			video.setFechaCreacion(aFechaCreacion);
-			diagramaclasesbd.Categoria cate=null;	
-			for(diagramaclasesbd.Categoria cat : CategoriaDAO.listCategoriaByQuery(null, null)) {
+			Categoria cate=null;	
+			for(Categoria cat : CategoriaDAO.listCategoriaByQuery(null, null)) {
 				if(cat.getNombre().equals(aCategoria)) {
 					cate = cat;
 				}
@@ -173,8 +183,7 @@ public class BD_Videos {
 			video.setCategoria(cate);
 			video.setUsuario_video(r);
 
-			diagramaclasesbd.VideoDAO.save(video);
-			
+			VideoDAO.save(video);
 			
 			t.commit();
 			

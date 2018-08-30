@@ -28,7 +28,7 @@ public interface iUsuario_Registrado {
 
 	public List cargar_Videos_Relacionados(int aID);
 
-	public List cargar_Videos_Suscriptores(int aID);
+	public List<Video> cargar_Videos_Suscriptores(int aID);
 
 	public void cargarAvatar(int aID);
 

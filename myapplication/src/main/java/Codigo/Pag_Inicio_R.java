@@ -8,6 +8,7 @@ import org.orm.PersistentException;
 import com.vaadin.event.dd.acceptcriteria.Not;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
+import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.Button.ClickEvent;
@@ -20,6 +21,7 @@ import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Categoria;
 import diagramaclasesbd.Registrado;
 import diagramaclasesbd.Usuario;
+import diagramaclasesbd.Video;
 
 import com.vaadin.ui.Notification;
 
@@ -34,26 +36,48 @@ public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 	//Pag_Inicio_R_ventana pgr = new Pag_Inicio_R_ventana();
 	//Cabecera_Comun cc = new Cabecera_Comun();
 	Cabecera_R cr = new Cabecera_R();
-	Buscador bus = new Buscador();
-	Pag_Inicio_NR pnr = new Pag_Inicio_NR();
-	Navigator navigator;
-	 	
+	//Buscador bus = new Buscador();
+
+	//Navigator navigator;
+	int idUser = -1;
 	public Pag_Inicio_R(){
+
 		hCabeceraInicioBus.addComponent(cr.hCabeceraR);
 		cnr.iniciarSesionRegistrarse.setVisible(false);
-		addComponent(prv.videosRelacionados);
-		addComponent(prv.panelVR);//aqui añadimos los videos que cargamos
-		addComponent(prv.videosOtrosUser);
-		addComponent(prv.panelVideosOtrosUser);
-		addComponent(prv.videosVreciente);
-		addComponent(prv.panelVideosVreciente);
-		//cargar_Videos_Inicio_R();
+		vListasR.setVisible(true);
+		
+		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+		if(admon == null) {
+			Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+			idUser = reg.getID();
+		} else {
+			idUser = admon.getID();
+		}
+		cargar_Videos_Inicio_R();
 	}
-	/////////////////////////////////////////////////////////////
 	public void cargar_Videos_Inicio_R() {
-		super.cargar_Videos_Inicio_NR();
-		//CARGAR VIDEOS (HISTORIAL)
-		//CARGAR VIDEOS RELACIONADOS
-		//CARGAR VIDEOS SUSCRIPTORES
+		cargar_Videos_Suscriptores();
+	}
+	public void cargar_Videos_Suscriptores() {
+		Notification.show(String.valueOf(idUser));
+		int cont = 0;
+		for(Video video: ur.cargar_Videos_Suscriptores(idUser)) {
+				Video2 vid = new Video2(video.getID());
+				hPanelVideosOtrosUser.addComponent(vid);
+				vid.titulo.setCaption(video.getTitulo());
+				Usuario us = (Usuario) video.getUsuario_video();
+				vid.usuario.setCaption(us.getApodo());
+				Categoria cat = video.getCategoria();
+				vid.categoria.setValue(cat.getNombre());
+				vid.miniatura.setSource(new ExternalResource(video.getMiniatura()));
+				vid.etiqueta.setValue(video.getEtiqueta());
+				Date fecha = video.getFechaCreacion();
+				vid.fechasubida.setValue(fecha.toString());
+				vid.vAccionesVideo.setVisible(false);
+				cont++;
+				if(cont == 10) {
+					break;
+				}
+		}
 	}
 }

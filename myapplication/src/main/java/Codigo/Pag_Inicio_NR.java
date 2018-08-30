@@ -17,7 +17,7 @@ public class Pag_Inicio_NR extends Pag_Inicio_NR_ventana implements View{
 	public Cabecera_NR _unnamed_Cabecera_NR_;
 	public Buscador _unnamed_Buscador_;
 	public Video2 _unnamed_Video2_;
-	Navigator navigator;
+	//Navigator navigator;
 	Cabecera_Comun cc = new Cabecera_Comun();
 	Buscador bus = new Buscador();
 	Cabecera_NR cnr = new Cabecera_NR();
