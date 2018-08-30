@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Vector;
 
 import com.vaadin.navigator.View;
+import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
@@ -58,9 +59,11 @@ public class Buscador_Video extends Buscador implements View {
 				vid.usuario.setCaption(us.getApodo());
 				Categoria cat = video.getCategoria();
 				vid.categoria.setValue(cat.getNombre());
+				vid.miniatura.setSource(new ExternalResource(video.getMiniatura()));
 				vid.etiqueta.setValue(video.getEtiqueta());
 				Date fecha = video.getFechaCreacion();
 				vid.fechasubida.setValue(fecha.toString());
+				vid.vAccionesVideo.setVisible(false);
 				cont++;
 				if(cont == 4) {
 					hor.add(new HorizontalLayout());
