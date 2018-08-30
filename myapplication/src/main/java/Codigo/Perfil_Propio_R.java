@@ -52,11 +52,11 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	Modificar_Datos_Usuario mdu = new Modificar_Datos_Usuario();
 	Crear_Lista_Reproduccion clr = new Crear_Lista_Reproduccion();
 	iUsuario_Registrado ur = new BD_Principal();	
-
+	iAdministrador2 a = new BD_Principal();
+	Usuario user;
 	public Perfil_Propio_R(){
-		
-
 		inicializar();
+		cargarDatosUsuario();
 		cargarPerfilPropioR();
 		cargarVideosPropiosR();
 		
@@ -154,38 +154,33 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 		categoria.setVisible(false);
 		hBuscador.setVisible(false);
 	}
-	public void borrarVideo() {
-		throw new UnsupportedOperationException();
-	}
-
-	public void cargarPerfilPropioR() {
-		Usuario user;
+	
+	public void cargarDatosUsuario() {
 		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
 		if(registrado == null) {
-			Usuario admin = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
-			user = ur.cargarDatosUsuario(admin.getID());
+			Administrador admin = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+			user = a.cargarDatosUsuario(admin.getID());
 		} else {
 			user = ur.cargarDatosUsuario(registrado.getID());
 		}
-		nVisitas.setValue(String.valueOf(user.getVisitas()));
+	}
+	
+	/*public void borrarVideo() {
+		throw new UnsupportedOperationException();
+	}*/
+
+	public void cargarPerfilPropioR() {
+		nVisitas.setValue("Nº Visitas: " + String.valueOf(user.getVisitas()));
 		apodo.setCaption(user.getApodo());
-		nombre.setValue(user.getNombre());
-		apellidos.setValue(user.getApellido1()+" "+user.getApellido2());
-		email.setValue(user.getEmail());
-		fNacimiento.setValue(String.valueOf(user.getFechaN()));
+		nombre.setValue("Nombre: " + user.getNombre());
+		apellidos.setValue("Apellidos: " + user.getApellido1()+" "+user.getApellido2());
+		email.setValue("Email: " + user.getEmail());
+		fNacimiento.setValue("Fecha de nacimiento: " + String.valueOf(user.getFechaN()));
 		imagen.setSource(new ExternalResource(user.getAvatar()));
 		nSuscriptores.setValue("Nº Suscriptores: " + String.valueOf(user.suscriptores.size()));
 	} 	
 	
 	public void cargarVideosPropiosR() {
-		Usuario user;
-		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-		if(registrado == null) {
-			Usuario admin = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
-			user = ur.cargarDatosUsuario(admin.getID());
-		} else {
-			user = ur.cargarDatosUsuario(registrado.getID());
-		}
 		vPanel1.removeAllComponents();
 		int cont = 0, i = 0;
 		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
@@ -203,7 +198,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			video.titulo.setCaption(vid.getTitulo());
 			Date fecha = vid.getFechaCreacion();
 			video.fechasubida.setValue(fecha.toString());
-			video.usuario.setCaption(user.getNombre());
+			video.usuario.setCaption(user.getApodo());
 			video.etiqueta.setValue(vid.getEtiqueta());
 			video.miniatura.setSource(new ExternalResource(vid.getMiniatura()));
 			listaH.get(i).addComponent(video);
@@ -221,14 +216,6 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	}
 	
 	public void cargarListasPropiasR() {
-		Usuario user;
-		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-		if(registrado == null) {
-			Usuario admin = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
-			user = ur.cargarDatosUsuario(admin.getID());
-		} else {
-			user = ur.cargarDatosUsuario(registrado.getID());
-		}
 		vPanel1.removeAllComponents();
 		int cont = 0, i = 0;
 		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
@@ -244,7 +231,6 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			Lista_De_Reproduccion2 lista = new Lista_De_Reproduccion2(lis.getID());
 			lista.nombreLista.setValue(lis.getTitulo());
 			lista.vBorrar.setVisible(true);
-			//lista.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
 			List<Video> v = Arrays.asList(lis.video.toArray());
 			lista.imagen.setSource(new ExternalResource(v.get(0).getMiniatura()));
 			lista.setWidth("270px");
@@ -285,7 +271,7 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 			video.titulo.setCaption(vid.getTitulo());
 			Date fecha = vid.getFechaCreacion();
 			video.fechasubida.setValue(fecha.toString());
-			video.usuario.setCaption(vid.getUsuario_video().getNombre());
+			video.usuario.setCaption(vid.getUsuario_video().getApodo());
 			video.etiqueta.setValue(vid.getEtiqueta());
 			video.miniatura.setSource(new ExternalResource(vid.getMiniatura()));
 			video.modificarVideo.setVisible(false);
@@ -313,14 +299,6 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	}
 	
 	public void cargarSuscripcionesPropiasR() {
-		Usuario user;
-		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-		if(registrado == null) {
-			Usuario admin = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
-			user = ur.cargarDatosUsuario(admin.getID());
-		} else {
-			user = ur.cargarDatosUsuario(registrado.getID());
-		}
 		vPanel1.removeAllComponents();
 		int cont = 0, i = 0;
 		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
@@ -353,14 +331,6 @@ public class Perfil_Propio_R extends Perfil_Propio_R_ventana implements View{
 	}
 	
 	public void cargarSuscriptoresPropiosR() {
-		Usuario user;
-		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-		if(registrado == null) {
-			Usuario admin = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
-			user = ur.cargarDatosUsuario(admin.getID());
-		} else {
-			user = ur.cargarDatosUsuario(registrado.getID());
-		}
 		vPanel1.removeAllComponents();
 		int cont = 0, i = 0;
 		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
