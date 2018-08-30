@@ -6,6 +6,8 @@ import java.util.EventListener;
 import java.util.List;
 import java.util.Vector;
 
+import com.vaadin.event.LayoutEvents.LayoutClickEvent;
+import com.vaadin.event.LayoutEvents.LayoutClickListener;
 import com.vaadin.navigator.View;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.Page;
@@ -19,6 +21,7 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
 import Codigo.Comentario_Video_Ajeno_A_Propio_AR;
+import GY.MyUI;
 import diagramaclasesbd.Administrador;
 import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Categoria;
@@ -67,7 +70,16 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 		escribirComentario.setPlaceholder("Escribir comentario...");
 		comentar.setVisible(true);
 		bloquearComentario.setVisible(false);
-		vComentario.setVisible(true);				
+		vComentario.setVisible(true);		
+		
+		vDatosUser.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				// TODO Auto-generated method stub
+				MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno_A", new Perfil_Ajeno_R(videoA.getUsuario_video().getID()));
+				UI.getCurrent().getNavigator().navigateTo("Perfil_Ajeno_A");
+			}
+		});
 				
 		descargar.addClickListener(new ClickListener() {
 			@Override

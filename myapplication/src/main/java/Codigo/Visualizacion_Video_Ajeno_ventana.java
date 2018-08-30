@@ -27,6 +27,7 @@ public class Visualizacion_Video_Ajeno_ventana extends VerticalLayout {
 	protected HorizontalLayout hCabeceraGeneral2;
 	protected HorizontalLayout hUserVideo;
 	protected VerticalLayout datosUser;
+	protected VerticalLayout vDatosUser;
 	protected Image fotoUser;
 	protected Link apodo;
 	protected Label nVisualizaciones;

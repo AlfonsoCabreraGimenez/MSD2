@@ -4,16 +4,22 @@ import java.util.Date;
 
 import org.hibernate.engine.HibernateIterator;
 
+import com.vaadin.event.LayoutEvents.LayoutClickEvent;
+import com.vaadin.event.LayoutEvents.LayoutClickListener;
 import com.vaadin.navigator.View;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Embedded;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
+import GY.MyUI;
+import diagramaclasesbd.Administrador;
 import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Categoria;
+import diagramaclasesbd.Registrado;
 import diagramaclasesbd.Usuario;
 
 public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana implements View{
@@ -26,13 +32,21 @@ public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana
 	iUsuario_No_Registrado unr = new BD_Principal();
 	diagramaclasesbd.Video videoA;
 	public Visualizacion_Video_Ajeno() {
-		
+
 	}
 	public Visualizacion_Video_Ajeno(int idVideo) {
 		aumentarVisualizaciones(idVideo);
 		cargarDatosVideo(idVideo);
 		inicializar();
-
+		
+		vDatosUser.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				// TODO Auto-generated method stub
+				MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno", new Perfil_Ajeno(videoA.getUsuario_video().getID()));
+				UI.getCurrent().getNavigator().navigateTo("Perfil_Ajeno");
+			}
+		});
 	}
 	void inicializar() {
 		hCabeceraGeneral2.addComponent(cc.horizontalInicio);

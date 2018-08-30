@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.vaadin.event.LayoutEvents.LayoutClickEvent;
+import com.vaadin.event.LayoutEvents.LayoutClickListener;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.Page;
 import com.vaadin.ui.Alignment;
@@ -13,8 +15,13 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+
+import GY.MyUI;
+
 import com.vaadin.ui.Embedded;
 import java.lang.Thread;
+
+import diagramaclasesbd.Administrador;
 import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Categoria;
 import diagramaclasesbd.Comentario;
@@ -61,6 +68,15 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		bloquearComentario.setVisible(false);
 		vComentario.setVisible(true);
 		
+		vDatosUser.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				// TODO Auto-generated method stub
+				MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno_R", new Perfil_Ajeno_R(videoA.getUsuario_video().getID()));
+				UI.getCurrent().getNavigator().navigateTo("Perfil_Ajeno_R");
+			}
+		});
+
 		descargar.addClickListener(new ClickListener() {
 			@Override
 			public void buttonClick(ClickEvent event) {

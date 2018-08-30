@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
+import com.vaadin.event.LayoutEvents.LayoutClickEvent;
+import com.vaadin.event.LayoutEvents.LayoutClickListener;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.Page;
 import com.vaadin.ui.Alignment;
@@ -17,9 +19,12 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
 import Codigo.Comentario_Video_Ajeno_A_Propio_AR;
+import GY.MyUI;
+import diagramaclasesbd.Administrador;
 import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Categoria;
 import diagramaclasesbd.Comentario;
+import diagramaclasesbd.Registrado;
 import diagramaclasesbd.Usuario;
 
 public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Ajeno {
@@ -65,6 +70,21 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Ajeno {
 		htituloComentario.setVisible(true);
 		vComentario.setVisible(true);
 	
+		vDatosUser.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				// TODO Auto-generated method stub
+				Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+				if(admon == null) {
+					MyUI.getCurrent().getNavigator().addView("Perfil_Propio_R", new Perfil_Propio_R());
+					UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_R");
+				} else {
+					MyUI.getCurrent().getNavigator().addView("Perfil_Propio_A", new Perfil_Propio_R());
+					UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_A");
+				}
+			}
+		});
+		
 		modificarVideo.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 
