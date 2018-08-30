@@ -1,8 +1,10 @@
 package Codigo;
 
+import diagramaclasesbd.Usuario;
+
 public class Comentario_Video_Ajeno_R extends Comentario2 {
-	public Comentario_Video_Ajeno_R(int idComent, int idVideo, String pag) {
-		super(idComent, idVideo, pag);
+	public Comentario_Video_Ajeno_R(int idComent,Usuario user, int idVideo, String pag) {
+		super(idComent,user, idVideo, pag);
 		// TODO Auto-generated constructor stub
 	}
 	//private Boton _eliminarComentarioPropioB;

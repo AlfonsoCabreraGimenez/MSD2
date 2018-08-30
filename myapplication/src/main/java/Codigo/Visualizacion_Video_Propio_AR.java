@@ -203,7 +203,7 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Ajeno {
 	public void cargarListaComentarios() {
 		vComentario.removeAllComponents();
 		for(Comentario coment : ur.cargarListaComentarios(identVideo)){
-			Comentario2 com = new Comentario2(coment.getID(), identVideo, "propio");
+			Comentario2 com = new Comentario2(coment.getID(), coment.getUsuario_comentario(), identVideo, "propio");
 			vComentario.addComponent(com);
 			com.areaComentario.setValue(coment.getDescripcion());
 			Usuario us = (Usuario) coment.getUsuario_comentario();

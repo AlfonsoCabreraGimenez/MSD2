@@ -1,6 +1,8 @@
 package Codigo;
 
 import com.vaadin.event.MouseEvents;
+import com.vaadin.event.LayoutEvents.LayoutClickEvent;
+import com.vaadin.event.LayoutEvents.LayoutClickListener;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
@@ -14,6 +16,7 @@ import diagramaclasesbd.Comentario;
 import diagramaclasesbd.ComentarioDAO;
 import diagramaclasesbd.Registrado;
 import diagramaclasesbd.RegistradoDAO;
+import diagramaclasesbd.Usuario;
 import diagramaclasesbd.UsuarioDAO;
 
 public class Comentario2 extends Comentario2_ventana {
@@ -26,23 +29,31 @@ public class Comentario2 extends Comentario2_ventana {
 	public Visualizacion_Video_Comun_Registrado _unnamed_Visualizacion_Video_Comun_Registrado_;
 	iUsuario_Registrado ur = new BD_Principal();
 	
-	public Comentario2(int idComent, int idVideo, String pag) {
+	public Comentario2(int idComent, Usuario user , int idVideo, String pag) {
 		
 		Conf_Eliminar_Comentario confElimi = new Conf_Eliminar_Comentario(idComent);
-		avatar.addClickListener(new MouseEvents.ClickListener() {
-			
+		hApodoFoto.addLayoutClickListener(new LayoutClickListener() {
 			@Override
-			public void click(com.vaadin.event.MouseEvents.ClickEvent event) {
-				//Si es admin o registrado a un lado u otro.
+			public void layoutClick(LayoutClickEvent event) {
+				// TODO Auto-generated method stub
 				Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
-				if(admon == null)
-				{
-					Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
-					MyUI.getCurrent().getNavigator().addView("Perfil_Propio_R", new Perfil_Propio_R());
-					UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_R");
-				}else {
-					MyUI.getCurrent().getNavigator().addView("Perfil_Propio_A", new Perfil_Propio_A());
-					UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_A");
+				Registrado reg = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
+				if(admon != null) {
+					if(admon.getID() == user.getID()) {
+						MyUI.getCurrent().getNavigator().addView("Perfil_Propio_A", new Perfil_Propio_R());
+						UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_A");
+					} else {
+						MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno_A", new Perfil_Ajeno_A(user.getID()));
+						UI.getCurrent().getNavigator().navigateTo("Perfil_Ajeno_A");
+					}
+				} else {
+					if(reg.getID() == user.getID()) {
+						MyUI.getCurrent().getNavigator().addView("Perfil_Propio_R", new Perfil_Propio_R());
+						UI.getCurrent().getNavigator().navigateTo("Perfil_Propio_R");
+					} else {
+						MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno_R", new Perfil_Ajeno_R(user.getID()));
+						UI.getCurrent().getNavigator().navigateTo("Perfil_Ajeno_R");
+					}
 				}
 			}
 		});

@@ -158,7 +158,7 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		Registrado registrado = (Registrado) UI.getCurrent().getSession().getAttribute("usuario");
 		Usuario regis = ur.cargarDatosUsuario(registrado.getID());
 		for(Comentario coment : ur.cargarListaComentarios(identVideo)){
-			Comentario2 com = new Comentario2(coment.getID(), identVideo, "ajenoR");
+			Comentario2 com = new Comentario2(coment.getID(),coment.getUsuario_comentario(), identVideo, "ajenoR");
 			vComentario.addComponent(com);
 			com.areaComentario.setValue(coment.getDescripcion());
 			Usuario us = (Usuario) coment.getUsuario_comentario();
