@@ -41,7 +41,7 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 
 	Cabecera_Comun cc = new Cabecera_Comun();
 	Cabecera_NR cnr = new Cabecera_NR();
-	
+	Usuario user;
 	iUsuario_No_Registrado unr = new BD_Principal();
 	
 	public Perfil_Ajeno() {
@@ -51,14 +51,15 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 	public Perfil_Ajeno(int idUser){
 		inicializar();
 		aumentarVisitas(idUser);
-		cargarPerfilAjenoNR(idUser);
-		cargarVideosAjenoNR(idUser);
+		cargarDatosUsuario(idUser);
+		cargarPerfilAjenoNR(user);
+		cargarVideosAjenoNR(user);
 		
 		hVideos.addLayoutClickListener(new LayoutClickListener() {
 			@Override
 			public void layoutClick(LayoutClickEvent event) {
 				// TODO Auto-generated method stub
-				cargarVideosAjenoNR(idUser);
+				cargarVideosAjenoNR(user);
 			}
 		});
 		
@@ -66,7 +67,7 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 			@Override
 			public void layoutClick(LayoutClickEvent event) {
 				// TODO Auto-generated method stub
-				cargarListasAjenoNR(idUser);
+				cargarListasAjenoNR(user);
 			}
 		});
 		
@@ -74,7 +75,7 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 			@Override
 			public void layoutClick(LayoutClickEvent event) {
 				// TODO Auto-generated method stub
-				cargarSuscripcionesAjenoNR(idUser);
+				cargarSuscripcionesAjenoNR(user);
 			}
 		});
 		
@@ -82,7 +83,7 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 			@Override
 			public void layoutClick(LayoutClickEvent event) {
 				// TODO Auto-generated method stub
-				cargarSuscriptoresAjenoNR(idUser);
+				cargarSuscriptoresAjenoNR(user);
 			}
 		});
 	}
@@ -103,18 +104,19 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 		unr.aumentarVisitas(idUser);
 	}
 	
-	public void cargarPerfilAjenoNR(int idUser) {
-		Usuario user = unr.cargarDatosUsuario(idUser);
+	public void cargarDatosUsuario(int idUser) {
+		user = unr.cargarDatosUsuario(idUser);
+	}
+	public void cargarPerfilAjenoNR(Usuario user) {
 		nSuscriptores.setValue("Nº Suscriptores: " + String.valueOf(user.suscriptores.size()));
 		apodo.setCaption(user.getApodo());
 		nVisitas.setValue("Visitas: "+ String.valueOf(user.getVisitas()));
 		imagen.setSource(new ExternalResource(user.getAvatar()));
 	}
 	
-	public void cargarVideosAjenoNR(int idUser) {
+	public void cargarVideosAjenoNR(Usuario user) {
 		vPanel1.removeAllComponents();
 		int cont = 0, i = 0;
-		Usuario user = unr.cargarDatosUsuario(idUser);
 		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
 		HorizontalLayout h = new HorizontalLayout();
 		h.setWidth("100%");
@@ -130,7 +132,7 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 			video.titulo.setCaption(vid.getTitulo());
 			Date fecha = vid.getFechaCreacion();
 			video.fechasubida.setValue(fecha.toString());
-			video.usuario.setCaption(user.getNombre());
+			video.usuario.setCaption(user.getApodo());
 			video.etiqueta.setValue(vid.getEtiqueta());
 			video.miniatura.setSource(new ExternalResource(vid.getMiniatura()));
 			Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
@@ -153,10 +155,9 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 		}
 	}
 	
-	public void cargarListasAjenoNR(int idUser) {
+	public void cargarListasAjenoNR(Usuario user) {
 		vPanel1.removeAllComponents();
 		int cont = 0, i = 0;
-		Usuario user = unr.cargarDatosUsuario(idUser);
 		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
 		HorizontalLayout h = new HorizontalLayout();
 		h.setWidth("100%");
@@ -170,7 +171,6 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 			Lista_De_Reproduccion2 lista = new Lista_De_Reproduccion2(lis.getID());
 			lista.nombreLista.setValue(lis.getTitulo());
 			lista.vBorrar.setVisible(false);
-			//lista.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
 			List<Video> v = Arrays.asList(lis.video.toArray());
 			lista.imagen.setSource(new ExternalResource(v.get(0).getMiniatura()));
 			lista.setWidth("270px");
@@ -229,10 +229,9 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 		}
 	}
 	
-	public void cargarSuscripcionesAjenoNR(int idUser) {
+	public void cargarSuscripcionesAjenoNR(Usuario user) {
 		vPanel1.removeAllComponents();
 		int cont = 0, i = 0;
-		Usuario user = unr.cargarDatosUsuario(idUser);
 		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
 		HorizontalLayout h = new HorizontalLayout();
 		h.setWidth("100%");
@@ -262,10 +261,9 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 		}
 	}
 	
-	public void cargarSuscriptoresAjenoNR(int idUser) {
+	public void cargarSuscriptoresAjenoNR(Usuario user) {
 		vPanel1.removeAllComponents();
 		int cont = 0, i = 0;
-		Usuario user = unr.cargarDatosUsuario(idUser);
 		List<HorizontalLayout> listaH = new ArrayList<HorizontalLayout>();
 		HorizontalLayout h = new HorizontalLayout();
 		h.setWidth("100%");

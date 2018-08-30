@@ -8,6 +8,7 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
 import diagramaclasesbd.BD_Principal;
+import diagramaclasesbd.Usuario;
 
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
@@ -19,6 +20,7 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 	Window popup1 = new Window();
 	VerticalLayout subContent1 = new VerticalLayout();
 	
+	Usuario user;
 	iAdministrador2 admin = new BD_Principal();
 	
 	public Usuario2 _unnamed_Usuario2_;
@@ -33,15 +35,16 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 		
 		inicializar();
 		aumentarVisitas(idUser);
+		cargarDatosUsuario(idUser);
 		comprobarSuscripcion(idUser);
-		cargarPerfilAjenoNR(idUser);
-		cargarVideosAjenoNR(idUser);
+		cargarPerfilAjenoNR(user);
+		cargarVideosAjenoNR(user);
 		
 		hVideos.addLayoutClickListener(new LayoutClickListener() {
 			@Override
 			public void layoutClick(LayoutClickEvent event) {
 				// TODO Auto-generated method stub
-				cargarVideosAjenoNR(idUser);
+				cargarVideosAjenoNR(user);
 			}
 		});
 		
@@ -49,7 +52,7 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 			@Override
 			public void layoutClick(LayoutClickEvent event) {
 				// TODO Auto-generated method stub
-				cargarListasAjenoNR(idUser);
+				cargarListasAjenoNR(user);
 			}
 		});
 		
@@ -57,7 +60,7 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 			@Override
 			public void layoutClick(LayoutClickEvent event) {
 				// TODO Auto-generated method stub
-				cargarSuscripcionesAjenoNR(idUser);
+				cargarSuscripcionesAjenoNR(user);
 			}
 		});
 		
@@ -65,7 +68,7 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 			@Override
 			public void layoutClick(LayoutClickEvent event) {
 				// TODO Auto-generated method stub
-				cargarSuscriptoresAjenoNR(idUser);
+				cargarSuscriptoresAjenoNR(user);
 			}
 		});
 		
@@ -157,5 +160,8 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 	public void inicializar(){
 		hCabeceraComun.addComponent(cc);
 		hCabeceraGeneral.addComponent(cr);
+	}
+	public void cargarDatosUsuario(int idUser) {
+		user = admin.cargarDatosUsuario(idUser);
 	}
 }

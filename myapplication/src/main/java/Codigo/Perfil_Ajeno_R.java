@@ -5,6 +5,7 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
 import diagramaclasesbd.BD_Principal;
+import diagramaclasesbd.Usuario;
 
 import com.vaadin.event.LayoutEvents.LayoutClickEvent;
 import com.vaadin.event.LayoutEvents.LayoutClickListener;
@@ -24,6 +25,8 @@ public class Perfil_Ajeno_R extends Perfil_Ajeno implements View {
 	public Usuario2 _unnamed_Usuario2_;
 	
 	Cabecera_R cr = new Cabecera_R();
+	
+	Usuario user;
 	iUsuario_Registrado ur = new BD_Principal();
 	
 	public Perfil_Ajeno_R() {
@@ -36,15 +39,16 @@ public class Perfil_Ajeno_R extends Perfil_Ajeno implements View {
 		
 		inicializar();
 		aumentarVisitas(idUser);
+		cargarDatosUsuario(idUser);
 		comprobarSuscripcion(idUser);
-		cargarPerfilAjenoNR(idUser);
-		cargarVideosAjenoNR(idUser);
+		cargarPerfilAjenoNR(user);
+		cargarVideosAjenoNR(user);
 		
 		hVideos.addLayoutClickListener(new LayoutClickListener() {
 			@Override
 			public void layoutClick(LayoutClickEvent event) {
 				// TODO Auto-generated method stub
-				cargarVideosAjenoNR(idUser);
+				cargarVideosAjenoNR(user);
 			}
 		});
 		
@@ -52,7 +56,7 @@ public class Perfil_Ajeno_R extends Perfil_Ajeno implements View {
 			@Override
 			public void layoutClick(LayoutClickEvent event) {
 				// TODO Auto-generated method stub
-				cargarListasAjenoNR(idUser);
+				cargarListasAjenoNR(user);
 			}
 		});
 		
@@ -60,7 +64,7 @@ public class Perfil_Ajeno_R extends Perfil_Ajeno implements View {
 			@Override
 			public void layoutClick(LayoutClickEvent event) {
 				// TODO Auto-generated method stub
-				cargarSuscripcionesAjenoNR(idUser);
+				cargarSuscripcionesAjenoNR(user);
 			}
 		});
 		
@@ -68,7 +72,7 @@ public class Perfil_Ajeno_R extends Perfil_Ajeno implements View {
 			@Override
 			public void layoutClick(LayoutClickEvent event) {
 				// TODO Auto-generated method stub
-				cargarSuscriptoresAjenoNR(idUser);
+				cargarSuscriptoresAjenoNR(user);
 			}
 		});
 		
@@ -133,6 +137,10 @@ public class Perfil_Ajeno_R extends Perfil_Ajeno implements View {
 		hCabeceraComun.addComponent(cc);
 		hCabeceraGeneral.addComponent(cr);
 		darDeBaja.setVisible(false);
+	}
+	
+	public void cargarDatosUsuario(int idUser) {
+		user = ur.cargarDatosUsuario(idUser);
 	}
 	
 	public void comprobarSuscripcion(int idUser) {
