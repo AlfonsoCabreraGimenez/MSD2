@@ -21,6 +21,9 @@ public class Video2 extends Video2_ventana{
 	Window popup = new Window();
 	VerticalLayout subContent = new VerticalLayout();
 	
+	Window popup1 = new Window();
+	VerticalLayout subContent1 = new VerticalLayout();
+	
 	private TipoUsuario _usuario;
 	/*public Lista_Videos_De_Reproduccion _unnamed_Lista_Videos_De_Reproduccion_;
 	public Pag_Inicio_NR _unnamed_Pag_Inicio_NR_;
@@ -158,24 +161,24 @@ public class Video2 extends Video2_ventana{
 		//boton de eliminar video
 		eliminarVideo.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				popup.setContent(subContent);
-				subContent.addComponent(ev.vVerticalEliminarVideo);
-				popup.center();
-				popup.setWidth("720px");
+				popup1.setContent(subContent1);
+				subContent1.addComponent(ev.vVerticalEliminarVideo);
+				popup1.center();
+				popup1.setWidth("720px");
 				//popup.setClosable(false);
-				popup.setModal(true);
-				UI.getCurrent().addWindow(popup);				
+				popup1.setModal(true);
+				UI.getCurrent().addWindow(popup1);				
 			}
 		});
 		ev.aceptar.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				popup.close();
+				popup1.close();
 			}
 		});
 		
 		ev.cancelar.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				popup.close();	
+				popup1.close();	
 			}
 		});
 		
