@@ -229,9 +229,24 @@ public class BD_Registrados {
 				Lista_De_ReproduccionDAO.deleteAndDissociate(lista);
 				Lista_De_ReproduccionDAO.delete(lista);
 			}
-			
 			UsuarioDAO.deleteAndDissociate(user);
 			UsuarioDAO.delete(user);
+			
+			Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");
+			HtmlEmail email = new HtmlEmail();
+			email.setHostName("smtp.gmail.com");
+			email.setSmtpPort(200);
+			email.setSSLOnConnect(true);			
+			email.setAuthentication("modeladopruebaemail@gmail.com", "fcbarcelona92");
+			email.setFrom("modeladopruebaemail@gmail.com");
+			email.addTo(user.getEmail());				
+			email.setSubject("Eliminacion de usuario");
+			String cuerpo="";
+			cuerpo+="Se ha procedido a dar de baja su cuenta.<br/><br/>"
+					+ "Disculpe las molestias.<br/><br/><br/>" 
+					+"Administrador: " + admon.getApodo();			
+			email.setHtmlMsg(cuerpo);				
+			email.send();
 			t.commit();
 		} catch (Exception e) {
 			t.rollback();
