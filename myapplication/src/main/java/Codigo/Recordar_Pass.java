@@ -2,6 +2,7 @@ package Codigo;
 
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.Notification;
 
 import diagramaclasesbd.BD_Principal;
@@ -19,12 +20,15 @@ public class Recordar_Pass extends Recordar_Pass_ventana{
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-				regeneracionPass();
+				if(email.isEmpty()) {
+					Notification.show("¡Debe escribir su correo electronico!", Type.WARNING_MESSAGE);
+				} else {
+					regeneracionPass(email.getValue());
+				}
 			}
 		});
 	}
-	public void regeneracionPass() {
-		Notification.show(email.getValue());
-		//unr.regeneracionPass();
+	public void regeneracionPass(String correo) {
+		//unr.regeneracionPass(correo);
 	}
 }
