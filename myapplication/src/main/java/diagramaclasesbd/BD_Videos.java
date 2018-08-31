@@ -15,6 +15,7 @@ import org.apache.commons.mail.HtmlEmail;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 
 import diagramaclasesbd.Video;
@@ -300,7 +301,26 @@ public class BD_Videos {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
 			Video vid = VideoDAO.getVideoByORMID(aID);
-			
+			Usuario admon = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
+			if(admon != null) {
+					if(!(vid.getUsuario_video().equals(admon))) {
+						Notification.show("soy admin");
+						HtmlEmail email = new HtmlEmail();
+						email.setHostName("smtp.gmail.com");
+						email.setSmtpPort(200);
+						email.setSSLOnConnect(true);			
+						email.setAuthentication("modeladopruebaemail@gmail.com", "fcbarcelona92");
+						email.setFrom("modeladopruebaemail@gmail.com");
+						email.addTo(vid.getUsuario_video().getEmail());				
+						email.setSubject("Eliminacion de video");
+						String cuerpo="";
+						cuerpo+="Se ha procedido a dar de baja su video: " + vid.getTitulo() + ".<br/><br/>"
+								+ "Disculpe las molestias.<br/><br/><br/>" 
+								+"Administrador: " + admon.getApodo();					
+						email.setHtmlMsg(cuerpo);				
+						email.send();
+					}
+			}
 			List<Lista_De_Reproduccion> listas = Arrays.asList(Lista_De_ReproduccionDAO.listLista_De_ReproduccionByQuery(null, null));
 			List<Usuario> usuarios = Arrays.asList(UsuarioDAO.listUsuarioByQuery(null, null));
 			List<Comentario> comentarios = Arrays.asList(ComentarioDAO.listComentarioByQuery(null, null));
@@ -324,27 +344,8 @@ public class BD_Videos {
 					ComentarioDAO.delete(comentario);
 				}
 			}
-			VideoDAO.delete(vid);
 			
-			Usuario admon = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
-			if(admon != null) {
-					if(!(vid.getUsuario_video().getID() == admon.getID())) {
-						HtmlEmail email = new HtmlEmail();
-						email.setHostName("smtp.gmail.com");
-						email.setSmtpPort(200);
-						email.setSSLOnConnect(true);			
-						email.setAuthentication("modeladopruebaemail@gmail.com", "fcbarcelona92");
-						email.setFrom("modeladopruebaemail@gmail.com");
-						email.addTo(vid.getUsuario_video().getEmail());				
-						email.setSubject("Eliminacion de video");
-						String cuerpo="";
-						cuerpo+="Se ha procedido a dar de baja su video: " + vid.getTitulo() + ".<br/><br/>"
-								+ "Disculpe las molestias.<br/><br/><br/>" 
-								+"Administrador: " + admon.getApodo();					
-						email.setHtmlMsg(cuerpo);				
-						email.send();
-					}
-			}
+			VideoDAO.delete(vid);
 			t.commit();
 		} catch (Exception e) {
 			t.rollback();

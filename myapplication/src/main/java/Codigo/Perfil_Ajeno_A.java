@@ -19,6 +19,8 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 	VerticalLayout subContent = new VerticalLayout();
 	Window popup1 = new Window();
 	VerticalLayout subContent1 = new VerticalLayout();
+	Window popup2 = new Window();
+	VerticalLayout subContent2 = new VerticalLayout();
 	
 	Usuario user;
 	iAdministrador2 admin = new BD_Principal();
@@ -130,29 +132,27 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 		
 		darDeBaja.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				popup.setContent(subContent);
-				subContent.addComponent(Conf_Eliminar_Usuario_);
-				popup.center();
-				popup.setWidth("720px");
+				popup2.setContent(subContent2);
+				subContent2.addComponent(Conf_Eliminar_Usuario_);
+				popup2.center();
+				popup2.setWidth("720px");
 				//popup.setClosable(false);
-				popup.setModal(true);
-				UI.getCurrent().addWindow(popup);
+				popup2.setModal(true);
+				UI.getCurrent().addWindow(popup2);
 				
 			}
 		});
 		Conf_Eliminar_Usuario_.aceptar.addClickListener(new ClickListener() {
-			
 			@Override
 			public void buttonClick(ClickEvent event) {
-				popup.close();
+				popup2.close();
 			}
 		});
 		
 		Conf_Eliminar_Usuario_.cancelar.addClickListener(new ClickListener() {
-			
 			@Override
 			public void buttonClick(ClickEvent event) {
-				popup.close();
+				popup2.close();
 			}
 		});
 	}
@@ -160,6 +160,7 @@ public class Perfil_Ajeno_A extends Perfil_Ajeno_R implements View {
 	public void inicializar(){
 		hCabeceraComun.addComponent(cc);
 		hCabeceraGeneral.addComponent(cr);
+		darDeBaja.setVisible(true);
 	}
 	public void cargarDatosUsuario(int idUser) {
 		user = admin.cargarDatosUsuario(idUser);
