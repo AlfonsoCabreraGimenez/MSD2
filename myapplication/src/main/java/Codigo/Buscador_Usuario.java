@@ -29,8 +29,8 @@ public class Buscador_Usuario extends Buscador implements View{
 	public Buscador_Usuario(String busqueda) {
 		panelBuscador.setVisible(false);
 		panelBuscadorUs.setVisible(true);
-		ordenarPor.setVisible(false);
-		ordenarPorUs.setVisible(true);
+		//ordenarPor.setVisible(false);
+		//ordenarPorUs.setVisible(true);
 		hCabeceraInicioBus.addComponentAsFirst(cc.inicio);
 		hCabeceraInicioBus.addComponent(cnr.hIniciarSesionRegistrarse);
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");

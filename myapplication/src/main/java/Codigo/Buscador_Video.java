@@ -30,8 +30,6 @@ public class Buscador_Video extends Buscador implements View {
 	public Buscador_Video (String buscador, TipoBusqueda aTipoBusqueda) {
 		panelBuscador.setVisible(true);
 		panelBuscadorUs.setVisible(false);
-		ordenarPor.setVisible(true);
-		ordenarPorUs.setVisible(false);
 		hCabeceraInicioBus.addComponentAsFirst(cc.inicio);
 		hCabeceraInicioBus.addComponent(cnr.hIniciarSesionRegistrarse);
 		Administrador admon = (Administrador) UI.getCurrent().getSession().getAttribute("admin");

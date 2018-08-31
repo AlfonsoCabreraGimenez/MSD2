@@ -27,6 +27,7 @@ public class Modificar_Datos_Usuario extends Registrarse {
 		vFechaN.setVisible(false);
 		cancelar.setVisible(true);
 		botonRegistrarse.setVisible(false);
+		hPass.setVisible(false);
 		cargarDatosUsuario();
 		
 		modificarDatosUser.addClickListener(new ClickListener() {
