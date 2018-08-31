@@ -16,13 +16,13 @@ public interface iUsuario_No_Registrado {
 
 	public int registrarse(String aNombre, String aApellido1, String aApellido2, Date aFechaN, String aApodo, String aPass, String aRepPass, String aEmail, String aAvatar);
 
-	public void nuevaPass(String aPass, String aRepPass);
+	public boolean nuevaPass(String email, String codigo, String aPass);
 
 	public List<diagramaclasesbd.Video> buscar(String buscador, TipoBusqueda aTipoBusqueda);
 	
 	public List<Usuario> buscar(String buscador);
 
-	public void regeneracionPass(String aEmail);
+	public boolean regeneracionPass(String aEmail);
 
 	public Usuario cargarDatosUsuario(int aID);
 

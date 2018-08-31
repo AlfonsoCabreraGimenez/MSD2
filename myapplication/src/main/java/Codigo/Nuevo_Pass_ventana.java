@@ -6,6 +6,7 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.PasswordField;
+import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.declarative.Design;
 
@@ -22,6 +23,7 @@ import com.vaadin.ui.declarative.Design;
 @SuppressWarnings("serial")
 public class Nuevo_Pass_ventana extends VerticalLayout {
 	protected Label nuevaContrasena;
+	protected TextField codigo;
 	protected PasswordField contrasena;
 	protected PasswordField repetirContrasena;
 	protected HorizontalLayout hAccion;

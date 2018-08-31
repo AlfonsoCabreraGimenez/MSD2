@@ -6,12 +6,15 @@
   <meta name="vaadin-version" content="8.0.5">
  </head>
  <body>
-  <vaadin-vertical-layout width="30%">
+  <vaadin-vertical-layout>
    <vaadin-label plain-text _id="nuevaContrasena" :center>
      Nueva contraseña 
    </vaadin-label>
-   <vaadin-password-field caption="Contraseña" _id="contrasena"></vaadin-password-field>
-   <vaadin-password-field caption="Repita contraseña" _id="repetirContrasena"></vaadin-password-field>
+   <vaadin-text-field _id="codigo" :center></vaadin-text-field>
+   <vaadin-horizontal-layout :center>
+    <vaadin-password-field caption="Contraseña" _id="contrasena"></vaadin-password-field>
+    <vaadin-password-field caption="Repita contraseña" _id="repetirContrasena"></vaadin-password-field>
+   </vaadin-horizontal-layout>
    <vaadin-horizontal-layout width-full margin _id="hAccion">
     <vaadin-button description="Cancelar" style-name="danger" plain-text _id="cancelar">
       Cancelar 

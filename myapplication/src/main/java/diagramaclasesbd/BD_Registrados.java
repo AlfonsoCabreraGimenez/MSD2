@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
+import org.apache.commons.mail.HtmlEmail;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
@@ -76,8 +77,22 @@ public class BD_Registrados {
 		return resReg;
 	}
 
-	public void nuevaPass(String aPass, String aRepPass) {
-		throw new UnsupportedOperationException();
+	public boolean nuevaPass(String email, String codigo, String aPass) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		boolean correcto = false;
+		try {
+			for(Usuario usu : Arrays.asList(UsuarioDAO.listUsuarioByQuery(null, null))) {
+				if(usu.getEmail().equals(email) && usu.getPassword().equals(codigo)) {
+					usu.setPassword(aPass);
+					UsuarioDAO.save(usu);
+					correcto = true;
+				}
+			}
+			t.commit();		
+		} catch (Exception e) {
+			t.rollback();
+		}
+		return correcto;
 	}
 	public List<Usuario> buscar(String buscador) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
@@ -105,8 +120,37 @@ public class BD_Registrados {
 		throw new UnsupportedOperationException();
 	}
 
-	public void regeneracionPass(String aEmail) {
-		throw new UnsupportedOperationException();
+	public boolean regeneracionPass(String aEmail) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		boolean claveGen = false;
+		try {
+			for(Usuario usu : Arrays.asList(UsuarioDAO.listUsuarioByQuery(null, null))) {
+				if(usu.getEmail().equals(aEmail)) {
+					double r = Math.random() * 1000000;
+					String regen = "" + (int) r;
+					usu.setPassword(regen);
+					UsuarioDAO.save(usu);
+					HtmlEmail email = new HtmlEmail();
+					email.setHostName("smtp.gmail.com");
+					email.setSmtpPort(200);
+					email.setSSLOnConnect(true);			
+					email.setAuthentication("modeladopruebaemail@gmail.com", "fcbarcelona92");
+					email.setFrom("modeladopruebaemail@gmail.com");
+					email.addTo(usu.getEmail());				
+					email.setSubject("Recuperacion de contraseña");
+					String cuerpo="";
+					cuerpo+="Introduzca el siguiente codigo en el cuadro de texto para "
+							+ "generar la nueva contraseña:   <b>" +regen+"</b>";			
+					email.setHtmlMsg(cuerpo);				
+					email.send();
+					claveGen = true;
+				}
+			}
+			t.commit();		
+		} catch (Exception e) {
+			t.rollback();
+		}
+		return claveGen;
 	}
 
 	public Usuario cargarDatosUsuario(int aID) throws PersistentException {

@@ -315,12 +315,26 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		return resReg;
 	}
 
-	public void nuevaPass(String aPass, String aRepPass) {
-		throw new UnsupportedOperationException();
+	public boolean nuevaPass(String email, String codigo, String aPass) {
+		boolean correcto = false;
+		try {
+			correcto = registrados.nuevaPass(email, codigo, aPass);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return correcto;
 	}
 
-	public void regeneracionPass(String aEmail) {
-		throw new UnsupportedOperationException();
+	public boolean regeneracionPass(String aEmail) {
+		boolean claveGen = false;
+		try {
+			claveGen = registrados.regeneracionPass(aEmail);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return claveGen;
 	}
 
 	public List cargar_Videos_Subidos(int aID) {
