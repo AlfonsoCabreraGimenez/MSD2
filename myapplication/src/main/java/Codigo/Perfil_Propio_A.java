@@ -78,18 +78,16 @@ public class Perfil_Propio_A extends Perfil_Propio_R implements View {
 				//popup.setClosable(false);
 				popup.setModal(true);
 				UI.getCurrent().addWindow(popup);
-				
-				Crear_Categoria.confirmar.addClickListener(new ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						popup.close();
-					}
-				});
-				Crear_Categoria.cancelar.addClickListener(new ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						popup.close();
-					}
-				});
-				
+			}
+		});
+		Crear_Categoria.confirmar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup.close();
+			}
+		});
+		Crear_Categoria.cancelar.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				popup.close();
 			}
 		});
 		/*Funcion del boton crear administrador
@@ -105,78 +103,21 @@ public class Perfil_Propio_A extends Perfil_Propio_R implements View {
 				crearAdmin.setModal(true);
 				UI.getCurrent().addWindow(crearAdmin);
 				registrarseVentana.darAlta.setVisible(true);
+				registrarseVentana.cancelar.setVisible(true);
 				registrarseVentana.botonRegistrarse.setVisible(false);
 				registrarseVentana.darAlta.addClickListener(new ClickListener() {
 					public void buttonClick(ClickEvent event) {		
-						String aNombre = registrarseVentana.tNombre.getValue();
-						String aApellido1 = registrarseVentana.tApellido1.getValue();
-						String aApellido2 = registrarseVentana.tApellido2.getValue();
-						/*Parametros de la fecha*/
-						String anio = Integer.toString(registrarseVentana.fechaUsuario.getValue().getYear());
-						String mes = Integer.toString(registrarseVentana.fechaUsuario.getValue().getMonthValue());
-						String dia = Integer.toString(registrarseVentana.fechaUsuario.getValue().getDayOfMonth());
-						
-						SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
-						String fechaAlta = anio+"-"+mes+"-"+dia;
-						Date fechaFinal = null;
-						try {
-							fechaFinal = formatoDelTexto.parse(fechaAlta);
-						} catch (ParseException ex) {
-							ex.printStackTrace();
-
-						} catch (java.text.ParseException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						String aApodo = registrarseVentana.tApodo.getValue();
-						String aPass = registrarseVentana.tPass.getValue();
-						String aRepPass = registrarseVentana.tRepPass.getValue();
-						String aEmail = registrarseVentana.tEmail.getValue();
-						String aAvatar = registrarseVentana.tUrl.getValue();
-						if(aNombre == "" || aApellido1 == "" || aApellido2 == "" || aApodo == "" ||
-								aPass == "" || aRepPass == "" || aEmail == "") {
-							Notification.show("¡Debe rellenar todos los campos!", Type.WARNING_MESSAGE);
-							return;
-						}
-						if(!aPass.equals(aRepPass)) {
-							Notification.show("¡Los campos contraseña y repetición de contraseña"
-									+ " deben ser iguales!", Type.WARNING_MESSAGE);
-							return;
-						}
-						if(aPass.length() < 8) {
-							Notification.show("¡La contraseña debe ser "
-									+ "almenos de 8 caracteres!", Type.WARNING_MESSAGE);
-							return;
-						}
-						if(!aEmail.contains("@")) {
-							Notification.show("¡Introduce un email válido!", Type.WARNING_MESSAGE);
-							return;
-						}
-						if(aAvatar == "") {
-							aAvatar = "https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true";
-						}
-						Notification.show(String.valueOf(adm.cargarUsuarioAdmin().size()));
-						
-						if(adm.cargarUsuarioAdmin().size() < 5) {
-							int resCrearAd = adm.registrarAdministrador(aNombre, aApellido1, aApellido2, fechaFinal, aApodo, aPass, aRepPass, aEmail, aAvatar);		
-
-							if(resCrearAd == -1) {
-								Notification.show("¡Ya existe un usuario con ese apodo!", Type.WARNING_MESSAGE);
-							}
-							if(resCrearAd == 0) {
-								Notification.show("¡Ya existe un usuario con ese email!", Type.WARNING_MESSAGE);
-							}
-							if(resCrearAd == 1) {
-								Notification.show("¡Administrador creado correctamente!", Type.WARNING_MESSAGE);
-							}
-						} else {
-							Notification.show("El límite de administradores es 5. No se ha creado el administrador!");
-						}
+						crearAdmin.close();
+					}
+				});
+				registrarseVentana.cancelar.addClickListener(new ClickListener() {
+					public void buttonClick(ClickEvent event) {		
 						crearAdmin.close();
 					}
 				});
 			}
 		});
+		
 	}
 	
 	public void inicializar() {
