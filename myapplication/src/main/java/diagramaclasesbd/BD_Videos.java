@@ -303,8 +303,7 @@ public class BD_Videos {
 			Video vid = VideoDAO.getVideoByORMID(aID);
 			Usuario admon = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
 			if(admon != null) {
-					if(!(vid.getUsuario_video().equals(admon))) {
-						Notification.show("soy admin");
+					if((vid.getUsuario_video().equals(admon)) == false) {
 						HtmlEmail email = new HtmlEmail();
 						email.setHostName("smtp.gmail.com");
 						email.setSmtpPort(200);
