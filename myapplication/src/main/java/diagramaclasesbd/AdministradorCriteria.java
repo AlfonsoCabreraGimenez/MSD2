@@ -38,6 +38,7 @@ public class AdministradorCriteria extends AbstractORMCriteria {
 	public final CollectionExpression es_escrito;
 	public final CollectionExpression prop_video_de;
 	public final CollectionExpression me_gusta;
+	public final CollectionExpression visto_por;
 	
 	public AdministradorCriteria(Criteria criteria) {
 		super(criteria);
@@ -60,6 +61,7 @@ public class AdministradorCriteria extends AbstractORMCriteria {
 		es_escrito = new CollectionExpression("ORM_es_escrito", this);
 		prop_video_de = new CollectionExpression("ORM_prop_video_de", this);
 		me_gusta = new CollectionExpression("ORM_me_gusta", this);
+		visto_por = new CollectionExpression("ORM_visto_por", this);
 	}
 	
 	public AdministradorCriteria(PersistentSession session) {
@@ -100,6 +102,10 @@ public class AdministradorCriteria extends AbstractORMCriteria {
 	
 	public VideoCriteria createMe_gustaCriteria() {
 		return new VideoCriteria(createCriteria("ORM_me_gusta"));
+	}
+	
+	public VideoCriteria createVisto_porCriteria() {
+		return new VideoCriteria(createCriteria("ORM_visto_por"));
 	}
 	
 	public Administrador uniqueAdministrador() {

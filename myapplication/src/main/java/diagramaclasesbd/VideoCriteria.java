@@ -34,6 +34,7 @@ public class VideoCriteria extends AbstractORMCriteria {
 	public final DateExpression fechaCreacion;
 	public final CollectionExpression lista_de_Reproduccion;
 	public final CollectionExpression da_megusta;
+	public final CollectionExpression ha_visto;
 	public final CollectionExpression comentarios;
 	
 	public VideoCriteria(Criteria criteria) {
@@ -53,6 +54,7 @@ public class VideoCriteria extends AbstractORMCriteria {
 		fechaCreacion = new DateExpression("fechaCreacion", this);
 		lista_de_Reproduccion = new CollectionExpression("ORM_lista_de_Reproduccion", this);
 		da_megusta = new CollectionExpression("ORM_da_megusta", this);
+		ha_visto = new CollectionExpression("ORM_ha_visto", this);
 		comentarios = new CollectionExpression("ORM_comentarios", this);
 	}
 	
@@ -78,6 +80,10 @@ public class VideoCriteria extends AbstractORMCriteria {
 	
 	public UsuarioCriteria createDa_megustaCriteria() {
 		return new UsuarioCriteria(createCriteria("ORM_da_megusta"));
+	}
+	
+	public UsuarioCriteria createHa_vistoCriteria() {
+		return new UsuarioCriteria(createCriteria("ORM_ha_visto"));
 	}
 	
 	public ComentarioCriteria createComentariosCriteria() {

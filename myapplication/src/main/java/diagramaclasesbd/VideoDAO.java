@@ -339,6 +339,10 @@ public class VideoDAO {
 			for(int i = 0; i < lDa_megustas.length; i++) {
 				lDa_megustas[i].me_gusta.remove(video);
 			}
+			diagramaclasesbd.Usuario[] lHa_vistos = video.ha_visto.toArray();
+			for(int i = 0; i < lHa_vistos.length; i++) {
+				lHa_vistos[i].visto_por.remove(video);
+			}
 			diagramaclasesbd.Comentario[] lComentarioss = video.comentarios.toArray();
 			for(int i = 0; i < lComentarioss.length; i++) {
 				lComentarioss[i].setVideo(null);
@@ -368,6 +372,10 @@ public class VideoDAO {
 			diagramaclasesbd.Usuario[] lDa_megustas = video.da_megusta.toArray();
 			for(int i = 0; i < lDa_megustas.length; i++) {
 				lDa_megustas[i].me_gusta.remove(video);
+			}
+			diagramaclasesbd.Usuario[] lHa_vistos = video.ha_visto.toArray();
+			for(int i = 0; i < lHa_vistos.length; i++) {
+				lHa_vistos[i].visto_por.remove(video);
 			}
 			diagramaclasesbd.Comentario[] lComentarioss = video.comentarios.toArray();
 			for(int i = 0; i < lComentarioss.length; i++) {

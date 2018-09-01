@@ -29,6 +29,9 @@ public class Video implements Serializable {
 		else if (key == ORMConstants.KEY_VIDEO_DA_MEGUSTA) {
 			return ORM_da_megusta;
 		}
+		else if (key == ORMConstants.KEY_VIDEO_HA_VISTO) {
+			return ORM_ha_visto;
+		}
 		else if (key == ORMConstants.KEY_VIDEO_COMENTARIOS) {
 			return ORM_comentarios;
 		}
@@ -112,6 +115,12 @@ public class Video implements Serializable {
 	@JoinTable(name="Usuario_Video", joinColumns={ @JoinColumn(name="VideoID") }, inverseJoinColumns={ @JoinColumn(name="UsuarioID") })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_da_megusta = new java.util.HashSet();
+	
+	@ManyToMany(targetEntity=diagramaclasesbd.Usuario.class)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
+	@JoinTable(name="Usuario_Video2", joinColumns={ @JoinColumn(name="VideoID") }, inverseJoinColumns={ @JoinColumn(name="UsuarioID") })	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set ORM_ha_visto = new java.util.HashSet();
 	
 	@OneToMany(mappedBy="video", targetEntity=diagramaclasesbd.Comentario.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
@@ -239,6 +248,17 @@ public class Video implements Serializable {
 	
 	@Transient	
 	public final diagramaclasesbd.UsuarioSetCollection da_megusta = new diagramaclasesbd.UsuarioSetCollection(this, _ormAdapter, ORMConstants.KEY_VIDEO_DA_MEGUSTA, ORMConstants.KEY_USUARIO_ME_GUSTA, ORMConstants.KEY_MUL_MANY_TO_MANY);
+	
+	private void setORM_Ha_visto(java.util.Set value) {
+		this.ORM_ha_visto = value;
+	}
+	
+	private java.util.Set getORM_Ha_visto() {
+		return ORM_ha_visto;
+	}
+	
+	@Transient	
+	public final diagramaclasesbd.UsuarioSetCollection ha_visto = new diagramaclasesbd.UsuarioSetCollection(this, _ormAdapter, ORMConstants.KEY_VIDEO_HA_VISTO, ORMConstants.KEY_USUARIO_VISTO_POR, ORMConstants.KEY_MUL_MANY_TO_MANY);
 	
 	public void setCategoria(diagramaclasesbd.Categoria value) {
 		if (categoria != null) {

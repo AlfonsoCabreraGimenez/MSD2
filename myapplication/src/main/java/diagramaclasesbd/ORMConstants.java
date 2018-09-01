@@ -40,11 +40,15 @@ public interface ORMConstants extends org.orm.util.ORMBaseConstants {
 	
 	final int KEY_USUARIO_USUARIO_SUSCRIPTORES = 28562176;
 	
+	final int KEY_USUARIO_VISTO_POR = -630393154;
+	
 	final int KEY_VIDEO_CATEGORIA = -1682863537;
 	
 	final int KEY_VIDEO_COMENTARIOS = 1032185550;
 	
 	final int KEY_VIDEO_DA_MEGUSTA = -324438916;
+	
+	final int KEY_VIDEO_HA_VISTO = 1285497657;
 	
 	final int KEY_VIDEO_LISTA_DE_REPRODUCCION = -1921819045;
 	

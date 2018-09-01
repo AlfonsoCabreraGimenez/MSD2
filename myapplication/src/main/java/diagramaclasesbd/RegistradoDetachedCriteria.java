@@ -38,6 +38,7 @@ public class RegistradoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final CollectionExpression es_escrito;
 	public final CollectionExpression prop_video_de;
 	public final CollectionExpression me_gusta;
+	public final CollectionExpression visto_por;
 	
 	public RegistradoDetachedCriteria() {
 		super(diagramaclasesbd.Registrado.class, diagramaclasesbd.RegistradoCriteria.class);
@@ -60,6 +61,7 @@ public class RegistradoDetachedCriteria extends AbstractORMDetachedCriteria {
 		es_escrito = new CollectionExpression("ORM_es_escrito", this.getDetachedCriteria());
 		prop_video_de = new CollectionExpression("ORM_prop_video_de", this.getDetachedCriteria());
 		me_gusta = new CollectionExpression("ORM_me_gusta", this.getDetachedCriteria());
+		visto_por = new CollectionExpression("ORM_visto_por", this.getDetachedCriteria());
 	}
 	
 	public RegistradoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -83,6 +85,7 @@ public class RegistradoDetachedCriteria extends AbstractORMDetachedCriteria {
 		es_escrito = new CollectionExpression("ORM_es_escrito", this.getDetachedCriteria());
 		prop_video_de = new CollectionExpression("ORM_prop_video_de", this.getDetachedCriteria());
 		me_gusta = new CollectionExpression("ORM_me_gusta", this.getDetachedCriteria());
+		visto_por = new CollectionExpression("ORM_visto_por", this.getDetachedCriteria());
 	}
 	
 	public UsuarioDetachedCriteria createUsuario_sucripcionesCriteria() {
@@ -115,6 +118,10 @@ public class RegistradoDetachedCriteria extends AbstractORMDetachedCriteria {
 	
 	public VideoDetachedCriteria createMe_gustaCriteria() {
 		return new VideoDetachedCriteria(createCriteria("ORM_me_gusta"));
+	}
+	
+	public VideoDetachedCriteria createVisto_porCriteria() {
+		return new VideoDetachedCriteria(createCriteria("ORM_visto_por"));
 	}
 	
 	public Registrado uniqueRegistrado(PersistentSession session) {
