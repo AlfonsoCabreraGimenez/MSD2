@@ -57,12 +57,34 @@ public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 	}
 	public void cargar_Videos_Inicio_R() {
 		cargar_Videos_Suscriptores();
+		cargar_Videos_Historial();
 	}
 	public void cargar_Videos_Suscriptores() {
 		int cont = 0;
 		for(Video video: ur.cargar_Videos_Suscriptores(idUser)) {
 				Video2 vid = new Video2(video.getID());
 				hPanelVideosOtrosUser.addComponent(vid);
+				vid.titulo.setCaption(video.getTitulo());
+				Usuario us = (Usuario) video.getUsuario_video();
+				vid.usuario.setCaption(us.getApodo());
+				Categoria cat = video.getCategoria();
+				vid.categoria.setValue(cat.getNombre());
+				vid.miniatura.setSource(new ExternalResource(video.getMiniatura()));
+				vid.etiqueta.setValue(video.getEtiqueta());
+				Date fecha = video.getFechaCreacion();
+				vid.fechasubida.setValue(fecha.toString());
+				vid.vAccionesVideo.setVisible(false);
+				cont++;
+				if(cont == 10) {
+					break;
+				}
+		}
+	}
+	public void cargar_Videos_Historial() {
+		int cont = 0;
+		for(Video video: ur.cargar_Videos_Historial(idUser)) {
+				Video2 vid = new Video2(video.getID());
+				hPanelVideosVreciente.addComponent(vid);
 				vid.titulo.setCaption(video.getTitulo());
 				Usuario us = (Usuario) video.getUsuario_video();
 				vid.usuario.setCaption(us.getApodo());

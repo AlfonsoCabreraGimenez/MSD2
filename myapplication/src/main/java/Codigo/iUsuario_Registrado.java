@@ -24,7 +24,7 @@ public interface iUsuario_Registrado {
 
 	public void cancelarSuscripcion(int aID);
 
-	public List cargar_Videos_Historial(int aID);
+	public List<Video> cargar_Videos_Historial(int aID);
 
 	public List cargar_Videos_Relacionados(int aID);
 
@@ -75,4 +75,6 @@ public interface iUsuario_Registrado {
 	public boolean comprobarSuscripcion(int ID);
 	
 	public void aumentarVisualizaciones(int idVideo);
+	
+	public void anadirHistorial(int idVideo);
 }

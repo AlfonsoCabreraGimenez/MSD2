@@ -53,7 +53,9 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 	public Visualizacion_Video_Ajeno_R(int idVideo) {
 		Anadir_a_ListaReproduccion anl = new Anadir_a_ListaReproduccion(idVideo);
 		aumentarVisualizaciones(idVideo);
+		//anadirHistorial(idVideo);
 		cargarDatosVideo(idVideo);
+
 		this.identVideo = idVideo;
 		
 		hCabeceraGeneral2.addComponent(cc.horizontalInicio);
@@ -196,5 +198,8 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		not.setDelayMsec(5000);
 		not.show(Page.getCurrent());
 		getUI().getPage().open("http://google.com", "_blank");
+	}
+	public void anadirHistorial(int idVideo) {
+		ur.anadirHistorial(idVideo);
 	}
 }

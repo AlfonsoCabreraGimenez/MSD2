@@ -54,6 +54,7 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 		Anadir_a_ListaReproduccion anl = new Anadir_a_ListaReproduccion(idVideo);
 		Conf_Eliminar_Video ev = new Conf_Eliminar_Video(idVideo,"PagVis");
 		aumentarVisualizaciones(idVideo);
+		anadirHistorial(idVideo);
 		cargarDatosVideo(idVideo);
 		
 		this.identVideo = idVideo;
@@ -214,5 +215,8 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 		not.setDelayMsec(5000);
 		not.show(Page.getCurrent());
 		getUI().getPage().open("http://google.com", "_blank");
+	}
+	public void anadirHistorial(int idVideo) {
+		adm.anadirHistorial(idVideo);
 	}
 }
