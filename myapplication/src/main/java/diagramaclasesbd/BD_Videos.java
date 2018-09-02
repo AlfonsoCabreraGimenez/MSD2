@@ -328,7 +328,7 @@ public class BD_Videos {
 					if((vid.getUsuario_video().equals(admon)) == false) {
 						HtmlEmail email = new HtmlEmail();
 						email.setHostName("smtp.gmail.com");
-						email.setSmtpPort(200);
+						email.setSmtpPort(8012);
 						email.setSSLOnConnect(true);			
 						email.setAuthentication("modeladopruebaemail@gmail.com", "fcbarcelona92");
 						email.setFrom("modeladopruebaemail@gmail.com");
@@ -352,6 +352,9 @@ public class BD_Videos {
 				Lista_De_ReproduccionDAO.save(lista);
 			}
 			for(Usuario usuario : usuarios) {
+				if(usuario.visto_por.contains(vid)) {
+					usuario.visto_por.remove(vid);
+				}
 				if(usuario.me_gusta.contains(vid)) {
 					usuario.me_gusta.remove(vid);
 				}
