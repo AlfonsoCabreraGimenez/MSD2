@@ -24,9 +24,9 @@ public interface iUsuario_Registrado {
 
 	public void cancelarSuscripcion(int aID);
 
-	public List cargar_Videos_Historial(int aID);
+	public List<Video> cargar_Videos_Historial(int aID);
 
-	public List cargar_Videos_Relacionados(int aID);
+	public List<Video> cargar_Videos_Relacionados(int aID);
 
 	public List<Video> cargar_Videos_Suscriptores(int aID);
 
@@ -66,7 +66,7 @@ public interface iUsuario_Registrado {
 
 	public boolean videoPropio(int idVideo, int iduser);
 
-	public List<Video> cargarVideosPropios(int ID);
+	//public List<Video> cargarVideosPropios(int ID);
 
 	public List<Lista_De_Reproduccion> cargarListaReproduccionPropia(int idUsuario);
 	

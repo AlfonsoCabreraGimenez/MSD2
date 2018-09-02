@@ -134,8 +134,34 @@ public class BD_Videos {
 		return resultado;
 	}
 
-	public List cargar_Videos_Relacionados(int aID) {
-		throw new UnsupportedOperationException();
+	public List<Video> cargar_Videos_Relacionados(int aID) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		List<Video> lista = new ArrayList<Video>();
+		try {
+			int i = 1;
+			Usuario usuario = UsuarioDAO.getUsuarioByORMID(aID);
+			Video [] videos =  usuario.visto_por.toArray();
+			Video vUlt = videos[videos.length-1];
+			System.out.print("\nOrden: ");
+			for(int j = 0; j <= videos.length-1; j++) {
+				System.out.print(videos[j].getID() + " ");
+			}
+			Categoria categoria = CategoriaDAO.getCategoriaByORMID(vUlt.getCategoria().getID());
+			//System.out.println("ID : " +vUlt.getID());
+			for(Video v : VideoDAO.listVideoByQuery(null,null)) {
+				if(v.getCategoria().equals(categoria)) {
+					if(v.getUsuario_video().getID()!=usuario.getID()) {
+						//System.out.println("Vez entrado : " +i);
+						lista.add(v);
+					}
+				}
+				i++;
+			}
+			t.commit();
+		}catch(Exception e) {
+			t.rollback();
+		}
+		return lista;
 	}
 
 	public List<Video> cargar_Videos_Suscriptores(int aID) throws PersistentException {
@@ -377,7 +403,7 @@ public class BD_Videos {
 	}
 
 	@SuppressWarnings("null")
-	public List<Video> cargarVideosPropios(int iD) throws PersistentException {
+	/*public List<Video> cargarVideosPropios(int iD) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		List<Video> videoProp = new ArrayList<Video>();
 		try
@@ -393,7 +419,7 @@ public class BD_Videos {
 			t.rollback();
 		}
 		return videoProp;
-	}
+	}*/
 
 	public void aumentarVisualizaciones(int idVideo) throws PersistentException{
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
@@ -411,10 +437,9 @@ public class BD_Videos {
 		List<Video> lista = new ArrayList<Video>();
 		try {
 			Usuario user = UsuarioDAO.getUsuarioByORMID(aID);
-			for(Video vid : user.visto_por.toArray()) {		
-				lista.add(vid);
-			}			
-			Notification.show(String.valueOf(lista.size()));
+			for(Video v : user.visto_por.toArray()) {
+				lista.add(v);
+			}
 			t.commit();
 		}catch(Exception e) {
 			t.rollback();
@@ -428,11 +453,11 @@ public class BD_Videos {
 			if(user == null) {
 				user = (Usuario) UI.getCurrent().getSession().getAttribute("usuario");
 			}
-			UsuarioDAO.getUsuarioByORMID(user.getID());
+			Usuario usu = UsuarioDAO.getUsuarioByORMID(user.getID());
 			Video vid = VideoDAO.getVideoByORMID(idVideo);
-			if(!user.visto_por.contains(vid)) {
-				user.visto_por.add(vid);
-				UsuarioDAO.save(user);
+			if(!usu.visto_por.contains(vid)) {
+				usu.visto_por.add(vid);
+				UsuarioDAO.save(usu);
 			}
 			t.commit();
 		} catch (Exception e) {

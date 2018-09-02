@@ -80,8 +80,14 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		}
 	}
 
-	public List cargar_Videos_Relacionados(int aID) {
-		throw new UnsupportedOperationException();
+	public List<Video> cargar_Videos_Relacionados(int aID) {
+		try {
+			return videos.cargar_Videos_Relacionados(aID);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public List<Video> cargar_Videos_Suscriptores(int aID) {
@@ -403,7 +409,7 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		return false;
 	}
 
-	@Override
+	/*@Override
 	public List<Video> cargarVideosPropios(int ID) {
 		//Va a la bbdd de videos para cargar los videos de ese user
 		try {
@@ -413,7 +419,7 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 			e.printStackTrace();
 		}
 		return null;
-	}
+	}*/
 
 	@Override
 	public List<Lista_De_Reproduccion> cargarListaReproduccionPropia(int idUsuario) {
@@ -454,7 +460,7 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 			e.printStackTrace();
 		}
 	}
-	public List cargar_Videos_Historial(int aID) {
+	public List<Video> cargar_Videos_Historial(int aID) {
 		try {
 			return videos.cargar_Videos_Historial(aID);
 		} catch (PersistentException e) {

@@ -54,8 +54,9 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		Anadir_a_ListaReproduccion anl = new Anadir_a_ListaReproduccion(idVideo);
 		aumentarVisualizaciones(idVideo);
 		cargarDatosVideo(idVideo);
-		this.identVideo = idVideo;
 		anadirHistorial(idVideo);
+		this.identVideo = idVideo;
+		
 		
 		hCabeceraGeneral2.addComponent(cc.horizontalInicio);
 		hCabeceraGeneral2.addComponent(bus.vBuscador);
