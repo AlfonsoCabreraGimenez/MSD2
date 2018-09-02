@@ -34,6 +34,7 @@ public class VideoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final DateExpression fechaCreacion;
 	public final CollectionExpression lista_de_Reproduccion;
 	public final CollectionExpression da_megusta;
+	public final CollectionExpression ha_visto;
 	public final CollectionExpression comentarios;
 	
 	public VideoDetachedCriteria() {
@@ -53,6 +54,7 @@ public class VideoDetachedCriteria extends AbstractORMDetachedCriteria {
 		fechaCreacion = new DateExpression("fechaCreacion", this.getDetachedCriteria());
 		lista_de_Reproduccion = new CollectionExpression("ORM_lista_de_Reproduccion", this.getDetachedCriteria());
 		da_megusta = new CollectionExpression("ORM_da_megusta", this.getDetachedCriteria());
+		ha_visto = new CollectionExpression("ORM_ha_visto", this.getDetachedCriteria());
 		comentarios = new CollectionExpression("ORM_comentarios", this.getDetachedCriteria());
 	}
 	
@@ -73,6 +75,7 @@ public class VideoDetachedCriteria extends AbstractORMDetachedCriteria {
 		fechaCreacion = new DateExpression("fechaCreacion", this.getDetachedCriteria());
 		lista_de_Reproduccion = new CollectionExpression("ORM_lista_de_Reproduccion", this.getDetachedCriteria());
 		da_megusta = new CollectionExpression("ORM_da_megusta", this.getDetachedCriteria());
+		ha_visto = new CollectionExpression("ORM_ha_visto", this.getDetachedCriteria());
 		comentarios = new CollectionExpression("ORM_comentarios", this.getDetachedCriteria());
 	}
 	
@@ -90,6 +93,10 @@ public class VideoDetachedCriteria extends AbstractORMDetachedCriteria {
 	
 	public UsuarioDetachedCriteria createDa_megustaCriteria() {
 		return new UsuarioDetachedCriteria(createCriteria("ORM_da_megusta"));
+	}
+	
+	public UsuarioDetachedCriteria createHa_vistoCriteria() {
+		return new UsuarioDetachedCriteria(createCriteria("ORM_ha_visto"));
 	}
 	
 	public ComentarioDetachedCriteria createComentariosCriteria() {

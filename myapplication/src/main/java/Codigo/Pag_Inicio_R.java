@@ -79,4 +79,27 @@ public class Pag_Inicio_R extends Pag_Inicio_NR implements View {
 				}
 		}
 	}
+	
+	public void cargar_Videos_Historial() {
+		int cont = 0;
+		for(Object v: ur.cargar_Videos_Historial(idUser)) {
+				Video newVideo = (Video) v;
+				Video2 vid = new Video2(newVideo.getID());
+				hPanelVideosVreciente.addComponent(vid);
+				vid.titulo.setCaption(newVideo.getTitulo());
+				Usuario us = (Usuario) newVideo.getUsuario_video();
+				vid.usuario.setCaption(us.getApodo());
+				Categoria cat = newVideo.getCategoria();
+				vid.categoria.setValue(cat.getNombre());
+				vid.miniatura.setSource(new ExternalResource(newVideo.getMiniatura()));
+				vid.etiqueta.setValue(newVideo.getEtiqueta());
+				Date fecha = newVideo.getFechaCreacion();
+				vid.fechasubida.setValue(fecha.toString());
+				vid.vAccionesVideo.setVisible(false);
+				cont++;
+				if(cont == 10) {
+					break;
+				}
+		}
+	}
 }

@@ -70,6 +70,13 @@ public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana
 	public void cargarDatosVideo(int idVideo) {
 		videoA = unr.cargarDatosVideo(idVideo);
 		
+		Embedded v = new Embedded(null, new ExternalResource(videoA.getUrl()));
+		v.setMimeType("application/x-shockwave-flash");
+		v.setParameter("allowFullScreen", "true");
+		v.setWidth("1000px");
+		v.setHeight("450px");
+		vvideo.addComponentAsFirst(v);
+		
 		tituloVideo.setValue("Titulo: " + videoA.getTitulo());
 		Categoria cat = videoA.getCategoria();
 		categoriaEtiqueta.setValue("Categoria: " + cat.getNombre());
@@ -83,11 +90,6 @@ public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana
 		Date fecha = videoA.getFechaCreacion();
 		fechaSubida.setValue("Fecha subida: " + fecha.toString());
 		//VISUALIZAR VIDEO
-		Embedded v = new Embedded(null, new ExternalResource(videoA.getUrl()));
-		v.setMimeType("application/x-shockwave-flash");
-		v.setParameter("allowFullScreen", "true");
-		v.setWidth("1000px");
-		v.setHeight("450px");
-		vvideo.addComponentAsFirst(v);
+		
 	}	
 }

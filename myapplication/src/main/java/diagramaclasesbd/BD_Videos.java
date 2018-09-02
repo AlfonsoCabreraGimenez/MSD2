@@ -134,10 +134,6 @@ public class BD_Videos {
 		return resultado;
 	}
 
-	public List cargar_Videos_Historial(int aID) {
-		throw new UnsupportedOperationException();
-	}
-
 	public List cargar_Videos_Relacionados(int aID) {
 		throw new UnsupportedOperationException();
 	}
@@ -405,6 +401,39 @@ public class BD_Videos {
 			Video vid = VideoDAO.getVideoByORMID(idVideo);
 			vid.setVisualizaciones(vid.getVisualizaciones()+1);
 			VideoDAO.save(vid);
+			t.commit();
+		} catch (Exception e) {
+			t.rollback();
+		}
+	}
+	public List<Video> cargar_Videos_Historial(int aID) throws PersistentException {
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		List<Video> lista = new ArrayList<Video>();
+		try {
+			Usuario user = UsuarioDAO.getUsuarioByORMID(aID);
+			for(Video vid : user.visto_por.toArray()) {		
+				lista.add(vid);
+			}			
+			Notification.show(String.valueOf(lista.size()));
+			t.commit();
+		}catch(Exception e) {
+			t.rollback();
+		}
+		return lista;
+	}
+	public void anadirHistorial(int idVideo) throws PersistentException{
+		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
+		try {
+			Usuario user = (Usuario) UI.getCurrent().getSession().getAttribute("admin");
+			if(user == null) {
+				user = (Usuario) UI.getCurrent().getSession().getAttribute("usuario");
+			}
+			UsuarioDAO.getUsuarioByORMID(user.getID());
+			Video vid = VideoDAO.getVideoByORMID(idVideo);
+			if(!user.visto_por.contains(vid)) {
+				user.visto_por.add(vid);
+				UsuarioDAO.save(user);
+			}
 			t.commit();
 		} catch (Exception e) {
 			t.rollback();

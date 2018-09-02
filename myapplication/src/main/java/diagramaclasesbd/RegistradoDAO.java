@@ -355,6 +355,10 @@ public class RegistradoDAO {
 			for(int i = 0; i < lMe_gustas.length; i++) {
 				lMe_gustas[i].da_megusta.remove(registrado);
 			}
+			diagramaclasesbd.Video[] lVisto_pors = registrado.visto_por.toArray();
+			for(int i = 0; i < lVisto_pors.length; i++) {
+				lVisto_pors[i].ha_visto.remove(registrado);
+			}
 			return delete(registrado);
 		}
 		catch(Exception e) {
@@ -396,6 +400,10 @@ public class RegistradoDAO {
 			diagramaclasesbd.Video[] lMe_gustas = registrado.me_gusta.toArray();
 			for(int i = 0; i < lMe_gustas.length; i++) {
 				lMe_gustas[i].da_megusta.remove(registrado);
+			}
+			diagramaclasesbd.Video[] lVisto_pors = registrado.visto_por.toArray();
+			for(int i = 0; i < lVisto_pors.length; i++) {
+				lVisto_pors[i].ha_visto.remove(registrado);
 			}
 			try {
 				session.delete(registrado);

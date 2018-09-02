@@ -363,6 +363,10 @@ public class UsuarioDAO {
 			for(int i = 0; i < lMe_gustas.length; i++) {
 				lMe_gustas[i].da_megusta.remove(usuario);
 			}
+			diagramaclasesbd.Video[] lVisto_pors = usuario.visto_por.toArray();
+			for(int i = 0; i < lVisto_pors.length; i++) {
+				lVisto_pors[i].ha_visto.remove(usuario);
+			}
 			return delete(usuario);
 		}
 		catch(Exception e) {
@@ -412,6 +416,10 @@ public class UsuarioDAO {
 			diagramaclasesbd.Video[] lMe_gustas = usuario.me_gusta.toArray();
 			for(int i = 0; i < lMe_gustas.length; i++) {
 				lMe_gustas[i].da_megusta.remove(usuario);
+			}
+			diagramaclasesbd.Video[] lVisto_pors = usuario.visto_por.toArray();
+			for(int i = 0; i < lVisto_pors.length; i++) {
+				lVisto_pors[i].ha_visto.remove(usuario);
 			}
 			try {
 				session.delete(usuario);

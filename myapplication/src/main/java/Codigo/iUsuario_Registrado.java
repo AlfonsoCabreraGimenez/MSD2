@@ -75,4 +75,6 @@ public interface iUsuario_Registrado {
 	public boolean comprobarSuscripcion(int ID);
 	
 	public void aumentarVisualizaciones(int idVideo);
+	
+	public void anadirHistorial(int idVideo);
 }

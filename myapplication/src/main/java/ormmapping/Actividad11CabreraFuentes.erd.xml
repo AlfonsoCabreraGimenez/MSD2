@@ -500,6 +500,32 @@
       <UserTypes/>
     </Column>
   </Entity>
+  <Entity name="Usuario_Video2" Unlogged="false" PKClustered="0">
+    <Column name="UsuarioID">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>diagramaclasesbd.Usuario.ID</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="VideoID">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>diagramaclasesbd.Video.ID</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+  </Entity>
   <ForeignKey name="FKRegistrado929607">
     <ReferenceTable>Registrado</ReferenceTable>
     <ReferencedTable>Usuario</ReferencedTable>
@@ -642,6 +668,26 @@
   </ForeignKey>
   <ForeignKey name="FKUsuario_Vi378819">
     <ReferenceTable>Usuario_Video</ReferenceTable>
+    <ReferencedTable>Video</ReferencedTable>
+    <Columns>
+      <Column>VideoID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKUsuario_Vi11254">
+    <ReferenceTable>Usuario_Video2</ReferenceTable>
+    <ReferencedTable>Usuario</ReferencedTable>
+    <Columns>
+      <Column>UsuarioID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKUsuario_Vi77502">
+    <ReferenceTable>Usuario_Video2</ReferenceTable>
     <ReferencedTable>Video</ReferencedTable>
     <Columns>
       <Column>VideoID</Column>

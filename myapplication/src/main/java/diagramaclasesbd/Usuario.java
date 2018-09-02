@@ -48,6 +48,9 @@ public class Usuario implements Serializable {
 		else if (key == ORMConstants.KEY_USUARIO_ME_GUSTA) {
 			return ORM_me_gusta;
 		}
+		else if (key == ORMConstants.KEY_USUARIO_VISTO_POR) {
+			return ORM_visto_por;
+		}
 		
 		return null;
 	}
@@ -138,6 +141,11 @@ public class Usuario implements Serializable {
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_me_gusta = new java.util.HashSet();
+	
+	@ManyToMany(mappedBy="ORM_ha_visto", targetEntity=diagramaclasesbd.Video.class)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set ORM_visto_por = new java.util.HashSet();
 	
 	private void setID(int value) {
 		this.ID = value;
@@ -318,6 +326,17 @@ public class Usuario implements Serializable {
 	
 	@Transient	
 	public final diagramaclasesbd.VideoSetCollection me_gusta = new diagramaclasesbd.VideoSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_ME_GUSTA, ORMConstants.KEY_VIDEO_DA_MEGUSTA, ORMConstants.KEY_MUL_MANY_TO_MANY);
+	
+	private void setORM_Visto_por(java.util.Set value) {
+		this.ORM_visto_por = value;
+	}
+	
+	private java.util.Set getORM_Visto_por() {
+		return ORM_visto_por;
+	}
+	
+	@Transient	
+	public final diagramaclasesbd.VideoSetCollection visto_por = new diagramaclasesbd.VideoSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_VISTO_POR, ORMConstants.KEY_VIDEO_HA_VISTO, ORMConstants.KEY_MUL_MANY_TO_MANY);
 	
 	public String toString() {
 		return String.valueOf(getID());

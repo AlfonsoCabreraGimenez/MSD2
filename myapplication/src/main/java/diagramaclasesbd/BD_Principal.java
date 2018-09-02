@@ -80,10 +80,6 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		}
 	}
 
-	public List cargar_Videos_Historial(int aID) {
-		throw new UnsupportedOperationException();
-	}
-
 	public List cargar_Videos_Relacionados(int aID) {
 		throw new UnsupportedOperationException();
 	}
@@ -453,6 +449,23 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 	public void aumentarVisualizaciones(int idVideo) {
 		try {
 			videos.aumentarVisualizaciones(idVideo);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public List cargar_Videos_Historial(int aID) {
+		try {
+			return videos.cargar_Videos_Historial(aID);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public void anadirHistorial(int idVideo) {
+		try {
+			videos.anadirHistorial(idVideo);
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

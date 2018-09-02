@@ -355,6 +355,10 @@ public class AdministradorDAO {
 			for(int i = 0; i < lMe_gustas.length; i++) {
 				lMe_gustas[i].da_megusta.remove(administrador);
 			}
+			diagramaclasesbd.Video[] lVisto_pors = administrador.visto_por.toArray();
+			for(int i = 0; i < lVisto_pors.length; i++) {
+				lVisto_pors[i].ha_visto.remove(administrador);
+			}
 			return delete(administrador);
 		}
 		catch(Exception e) {
@@ -396,6 +400,10 @@ public class AdministradorDAO {
 			diagramaclasesbd.Video[] lMe_gustas = administrador.me_gusta.toArray();
 			for(int i = 0; i < lMe_gustas.length; i++) {
 				lMe_gustas[i].da_megusta.remove(administrador);
+			}
+			diagramaclasesbd.Video[] lVisto_pors = administrador.visto_por.toArray();
+			for(int i = 0; i < lVisto_pors.length; i++) {
+				lVisto_pors[i].ha_visto.remove(administrador);
 			}
 			try {
 				session.delete(administrador);

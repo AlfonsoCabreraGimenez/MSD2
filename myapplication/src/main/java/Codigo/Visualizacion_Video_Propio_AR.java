@@ -200,11 +200,20 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Ajeno {
 	public void cargarDatosVideo(int idVideo) {
 		videoA = unr.cargarDatosVideo(idVideo);
 		
+		//VISUALIZAR VIDEO
+		Embedded v = new Embedded(null, new ExternalResource(videoA.getUrl()));
+		v.setMimeType("application/x-shockwave-flash");
+		v.setParameter("allowFullScreen", "true");
+		v.setWidth("1000px");
+		v.setHeight("350px");
+
+		vvideo.addComponentAsFirst(v);
+		
 		tituloVideo.setValue("Titulo: " + videoA.getTitulo());
 		Categoria cat = videoA.getCategoria();
-		categoriaEtiqueta.setValue("Categoria: " + cat.getNombre());
-		descripcion.setValue("Descripcion: " + videoA.getDescripcion() + "\n\nEtiquetas: " + videoA.getEtiqueta() 
-		+ "\n\nUrl: "+ videoA.getUrl());
+		categoriaEtiqueta.setValue("Categoria: " + cat.getNombre()+" Etiqueta: "+videoA.getEtiqueta());
+		descripcion.setValue("Descripcion: " + videoA.getDescripcion()) /*+ "\n\nEtiquetas: " + videoA.getEtiqueta() 
+		+ "\n\nUrl: "+ videoA.getUrl())*/;
 		Usuario us = videoA.getUsuario_video();
 		fotoUser.setSource(new ExternalResource(us.getAvatar()));
 		apodo.setCaption(us.getApodo());
@@ -212,13 +221,13 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Ajeno {
 		nGusta.setValue(String.valueOf(videoA.getMegusta() + " me gusta"));
 		Date fecha = videoA.getFechaCreacion();
 		fechaSubida.setValue("Fecha subida: " + fecha.toString());
-		//VISUALIZAR VIDEO
+		/*//VISUALIZAR VIDEO
 		Embedded v = new Embedded(null, new ExternalResource(videoA.getUrl()));
 		v.setMimeType("application/x-shockwave-flash");
 		v.setParameter("allowFullScreen", "true");
 		v.setWidth("1000px");
 		v.setHeight("450px");
-		vvideo.addComponentAsFirst(v);
+		vvideo.addComponentAsFirst(v);*/
 	}	
 	public void cargarListaComentarios() {
 		vComentario.removeAllComponents();
