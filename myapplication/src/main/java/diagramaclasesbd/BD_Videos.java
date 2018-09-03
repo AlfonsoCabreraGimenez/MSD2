@@ -138,24 +138,17 @@ public class BD_Videos {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		List<Video> lista = new ArrayList<Video>();
 		try {
-			int i = 1;
 			Usuario usuario = UsuarioDAO.getUsuarioByORMID(aID);
 			Video [] videos =  usuario.visto_por.toArray();
 			Video vUlt = videos[videos.length-1];
-			System.out.print("\nOrden: ");
-			for(int j = 0; j <= videos.length-1; j++) {
-				System.out.print(videos[j].getID() + " ");
-			}
 			Categoria categoria = CategoriaDAO.getCategoriaByORMID(vUlt.getCategoria().getID());
 			//System.out.println("ID : " +vUlt.getID());
 			for(Video v : VideoDAO.listVideoByQuery(null,null)) {
 				if(v.getCategoria().equals(categoria)) {
 					if(v.getUsuario_video().getID()!=usuario.getID()) {
-						//System.out.println("Vez entrado : " +i);
 						lista.add(v);
 					}
 				}
-				i++;
 			}
 			t.commit();
 		}catch(Exception e) {
