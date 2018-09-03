@@ -51,6 +51,7 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 	int identVideo = -1;
 	
 	public Visualizacion_Video_Ajeno_R(int idVideo) {
+	
 		Anadir_a_ListaReproduccion anl = new Anadir_a_ListaReproduccion(idVideo);
 		aumentarVisualizaciones(idVideo);
 		cargarDatosVideo(idVideo);
@@ -171,8 +172,8 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 		 v.setMimeType("application/x-shockwave-flash");
 		 v.setParameter("allowFullScreen", "true");
 		 v.setWidth("1000px");
-		 v.setHeight("450px");
-		vvideo.addComponentAsFirst(v);
+		 v.setHeight("350px");
+		 creadoVideo.addComponent(v);
 	}	
 	public void cargarListaComentarios() {
 		vComentario.removeAllComponents();

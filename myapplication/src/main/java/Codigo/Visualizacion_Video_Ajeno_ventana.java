@@ -38,6 +38,7 @@ public class Visualizacion_Video_Ajeno_ventana extends VerticalLayout {
 	protected Label tituloVideo;
 	protected Label categoriaEtiqueta;
 	protected VerticalLayout vvideo;
+	protected VerticalLayout creadoVideo;
 	protected TextArea descripcion;
 	protected TextArea escribirComentario;
 	protected Button comentar;

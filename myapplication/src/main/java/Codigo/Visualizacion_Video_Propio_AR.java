@@ -207,13 +207,13 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Ajeno {
 		v.setWidth("1000px");
 		v.setHeight("350px");
 
-		vvideo.addComponentAsFirst(v);
+		creadoVideo.addComponent(v);
 		
 		tituloVideo.setValue("Titulo: " + videoA.getTitulo());
 		Categoria cat = videoA.getCategoria();
 		categoriaEtiqueta.setValue("Categoria: " + cat.getNombre()+" Etiqueta: "+videoA.getEtiqueta());
-		descripcion.setValue("Descripcion: " + videoA.getDescripcion()) /*+ "\n\nEtiquetas: " + videoA.getEtiqueta() 
-		+ "\n\nUrl: "+ videoA.getUrl())*/;
+		descripcion.setValue("Descripcion: " + videoA.getDescripcion() + "\n\nEtiquetas: " + videoA.getEtiqueta() 
+		+ "\n\nUrl: "+ videoA.getUrl());
 		Usuario us = videoA.getUsuario_video();
 		fotoUser.setSource(new ExternalResource(us.getAvatar()));
 		apodo.setCaption(us.getApodo());

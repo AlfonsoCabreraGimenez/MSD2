@@ -74,8 +74,8 @@ public class Visualizacion_Video_Ajeno extends Visualizacion_Video_Ajeno_ventana
 		v.setMimeType("application/x-shockwave-flash");
 		v.setParameter("allowFullScreen", "true");
 		v.setWidth("1000px");
-		v.setHeight("450px");
-		vvideo.addComponentAsFirst(v);
+		v.setHeight("350px");
+		creadoVideo.addComponent(v);
 		
 		tituloVideo.setValue("Titulo: " + videoA.getTitulo());
 		Categoria cat = videoA.getCategoria();

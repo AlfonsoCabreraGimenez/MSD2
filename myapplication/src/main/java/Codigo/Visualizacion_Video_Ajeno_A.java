@@ -178,8 +178,8 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 		v.setMimeType("application/x-shockwave-flash");
 		v.setParameter("allowFullScreen", "true");
 		v.setWidth("1000px");
-		v.setHeight("450px");
-		vvideo.addComponentAsFirst(v);
+		v.setHeight("350px");
+		creadoVideo.addComponent(v);
 	}	
 	
 	public void aumentarVisualizaciones(int idVideo) {
