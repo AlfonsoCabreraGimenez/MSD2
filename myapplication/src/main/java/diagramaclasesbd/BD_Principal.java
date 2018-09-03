@@ -67,10 +67,6 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		return null;
 	}
 
-	public List buscarVideo(String aTitulo) {
-		throw new UnsupportedOperationException();
-	}
-
 	public void cancelarSuscripcion(int aID) {
 		try {
 			registrados.cancelarSuscripcion(aID);
@@ -98,10 +94,6 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 			e.printStackTrace();
 		}
 		return null;
-	}
-
-	public void cargarAvatar(int aID) {
-		throw new UnsupportedOperationException();
 	}
 
 	public List<diagramaclasesbd.Categoria> cargarCategorias() {
@@ -167,10 +159,6 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		return mg;
 	}
 
-	public void descargarVideo(int aID) {
-		throw new UnsupportedOperationException();
-	}
-
 	public void eliminarComentario(int aID) {
 		try {
 			comentarios.eliminarComentario(aID);
@@ -198,10 +186,6 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	public void quitarMegusta(int aID) {
-		throw new UnsupportedOperationException();
 	}
 
 	public void subirVideo(int aID, String aMiniatura, String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aUrl, Date aFechaCreacion) {
@@ -339,14 +323,6 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		return claveGen;
 	}
 
-	public List cargar_Videos_Subidos(int aID) {
-		throw new UnsupportedOperationException();
-	}
-
-	public List cargar_Lista_Reproduccion(int aID) {
-		throw new UnsupportedOperationException();
-	}
-
 	public List<Video> cargar_Videos_ListaReproduccion(int aID) {
 		try {
 			return videos.cargar_Videos_ListaReproduccion(aID);
@@ -357,13 +333,6 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		return null;
 	}
 
-	public List cargar_Lista_Suscriptores(int aID) {
-		throw new UnsupportedOperationException();
-	}
-
-	public List cargar_Lista_Suscripciones(int aID) {
-		throw new UnsupportedOperationException();
-	}
 	public int registrarAdministrador(String aNombre, String aApellido1, 
 			String aApellido2, Date fechaFinal, String aApodo,String aPass, String aRepPass, String aEmail, String aAvatar) {
 		int resCrearAd = 0;
@@ -387,17 +356,6 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		return null;
 	}
 	
-	public List<Registrado> cargarUsuariosRegis(){
-		
-		try {
-			return registrados.cargarUsuariosRegis();
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-
 	@Override
 	public boolean videoPropio(int id, int iduser) {
 		try {
@@ -408,18 +366,6 @@ public class BD_Principal implements iUsuario_Registrado, iAdministrador2, iUsua
 		}
 		return false;
 	}
-
-	/*@Override
-	public List<Video> cargarVideosPropios(int ID) {
-		//Va a la bbdd de videos para cargar los videos de ese user
-		try {
-			return videos.cargarVideosPropios(ID);
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}*/
 
 	@Override
 	public List<Lista_De_Reproduccion> cargarListaReproduccionPropia(int idUsuario) {

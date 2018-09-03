@@ -28,15 +28,7 @@ public interface iUsuario_No_Registrado {
 
 	public diagramaclasesbd.Video cargarDatosVideo(int aID);
 
-	public List cargar_Videos_Subidos(int aID);
-
-	public List cargar_Lista_Reproduccion(int aID);
-
 	public List<Video> cargar_Videos_ListaReproduccion(int aID);
-
-	public List cargar_Lista_Suscriptores(int aID);
-
-	public List cargar_Lista_Suscripciones(int aID);
 	
 	public void aumentarVisitas(int idUser);
 	

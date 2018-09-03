@@ -20,8 +20,6 @@ public interface iUsuario_Registrado {
 
 	public List<Video> buscar(String buscador, TipoBusqueda aTipoBusqueda);
 
-	public List buscarVideo(String aTitulo);
-
 	public void cancelarSuscripcion(int aID);
 
 	public List<Video> cargar_Videos_Historial(int aID);
@@ -29,8 +27,6 @@ public interface iUsuario_Registrado {
 	public List<Video> cargar_Videos_Relacionados(int aID);
 
 	public List<Video> cargar_Videos_Suscriptores(int aID);
-
-	public void cargarAvatar(int aID);
 
 	public List<diagramaclasesbd.Categoria> cargarCategorias();
 
@@ -44,15 +40,11 @@ public interface iUsuario_Registrado {
 
 	public boolean darQuitarMegusta(int aID);
 
-	public void descargarVideo(int aID);
-
 	public void eliminarComentario(int aID);
 
 	public int modificarDatos(int idUser, String aNombre, String aApellido1, String aApellido2, String aApodo, String aEmail, String aAvatar);
 
 	public void modificarDatosVideo(int idVideo, String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aMiniatura);
-
-	public void quitarMegusta(int aID);
 
 	public void subirVideo(int aID, String aMiniatura, String aTitulo, String aCategoria, String aEtiqueta, String aDescripcion, String aUrl, Date aFechaCreacion);
 
@@ -62,11 +54,7 @@ public interface iUsuario_Registrado {
 
 	public boolean eliminarVideoListaReproduccion(int idLista , int idVideo);
 
-	public List<Registrado> cargarUsuariosRegis();
-
 	public boolean videoPropio(int idVideo, int iduser);
-
-	//public List<Video> cargarVideosPropios(int ID);
 
 	public List<Lista_De_Reproduccion> cargarListaReproduccionPropia(int idUsuario);
 	

@@ -209,10 +209,6 @@ public class BD_Videos {
 		}
 	}
 
-	public List cargar_Videos_Subidos(int aID) {
-		throw new UnsupportedOperationException();
-	}
-
 	public List<Video> cargar_Videos_ListaReproduccion(int aID) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		List<Video> videos = new ArrayList<Video>();
@@ -308,10 +304,6 @@ public class BD_Videos {
 		return mg;
 	}
 
-	public void quitarMegusta(int aID) {
-		throw new UnsupportedOperationException();
-	}
-
 	public void borrarVideo(int aID) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		try {
@@ -369,18 +361,6 @@ public class BD_Videos {
 		}
 	}
 
-	public List buscarVideo(String aTitulo) {
-		throw new UnsupportedOperationException();
-	}
-
-	public void crearListaRep(String aTitulo, List aVideo) {
-		throw new UnsupportedOperationException();
-	}
-
-	public void decargarVideo(int aID) {
-		throw new UnsupportedOperationException();
-	}
-
 	public boolean videoPropio(int id,int iduser) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		//VER SI EL QUE HA INICIADO SESION ES ADMIN O NO
@@ -397,25 +377,6 @@ public class BD_Videos {
 		}
 		return videop;
 	}
-
-	@SuppressWarnings("null")
-	/*public List<Video> cargarVideosPropios(int iD) throws PersistentException {
-		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
-		List<Video> videoProp = new ArrayList<Video>();
-		try
-		{
-			for(Object video : UsuarioDAO.getUsuarioByORMID(iD).prop_video_de.getCollection())
-			{
-				Video videoAux;
-				videoAux = (Video) video;
-				videoProp.add(videoAux);
-			}
-			t.commit();
-		}catch (Exception e) {
-			t.rollback();
-		}
-		return videoProp;
-	}*/
 
 	public void aumentarVisualizaciones(int idVideo) throws PersistentException{
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();

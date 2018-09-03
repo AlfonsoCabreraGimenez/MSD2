@@ -112,13 +112,6 @@ public class BD_Registrados {
 		}
 		return resultado;
 	}
-	public List buscar(TipoBusqueda aTipoBusqueda) {
-		throw new UnsupportedOperationException();
-	}
-
-	public void cargarAvatar(int aID) {
-		throw new UnsupportedOperationException();
-	}
 
 	public boolean regeneracionPass(String aEmail) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
@@ -256,14 +249,6 @@ public class BD_Registrados {
 		}
 	}
 
-	public List cargar_Lista_Suscriptores(int aID) {
-		throw new UnsupportedOperationException();
-	}
-
-	public List cargar_Lista_Suscripciones(int aID) {
-		throw new UnsupportedOperationException();
-	}
-
 	public int modificarDatos(int idUser, String aNombre, String aApellido1, String aApellido2, String aApodo, String aEmail, String aAvatar) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
 		int resMod = 1;
@@ -295,10 +280,6 @@ public class BD_Registrados {
 			t.rollback();
 		}
 		return resMod;
-	}
-
-	public List buscarUsuario(String aNombre) {
-		throw new UnsupportedOperationException();
 	}
 
 	public void suscribirse(int aID) throws PersistentException {
@@ -333,21 +314,6 @@ public class BD_Registrados {
 		} catch (Exception e) {
 			t.rollback();
 		}
-	}
-	
-	public List<Registrado> cargarUsuariosRegis() throws PersistentException {
-		List<Registrado> listado = null;
-		//Metodo para cargar todos los registrados
-		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
-		try {
-		
-			listado = RegistradoDAO.queryRegistrado(null, null);
-	
-			t.commit();
-		} catch (Exception e) {
-			t.rollback();
-		}
-		return listado;
 	}
 	
 	public boolean comprobarSuscripcion(int ID) throws PersistentException {

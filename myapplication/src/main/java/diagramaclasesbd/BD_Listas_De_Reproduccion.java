@@ -21,9 +21,6 @@ public class BD_Listas_De_Reproduccion {
 	public BD_Principal _bd_prin_listasrep;
 	public Vector<Lista_De_Reproduccion> _contiene_listasrep = new Vector<Lista_De_Reproduccion>();
 
-	public List cargar_Lista_Reproduccion(int aID) {
-		throw new UnsupportedOperationException();
-	}
 
 	public boolean anadirAListaRep(int aID, int idLista) throws PersistentException {
 		PersistentTransaction t = diagramaclasesbd.Actividad11CabreraFuentesPersistentManager.instance().getSession().beginTransaction();
