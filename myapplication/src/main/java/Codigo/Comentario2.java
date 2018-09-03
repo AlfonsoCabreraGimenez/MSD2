@@ -26,7 +26,7 @@ public class Comentario2 extends Comentario2_ventana {
 	Window popup2 = new Window();
 	VerticalLayout subContent2 = new VerticalLayout();
 	
-	public Visualizacion_Video_Comun_Registrado _unnamed_Visualizacion_Video_Comun_Registrado_;
+
 	iUsuario_Registrado ur = new BD_Principal();
 	
 	public Comentario2(int idComent, Usuario user , int idVideo, String pag) {

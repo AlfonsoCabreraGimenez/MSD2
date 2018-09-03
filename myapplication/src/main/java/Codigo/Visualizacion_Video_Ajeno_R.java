@@ -41,7 +41,6 @@ public class Visualizacion_Video_Ajeno_R extends Visualizacion_Video_Ajeno {
 	VerticalLayout subContent2 = new VerticalLayout();
 	
 	public Video2 _unnamed_Video2_;
-	public Comentario_Video_Ajeno_R _unnamed_Comentario_Video_Ajeno_R_;
 	
 	iUsuario_Registrado ur = new BD_Principal();
 	

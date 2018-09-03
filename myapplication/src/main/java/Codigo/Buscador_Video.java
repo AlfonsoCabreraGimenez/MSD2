@@ -70,7 +70,5 @@ public class Buscador_Video extends Buscador implements View {
 				}
 		}
 	}
-	public void ordenarVideo(TipoOrdenacionVideo aTipoOrdenacionVideo) {
-		throw new UnsupportedOperationException();
-	}
+
 }

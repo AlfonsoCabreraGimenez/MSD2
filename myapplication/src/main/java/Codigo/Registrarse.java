@@ -101,7 +101,10 @@ public class Registrarse extends Registrarse_ventana {
 		if(aAvatar.isEmpty()) {
 			aAvatar = "https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true";
 		}
-		int resReg = unr.registrarse(aNombre, aApellido1, aApellido2, fechaFinal, aApodo, aPass, aRepPass, aEmail, aAvatar);		
+		
+		
+		int resReg = unr.registrarse(aNombre, aApellido1, aApellido2, fechaFinal, aApodo, aPass, aRepPass, aEmail, aAvatar);	
+		
 		if(resReg == -1) {
 			Notification.show("¡Ya existe un usuario con ese apodo!", Type.WARNING_MESSAGE);
 		}

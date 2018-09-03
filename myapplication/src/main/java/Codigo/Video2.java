@@ -23,21 +23,7 @@ public class Video2 extends Video2_ventana{
 	
 	Window popup1 = new Window();
 	VerticalLayout subContent1 = new VerticalLayout();
-	
-	private TipoUsuario _usuario;
-	/*public Lista_Videos_De_Reproduccion _unnamed_Lista_Videos_De_Reproduccion_;
-	public Pag_Inicio_NR _unnamed_Pag_Inicio_NR_;
-	public Pag_Inicio_R _unnamed_Pag_Inicio_R_;
-	public Buscador_Video _unnamed_Buscador_Video_;
-	public Perfil_Ajeno _unnamed_Perfil_Ajeno_;
-	public Perfil_Ajeno_R _unnamed_Perfil_Ajeno_R_;
-	public Perfil_Propio_R _unnamed_Perfil_Propio_R_;
-	public Perfil_Propio_A _unnamed_Perfil_Propio_A_;
-	public Perfil_Ajeno_A _unnamed_Perfil_Ajeno_A_;
-	public Visualizacion_Video_Ajeno _unnamed_Visualizacion_Video_Ajeno_;
-	public Visualizacion_Video_Propio_AR _unnamed_Visualizacion_Video_Propio_AR_;
-	public Visualizacion_Video_Ajeno_A _unnamed_Visualizacion_Video_Ajeno_A_;
-	public Visualizacion_Video_Ajeno_R _unnamed_Visualizacion_Video_Ajeno_R_;*/
+
 	
 	iUsuario_Registrado ur = new BD_Principal();
 

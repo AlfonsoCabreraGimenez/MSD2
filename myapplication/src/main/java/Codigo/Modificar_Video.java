@@ -20,7 +20,7 @@ import diagramaclasesbd.Video;
 public class Modificar_Video extends Modificar_Video_ventana{
 
 	public Visualizacion_Video_Propio_AR _unnamed_Visualizacion_Video_Propio_AR_;
-	Subir_Video_ventana svv = new Subir_Video_ventana();
+
 
 	iUsuario_Registrado ur = new BD_Principal();
 	iAdministrador2 adm = new BD_Principal();

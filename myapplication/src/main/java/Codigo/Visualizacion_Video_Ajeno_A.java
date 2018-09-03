@@ -20,7 +20,6 @@ import com.vaadin.ui.Window;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
-import Codigo.Comentario_Video_Ajeno_A_Propio_AR;
 import GY.MyUI;
 import diagramaclasesbd.Administrador;
 import diagramaclasesbd.BD_Principal;
@@ -42,8 +41,6 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 	VerticalLayout subContent3 = new VerticalLayout();
 	
 	public Video2 _unnamed_Video2_;
-	public Vector<Comentario_Video_Ajeno_A_Propio_AR> _unnamed_Comentario_Video_Ajeno_A_Propio_AR_ = new Vector<Comentario_Video_Ajeno_A_Propio_AR>();
-	//Visualizacion_Video_Ajeno visA = new Visualizacion_Video_Ajeno();
 	Cabecera_R cr = new Cabecera_R();
 	iAdministrador2 adm = new BD_Principal();
 	

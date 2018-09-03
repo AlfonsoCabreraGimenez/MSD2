@@ -66,7 +66,5 @@ public class Buscador_Usuario extends Buscador implements View{
 				}
 		}
 	}
-	public void ordenarUsuario(TipoOrdenacionUsuario aTipoOrdenacionUsuario) {
-		throw new UnsupportedOperationException();
-	}
+
 }
