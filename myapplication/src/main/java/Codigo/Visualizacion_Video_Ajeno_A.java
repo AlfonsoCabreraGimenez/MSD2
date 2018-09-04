@@ -74,7 +74,7 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 			@Override
 			public void layoutClick(LayoutClickEvent event) {
 				// TODO Auto-generated method stub
-				MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno_A", new Perfil_Ajeno_R(videoA.getUsuario_video().getID()));
+				MyUI.getCurrent().getNavigator().addView("Perfil_Ajeno_A", new Perfil_Ajeno_A(videoA.getUsuario_video().getID()));
 				UI.getCurrent().getNavigator().navigateTo("Perfil_Ajeno_A");
 			}
 		});
@@ -211,7 +211,7 @@ public class Visualizacion_Video_Ajeno_A extends Visualizacion_Video_Ajeno imple
 				+ "pégalo en la página que se ha abierto", Notification.Type.WARNING_MESSAGE);
 		not.setDelayMsec(5000);
 		not.show(Page.getCurrent());
-		getUI().getPage().open("http://google.com", "_blank");
+		getUI().getPage().open("https://www.onlinevideoconverter.com/es/video-converter", "_blank");
 	}
 	public void anadirHistorial(int idVideo) {
 		adm.anadirHistorial(idVideo);

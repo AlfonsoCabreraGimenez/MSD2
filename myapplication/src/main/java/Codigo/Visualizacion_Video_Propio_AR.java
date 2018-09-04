@@ -244,6 +244,6 @@ public class Visualizacion_Video_Propio_AR extends Visualizacion_Video_Ajeno {
 				+ "pégalo en la página que se ha abierto", Notification.Type.WARNING_MESSAGE);
 		not.setDelayMsec(5000);
 		not.show(Page.getCurrent());
-		getUI().getPage().open("http://google.com", "_blank");
+		getUI().getPage().open("https://www.onlinevideoconverter.com/es/video-converter", "_blank");
 	}
 }
