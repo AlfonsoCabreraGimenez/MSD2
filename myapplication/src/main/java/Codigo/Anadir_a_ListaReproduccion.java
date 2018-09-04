@@ -2,6 +2,7 @@ package Codigo;
 
 import java.awt.Checkbox;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
@@ -27,6 +28,7 @@ import diagramaclasesbd.BD_Principal;
 import diagramaclasesbd.Lista_De_Reproduccion;
 import diagramaclasesbd.Registrado;
 import diagramaclasesbd.RegistradoDAO;
+import diagramaclasesbd.Video;
 
 public class Anadir_a_ListaReproduccion extends Anadir_a_ListaReproduccion_ventana{
 	/*private Label _tituloL;
@@ -88,7 +90,8 @@ public class Anadir_a_ListaReproduccion extends Anadir_a_ListaReproduccion_venta
 			Lista_De_Reproduccion2 listaR = new Lista_De_Reproduccion2(lista.getID());
 			listaR.nombreLista.setValue(lista.getTitulo());
 			listaR.vBorrar.setVisible(false);
-			listaR.imagen.setSource(new ExternalResource("https://github.com/AlfonsoCabreraGimenez/MSD2/blob/Prueba/myapplication/descarga.jpg?raw=true"));
+			List<Video> v = Arrays.asList(lista.video.toArray());
+			listaR.imagen.setSource(new ExternalResource(v.get(0).getMiniatura()));
 			CheckBox c = new CheckBox();
 			c.setId(String.valueOf(lista.getID()));
 			c.addFocusListener(event -> {
