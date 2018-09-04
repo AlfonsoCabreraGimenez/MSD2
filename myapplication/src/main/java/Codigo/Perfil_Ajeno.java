@@ -128,7 +128,7 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 			Video vid;
 			vid = (Video) v;
 			Video2 video = new Video2(vid.getID());
-			video.categoria.setValue(String.valueOf(vid.getCategoria()));
+			video.categoria.setValue(vid.getCategoria().getNombre());
 			video.titulo.setCaption(vid.getTitulo());
 			Date fecha = vid.getFechaCreacion();
 			video.fechasubida.setValue(fecha.toString());
@@ -207,7 +207,7 @@ public class Perfil_Ajeno extends Perfil_Ajeno_ventana implements View{
 		vPanel1.addComponent(listaH.get(i));
 		for(Video vid : unr.cargar_Videos_ListaReproduccion(idLista)) {
 			Video2 video = new Video2(vid.getID());
-			video.categoria.setValue(String.valueOf(vid.getCategoria()));
+			video.categoria.setValue(vid.getCategoria().getNombre());
 			video.titulo.setCaption(vid.getTitulo());
 			Date fecha = vid.getFechaCreacion();
 			video.fechasubida.setValue(fecha.toString());
